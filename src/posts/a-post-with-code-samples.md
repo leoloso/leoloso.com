@@ -1,5 +1,5 @@
 ---
-title: A post with code samples
+title: A post with code samples for my friends
 date: '2019-06-18'
 tags:
   - demo-content
