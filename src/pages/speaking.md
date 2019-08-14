@@ -6,11 +6,7 @@ I love attending conferences and local meetups, not only as an attendee but, eve
 
 If you happen to be a conference organizer, [let's work together](mailto:leo@getpop.org)!
 
-<div class="wide-image">
-
-![](/assets/leo-jsconfasia.jpg)
-
-</div>
+![That's me speaking @ JSConf Asia 2019](/assets/leo-jsconfasia.jpg "That's me speaking @ JSConf Asia 2019 (image by JSConf organizers)")
 
 ## Upcoming engagements
 
@@ -27,12 +23,6 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 <iframe src="//slides.com/leoloso/component-based-api/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Implications of Thinking in Blocks instead of Blobs** @ [WordPress Singapore Meetup June 2019](https://www.meetup.com/WordPress-Singapore/events/261817674/)
-
-<!--div class="wide-image">
-
-![](/assets/leo-wp-singapore-meetup.jpg)
-
-</div-->
 
 <iframe src="//slides.com/leoloso/blocks-not-blobs/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
