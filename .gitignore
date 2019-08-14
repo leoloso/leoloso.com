@@ -11,7 +11,7 @@ dist
 # Specifics
 
 # Hide design tokens
-src/scss/_tokens.scss
+#src/scss/_tokens.scss
 
 # Hide compiled CSS
 src/_includes/assets/*
