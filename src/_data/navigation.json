@@ -1,37 +1,37 @@
 {
   "items": [
     {
-      "text": "Home",
+      "text": "🏠 Home",
       "url": "/",
       "external": false
     },
     {
-      "text": "Speaking",
+      "text": "🎤 Speaking",
       "url": "/pages/speaking",
       "external": false
     },
     {
-      "text": "Smashing",
+      "text": "😼 Smashing",
       "url": "https://www.smashingmagazine.com/author/leonardolosoviz/",
       "external": true
     },
     {
-      "text": "PoP",
+      "text": "⭐ PoP",
       "url": "https://github.com/leoloso/PoP",
       "external": true
     },
     {
-      "text": "GitHub",
+      "text": "😈 GitHub",
       "url": "https://github.com/leoloso",
       "external": true
     },
     {
-      "text": "Twitter",
+      "text": "🐦 Twitter",
       "url": "https://twitter.com/losoviz",
       "external": true
     },
     {
-      "text": "Email",
+      "text": "✉️ Email",
       "url": "mailto:leo@getpop.org",
       "external": false
     }
