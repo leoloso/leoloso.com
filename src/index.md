@@ -1,10 +1,14 @@
 ---
 layout: home
-title: A simple starter kit for Eleventy
+title: I'm glad you're here!
 postsHeading: Latest posts
 archiveButtonText: See all posts
 socialImage: ''
 ---
-Hylia is a lightweight [Eleventy](https://11ty.io) starter kit with [Netlify CMS](https://www.netlifycms.org/) pre-configured, so that you can one-click install a progressive, accessible blog in minutes. It also gives you a well organised starting point to extend yourself.
+Howdy! My name is **Leonardo Losoviz**, I'm a freelance developer, creator of the open source **[PoP](https://github.com/leoloso/PoP)** (an API + component-model + framework for building sites on PHP), regular contributor to **[Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/)**, and conference speaker (that is, whenever they accept me!).
 
-Get started now by [deploying Hylia to Netlify.](https://app.netlify.com/start/deploy?repository=https://github.com/andybelldesign/hylia&stack=cms)
+_I spend my days coding for PoP and whatever comes my way, learning new technologies, and writing down what I've learnt to share my experience with others, here on my own blog, on Smashing, conferences and meetups._
+
+I'm always on the lookout for interesting projects (PHP is my speciality). If we can work together, please contact me [by email](mailto:leo@getpop.org) or [tweet](https://twitter.com/losoviz). ☀️ I'm based in tropical Kuala Lumpur, Malaysia (GMT +8).
+
+_Happy reading!_
