@@ -6,14 +6,34 @@
       "external": false
     },
     {
+      "text": "Speaking",
+      "url": "/pages/speaking",
+      "external": false
+    },
+    {
+      "text": "Smashing",
+      "url": "https://www.smashingmagazine.com/author/leonardolosoviz/",
+      "external": true
+    },
+    {
+      "text": "PoP",
+      "url": "https://github.com/leoloso/PoP",
+      "external": true
+    },
+    {
       "text": "GitHub",
-      "url": "https://github.com/andybelldesign/hylia",
+      "url": "https://github.com/leoloso",
       "external": true
     },
     {
       "text": "Twitter",
-      "url": "https://twitter.com/andybelldesign",
+      "url": "https://twitter.com/losoviz",
       "external": true
+    },
+    {
+      "text": "Email",
+      "url": "mailto:leo@getpop.org",
+      "external": false
     }
   ]
 }
