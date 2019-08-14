@@ -1,5 +1,6 @@
 ---
-title: A post with code samples for my friends and others
+title: A post with code samples for some people
+socialImage: /images/demo-image-1.jpg
 date: '2019-06-18'
 tags:
   - demo-content
