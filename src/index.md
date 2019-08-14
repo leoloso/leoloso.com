@@ -1,7 +1,7 @@
 ---
 layout: home
 title: I'm glad you're here!
-postsHeading: Latest posts
+postsHeading: ✍️ My latest blog posts
 archiveButtonText: See all posts
 socialImage: ''
 ---
