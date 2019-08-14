@@ -27,7 +27,7 @@ module.exports = function(config) {
   config.addTransform('parse', parseTransform);
 
   // Passthrough copy
-  config.addPassthroughCopy('src/favicon.ico');
+  config.addPassthroughCopy('src/assets');
   config.addPassthroughCopy('src/fonts');
   config.addPassthroughCopy('src/images');
   config.addPassthroughCopy('src/js');
