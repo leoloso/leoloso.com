@@ -9,8 +9,11 @@
               <h3 class="font-base leading-tight text-600 weight-mid">
                 <a href="{{ item.url }}" class="post-list__link" rel="bookmark">{{ item.data.title }}</a>
               </h3>
-              <p class="text-500 gap-top-300 weight-mid">
-                <time datetime="{{ item.date | w3DateFilter }}">{{ item.date | dateFilter }}</time>
+              <p>
+                {{ item.data.content | safe | striptags | truncate }} <a href="{{ item.url }}" class="post-list__link" rel="bookmark"><em>Read more</em></a>
+              </p>
+              <p><!--p class="text-500 gap-top-300 weight-mid"-->
+                <em><time datetime="{{ item.date | w3DateFilter }}">{{ item.date | dateFilter }}</time></em>
               </p>
             </li>
           {% endif %}
