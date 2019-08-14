@@ -1,7 +1,7 @@
 {
   "showThemeCredit": true,
-  "name": "<img src='/assets/leo.jpg' style='max-height: 80px; border-radius: 40px;'>",
-  "shortDesc": "Hylia is a lightweight Eleventy starter kit to help you to create your own blog or personal website.",
+  "name": "Leo's blog",
+  "shortDesc": "Random thoughts, tips, tricks, accidental findings or whatever trivial or noteworthy crosses my way.",
   "url": "https://hylia.website",
   "authorEmail": "leo@getpop.org",
   "authorHandle": "@losoviz",
