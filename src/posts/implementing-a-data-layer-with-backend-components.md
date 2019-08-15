@@ -1,5 +1,5 @@
 ---
-title: The best thing ever: How implementing a data layer through back-end components gave PoP so much power!
+title: How implementing a data layer through back-end components gave PoP so much power!
 #socialImage: /images/components.png
 date: '2019-08-25'
 tags:
