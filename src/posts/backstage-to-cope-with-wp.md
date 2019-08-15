@@ -7,6 +7,8 @@ tags:
   - gutenberg
   - cope
   - api
+  - pop
+  - smashing
 ---
 
 Yesterday I published a new article on Smashing Magazine: ["Create Once, Publish Everywhere" with WordPress](...). It describes how the new WordPress, through Gutenberg, can accomplish a comprehensive management of our content towards sharing it for different mediums, such as websites, email, apps, VR/AR, Amazon Alexa, and others. This is called the COPE strategy (for "Create Once, Publish Everywhere"). By enabling the implementation of COPE, WordPress can truly become the center of the web, from where we organize and distribute all our digital assets!
