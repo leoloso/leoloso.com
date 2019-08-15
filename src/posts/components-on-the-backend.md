@@ -11,7 +11,7 @@ tags:
 
 So, if I mention the keyword "components", what comes to your mind? React? Vue? Bootstrap maybe? What about anything PHP-based, living in the back-end? No, nothing? Nothing at all?
 
-!["Annoyed"](/images/annoyed.jpg "It's annoying, isn't it?")
+!["Annoyed!"](/images/annoyed.png "What an annoying question! But there's some truth to it, sadly")
 
 The concept of the component has been incredibly useful to the modern web, enabling developers to progressively create and manage small pieces of code that can depend on each other to create the whole site. As evidence, the popularity of component-based JavaScript libraries/frameworks, such as React and Vue, has risen to stratospheric levels. 
 
