@@ -4,6 +4,7 @@ socialImage: /images/wordpress-logo.png
 date: '2019-08-15'
 tags:
   - wordpress
+  - composer
   - wp-cli
   - github
   - project
