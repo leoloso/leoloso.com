@@ -1,6 +1,6 @@
 ---
 title: Good Writing in 10 Smashing Cases
-#socialImage: /images/smashing.png
+socialImage: /images/smashing-cat.png
 date: '2020-09-25'
 tags:
   - smashing

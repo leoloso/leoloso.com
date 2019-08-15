@@ -1,6 +1,6 @@
 ---
 title: So you have decided to write an article. Now what?
-#socialImage: /images/smashing.png
+socialImage: /images/smashing-cat.png
 date: '2020-09-25'
 tags:
   - smashing

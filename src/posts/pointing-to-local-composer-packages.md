@@ -1,6 +1,6 @@
 ---
 title: Pointing to local Composer packages, to speed up development time
-#socialImage: /images/composer.png
+socialImage: /images/composer.png
 date: '2019-08-15'
 tags:
   - composer

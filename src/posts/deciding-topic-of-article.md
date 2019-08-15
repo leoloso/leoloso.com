@@ -1,6 +1,6 @@
 ---
 title: Deciding what to write about
-#socialImage: /images/smashing.png
+socialImage: /images/smashing-cat.png
 date: '2020-09-25'
 tags:
   - smashing
