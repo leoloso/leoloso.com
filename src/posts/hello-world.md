@@ -1,7 +1,7 @@
 ---
 title: Hello world!
 socialImage: /images/leo-1600x1067.jpg
-date: '2019-08-14'
+date: '2019-08-12'
 tags:
   - blog
 ---

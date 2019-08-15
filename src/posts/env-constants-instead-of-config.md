@@ -1,7 +1,7 @@
 ---
 title: Using environment constants when installing WordPress (a.k.a. How to not hardcode wp-config.php)
 socialImage: /images/wordpress-logo.png
-date: '2019-08-15'
+date: '2019-08-14'
 tags:
   - wordpress
   - composer
