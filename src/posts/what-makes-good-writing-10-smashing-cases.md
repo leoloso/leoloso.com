@@ -1,5 +1,5 @@
 ---
-title: What Makes Good Writing: 10 Smashing Cases
+title: Good Writing in 10 Smashing Cases
 #socialImage: /images/smashing.png
 date: '2020-09-25'
 tags:
