@@ -18,7 +18,7 @@ Some time ago, before this development took place (which I shall describe below)
 
 However, thinking about it and realizing he was right, a solution to implement GraphQL-like capabilities (i.e. being able to define what data fields the API must retrieve) into PoP came to my mind. And through components, its implementation took only 3 days! That was just incredible.
 
-Yet, the PoP API was not very useful because its data structure was different to what developers nowadays expect: to mirror the same data structure from the query, as done by GraphQL. After a developer gave me this impression, I was thinking about this problem. And lo and behold, after a few days of thinking about it, the solution came to my mind, and through components, I implemented it in only 2 days! And since here I was, I also added [field modifiers](https://github.com/leoloso/PoP#modifiers) in only 1 day!
+Yet, the PoP API was not very useful because its data structure was different to what developers nowadays expect: to mirror the same data structure from the query, as done by GraphQL. After a developer gave me this impression, I was thinking about this problem. And lo and behold, after a few days of thinking about it, the solution came to my mind, and through components, I implemented it in only 2 days! And since here I was, I also added [field modifiers](https://github.com/leoloso/PoP#field-modifiers) in only 1 day!
 
 So now PoP, in addition to giving the response in its own native format, can also return it as GraphQL, for free! The only difference is parameter `datastructure=graphql` in the URL. Check this out:
 
