@@ -1,6 +1,6 @@
 ---
 title: Hylia rocks!
-#socialImage: /images/hylia.png
+socialImage: /images/hylia.png
 date: '2019-08-19'
 tags:
   - hylia
@@ -25,7 +25,7 @@ Finally, Hylia stands out not only in its present but also, hopefully, in its fu
 
 ## Why so long to implement my blog?
 
-In the IndieWeb there's the concept of "selfdogfooding": If you are implementing some functionality, you yourself must be using it, in your own website. Otherwise, how can you possibly convince others to use it, when it doesn't even convince or suit you? (This way of thinking is related to the "you must do what you preach" philosophy.)
+In the IndieWeb there's the concept of [selfdogfooding](https://indieweb.org/selfdogfood): If you are implementing some functionality, you yourself must be using it, in your own website. Otherwise, how can you possibly convince others to use it, when it doesn't even convince or suit you? (This way of thinking is related to the "you must do what you preach" philosophy.)
 
 I fully believe in this premise, and I attempt to adhere to it as much as possible. In this case, I am the creator of [PoP](https://github.com/leoloso/PoP), an API + component model + framework for building sites in PHP, and, of course, I should be using PoP for building my own blog! (fortunately, PoP also can export the site as static to have it deployed on a CDN). However, PoP is not ready for building sites yet (only the API-building features have been finished; site-building comes next), and it has not been for a couple of years. Hence my delay! A few months ago I decided that enough is enough, that I should implement my blog no matter how, and once PoP is ready, then re-do it. 
 
