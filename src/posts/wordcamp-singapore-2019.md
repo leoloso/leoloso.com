@@ -11,7 +11,7 @@ tags:
   - cope
 ---
 
-Actually, I've just presented my talk! It's called "COPE with WordPress", where COPE stands for "Create Once, Publish Everywhere", a strategy for publishing all of our content into different mediums (web, email, apps, AR/VR, home assistants, etc), a strategy now feasible in WordPress via Gutenberg. In my presentation, I explain how to do it (I'll upload the video when it's ready!)
+Actually, I've just presented my talk! It's called [COPE with WordPress](https://2019.singapore.wordcamp.org/sessions/), where COPE stands for "Create Once, Publish Everywhere", a strategy for publishing all of our content into different mediums (web, email, apps, AR/VR, home assistants, etc), a strategy now feasible in WordPress via Gutenberg. In my presentation, I explain how to do it (I'll upload the video when it's ready!)
 
 That's me presenting, via [#WordCampSG](https://twitter.com/hashtag/WordCampSG):
 
