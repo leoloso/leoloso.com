@@ -8,7 +8,7 @@ I have created the following websites for different NGOs. Most of them are socia
 
 ![MESYM](/images/mesym-1200.jpg "MESYM")
 
-[TPPDebate](https://my.tppdebate.org) - A social network to debate the (now defunct) Trans-Pacific Partnership Agreement ("TPP")
+[TPPDebate](https://my.tppdebate.org) - A social network to debate the Trans-Pacific Partnership Agreement ("TPP")
 
 ![TPPDebate](/images/tppdebate-1200.jpg "TPPDebate")
 
