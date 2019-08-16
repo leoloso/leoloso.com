@@ -1,6 +1,6 @@
 ---
 title: The benefits of coding with back-end components
-socialImage: /images/lego.png
+socialImage: https://leoloso.com/images/lego.png
 date: '2019-08-23'
 tags:
   - pop

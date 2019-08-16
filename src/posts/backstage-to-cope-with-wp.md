@@ -1,6 +1,6 @@
 ---
 title: Backstage to COPE with WordPress
-socialImage: /images/wordpress-logo.png
+socialImage: https://leoloso.com/images/wordpress-logo.png
 date: '2019-09-15'
 tags:
   - wordpress

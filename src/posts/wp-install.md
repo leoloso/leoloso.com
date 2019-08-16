@@ -1,6 +1,6 @@
 ---
 title: Installing WordPress through Composer and WP-CLI
-socialImage: /images/wordpress-logo.png
+socialImage: https://leoloso.com/images/wordpress-logo.png
 date: '2019-08-13'
 tags:
   - wordpress

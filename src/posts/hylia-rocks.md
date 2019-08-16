@@ -1,6 +1,6 @@
 ---
 title: Hylia rocks!
-socialImage: /images/hylia.png
+socialImage: https://leoloso.com/images/hylia.png
 date: '2019-08-19'
 tags:
   - hylia

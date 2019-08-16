@@ -1,6 +1,6 @@
 ---
 title: Requirements to become a good writer (or at least, a good enough one)
-socialImage: /images/smashing-cat.png
+socialImage: https://leoloso.com/images/smashing-cat.png
 date: '2020-09-25'
 tags:
   - smashing

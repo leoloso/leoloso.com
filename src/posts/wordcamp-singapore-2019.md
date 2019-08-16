@@ -1,6 +1,6 @@
 ---
 title: I'm presenting on WordCamp Singapore 2019!
-socialImage: /images/wordcamp-singapore-2019.jpg
+socialImage: https://leoloso.com/images/wordcamp-singapore-2019.jpg
 date: '2019-08-16'
 tags:
   - wordpress

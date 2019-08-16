@@ -1,6 +1,6 @@
 ---
 title: My personal motivations for writing for Smashing Magazine
-socialImage: /images/smashing-cat.png
+socialImage: https://leoloso.com/images/smashing-cat.png
 date: '2020-09-25'
 tags:
   - smashing
