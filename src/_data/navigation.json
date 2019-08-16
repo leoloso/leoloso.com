@@ -11,6 +11,11 @@
       "external": false
     },
     {
+      "text": "💪 Projects",
+      "url": "/pages/projects",
+      "external": false
+    },
+    {
       "text": "😼 Smashing",
       "url": "https://www.smashingmagazine.com/author/leonardolosoviz/",
       "external": true
@@ -18,11 +23,6 @@
     {
       "text": "⭐ PoP",
       "url": "https://github.com/leoloso/PoP",
-      "external": true
-    },
-    {
-      "text": "😈 GitHub",
-      "url": "https://github.com/leoloso",
       "external": true
     },
     {
