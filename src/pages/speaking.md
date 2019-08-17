@@ -8,13 +8,16 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 ![That's me speaking @ JSConf Asia 2019](/assets/leo-jsconfasia.jpg "That's me speaking @ JSConf Asia 2019 (image by JSConf organizers)")
 
+<!--
 ## Upcoming engagements
+
+-----
+-->
+## Previous engagements
 
 **COPE with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070)
 
------
-
-## Previous engagements
+<iframe src="//slides.com/leoloso/cope-with-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Introduction to the Component-based API** @ [JSConf Asia 2019](https://2019.jsconf.asia/#program)
 
