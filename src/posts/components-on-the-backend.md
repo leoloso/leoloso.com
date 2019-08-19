@@ -6,6 +6,8 @@ tags:
   - pop
   - components
   - back-end
+  - front-end
+  - full-stack
   - php
 ---
 
