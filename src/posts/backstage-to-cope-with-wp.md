@@ -1,7 +1,7 @@
 ---
 title: Backstage to COPE with WordPress
 socialImage: https://leoloso.com/images/wordpress-logo.png
-date: '2019-09-15'
+date: '2020-09-15'
 tags:
   - wordpress
   - gutenberg

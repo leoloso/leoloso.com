@@ -1,7 +1,7 @@
 ---
 title: How implementing a data layer through back-end components gave PoP so much power!
 socialImage: https://leoloso.com/images/lego.png
-date: '2019-08-25'
+date: '2020-08-25'
 tags:
   - pop
   - components
