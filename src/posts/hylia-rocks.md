@@ -13,7 +13,7 @@ tags:
 
 Welcome to my blog, which took 2 years for me to launch, but actually 2 hours to code and deploy! My quest to have my own blog, which was delayed for a loooong time (for reasons I'll explain below), was resolved in less time than a Bollywood film (not that I'm a fan of them, but every now and then they cheer me up). 
 
-How so quick? It's not due to magic, even though it feels like it. It's all because of [Hylia](https://github.com/andybelldesign/hylia), a starter kit for static site generator [Eleventy](https://11ty.io/) and readily deployable to [Netlify](https://netlify.com). The site you're currently browsing is simply a fork of the Hylia repo, customized with my own colors and a few other modifications here and there. And even though I'm terrible at design (CSS is not my forte), it looks quite neat!
+How so quick? It's not due to magic, even though it feels like it. It's all because of [Hylia](https://hylia.website/), a starter kit for static site generator [Eleventy](https://11ty.io/) and readily deployable to [Netlify](https://netlify.com). The site you're currently browsing is simply a fork of the [Hylia repo](https://github.com/andybelldesign/hylia), customized with my own colors and a few other modifications here and there. And even though I'm terrible at design (CSS is not my forte), it looks quite neat!
 
 I chose Hylia for two main reasons (excluding the fact that it is open source 😀❤️): because it is extremely quick to set-up (as I just mentioned) and extremely powerful. Indeed, watching the site be compiled automatically whenever I press "Ctrl + S" in VSCode, deployed to my localhost, and hot reloaded in the browser, is a breathtaking experience. I love it!
 
