@@ -1,7 +1,7 @@
 ---
-title: The benefits of coding with back-end components
+title: Bringing the back of the front-end back to the back-end
 socialImage: https://leoloso.com/images/lego.png
-date: '2019-08-23'
+date: '2020-08-23'
 tags:
   - pop
   - components
@@ -9,13 +9,13 @@ tags:
   - php
 ---
 
-So, if I mention the keyword "components", what comes to your mind? React? Vue? Bootstrap maybe? What about anything PHP-based, living in the back-end? No, nothing? Nothing at all?
+In what Chris Coyier calls “[the great divide](https://css-tricks.com/the-great-divide/)”, front-end developers and designers have taken over so many tasks from building the website, that they could be directly called "full-stack developers" and the role of the front-end developer/designer cannot fit a single, specific role anymore. Hence, many tasks which [once upon a time were implemented on the back-end](https://full-stack.netlify.com/) (such as site-level architecture, routing, state management, and others) are now responsibility of the front-end. Likewise, Brad Frost [points out](http://bradfrost.com/blog/post/frontend-design-react-and-a-bridge-over-the-great-divide/) that the front-end can now be divided into the “back of the front-end” and the “front of the front-end”. 
 
-!["Annoyed!"](/images/annoyed.png "What an annoying question! But there's some truth to it, sadly")
+This shift of responsibilities from the back to the front-end are due, in great part, to the outstanding success of components. The concept of the component has been incredibly useful to the modern web, enabling developers to progressively create and manage small pieces of code that can depend on each other to create the whole site. As evidence, the popularity of component-based JavaScript libraries/frameworks, such as React and Vue, has risen to stratospheric levels. 
 
-The concept of the component has been incredibly useful to the modern web, enabling developers to progressively create and manage small pieces of code that can depend on each other to create the whole site. As evidence, the popularity of component-based JavaScript libraries/frameworks, such as React and Vue, has risen to stratospheric levels. 
+Components seem to have been implemented in the front-end only. It is a wonder how nobody has implemented the component concept for the back-end yet, as if it could never exist there! 
 
-It is a wonder, then, how nobody has implemented the component concept for the back-end, as if it could never exist there! Well, not truly nobody... there is one player in town doing something about it...
+Well, not anymore! Somebody is doing something to remediate this situation 😬.
 
 ## PoP makes justice to back-end components
 
