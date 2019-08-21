@@ -1,5 +1,6 @@
 ---
 title: Designing appropriate content for respectable magazines
+metaDesc: After a couple of years publishing articles on Smashing Magazine, I have gained some experience into what is good to write about. Here are my tips.
 socialImage: https://leoloso.com/images/smashing-cat.png
 date: '2020-09-25'
 tags:

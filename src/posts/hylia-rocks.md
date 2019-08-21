@@ -1,5 +1,6 @@
 ---
 title: Hylia rocks!
+metaDesc: This is how I launched my personal blog in just a few hours...
 socialImage: https://leoloso.com/images/hylia.png
 date: '2019-08-19'
 tags:

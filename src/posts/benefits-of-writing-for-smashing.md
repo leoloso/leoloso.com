@@ -1,5 +1,6 @@
 ---
 title: Benefits of writing for Smashing Magazine
+metaDesc: What is so compelling about publishing on Smashing? Read this blog post to find out.
 socialImage: https://leoloso.com/images/smashing-cat.png
 date: '2020-09-25'
 tags:

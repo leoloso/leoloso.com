@@ -1,5 +1,6 @@
 ---
 title: So you have decided to write an article. Now what?
+metaDesc: My tips on becoming a better writer with each passing day.
 socialImage: https://leoloso.com/images/smashing-cat.png
 date: '2020-09-25'
 tags:

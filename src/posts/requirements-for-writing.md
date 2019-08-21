@@ -1,5 +1,6 @@
 ---
 title: Requirements to become a good writer (or at least, a good enough one)
+metaDesc: Everyone could become a writer, but not everyone does. What qualities do you need to have to make it?
 socialImage: https://leoloso.com/images/smashing-cat.png
 date: '2020-09-25'
 tags:

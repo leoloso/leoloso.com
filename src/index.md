@@ -3,6 +3,7 @@ layout: home
 title: I'm glad you're here!
 postsHeading: ✍️ My latest blog posts
 archiveButtonText: See all posts
+metaDesc: Welcome to Leo's blog! Writings on things that I encounter every day, from attending events, working on random projects, reading books, or anything noteworthy
 socialImage: ''
 ---
 Howdy! My name is **Leonardo Losoviz**, I'm a freelance developer, creator of the open source **[PoP](https://github.com/leoloso/PoP)** (an API + component-model + framework for building sites on PHP), regular contributor to **[Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/)**, and conference speaker (that is, whenever they accept me!).

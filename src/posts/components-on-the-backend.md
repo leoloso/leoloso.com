@@ -1,5 +1,6 @@
 ---
 title: Bringing the back of the front-end back to the back-end
+metaDesc: The back-end was tacken aback, its responsibilities moved to the front-end. It's time to claim them back!
 socialImage: https://leoloso.com/images/lego.png
 date: '2020-08-23'
 tags:

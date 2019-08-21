@@ -1,5 +1,6 @@
 ---
-title: Backstage to COPE with WordPress
+title: Backstage to "Create Once, Publish Everywhere" with WordPress
+metaDesc: Story on how my article for Smashing Magazine came to be.
 socialImage: https://leoloso.com/images/wordpress-logo.png
 date: '2020-09-15'
 tags:

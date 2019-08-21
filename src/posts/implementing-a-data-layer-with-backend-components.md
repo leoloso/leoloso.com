@@ -1,5 +1,6 @@
 ---
 title: How implementing a data layer through back-end components gave PoP so much power!
+metaDesc: Sorry GraphQL, but "ComponentQL" kicks your ass 😅
 socialImage: https://leoloso.com/images/lego.png
 date: '2020-08-25'
 tags:
