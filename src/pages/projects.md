@@ -2,6 +2,14 @@
 title: 💪 Projects
 ---
 
+## WordPress plugins
+
+[Block Metadata](https://wordpress.org/plugins/block-metadata/) enables to extract all the metadata for all the Gutenberg blocks inside of a blog post, converting this metadata into a medium-agnostic format. Its goal is to implement the "Create Once, Publish Everywhere" strategy (alias COPE), enabling to have our blog posts become the single source of truth for all content, for all different mediums or platforms: web, email/newsletters, iOS/Android apps, home assistants (like Amazon Alexa), car-entertainment systems, and so on.
+
+![Banner for my plugin "Block Metadata"](/images/block-metadata-banner.jpg)
+
+## Websites
+
 I have created the following websites for different NGOs. Most of them are social networks, enabling users to upload their own content, and leveraging the capabilities from [PoP](https://github.com/leoloso/PoP).
 
 [MESYM](https://www.mesym.com) - An environmental social network based in Malaysia
