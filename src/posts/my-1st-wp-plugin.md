@@ -17,7 +17,7 @@ Today is a special day for me: I published my first ever plugin on the WordPress
 
 ![Victory!](/images/victory.png)
 
-The plugin is called "Block Metadata", and its use case is very simple: it extracts all the metadata for all the blocks inside of a blog post, converting this metadata into a medium-agnostic format. 
+The plugin is called [Block Metadata](https://wordpress.org/plugins/block-metadata/), and its use case is very simple: it extracts all the metadata for all the blocks inside of a blog post, converting this metadata into a medium-agnostic format. 
 
 The plugin's goal is to implement the [Create Once, Publish Everywhere](https://www.programmableweb.com/news/cope-create-once-publish-everywhere/2009/10/13) strategy (alias COPE), enabling to have our Gutenberg-edited blog post become the single source of truth for all content, for all different mediums or platforms: web, email/newsletters, iOS/Android apps, home assistants (like Amazon Alexa), car-entertainment systems, and so on.
 
