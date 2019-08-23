@@ -148,8 +148,8 @@ Into this:
 
 Notice how different block types have different properties extracted from them: 
 
-- a paragraph block has its content extracted
-- a Youtube embed block has the URL and video playing properties (autoplay, allowfullscreen, etc)
+- a paragraph block simply extracts its content
+- a Youtube embed block extracts the URL and video playing properties (autoplay, allowfullscreen, etc)
 - an image block extracts the image source and dimensions of the image
 - etc
 
