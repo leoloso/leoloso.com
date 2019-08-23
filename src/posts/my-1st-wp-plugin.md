@@ -155,7 +155,7 @@ Notice how different block types have different properties extracted from them:
 
 To see it working live, check out these links: a random [blog post](https://nextapi.getpop.org/posts/cope-with-wordpress-post-demo-containing-plenty-of-blocks/) (with plenty of Gutenberg blocks in it), its [data added by Gutenberg](https://nextapi.getpop.org/wp-json/block-metadata/v1/data/1499) on each block in the post, and, finally, its [extracted medium-agnostic metadata](https://nextapi.getpop.org/wp-json/block-metadata/v1/metadata/1499), listing properties on a block-by-block basis.
 
-There is more information on how it works on the slides from my presentation **COPE with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070) last week [source](https://slides.com/leoloso/cope-with-wp):
+There is more information on how it works on the slides from my presentation **COPE with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070) from last week ([source](https://slides.com/leoloso/cope-with-wp)):
 
 <iframe src="//slides.com/leoloso/cope-with-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
