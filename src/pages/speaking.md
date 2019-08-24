@@ -17,6 +17,8 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 **COPE with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070)
 
+<iframe width="966" height="543" src="https://www.youtube.com/embed/fK8NcwA6SGs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <iframe src="//slides.com/leoloso/cope-with-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Introduction to the Component-based API** @ [JSConf Asia 2019](https://2019.jsconf.asia/#program)

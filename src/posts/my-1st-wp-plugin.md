@@ -159,6 +159,10 @@ There is more information on how it works on the slides from my presentation **C
 
 <iframe src="//slides.com/leoloso/cope-with-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
+And the video with the talk is now available too:
+
+<iframe width="966" height="543" src="https://www.youtube.com/embed/fK8NcwA6SGs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 If you install the plugin and find any problem, please let me know and I'll fix it. If you use it and find it useful, let me know and I'll celebrate! 🥳
 
 ![Celebrate!](/images/celebration-time.jpg)
