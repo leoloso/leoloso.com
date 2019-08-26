@@ -1,5 +1,5 @@
 ---
-title: Installing WordPress through Composer and WP-CLI
+title: 👩‍🔧 Installing WordPress through Composer and WP-CLI
 metaDesc: Quickly install WordPress, fully automated, running a single command... how could I live without this?
 socialImage: https://leoloso.com/images/wordpress-logo.png
 date: '2019-08-13'

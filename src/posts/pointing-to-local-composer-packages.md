@@ -1,5 +1,5 @@
 ---
-title: Pointing to local Composer packages, to speed up development time
+title: ⏱️ Pointing to local Composer packages, to speed up development time
 metaDesc: Or how to avoid getting impatient while waiting for Composer to finish an update...
 socialImage: https://leoloso.com/images/composer.png
 date: '2019-08-15'
