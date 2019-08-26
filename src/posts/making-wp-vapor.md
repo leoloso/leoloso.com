@@ -1,5 +1,5 @@
 ---
-title: 🤔 Making WordPress Vapor, anyone?
+title: 🤔 Bringing Laravel Vapor to WordPress, anyone?
 metaDesc: Laravel Vapor just blew my mind. We should have this for WordPress too.
 socialImage: https://leoloso.com/images/vapor-logo.png
 date: '2019-08-26'
