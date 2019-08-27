@@ -51,3 +51,12 @@ However, good news is that [Laravel Vapor is open source](https://github.com/lar
 So, here is my proposal: If you are reading this, and you feel excited by this prospect, then let's do it! If you are a developer keen to join, please let me know in [this Twitter thread](https://twitter.com/losoviz/status/1165848933454643201) (comments are still not enabled in my JAMstack blog 😂). If you're an investor eager to find a new exciting venture, and would be willing to fund this project, please send me a DM. 
 
 Please spread the word 🙏. Thanks for reading!
+
+## Update 27/08: Maybe there's no need for WordPress Vapor after all! 
+
+I just found a tool that enables to read the WordPress database from within Laravel: [Corcel](https://github.com/corcel/corcel). Then, we can create an application based on a stack including both WordPress and Laravel:
+
+👉 Client-facing back-end/admin side based on WordPress, enabling to generate content through Gutenberg
+👉 User-facing application based on Laravel, deployed as "serverless" PHP through Laravel Vapor
+
+This is a beautiful stack, which obtains the best of both worlds: Great content creation through Gutenberg, while removing the need to provision/maintain servers through Laravel Vapor. 😺
