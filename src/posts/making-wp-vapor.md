@@ -56,8 +56,7 @@ Please spread the word 🙏. Thanks for reading!
 
 I just found a tool that enables to read the WordPress database from within Laravel: [Corcel](https://github.com/corcel/corcel). Then, we can create an application based on a stack including both WordPress and Laravel:
 
-👉 Client-facing back-end/admin side based on WordPress, enabling to generate content through Gutenberg
-
-👉 User-facing application based on Laravel, deployed as "serverless" PHP through Laravel Vapor
+- 👉 Client-facing back-end/admin side based on WordPress, enabling to generate content through Gutenberg
+- 👉 User-facing application based on Laravel, deployed as "serverless" PHP through Laravel Vapor
 
 This is a beautiful stack, which obtains the best of both worlds: Great content creation through Gutenberg, while removing the need to provision/maintain servers through Laravel Vapor. 😺
