@@ -1,5 +1,5 @@
 ---
-title: 🙀 I just submitted 9 proposals for ConFoo... I need only 1 accepted! Want to vote for me?
+title: 🎤 I just submitted 9 proposals for ConFoo... I need only 1 accepted! Want to vote for me?
 metaDesc: Many topics! Back-end Components, Improving GraphQL, Serverless PHP, Gutenberg, COPE, CMS-agnosticism.
 socialImage: https://leoloso.com/images/confoo-logo.jpg
 date: '2019-09-16'
