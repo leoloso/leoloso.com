@@ -99,3 +99,5 @@ This talk will explain how to implement such architecture, and demonstrate an ap
 COPE (Create Once, Publish Everywhere) is a technique which allows to publish content across different platforms such as web, email, app, and others. It achieves its goal by decoupling the meaning and presentation layers of the content. 
 
 We will learn how to implement COPE through a block-based architecture (as compared to the blob-based architecture), which allows us to manage chunks of content individually and extract their metadata.
+
+<a href="https://confoo.ca/en/yul2020/call-for-papers/speaker/leonardo-losoviz"><img src="/images/confoo-vote.png"></a>
