@@ -8,11 +8,12 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 ![That's me speaking @ JSConf Asia 2019](/assets/leo-jsconfasia.jpg "That's me speaking @ JSConf Asia 2019 (image by JSConf organizers)")
 
-<!--
 ## Upcoming engagements
 
+**“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Kuala Lumpur 2019](https://2019.kualalumpur.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/), [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
+
 -----
--->
+
 ## Previous engagements
 
 **COPE with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070)
