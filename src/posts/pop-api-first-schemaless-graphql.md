@@ -22,7 +22,7 @@ Yes it is... through a “schemaless” GraphQL!
 
 I have recently implemented GraphQL's specification using [PoP](https://github.com/leoloso/PoP)'s component-based architecture, and it works like a charm! Because server-side components can represent a graph (as I hinted at in my [article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)), these can be used instead of schemas to represent the application's data model, providing all the same features that schemas do.
 
-Moreover, I can claim without a doubt or regret: **Schemas are not only the foundation of GraphQL, but also its biggest liability!** Because of the architecture they impose, schemas limit what GraphQL can (or cannot) achieve, leading to GraphQL's biggest drawbacks: Limited server-side caching, over-complexity (schema stitching, schema federation), risk of Denial of Service attacks, difficulty of having a decentralized team collaborate on the schema (which may lead to monolithic data models), among others. 
+Moreover, I can claim without a doubt or regret: **Schemas are not only the foundation of GraphQL, but also its biggest liability!** Because of the architecture they impose, schemas (as coded through the [Schema Definition Language](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51)) limit what GraphQL can (or cannot) achieve, leading to GraphQL's biggest drawbacks: Limited server-side caching, over-complexity (schema stitching, schema federation), risk of Denial of Service attacks, difficulty of having a decentralized team collaborate on the schema (which may lead to monolithic data models), among others. 
 
 Components can avoid all of these issues...
 
