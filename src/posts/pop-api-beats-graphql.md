@@ -31,10 +31,10 @@ _Field arguments with operators and fields:_<br/>
 [posts.id|title|or(fields:is-status(status:draft),is-status(status:published))](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|or(fields:is-status(status:draft),is-status(status:published)))
 
 _Directives with fields:_<br/>
-Include: [posts.id|title|comments<include(if-field:has-comments)>.id|content](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|comments<include(if-field:has-comments)>.id|content)
+Include: [posts.id|title|comments<include(if:has-comments())>.id|content](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|comments<include(if:has-comments())>.id|content)
 
 _Directives with operators and fields:_<br/>
-Skip: [posts.id|title|comments<skip(if-field:not(field:has-comments))>.id|content](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|comments<skip(if-field:not(field:has-comments))>.id|content)
+Skip: [posts.id|title|comments<skip(if:not(has-comments()))>.id|content](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|comments<skip(if:not(has-comments()))>.id|content)
 
 _Accessing the context:_<br/>
 [context](https://nextapi.getpop.org/api/graphql/?fields=context)
