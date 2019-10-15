@@ -2,7 +2,7 @@
 title: 🚀 Introducing GraphQL API for PoP - A schemaless implementation of GraphQL through components
 metaDesc: Schemaless? But still GraphQL? How does it work!? Click to find out!
 socialImage: https://leoloso.com/images/grapqhql-logo.png
-date: '2019-10-15'
+date: '2020-10-15'
 tags:
   - pop
   - api
