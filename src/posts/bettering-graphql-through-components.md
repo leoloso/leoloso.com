@@ -10,11 +10,11 @@ tags:
   - feature
 ---
 
-I have recently written about how the [PoP API become the first schemaless implementation of GraphQL](/posts/pop-api-first-schemaless-graphql/). In this post, I will write about the improvements that the PoP API has designed, and implemented, over GraphQL.
+I have recently [introduced GraphQL API for PoP](/posts/intro-to-schemaless-graphql-api-for-pop/), which is possibly the first schemaless implementation of GraphQL. In this post, I will write about the improvements that this API can achieve over a typical schema-based implementation of GraphQL, by using the component-based architecture implemented for [PoP](https://github.com/leoloso/PoP).
 
 ## Features
 
-In addition to satisfying the GraphQL specification, PoP also provides its own set of features that GraphQL currently does not, and possibly cannot, support (in great part due to the limitations imposed by schemas):
+In addition to satisfying the GraphQL specification, the component-based API provides the following features:
 
 - ✅ URL-based queries
 - ✅ HTTP caching
