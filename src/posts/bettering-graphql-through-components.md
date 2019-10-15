@@ -1,6 +1,6 @@
 ---
-title: 😎 Components all the way down - Beating GraphQL in its own game!
-metaDesc: The PoP API becomes what GraphQL wishes it could become...
+title: 😎 Components all the way down - A better GraphQL implementation!
+metaDesc: Components make GraphQL shine... take that, schema!
 socialImage: https://leoloso.com/images/pop-logo-whitebg.png
 date: '2020-10-01'
 tags:
