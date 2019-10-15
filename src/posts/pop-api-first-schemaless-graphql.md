@@ -34,55 +34,55 @@ The result of my research is the new project [GraphQL API for PoP](https://githu
 
 Well, actually calling it “schemaless” is a bit tricky, since there is a schema... but **it is not coded by anyone!** Instead, it is automatically-generated from the component model itself. Similar to GraphQL, the schema can be inspected through the introspection `"__schema"` field:
 
-[/api/graphql/?fields=__schema](https://nextapi.getpop.org/api/graphql/?fields=__schema)
+[/api/graphql/?query=__schema](https://nextapi.getpop.org/api/graphql/?query=__schema)
 
 The links below show how PoP satisfies the GraphQL specification, having the response mirror the query:
 
 (**Note:** Please notice that the query input is different to that from GraphQL: Instead of passing the `query` in the body of the request, it is passed through parameter `fields` using a [slightly different syntax](https://github.com/getpop/api#query-syntax). This change is done to support URL-based server-side caching, which is not easily available using GraphQL's standard way to retrieve data. While this is the only way to query data in PoP right now, the GraphQL's syntax will soon be also supported; this will enable the client to choose which of the 2 input methods to provide the query: GraphQL's body-based one, or PoP's URL-based one.)
 
 _**Simple query:**_<br/>
-[/api/graphql/?fields=posts.id|title|url](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url)
+[/api/graphql/?query=posts.id|title|url](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url)
 
 _**Nested query:**_<br/>
-[/api/graphql/?fields=posts.id|title|url|comments.id|content|date|author.id|name|url|posts.id|title|url](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url|comments.id|content|date|author.id|name|url|posts.id|title|url)
+[/api/graphql/?query=posts.id|title|url|comments.id|content|date|author.id|name|url|posts.id|title|url](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url|comments.id|content|date|author.id|name|url|posts.id|title|url)
 
 _**Field arguments:**_<br/>
-[/api/graphql/?fields=posts(searchfor:template,limit:3).id|title](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3).id|title)
+[/api/graphql/?query=posts(searchfor:template,limit:3).id|title](https://nextapi.getpop.org/api/graphql/?query=posts(searchfor:template,limit:3).id|title)
 
 _**Variables:**_<br/>
-[/api/graphql/?fields=posts(searchfor:$search,limit:$limit).id|title&variables[limit]=3&variables[search]=template](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:$search,limit:$limit).id|title&variables[limit]=3&variables[search]=template)
+[/api/graphql/?query=posts(searchfor:$search,limit:$limit).id|title&variables[limit]=3&variables[search]=template](https://nextapi.getpop.org/api/graphql/?query=posts(searchfor:$search,limit:$limit).id|title&variables[limit]=3&variables[search]=template)
 
 _**Aliases:**_<br/>
-[/api/graphql/?fields=posts(searchfor:template,limit:3)@searchposts.id|title](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3)@searchposts.id|title)
+[/api/graphql/?query=posts(searchfor:template,limit:3)@searchposts.id|title](https://nextapi.getpop.org/api/graphql/?query=posts(searchfor:template,limit:3)@searchposts.id|title)
 
 _**Bookmarks:** (to return to some query path, to keep adding data)_<br/>
-[/api/graphql/?fields=posts(searchfor:template,limit:3)[searchposts].id|title,[searchposts].author.id|name](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3)[searchposts].id|title,[searchposts].author.id|name)
+[/api/graphql/?query=posts(searchfor:template,limit:3)[searchposts].id|title,[searchposts].author.id|name](https://nextapi.getpop.org/api/graphql/?query=posts(searchfor:template,limit:3)[searchposts].id|title,[searchposts].author.id|name)
 
 _**Bookmark + Alias:**_<br/>
-[/api/graphql/?fields=posts(searchfor:template,limit:3)[@searchposts].id|title,[searchposts].author.id|name](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3)[@searchposts].id|title,[searchposts].author.id|name)
+[/api/graphql/?query=posts(searchfor:template,limit:3)[@searchposts].id|title,[searchposts].author.id|name](https://nextapi.getpop.org/api/graphql/?query=posts(searchfor:template,limit:3)[@searchposts].id|title,[searchposts].author.id|name)
 
 _**Fragments:**_<br/>
-[/api/graphql/?fields=posts.--fr1&fragments[fr1]=id|author.posts(limit:1).id|title](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1&fragments[fr1]=id|author.posts(limit:1).id|title)
+[/api/graphql/?query=posts.--fr1&fragments[fr1]=id|author.posts(limit:1).id|title](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1&fragments[fr1]=id|author.posts(limit:1).id|title)
 
 _**Concatenating fragments:**_<br/>
-[/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title)
+[/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title)
 
 _**Fragments inside fragments:**_<br/>
-[/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title|--fr3&fragments[fr3]=author.id|url](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title|--fr3&fragments[fr3]=author.id|url)
+[/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title|--fr3&fragments[fr3]=author.id|url](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title|--fr3&fragments[fr3]=author.id|url)
 
 _**Fragments with aliases:**_<br/>
-[/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)@firstpost&fragments[fr2]=id|title](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)@firstpost&fragments[fr2]=id|title)
+[/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)@firstpost&fragments[fr2]=id|title](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)@firstpost&fragments[fr2]=id|title)
 
 _**Fragments with variables:**_<br/>
-[/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1)
+[/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1)
 
 _**Directives:**_<br/>
 Include:<br/>
-[/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=true](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=true)<br/>
-[/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=)<br/><br/>
+[/api/graphql/?query=posts.id|title|url<include(if:$include)>&variables[include]=true](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url<include(if:$include)>&variables[include]=true)<br/>
+[/api/graphql/?query=posts.id|title|url<include(if:$include)>&variables[include]=](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url<include(if:$include)>&variables[include]=)<br/><br/>
 Skip:<br/>
-[/api/graphql/?fields=posts.id|title|url<skip(if:$skip)>&variables[skip]=true](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url<skip(if:$skip)>&variables[skip]=true)<br/>
-[/api/graphql/?fields=posts.id|title|url<skip(if:$skip)>&variables[skip]=](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url<skip(if:$skip)>&variables[skip]=)
+[/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=true](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=true)<br/>
+[/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=)
 
 Wow!!!!!!
 
