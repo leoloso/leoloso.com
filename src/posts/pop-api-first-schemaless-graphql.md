@@ -22,23 +22,25 @@ Yes it is... through a “schemaless” GraphQL!
 
 I have recently implemented GraphQL's specification using [PoP](https://github.com/leoloso/PoP)'s component-based architecture, and it works like a charm! Because server-side components can represent a graph (as I hinted at in my [article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)), these can be used instead of schemas to represent the application's data model, providing all the same features that schemas do.
 
-Moreover, I can claim without a doubt or regret: **Schemas are not only the foundation of GraphQL, but also its biggest liability!** Because of the architecture they impose, schemas (as coded through the [Schema Definition Language](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51)) limit what GraphQL can (or cannot) achieve, leading to GraphQL's biggest drawbacks: Limited server-side caching, over-complexity (schema stitching, schema federation), risk of Denial of Service attacks, difficulty of having a decentralized team collaborate on the schema (which may lead to monolithic data models), among others. 
+Moreover, I can claim without a doubt or regret: **Schemas are not only the foundation of GraphQL, but also its biggest liability!** Because of the architecture they impose, schemas (as coded through the [Schema Definition Language](https://www.prisma.io/blog/graphql-sdl-schema-definition-language-6755bcb9ce51)) limit what GraphQL can (or cannot) achieve, leading to GraphQL's biggest drawbacks: Limited server-side caching, over-complexity (schema stitching, schema federation), risk of Denial of Service attacks, and difficulty of having a decentralized team collaborate on the schema (which may lead to monolithic data models), among others. 
 
 Components can avoid all of these issues...
 
 ### Introducing GraphQL API for PoP
 
-The result of my research is the new project [GraphQL API for PoP](https://github.com/getpop/api-graphql), which is based on the also new project [PoP API](https://github.com/getpop/api)), and which may possibly be the first “schemaless” implementation of GraphQL. 
+The result of my research is the new project [GraphQL API for PoP](https://github.com/getpop/api-graphql) (based on the [PoP API](https://github.com/getpop/api)), which may possibly be the first “schemaless” implementation of GraphQL. 
 
-(The implementation of the spec is no 100% complete yet: Support for GraphQL's input query is currently missing, but it should be ready within a couple of weeks).
+(The implementation of the GraphQL spec is no 100% complete yet: Support for GraphQL's input query is currently missing, but it should be ready within a couple of weeks).
 
-Well, actually calling it “schemaless” is a bit tricky, since there is a schema... but **it is not coded by anyone!** Instead, it is automatically-generated from the component model itself. Similar to GraphQL, the schema can be inspected through the introspection `"__schema"` field:
+Well, actually calling it “schemaless” is up to debate, since there is a schema... but **it is not coded by anyone!** Instead, it is automatically-generated from the component model itself: Simply by coding classes following OOP principles, the application will generate the schema.
+
+Similar to GraphQL, the schema can be inspected through the introspection `"__schema"` field:
 
 [/api/graphql/?query=__schema](https://nextapi.getpop.org/api/graphql/?query=__schema)
 
-The links below show how PoP satisfies the GraphQL specification, having the response mirror the query:
+The links below show how PoP satisfies the GraphQL specification, having the response mirror the query, and support for all expected features (arguments, variables, directives, etc):
 
-(**Note:** Please notice that the query input is different to that from GraphQL: Instead of passing the `query` in the body of the request, it is passed through parameter `fields` using a [slightly different syntax](https://github.com/getpop/api#query-syntax). This change is done to support URL-based server-side caching, which is not easily available using GraphQL's standard way to retrieve data. While this is the only way to query data in PoP right now, the GraphQL's syntax will soon be also supported; this will enable the client to choose which of the 2 input methods to provide the query: GraphQL's body-based one, or PoP's URL-based one.)
+(**Note:** Please notice that the query input is different to that from GraphQL: Instead of passing the query in the body of the request, it is passed through URL parameter `query` using a [slightly different syntax](https://github.com/getpop/api#query-syntax). This change is done to support server-side caching, which is not directly available in GraphQL. This is only temporary: Once support for GraphQL's query input is added, the client will be able to choose which of the 2 query input methods to use, either GraphQL's body-based one or PoP's URL-based one.)
 
 _**Simple query:**_<br/>
 [/api/graphql/?query=posts.id|title|url](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url)
