@@ -40,7 +40,7 @@ Similar to GraphQL, the schema can be inspected through the introspection `"__sc
 
 The links below show how PoP satisfies the GraphQL specification, having the response mirror the query, and support for all expected features (arguments, variables, directives, etc):
 
-(**Note:** Please notice that the query input is different to that from GraphQL: Instead of passing the query in the body of the request, it is passed through URL parameter `query` using a [slightly different syntax](https://github.com/getpop/api#query-syntax). This change is done to support server-side caching, which is not directly available in GraphQL. This is only temporary: Once support for GraphQL's query input is added, the client will be able to choose which of the 2 query input methods to use, either GraphQL's body-based one or PoP's URL-based one.)
+(**Note:** The query input is different to that from GraphQL: Instead of passing the query in the body of the request, it is passed through URL parameter `query` using a [slightly different syntax](https://github.com/getpop/api#query-syntax). This change is done to support server-side caching, which is not directly available in GraphQL. This is only temporary: Once support for GraphQL's query input is added, the client will be able to choose which of the 2 query input methods to use, either GraphQL's body-based one or PoP's URL-based one.)
 
 _**Simple query:**_<br/>
 [/api/graphql/?query=posts.id|title|url](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url)
@@ -86,13 +86,13 @@ Skip:<br/>
 [/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=true](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=true)<br/>
 [/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|url<skip(if:$skip)>&variables[skip]=)
 
-Wow!!!!!!
+Yayyyyyy!!!!!!
 
 <span style="font-size: 150px;">😎</span>
 
 ## Much much more, coming soon
 
-As I mentioned earlier on, the component-based architecture provides many features that GraphQL currently does not support (due to the limitations imposed by schemas). I will write about these in my next blog post. 
+Components can deliver additional features to those available in the GraphQL spec, resulting in better speed and security, enhanced team collaboration, simpler client-side and server-side code, and others. I will write about these in my next blog post. 
 
 Thanks for reading!
 
