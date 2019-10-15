@@ -38,43 +38,43 @@ The links below show how PoP satisfies the GraphQL specification, having the res
 
 (**Note:** Please notice that the query input is different to that from GraphQL: Instead of passing the `query` in the body of the request, it is passed through parameter `fields` using a [slightly different syntax](https://github.com/getpop/api#query-syntax). This change is done to support URL-based server-side caching, which is not easily available using GraphQL's standard way to retrieve data. While this is the only way to query data in PoP right now, the GraphQL's syntax will soon be also supported; this will enable the client to choose which of the 2 input methods to provide the query: GraphQL's body-based one, or PoP's URL-based one.)
 
-**_Simple query:_**<br/>
+_**Simple query:**_<br/>
 [/api/graphql/?fields=posts.id|title|url](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url)
 
-**_Nested query:_**<br/>
+_**Nested query:**_<br/>
 [/api/graphql/?fields=posts.id|title|url|comments.id|content|date|author.id|name|url|posts.id|title|url](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url|comments.id|content|date|author.id|name|url|posts.id|title|url)
 
-**_Field arguments:_**<br/>
+_**Field arguments:**_<br/>
 [/api/graphql/?fields=posts(searchfor:template,limit:3).id|title](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3).id|title)
 
-**_Variables:_**<br/>
+_**Variables:**_<br/>
 [/api/graphql/?fields=posts(searchfor:$search,limit:$limit).id|title&variables[limit]=3&variables[search]=template](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:$search,limit:$limit).id|title&variables[limit]=3&variables[search]=template)
 
-**_Aliases:_**<br/>
+_**Aliases:**_<br/>
 [/api/graphql/?fields=posts(searchfor:template,limit:3)@searchposts.id|title](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3)@searchposts.id|title)
 
-**_Bookmarks:_** (to return to some query path, to keep adding data)<br/>
+_**Bookmarks:** (to return to some query path, to keep adding data)_<br/>
 [/api/graphql/?fields=posts(searchfor:template,limit:3)[searchposts].id|title,[searchposts].author.id|name](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3)[searchposts].id|title,[searchposts].author.id|name)
 
-**_Bookmark + Alias:_**<br/>
+_**Bookmark + Alias:**_<br/>
 [/api/graphql/?fields=posts(searchfor:template,limit:3)[@searchposts].id|title,[searchposts].author.id|name](https://nextapi.getpop.org/api/graphql/?fields=posts(searchfor:template,limit:3)[@searchposts].id|title,[searchposts].author.id|name)
 
-**_Fragments:_**<br/>
+_**Fragments:**_<br/>
 [/api/graphql/?fields=posts.--fr1&fragments[fr1]=id|author.posts(limit:1).id|title](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1&fragments[fr1]=id|author.posts(limit:1).id|title)
 
-**_Concatenating fragments:_**<br/>
+_**Concatenating fragments:**_<br/>
 [/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title)
 
-**_Fragments inside fragments:_**<br/>
+_**Fragments inside fragments:**_<br/>
 [/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title|--fr3&fragments[fr3]=author.id|url](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)&fragments[fr2]=id|title|--fr3&fragments[fr3]=author.id|url)
 
-**_Fragments with aliases:_**<br/>
+_**Fragments with aliases:**_<br/>
 [/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)@firstpost&fragments[fr2]=id|title](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:1)@firstpost&fragments[fr2]=id|title)
 
-**_Fragments with variables:_**<br/>
+_**Fragments with variables:**_<br/>
 [/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1](https://nextapi.getpop.org/api/graphql/?fields=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1)
 
-**_Directives:_**<br/>
+_**Directives:**_<br/>
 Include:<br/>
 [/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=true](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=true)<br/>
 [/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|url<include(if:$include)>&variables[include]=)<br/><br/>
