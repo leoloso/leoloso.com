@@ -1,5 +1,5 @@
 ---
-title: 🚀 Introducing GraphQL API for PoP - A schemaless implementation of GraphQL through components
+title: 🚀 Introducing GraphQL API for PoP - A “schemaless” implementation of GraphQL through components
 metaDesc: Schemaless? But still GraphQL? How does it work!? Click to find out!
 socialImage: https://leoloso.com/images/grapqhql-logo.png
 date: '2020-10-15'
@@ -16,21 +16,23 @@ It sounds good, right? But, is it even possible to implement?
 
 <span style="font-size: 150px;">🤔</span>
 
-Yes it is... through a schemaless GraphQL!
+Yes it is... through a “schemaless” GraphQL!
 
 <span style="font-size: 150px;">😲</span>
 
-I've been lately working on implementing GraphQL's specification using [PoP](https://github.com/leoloso/PoP)'s component-based architecture, and it works like a charm! Because server-side components can represent a graph (as I superficially showed in my [article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)), these can be used instead of schemas to represent the application's data model, providing all the same features that schemas do.
+I have recently implemented GraphQL's specification using [PoP](https://github.com/leoloso/PoP)'s component-based architecture, and it works like a charm! Because server-side components can represent a graph (as I hinted at in my [article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)), these can be used instead of schemas to represent the application's data model, providing all the same features that schemas do.
 
-Moreover, I can now claim without a doubt: **Schemas are not only the foundation of GraphQL, but also its biggest liability!** Because of the architecture they impose, schemas limit what GraphQL can, or cannot, achieve, and producing GraphQL's biggest drawbacks: Limited server-side caching, over complexity (schema stitching, schema federation), risk of Denial of Service attacks, difficulty of having a decentralized team collaborate on the schema (which may lead to monolithic architectures), among others. Components can solve all these issues in an elegant way, which I will demonstrate in an upcoming blog post. 
+Moreover, I can claim without a doubt or regret: **Schemas are not only the foundation of GraphQL, but also its biggest liability!** Because of the architecture they impose, schemas limit what GraphQL can (or cannot) achieve, leading to GraphQL's biggest drawbacks: Limited server-side caching, over-complexity (schema stitching, schema federation), risk of Denial of Service attacks, difficulty of having a decentralized team collaborate on the schema (which may lead to monolithic data models), among others. 
+
+Components can avoid all of these issues...
 
 ### Introducing GraphQL API for PoP
 
-The result of my research is the new project [GraphQL API for PoP](https://github.com/getpop/api-graphql), which is based on the also new project [PoP API](https://github.com/getpop/api)), and which may possibly be the first schemaless implementation of GraphQL. 
+The result of my research is the new project [GraphQL API for PoP](https://github.com/getpop/api-graphql), which is based on the also new project [PoP API](https://github.com/getpop/api)), and which may possibly be the first “schemaless” implementation of GraphQL. 
 
-(What is still missing is support for GraphQL's input query; I'm already working on it, and it should be finished within a couple of weeks).
+(The implementation of the spec is no 100% complete yet: Support for GraphQL's input query is currently missing, but it should be ready within a couple of weeks).
 
-Well, actually there is a schema. But **it is not coded by anyone!** Instead, it is automatically-generated from the component model itself, and can be inspected through the introspection `"__schema"` field:
+Well, actually calling it “schemaless” is a bit tricky, since there is a schema... but **it is not coded by anyone!** Instead, it is automatically-generated from the component model itself. Similar to GraphQL, the schema can be inspected through the introspection `"__schema"` field:
 
 [/api/graphql/?fields=__schema](https://nextapi.getpop.org/api/graphql/?fields=__schema)
 
