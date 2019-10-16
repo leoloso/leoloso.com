@@ -12,7 +12,7 @@ To contact me: [email](mailto:leo@getpop.org) or [tweet](https://twitter.com/los
 
 ---
 
-**I am available for hiring:** I specialize in **building APIs** (my library [PoP API](https://github.com/getpop/api) is more powerful yet simpler to set-up and use than GraphQL), and **creating sites** that can **run with any CMS or PHP framework** (WordPress, Laravel, Symfony) and can be **deployed on serverless PHP** (my library providing a [model of server-side components](https://github.com/getpop/component-model) is the perfect link between a CMS and a standalone application that can be deployed on serverless instances).
+**I am available for hiring:** I specialize in **building APIs** (my implementation of a schemaless [GraphQL API](https://github.com/getpop/api-graphql) is incredibly powerful), and **creating sites** that can **run with any CMS or PHP framework** (WordPress, Laravel, Symfony) and can be **deployed on serverless PHP** (my [Component Model](https://github.com/getpop/component-model) library provides an optimal mechanism to develop standalone, compact functionality to be deployed on serverless instances).
 
 ---
 
