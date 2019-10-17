@@ -14,11 +14,11 @@ Imagine using [GraphQL](https://graphql.org) but with plenty of improvements: Se
 
 It sounds good, right? But, is it even possible to implement?
 
-<span style="font-size: 150px;">🤔</span>
+<p style="text-align: center;"><span style="font-size: 150px;">🤔</span></p>
 
 Yes it is... through a “schemaless” GraphQL!
 
-<span style="font-size: 150px;">😲</span>
+<p style="text-align: center;"><span style="font-size: 150px;">😲</span></p>
 
 I have recently implemented GraphQL's specification using [PoP](https://github.com/leoloso/PoP)'s component-based architecture, and it works like a charm! Because server-side components can represent a graph (as I hinted at in my [article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)), these can be used instead of schemas to represent the application's data model, providing all the same features that schemas do.
 
