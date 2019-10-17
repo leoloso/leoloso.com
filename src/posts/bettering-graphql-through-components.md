@@ -12,39 +12,6 @@ tags:
 
 I have recently [introduced GraphQL API for PoP](/posts/intro-to-schemaless-graphql-api-for-pop/), which is possibly the first schemaless implementation of GraphQL. In this post, I will write about the improvements that this API can achieve over a typical schema-based implementation of GraphQL, by using the component-based architecture implemented for [PoP](https://github.com/leoloso/PoP).
 
-## Features
-
-In addition to satisfying the GraphQL specification, the component-based API provides the following features:
-
-- ✅ URL-based queries
-- ✅ HTTP caching
-- ✅ Operators and Functions: `AND`, `OR`, `NOT`, `SPRINTF`, `CONTAINS`, etc
-- ✅ Field composition: Query fields inside of fields
-- ✅ Access to user-defined context variables
-
-Check out these links:
-
-_Field arguments with fields:_<br/>
-[posts.id|title|is-status(status:draft)|is-status(status:published)](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|is-status(status:draft)|is-status(status:published))
-
-_Field arguments with operators and fields:_<br/>
-[posts.id|title|or(fields:is-status(status:draft),is-status(status:published))](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|or(fields:is-status(status:draft),is-status(status:published)))
-
-_Directives with fields:_<br/>
-Include: [posts.id|title|comments<include(if:has-comments())>.id|content](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|comments<include(if:has-comments())>.id|content)
-
-_Directives with operators and fields:_<br/>
-Skip: [posts.id|title|comments<skip(if:not(has-comments()))>.id|content](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|comments<skip(if:not(has-comments()))>.id|content)
-
-_Accessing the context:_<br/>
-[context](https://nextapi.getpop.org/api/graphql/?fields=context)
-
-_Accessing a context variable:_<br/>
-[var(name:datastructure)](https://nextapi.getpop.org/api/graphql/?fields=var(name:datastructure))
-
-_Operator over context variable:_<br/>
-[equals(field:var(name:datastructure);value:graphql)|equals(field:var(name:datastructure);value:rest)](https://nextapi.getpop.org/api/graphql/?fields=equals(field:var(name:datastructure);value:graphql)|equals(field:var(name:datastructure);value:rest))
-
 ## Speed and Safety
 
 In addition, the time complexity to execute queries is much lower: Whereas [GraphQL's is exponential](https://blog.acolyer.org/2018/05/21/semantics-and-complexity-of-graphql/) (`O(2^n)`), PoP's is just quadratic (or `O(n^2)`). As a consequence, executing deeply nested queries will take lower time, and the risk of Denial of Service attacks is also reduced.
