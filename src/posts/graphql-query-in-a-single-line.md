@@ -124,6 +124,6 @@ _**Skip output if null:**_<br/>
 
 ### Ta daaaa
 
-That seems promising, right!? What do you think? If you like it, please give [my repo](https://github.com/getpop/field-query) a star ⭐️😀.
+That seems promising, right!? What do you think? If you like it, check [the repo](https://github.com/getpop/field-query) for more info.
 
 Thanks for reading!
