@@ -50,7 +50,7 @@ I provided several examples of these new features in my previous post [😲 Maki
 
 However, if working with a new syntax makes you uncomfortable, fear not: I'm already working on building a service that converts from the 2 different syntaxes, bi-directionally. Then, it will be possible for the client to choose which syntax to use on a query-by-query basis. (For instance, if a query is cacheable, then use my proposed new syntax; otherwise, use the standard one.)
 
-## Improvements over the standard GraphQL
+### Improvements over the standard GraphQL
 
 Components can deliver additional features to those available in the GraphQL spec, resulting in better speed and security, enhanced team collaboration, simpler client-side and server-side code, and others. I will write about these in my next blog post. 
 

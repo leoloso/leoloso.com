@@ -12,11 +12,11 @@ tags:
 
 I have recently [introduced GraphQL API for PoP](/posts/intro-to-schemaless-graphql-api-for-pop/), which is possibly the first schemaless implementation of GraphQL. In this post, I will write about the improvements that this API can achieve over a typical schema-based implementation of GraphQL, by using the component-based architecture implemented for [PoP](https://github.com/leoloso/PoP).
 
-## Speed and Safety
+### Speed and Safety
 
 In addition, the time complexity to execute queries is much lower: Whereas [GraphQL's is exponential](https://blog.acolyer.org/2018/05/21/semantics-and-complexity-of-graphql/) (`O(2^n)`), PoP's is just quadratic (or `O(n^2)`). As a consequence, executing deeply nested queries will take lower time, and the risk of Denial of Service attacks is also reduced.
 
-## Decentralization
+### Decentralization
 
 GraphQL's schema requires a type definition to live on a single location, making it difficult for team members to collaborate, often leading to a monolith architecture, or to the need to set-up special tooling to generate the schema. 
 
@@ -38,7 +38,7 @@ _Overriding fields #2:_<br/>
 Normal vs "Try new features" behaviour:<br/>
 [posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata)](https://nextapi.getpop.org/api/graphql/?fields=posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata))
 
-## Federation, coming soon
+### Federation, coming soon
 
 Imagine that you need to implement the following functionality:
 
