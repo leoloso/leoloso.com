@@ -1,5 +1,5 @@
 ---
-title: 🤔 Making GraphQL cacheable through a new, single-line query syntax!?
+title: 😲 Making GraphQL cacheable through a new, single-line query syntax!?
 metaDesc: Or how to give GraphQL plenty of goodies 🍪 and superpowers 🦸🏻
 socialImage: https://leoloso.com/images/grapqhql-logo.png
 date: '2019-10-17'
