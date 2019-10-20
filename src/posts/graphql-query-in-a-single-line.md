@@ -86,6 +86,12 @@ _**Fragments with aliases:**_<br/>
 _**Fragments with variables:**_<br/>
 [/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1)
 
+_**Fragments with directives:**_<br/>
+[/?query=posts.id|--props<include(if:has-comments())>&fragments[props]=title|url<include(if:not(has-comments()))>](https://nextapi.getpop.org/api/graphql/?query=posts.id|--props<include(if:has-comments())>&fragments[props]=title|url<include(if:not(has-comments()))>)
+
+_**Fragments with "Skip output if null":**_<br/>
+[/?query=posts.id|--props?&fragments[props]=title|url|featuredimage](https://nextapi.getpop.org/api/graphql/?query=posts.id|--props?&fragments[props]=title|url|featuredimage)
+
 ### Superpowers!
 
 Since we are creating a new syntax, why stop in what already exists? We are creating, we are dreaming, let's also build what doesn't exist yet! The following features below are not part of GraphQL, but sure they should be!
