@@ -7,7 +7,8 @@ tags:
   - pop
   - api
   - graphql
-  - feature
+  - query
+  - syntax
 ---
 
 Imagine using [GraphQL](https://graphql.org) but with plenty of improvements: Server-side caching, better security (reducing the amount of time and energy spent in countering DoS attacks), removing the need to set-up the hundreds (or even thousands) of properties on the schema, splitting the creation of the data model without conflicts or overlapping boundaries across teams, and completely devoid of custom tooling. 
