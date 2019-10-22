@@ -1,8 +1,8 @@
 ---
 title: 🚀 Introducing a “schemaless” implementation of GraphQL through components
-metaDesc: Schemaless? GraphQL? Is that even possible? Click to find out!
+metaDesc: Schemaless GraphQL? Is that even possible? Click to find out!
 socialImage: https://leoloso.com/images/graphql-logo.png
-date: '2020-10-15'
+date: '2019-10-22'
 tags:
   - pop
   - api
