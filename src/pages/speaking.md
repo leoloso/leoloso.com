@@ -10,6 +10,8 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 ## Upcoming engagements
 
+**Introduction to the “schemaless” GraphQL** @ [Nomad JS](https://nomadjs.com/live/kSk2ymG1OgnfnDchrCuVp/Introduction-to-the--schemaless--GraphQL/) (Online webinar)
+
 **“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Kuala Lumpur 2019](https://2019.kualalumpur.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/), [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
 
 -----
