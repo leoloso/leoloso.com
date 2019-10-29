@@ -2,7 +2,7 @@
 title: ✏️ Backstage to "Create Once, Publish Everywhere" with WordPress
 metaDesc: Story on how my article for Smashing Magazine came to be.
 socialImage: https://leoloso.com/images/cool-gutenberg.jpg
-date: '2020-10-29'
+date: '2019-10-29'
 tags:
   - wordpress
   - gutenberg
