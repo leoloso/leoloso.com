@@ -26,7 +26,7 @@ Unluckily, this proved impossible to implement for both REST (not feasible) and 
 
 Check out the results of filtering metadata through the PoP API:
 
-- All Youtube videos added to all posts: https://nextapi.getpop.org/posts/api/graphql/?query=block-metadata(blockname:core-embed/youtube)|id|title|url
-- All images from a post: https://nextapi.getpop.org/markup/markup-image-alignment/api/graphql/?query=block-metadata(blockname:core/image)|id|title
+- All Youtube videos added to all posts: [https://nextapi.getpop.org/posts/api/graphql/?query=block-metadata(blockname:core-embed/youtube)|id|title|url](https://nextapi.getpop.org/posts/api/graphql/?query=block-metadata(blockname:core-embed/youtube)|id|title|url)
+- All images from a post: [https://nextapi.getpop.org/markup/markup-image-alignment/api/graphql/?query=block-metadata(blockname:core/image)|id|title](https://nextapi.getpop.org/markup/markup-image-alignment/api/graphql/?query=block-metadata(blockname:core/image)|id|title)
 
 Thanks for reading!
