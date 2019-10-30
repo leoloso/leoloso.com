@@ -47,10 +47,10 @@ _**Normal behaviour**:_<br/>
 [?query=posts.id|title|excerpt](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|excerpt)
 
 _**Overriding behaviour #1** (available under the `"experimental"` branch):_<br/>
-[?query=posts.id|title|excerpt(branch:experimental;length:30)](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|excerpt(branch:experimental;length:30))
+[?query=posts.id|title|excerpt(branch:experimental,length:30)](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|excerpt(branch:experimental,length:30))
 
 _**Overriding behaviour #2** (available under the `"try-new-features"` branch):_<br/>
-[?query=posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata)](https://nextapi.getpop.org/api/graphql/?query=posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata))
+[?query=posts(limit:2).id|title|content|content(branch:try-new-features,project:block-metadata)](https://nextapi.getpop.org/api/graphql/?query=posts(limit:2).id|title|content|content(branch:try-new-features,project:block-metadata))
 
 ### Federation, coming soon
 
