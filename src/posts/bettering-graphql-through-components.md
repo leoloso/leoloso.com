@@ -2,12 +2,12 @@
 title: 😎 Components all the way down - A better GraphQL implementation!
 metaDesc: Components make GraphQL shine... take that, schema!
 socialImage: https://leoloso.com/images/pop-logo-whitebg.png
-date: '2020-10-01'
+date: '2019-10-30'
 tags:
   - pop
   - api
   - graphql
-  - feature
+  - schema
 ---
 
 I have recently [introduced the “schemaless” GraphQL](/posts/intro-to-schemaless-graphql-api-for-pop/), which is based on the [PoP API](https://github.com/getpop/api). In this post, I will write about the improvements that using the component-based architecture can achieve over a typical schema-based implementation of GraphQL.
