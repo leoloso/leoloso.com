@@ -10,11 +10,11 @@ tags:
   - feature
 ---
 
-I have recently [introduced GraphQL API for PoP](/posts/intro-to-schemaless-graphql-api-for-pop/), which is possibly the first schemaless implementation of GraphQL. In this post, I will write about the improvements that this API can achieve over a typical schema-based implementation of GraphQL, by using the component-based architecture implemented for [PoP](https://github.com/leoloso/PoP).
+I have recently [introduced the “schemaless” GraphQL](/posts/intro-to-schemaless-graphql-api-for-pop/), which is based on the [PoP API](https://github.com/getpop/api). In this post, I will write about the improvements that using the component-based architecture can achieve over a typical schema-based implementation of GraphQL.
 
-### Speed and Safety
+### Improved Speed and Safety
 
-In addition, the time complexity to execute queries is much lower: Whereas [GraphQL's is exponential](https://blog.acolyer.org/2018/05/21/semantics-and-complexity-of-graphql/) (`O(2^n)`), PoP's is just quadratic (or `O(n^2)`). As a consequence, executing deeply nested queries will take lower time, and the risk of Denial of Service attacks is also reduced.
+The time complexity to execute queries is much lower: Whereas [GraphQL's is exponential](https://blog.acolyer.org/2018/05/21/semantics-and-complexity-of-graphql/) (`O(2^n)`), PoP's is just quadratic (or `O(n^2)`) in worst case, and linear (or `O(n)`) in average (where `n` is the amount of nodes in the query graph). As a consequence, executing deeply nested queries will take lower time, and the risk of Denial of Service attacks is also reduced.
 
 ### Support for Public/Private API, One-Graph solution for everything
 
@@ -37,9 +37,9 @@ GraphQL's schema requires a type definition to live on a single location, making
 
 Because PoP is schemaless, it overcomes these drawbacks, and supports:
 
-- ✅ Cleanly splitting the data model into different responsibilities (implemented by different, disconnected teams), without the need to set-up special tooling
-- ✅ Deprecation of fields based on the needs from the team/project, not on the API schema definition
-- ✅ Overriding of field resolvers (eg: to test new features or provide quick fixes)
+- Cleanly splitting the data model into different responsibilities (implemented by different, disconnected teams), without the need to set-up special tooling
+- Deprecation of fields based on the needs from the team/project, not on the API schema definition
+- Overriding of field resolvers (eg: to test new features or provide quick fixes)
 
 Check out these examples:
 
