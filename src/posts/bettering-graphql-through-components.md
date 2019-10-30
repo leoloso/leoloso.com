@@ -16,6 +16,13 @@ I have recently [introduced GraphQL API for PoP](/posts/intro-to-schemaless-grap
 
 In addition, the time complexity to execute queries is much lower: Whereas [GraphQL's is exponential](https://blog.acolyer.org/2018/05/21/semantics-and-complexity-of-graphql/) (`O(2^n)`), PoP's is just quadratic (or `O(n^2)`). As a consequence, executing deeply nested queries will take lower time, and the risk of Denial of Service attacks is also reduced.
 
+### Dynamic schema
+
+Because the schema is dynamically built from a component model, it can decide to incorporate or discard different elements based on different factors. For instance, the following scenarios can all be implemented:
+
+- Make an API that is both public and private, by enabling certain fields only if the user is logged-in, or if the user has a specific user role (such as `admin`)
+- Build a One-Graph-For-Everything solution, creating a gateway to different services (Twitter, Salesforce, Slack, Stripe, etc) from a single endpoint
+
 ### Decentralization
 
 GraphQL's schema requires a type definition to live on a single location, making it difficult for team members to collaborate, often leading to a monolith architecture, or to the need to set-up special tooling to generate the schema. 
@@ -26,17 +33,16 @@ Because PoP is schemaless, it overcomes these drawbacks, and supports:
 - ✅ Deprecation of fields based on the needs from the team/project, not on the API schema definition
 - ✅ Overriding of field resolvers (eg: to test new features or provide quick fixes)
 
-Check out these links:
+Check out these examples:
 
-_Overriding fields #1:_<br/>
-Normal behaviour:<br/>
-[posts.id|title|excerpt](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|excerpt)<br/>
-"Experimental" branch:<br/>
-[posts.id|title|excerpt(branch:experimental;length:30)](https://nextapi.getpop.org/api/graphql/?fields=posts.id|title|excerpt(branch:experimental;length:30))
+_**Normal behaviour**:_<br/>
+[?query=posts.id|title|excerpt](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|excerpt)
 
-_Overriding fields #2:_<br/>
-Normal vs "Try new features" behaviour:<br/>
-[posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata)](https://nextapi.getpop.org/api/graphql/?fields=posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata))
+_**Overriding behaviour #1** (available under the `"experimental"` branch):_<br/>
+[?query=posts.id|title|excerpt(branch:experimental;length:30)](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|excerpt(branch:experimental;length:30))
+
+_**Overriding behaviour #2** (available under the `"try-new-features"` branch):_<br/>
+[?query=posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata)](https://nextapi.getpop.org/api/graphql/?query=posts(limit:2).id|title|content|content(branch:try-new-features;project:block-metadata))
 
 ### Federation, coming soon
 
@@ -58,11 +64,7 @@ Imagine that you need to implement the following functionality:
 
 - The newsletter must be translated to the user's preferred language!
 
-How would you do that with GraphQL? Can you implement it in a limited time or tight budget? How???
-
-<span style="font-size: 40px;">🤔</span>
-
-Would you believe me if I say that, through the PoP API, this can be resolved in only 1 line, and without implementing any custom server-side code?
+How would you do that using a standard GraphQL implementation? Would you believe me if I say that, through the schemaless GraphQL, this can be resolved in only 1 line, and without implementing any custom server-side code?
 
 <span style="font-size: 80px;">🤔</span>
 
