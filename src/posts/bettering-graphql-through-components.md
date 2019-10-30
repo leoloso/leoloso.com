@@ -16,12 +16,20 @@ I have recently [introduced GraphQL API for PoP](/posts/intro-to-schemaless-grap
 
 In addition, the time complexity to execute queries is much lower: Whereas [GraphQL's is exponential](https://blog.acolyer.org/2018/05/21/semantics-and-complexity-of-graphql/) (`O(2^n)`), PoP's is just quadratic (or `O(n^2)`). As a consequence, executing deeply nested queries will take lower time, and the risk of Denial of Service attacks is also reduced.
 
-### Dynamic schema
+### Support for Public/Private API, One-Graph solution for everything
 
-Because the schema is dynamically built from a component model, it can decide to incorporate or discard different elements based on different factors. For instance, the following scenarios can all be implemented:
+Because the schema is dynamically built from a component model, it can decide to incorporate or discard different elements based on different factors or situations. As such, these use cases can be easily implemented:
 
-- Make an API that is both public and private, by enabling certain fields only if the user is logged-in, or if the user has a specific user role (such as `admin`)
-- Build a One-Graph-For-Everything solution, creating a gateway to different services (Twitter, Salesforce, Slack, Stripe, etc) from a single endpoint
+**Make an API that is both public and private**, by enabling certain fields only if the user is logged-in, or if the user has a specific user role (such as `admin`)
+
+**Build a One-Graph solution for everything**, creating a customizable gateway to different services (Twitter, Salesforce, Slack, Stripe, etc) from a single endpoint
+
+### Field-based Cache-control
+
+Through a special directive, each field can indicate its `cache-control` configuration, and the request will calculate the overall cache-control based on all the requested fields: 
+
+- If any field cannot be cached (such as those with user state), then the request is not cached
+- Otherwise, the request is cached using the lowest value
 
 ### Decentralization
 
