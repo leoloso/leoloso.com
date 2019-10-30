@@ -14,13 +14,13 @@ title: 💼 Projects
 
 [Field Query](https://github.com/getpop/field-query) is a syntax to query GraphQL through URL params, which grants a GraphQL API the capability to be cached on the server.
 
-![GraphQL logo](/images/graphql-logo.png)
+<!-- ![GraphQL logo](/images/graphql-logo.png) -->
 
 ## WordPress plugins
 
 [Block Metadata](https://wordpress.org/plugins/block-metadata/) enables to extract all the metadata for all the Gutenberg blocks inside of a blog post, converting this metadata into a medium-agnostic format. Its goal is to implement the "Create Once, Publish Everywhere" strategy (alias COPE), enabling to have our blog posts become the single source of truth for all content, for all different mediums or platforms: web, email/newsletters, iOS/Android apps, home assistants (like Amazon Alexa), car-entertainment systems, and so on.
 
-![Banner for my plugin "Block Metadata"](/images/block-metadata-banner.jpg)
+<!-- ![Banner for my plugin "Block Metadata"](/images/block-metadata-banner.jpg) -->
 
 ## Websites
 
@@ -48,8 +48,8 @@ I am on my way to become an entrepreneur, through the following ventures (which 
 
 [Verticals](https://verticals.io) - a Platform as a Service (PaaS) solution to provide decentralized vertical portals, composed by niche websites (which are autonomous, living under their own URL), to anyone. It's a B2B, providing the infrastructure, software and tools for entrepreneurs to launch their own businesses, to own and monetize their own vertical portals.
 
-![Verticals](/images/verticals-1200.jpg "Verticals")
+<!-- ![Verticals](/images/verticals-1200.jpg "Verticals") -->
 
 [SukiPoP](https://sukipop.com) - An implementation of a social network from Verticals. This website demonstrates how a community can own its own social network.
 
-![SukiPoP](/images/sukipop-1200.jpg "SukiPoP")
+<!-- ![SukiPoP](/images/sukipop-1200.jpg "SukiPoP") -->
