@@ -2,6 +2,20 @@
 title: 💼 Projects
 ---
 
+## Frameworks/Specifications
+
+[PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application. Currently implemented in PHP, it is intended to become a specification so that it can be implemented in any language.
+
+![PoP logo](/images/pop-logo-horizontal-whitebg.png)
+
+## Libraries
+
+[GraphQL API](https://github.com/getpop/api-graphql) is a “schemaless” implementation of GraphQL, using components. It is based on PoP's component-based architecture, making the application become a GraphQL server.
+
+[Field Query](https://github.com/getpop/field-query) is a syntax to query GraphQL through URL params, which grants a GraphQL API the capability to be cached on the server.
+
+![GraphQL logo](/images/graphql-logo.png)
+
 ## WordPress plugins
 
 [Block Metadata](https://wordpress.org/plugins/block-metadata/) enables to extract all the metadata for all the Gutenberg blocks inside of a blog post, converting this metadata into a medium-agnostic format. Its goal is to implement the "Create Once, Publish Everywhere" strategy (alias COPE), enabling to have our blog posts become the single source of truth for all content, for all different mediums or platforms: web, email/newsletters, iOS/Android apps, home assistants (like Amazon Alexa), car-entertainment systems, and so on.
