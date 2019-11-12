@@ -431,7 +431,7 @@ We can now go back to the query.
 
 #### Translating the post content to all different languages (again)
 
-To copy the `postData` property upwards to the root level, we use directive `<copyRelationalResults>`. This directive is applied on the root entity, and it receives 2 inputs:
+To copy the `postData` property upwards to the root level, we use directive `<copyRelationalResults>`. This directive is applied on the `root` entity, and it receives 2 inputs:
 
 1. The name of the relational property, in this case `post($postId)@post`
 2. The name of the properties to copy, in this case only `postData`
@@ -447,7 +447,9 @@ id.
 
 That this works is not evident at all. Moreover, you need to click on the link <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see the results, and appreciate that the data was indeed copied one level up. The other link, <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, would seem to not work... it also does, but the results are not being output!
 
-To understand why this is so, I'll need to take several detours, to explain how data is loaded (once again) and how directives work.
+To understand why this is so, I'll need to take several detours, to explain how data is loaded (once again) and how directives work. 
+
+(Please be aware: the following few sections, until tackling the translation challenge again, are dense and technical. If you dare read them, good for you! If you don't, don't worry, just skip them, you may come back to them later...)
 
 #### What are directives and how do they work
 
@@ -510,43 +512,6 @@ Hence, we must use directives when:
 - It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections.
 - We need low-level functionality, such as: modifying or deleting previous data, copying data to another object, iterating through a series of properties to apply a function to each of them, etc.
 
-#### Concerning the native data structure used in PoP (hint: it's not a graph!)
-
-We saw in the query above...
-
-```php
-id.
-  post($postId)@post<
-    copyRelationalResults([postData])
-  >
-```
-
-... that we need to view the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see that the directive `<copyRelationalResults>` worked, and that the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a> doesn't mirror the changes. What is going on?
-
-First of all: the PoP API does NOT use a graph to represent the data model. Instead, it uses components, as I have explained [in this article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/). 
-
-However (and this is the fact that makes the magic happen) a graph does naturally arise from the relationships among the database entities defined through components, which I described in my article. Hence, the graph can be easily generated from the architecture of the API, and the GraphQL implementation is simply an application among many. For instance, if replacing the `/graphql` bit in the URL with `/rest`, we obtain the equivalent REST endpoint (as demonstrated for the REST API endpoint to fetch the CRM user data); if we replace it with `/xml`, we access the data in XML format (<a href="https://newapi.getpop.org/api/xml/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">example</a>).
-
-The real, underlying data structure in PoP is simply a set of relationships across database objects, which matches directly with how an SQL database works: Tables containing rows of data entries, and relationships among entities defined through IDs. That is exactly what you see when you remove the `/graphql` bit from the URL, from any URL. That's the PoP native format. Looking at is like looking at the code in the matrix.
-
-![This is how removing /graphql feels like. Image source: huffpost.com](/images/matrix.jpg "This is how removing /graphql feels like. Image source: huffpost.com")
-
-That is why I call this implementation “schemaless”: The developer needs not define schemas, but simply relationships among the different database object, which will most likely already exist! Just by replicating the relationships already defined in the data model, we got a free “schemaless” GraphQL: Free as in "no need to code it", not as in "it doesn't exist". After all, the schema can be automatically generated from the component model itself, and visualized by [querying the `__schema` field](https://newapi.getpop.org/api/graphql/?query=__schema).
-
-Finally, we can provide an explanation of why the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> for directive `<copyRelationalResults>` are shown, but not in the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>: The PoP native format displays all the data it has accumulated, thereby there it is. The GraphQL format, though, doesn't show it because the property under which the data is copied to, `postData`, is not being queried. If we do, adding 2 levels of `id` to make sure we query the data after it has been copied, the data then does appear in the response:
-
-```php
-id.
-  post($postId)@post<
-    copyRelationalResults([postData])
-  >,
-id.
-  id.
-    getSelfProp(%self%, postData)
-```
-
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E,id.id.getSelfProp(%self%,%20postData)">View query results</a>]
-
 #### Revisiting how PoP loads data
 
 Let's examine the query above together with the previous query bit that loads the property `postData`:
@@ -581,6 +546,45 @@ id.post
 As can be seen, the `id` field then enables to go back to an already loaded object, and keep loading properties on it. As such, it allows to delay loading certain data until a later iteration of the dataloader, to make sure a certain condition is satisfied.
 
 That is exactly why we need it: Directive `<copyRelationalResults>` copies a property one level up, but it is applied on the `root` object and, by the time it is executed, the properties to copy must exist on the `post` object. Hence the iteration: `root` loads the `post`, the `post` loads its properties, then back to `root` copies the properties from the `post` to itself.
+
+#### Concerning the native data structure used in PoP (hint: it's not a graph!)
+
+We saw in the query above...
+
+```php
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >
+```
+
+... that we need to view the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see that the directive `<copyRelationalResults>` worked, and that the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a> doesn't mirror the changes. What is going on?
+
+First of all: the PoP API does NOT use a graph to represent the data model. Instead, it uses components, as I have explained [in this article](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/). 
+
+However (and this is the fact that makes the magic happen) a graph does naturally arise from the relationships among the database entities defined through components, which I described in my article. Hence, the graph can be easily generated from the component-based architecture of the API, and the GraphQL implementation is simply an application among many. For instance, if replacing the `/graphql` bit in the URL with `/rest`, we obtain the equivalent REST endpoint (as demonstrated for the REST API endpoint to fetch the user data); if we replace it with `/xml`, we access the data in XML format (<a href="https://newapi.getpop.org/api/xml/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">example</a>).
+
+The real, underlying data structure in PoP is simply a set of relationships across database objects, which matches directly with how an SQL database works: Tables containing rows of data entries, and relationships among entities defined through IDs. That is exactly what you see when you remove the `/graphql` bit from the URL, from any URL (<a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">example</a>). That's the PoP native format. Looking at is like looking at the code in the matrix.
+
+![This is how removing /graphql feels like. Image source: huffpost.com](/images/matrix.jpg "This is how removing /graphql feels like. Image source: huffpost.com")
+
+That is why I call this implementation “schemaless”: The developer needs not define schemas, and certainly need not deal with the SDL. Intead, it's all about defining the relationships among the different database entities in the application, which will quite likely already exist! Just by replicating the relationships already defined in the data model, we got a free “schemaless” GraphQL: Free as in "no need to code it", not as in "it doesn't exist". After all, the schema can be automatically generated from the component model itself, and visualized by [querying the `__schema` field](https://newapi.getpop.org/api/graphql/?query=__schema).
+
+Finally, we can provide an explanation of why the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> for directive `<copyRelationalResults>` are shown, but not in the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>: The PoP native format displays all the data it has accumulated, thereby there it is. The GraphQL format, though, doesn't show it because the property under which the data is copied to, `postData`, is not being queried. If we do (adding 2 levels of `id` to make sure we query the data after it has been copied), the data then does appear in the response:
+
+```php
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >,
+id.
+  id.
+    getSelfProp(%self%, postData)
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E,id.id.getSelfProp(%self%,%20postData)">View query results</a>]
+
+Oh boy, that was quite a ride! But no we're back to business... Let's continue implementing the query!
 
 #### Translating the post content to all different languages (again) (again)
 
