@@ -286,7 +286,7 @@ To fetch the list of newsletter subscribers from a REST endpoint, we can use fie
 getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList">View query results</a>]
 
 #### Calculating the list of unique languages
 
@@ -302,7 +302,7 @@ extract(
 )
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),lang)">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),lang)">View query results</a>]
 
 > **Note:**<br/>Expression `%self%` contains an object which has a pointer to all data retrieved for the current object. Accessed through function `getSelfProp`, it enables to access this data, under the property name or alias under which it was stored.
 
@@ -318,7 +318,7 @@ arrayUnique(
 )@userLangs
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs">View query results</a>]
 
 #### Retrieving the rest of the user information
 
@@ -333,7 +333,7 @@ extract(
 )@userEmails
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails">View query results</a>]
 
 Our CRM exposes a REST endpoint which allows to filter users by email, like this:
 
@@ -355,7 +355,7 @@ sprintf(
 )
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])">View query results</a>]
 
 > **Note 1:**<br/>The string can't have character `"&"` in it, or it will create trouble when appending it in the URL param. Instead, we must use its code `"%26"`
 
@@ -375,7 +375,7 @@ getJSON(
 )
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))">View query results</a>]
 
 Finally, we must combine the 2 lists into one, generating a new list containing all user fields: `name`, `email` and `lang`. To achieve this, we use function `arrayFill`, which, given 2 arrays, returns an array containing the entries from each of them where the index (in this case, property `email`) is the same, and we save the results under property `userData`:
 
@@ -395,13 +395,13 @@ arrayFill(
 )@userData
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">View query results</a>]
 
 #### Translating the post content to all different languages
 
 By now we have collected the post data, saved under property `postData`, and all the user data, saved under property `userData`. It is time to mix these 2.
 
-In order to work with these 2 arrays, we need to have both of them at the same level. However, if we pay attention to the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">latest query</a>, we can notice that they are under 2 different paths:
+In order to work with these 2 arrays, we need to have both of them at the same level. However, if we pay attention to the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">latest query</a>, we can notice that they are under 2 different paths:
 
 - `userData` is under `/` (root)
 - `postData` is under `/post/`
@@ -443,9 +443,9 @@ id.
   >
 ```
 
-[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a>]
+[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a>]
 
-That this works is not evident at all. Moreover, you need to click on the link <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see the results, and appreciate that the data was indeed copied one level up. The other link, <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, would seem to not work... it also does, but the results are not being output!
+That this works is not evident at all. Moreover, you need to click on the link <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see the results, and appreciate that the data was indeed copied one level up. The other link, <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, would seem to not work... it also does, but the results are not being output!
 
 To understand why this is so, I'll need to take several detours, to explain how data is loaded (once again) and how directives work. 
 
@@ -470,47 +470,6 @@ These 3 directives are executed at the beginning of their own slots:
 3. Back: `<resolveValueAndMerge>`
 
 Every directive we create must indicate in which from these 3 slots it must be placed and executed. For instance, directives `<skip>` and `<include>` (mandatory ones in GraphQL) must be placed in the `"Middle"` slot, that is after fields are validated but before resolved; directive `<copyRelationalProperties>` must be placed in the `"Back"` slot, since it requires the data to be resolved before it can copy it somewhere else.
-
-#### Differences between directives and operators
-
-When coding a query, it may be sometimes unclear what is better, if to use an operator or use a directive. After all, the two of them can both execute functionality (such as sending an email). So, when to use one or the other?
-
-The main difference between these 2 is the following:
-
-An operator is a field. A field computes a value from a single object; every field is executed independently of each other field, and it is executed once per object. For instance, for the following query...
-
-```php
-post.title
-```
-
-... the field `title` is executed once on each post object. If there are 10 posts, then `title` is executed 10 times, once in each. And they see no history: given a set of inputs, they just return their output. They don't have really a lot of logic, or complexity.
-
-Since operators are fields, we have the same situation: For the following query...
-
-```php
-post.sprintf("Post title is", [title()])
-```
-
-... the `sprintf` operator is executed once in each `title` property, which is executed 10 times, once per post, all independently from each other, and oblivious of each other.
-
-Directives work in a different way: They are executed just once on the set of affected objects, and on the set of affected properties for each object, and they can modify the value of these properties for each of the objects. For instance, for the following query:
-
-```php
-posts.
-  title<
-    transformProperty(...)
-  >|
-  content<
-    transformProperty(...)
-  >
-```
-
-... the directive `<transformProperty>` will be executed only once (even if it appears twice), receiving a set of posts and properties `title` and `content` for each post.
-
-Hence, we must use directives when:
-
-- It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections.
-- We need low-level functionality, such as: modifying or deleting previous data, copying data to another object, iterating through a series of properties to apply a function to each of them, etc.
 
 #### Revisiting how PoP loads data
 
@@ -558,7 +517,7 @@ id.
   >
 ```
 
-... that we need to view the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see that the directive `<copyRelationalResults>` worked, and that the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a> doesn't mirror the changes. What is going on?
+... that we need to view the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see that the directive `<copyRelationalResults>` worked, and that the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a> doesn't mirror the changes. What is going on?
 
 First of all: the PoP API does NOT use a graph to represent the data model. Instead, it uses components, as I have explained [in this article](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/). 
 
@@ -570,7 +529,7 @@ The real, underlying data structure in PoP is simply a set of relationships acro
 
 That is why I call this implementation “schemaless”: The developer needs not define schemas, and certainly need not deal with the SDL. Intead, it's all about defining the relationships among the different database entities in the application, which will quite likely already exist! Just by replicating the relationships already defined in the data model, we got a free “schemaless” GraphQL: Free as in "no need to code it", not as in "it doesn't exist". After all, the schema can be automatically generated from the component model itself, and visualized by [querying the `__schema` field](https://newapi.getpop.org/api/graphql/?query=__schema).
 
-Finally, we can provide an explanation of why the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> for directive `<copyRelationalResults>` are shown, but not in the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>: The PoP native format displays all the data it has accumulated, thereby there it is. The GraphQL format, though, doesn't show it because the property under which the data is copied to, `postData`, is not being queried. If we do (adding 2 levels of `id` to make sure we query the data after it has been copied), the data then does appear in the response:
+Finally, we can provide an explanation of why the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> for directive `<copyRelationalResults>` are shown, but not in the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>: The PoP native format displays all the data it has accumulated, thereby there it is. The GraphQL format, though, doesn't show it because the property under which the data is copied to, `postData`, is not being queried. If we do (adding 2 levels of `id` to make sure we query the data after it has been copied), the data then does appear in the response:
 
 ```php
 id.
@@ -582,45 +541,87 @@ id.
     getSelfProp(%self%, postData)
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E,id.id.getSelfProp(%self%,%20postData)">View query results</a>]
-
-Oh boy, that was quite a ride! But no we're back to business... Let's continue implementing the query!
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E,id.id.getSelfProp(%self%,%20postData)">View query results</a>]
 
 #### Translating the post content to all different languages (again) (again)
 
-After this rather long detour, we can go back to our query.
+Oh boy, that was quite a ride! But now we're finally back to business... Let's continue implementing the query!
 
-... the directive `<copyRelationalResults>` is being applied on the `root` object (loaded by field `id`), concerning its field `post($postId)@post` 
+We have by now properties `postData` and `userData` both loaded at the root level, which is all the information we need to work with. From now on, being at the root level we can execute all the operators and directives necessary to accomplish our goals.
+
+Let's first extract the `content` property from `postData` (which is an array with 2 properties: `content` and `date`) and place it under `postContent`:
 
 ```php
 id.
-  post($postId)@post<
-    copyRelationalResults([postData])
+  id.
+    extract(
+      getSelfProp(%self%, postData), content
+    )@postContent
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent">View query results</a>]
+
+Having extracted the content under its own property, we apply directive `<translate>` on it, which will call the Google Translate API to translate the text. Why has it been implemented as a directive, instead of an operator? Let's take a quick detour to explain the differences between these two.
+
+#### Differences between directives and operators
+
+When coding a query, it may be sometimes unclear what is better, if to use an operator or use a directive. After all, the two of them can both execute functionality (such as sending an email, or translating a piece of text). So, when to use one or the other?
+
+When executing functionality, the main difference between these 2 is the following:
+
+An operator is a field. A field computes a value from a single object; every field is executed independently of each other field, and it is executed once per object. For instance, for the following query...
+
+```php
+post.title
+```
+
+... the field `title` is executed once on each post object. If there are 10 posts, then `title` is executed 10 times, once in each. And they see no history: given a set of inputs, they just return their output. They don't have really a lot of logic, or complexity.
+
+Since operators are fields, we have the same situation: For the following query...
+
+```php
+post.sprintf("Post title is", [title()])
+```
+
+... the `sprintf` operator is executed once in each `title` property, which is executed 10 times, once per post, all independently from each other, and oblivious of each other.
+
+Directives work in a different way: They are executed just once on the set of affected objects, and on the set of affected properties for each object, and they can modify the value of these properties for each of the objects. For instance, for the following query:
+
+```php
+posts.
+  title<
+    transformProperty(...)
+  >|
+  content<
+    transformProperty(...)
   >
 ```
 
-Let's first execute the query as we had been doing until now: concatenating fields using `|`. In this case, the query becomes:
+... the directive `<transformProperty>` will be executed only once (even if it appears twice), receiving a set of posts and properties `title` and `content` for each post.
+
+Hence, we must use directives when:
+
+- It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections.
+- We need low-level functionality, such as: modifying or deleting previous data, copying data to another object, iterating through a series of properties to apply a function to each of them, etc.
+
+#### Translating the post content to all different languages (again) (again) (again)
+
+Then, because the directive is executed only once, implementing this functionality as a directive makes much more sense than as an operator: We are able to translate multiple pieces of text (eg: fields `title`, `content` and `extract` from a post, for many posts) with a single call to the Google Translate API. It's so efficient!
+
+The following query takes care of translating the post content to all the different unique languages gathered earlier on from the user data:
 
 ```php
-post($postId)@post.
-  echo([
-    content:content(),
-    date:date(d/m/Y)
-  ])@postData,
 id.
-  post($postId)@post<
-    copyRelationalResults([postData])
-  >
-```
-
-[View query results: <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a>]
-
-[<a href="">View query results</a>]
-
-
-
-```php
-
+  id.
+    getSelfProp(%self%,postContent)@postContent<
+      translate(
+        from:en,
+        to:arrayDiff([
+          getSelfProp(%self%,userLangs),
+          [en]
+        ])
+      )
+    >
 ```
 
 [<a href="">View query results</a>]
@@ -631,15 +632,7 @@ id.
 
 ```
 
-[<a href="">View query results</a>]
-
-
-
-```php
-
-```
-
-[<a href="">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]]))%3E">View query results</a>]
 
 
 
