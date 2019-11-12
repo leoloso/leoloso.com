@@ -449,9 +449,66 @@ That this works is not evident at all. Moreover, you need to click on the link <
 
 To understand why this is so, I'll need to take several detours, to explain how data is loaded (once again) and how directives work.
 
-#### How directives work
+#### What are directives and how do they work
 
 Directives are sheer power: They can affect execution of the query in any desired way. They are as close to the bare metal of the dataloading engine as possible. They have access to all previously loaded data and can modify it, remove it, etc.
+
+Directives help regulate the lifecycle of loading data in the API, by validating and resolving the fields on the objects and adding these results on a directory with all results from all objects, from which the graph is drawn. 
+
+The dataloading engine relies on the following special directives to implement core functionality:
+
+1. `<setSelfAsExpression>`, which defines the "expression" `%self%` which allows to retrieve previously loaded data
+2. `<validate>`, which validates that the provided data matches against its definition on the schema and, if it doesn't, removes it and shows a error message
+3. `<resolveValueAndMerge>`: it resolves all the fields in the query and merges their response into the final database object
+
+These 3 directives are executed at the beginning of their own slots:
+
+1. Front: `<setSelfAsExpression>`
+2. Middle: `<validate>`
+3. Back: `<resolveValueAndMerge>`
+
+Every directive we create must indicate in which from these 3 slots it must be placed and executed. For instance, directives `<skip>` and `<include>` (mandatory ones in GraphQL) must be placed in the `"Middle"` slot, that is after fields are validated but before resolved; directive `<copyRelationalProperties>` must be placed in the `"Back"` slot, since it requires the data to be resolved before it can copy it somewhere else.
+
+#### Differences between directives and operators
+
+When coding a query, it may be sometimes unclear what is better, if to use an operator or use a directive. After all, the two of them can both execute functionality (such as sending an email). So, when to use one or the other?
+
+The main difference between these 2 is the following:
+
+An operator is a field. A field computes a value from a single object; every field is executed independently of each other field, and it is executed once per object. For instance, for the following query...
+
+```php
+post.title
+```
+
+... the field `title` is executed once on each post object. If there are 10 posts, then `title` is executed 10 times, once in each. And they see no history: given a set of inputs, they just return their output. They don't have really a lot of logic, or complexity.
+
+Since operators are fields, we have the same situation: For the following query...
+
+```php
+post.sprintf("Post title is", [title()])
+```
+
+... the `sprintf` operator is executed once in each `title` property, which is executed 10 times, once per post, all independently from each other, and oblivious of each other.
+
+Directives work in a different way: They are executed just once on the set of affected objects, and on the set of affected properties for each object, and they can modify the value of these properties for each of the objects. For instance, for the following query:
+
+```php
+posts.
+  title<
+    transformProperty(...)
+  >|
+  content<
+    transformProperty(...)
+  >
+```
+
+... the directive `<transformProperty>` will be executed only once (even if it appears twice), receiving a set of posts and properties `title` and `content` for each post.
+
+Hence, we must use directives when:
+
+- It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections.
+- We need low-level functionality, such as: modifying or deleting previous data, copying data to another object, iterating through a series of properties to apply a function to each of them, etc.
 
 #### Revisiting how PoP loads data
 
@@ -488,7 +545,18 @@ As can be seen, the `id` field then enables to go back to an already loaded obje
 
 That is exactly why we need it: Directive `<copyRelationalResults>` copies a property one level up, but it is applied on the `root` object and, by the time it is executed, the properties to copy must exist on the `post` object. Hence the iteration: `root` loads the `post`, the `post` loads its properties, then back to `root` copies the properties from the `post` to itself.
 
+#### Translating the post content to all different languages (again) (again)
 
+After this rather long detour, we can go back to our query.
+
+... the directive `<copyRelationalResults>` is being applied on the `root` object (loaded by field `id`), concerning its field `post($postId)@post` 
+
+```php
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >
+```
 
 Let's first execute the query as we had been doing until now: concatenating fields using `|`. In this case, the query becomes:
 
