@@ -395,13 +395,13 @@ arrayFill(
 )@userData
 ```
 
-[<a href="pop-api-wp.localhost:8888/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">View query results</a>]
 
 #### Translating the post content to all different languages
 
 By now we have collected the post data, saved under property `postData`, and all the user data, saved under property `userData`. It is time to mix these 2.
 
-In order to work with these 2 arrays, we need to have both of them at the same level. However, if we pay attention to the <a href="pop-api-wp.localhost:8888/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">latest query</a>, we can notice that they are under 2 different paths:
+In order to work with these 2 arrays, we need to have both of them at the same level. However, if we pay attention to the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">latest query</a>, we can notice that they are under 2 different paths:
 
 - `userData` is under `/` (root)
 - `postData` is under `/post/`
@@ -509,6 +509,43 @@ Hence, we must use directives when:
 
 - It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections.
 - We need low-level functionality, such as: modifying or deleting previous data, copying data to another object, iterating through a series of properties to apply a function to each of them, etc.
+
+#### Concerning the native data structure used in PoP (hint: it's not a graph!)
+
+We saw in the query above...
+
+```php
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >
+```
+
+... that we need to view the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see that the directive `<copyRelationalResults>` worked, and that the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a> doesn't mirror the changes. What is going on?
+
+First of all: the PoP API does NOT use a graph to represent the data model. Instead, it uses components, as I have explained [in this article for Smashing Magazine](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/). 
+
+However (and this is the fact that makes the magic happen) a graph does naturally arise from the relationships among the database entities defined through components, which I described in my article. Hence, the graph can be easily generated from the architecture of the API, and the GraphQL implementation is simply an application among many. For instance, if replacing the `/graphql` bit in the URL with `/rest`, we obtain the equivalent REST endpoint (as demonstrated for the REST API endpoint to fetch the CRM user data); if we replace it with `/xml`, we access the data in XML format (<a href="https://newapi.getpop.org/api/xml/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">example</a>).
+
+The real, underlying data structure in PoP is simply a set of relationships across database objects, which matches directly with how an SQL database works: Tables containing rows of data entries, and relationships among entities defined through IDs. That is exactly what you see when you remove the `/graphql` bit from the URL, from any URL. That's the PoP native format. Looking at is like looking at the code in the matrix.
+
+![This is how removing /graphql feels like. Image source: huffpost.com](/images/matrix.jpg "This is how removing /graphql feels like. Image source: huffpost.com")
+
+That is why I call this implementation “schemaless”: The developer needs not define schemas, but simply relationships among the different database object, which will most likely already exist! Just by replicating the relationships already defined in the data model, we got a free “schemaless” GraphQL: Free as in "no need to code it", not as in "it doesn't exist". After all, the schema can be automatically generated from the component model itself, and visualized by [querying the `__schema` field](https://newapi.getpop.org/api/graphql/?query=__schema).
+
+Finally, we can provide an explanation of why the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> for directive `<copyRelationalResults>` are shown, but not in the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>: The PoP native format displays all the data it has accumulated, thereby there it is. The GraphQL format, though, doesn't show it because the property under which the data is copied to, `postData`, is not being queried. If we do, adding 2 levels of `id` to make sure we query the data after it has been copied, the data then does appear in the response:
+
+```php
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >,
+id.
+  id.
+    getSelfProp(%self%, postData)
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E,id.id.getSelfProp(%self%,%20postData)">View query results</a>]
 
 #### Revisiting how PoP loads data
 
