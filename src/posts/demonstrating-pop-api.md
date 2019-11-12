@@ -73,6 +73,10 @@ While the standard GraphQL sends the query contained in the body of the request,
 - It removes the need for a client-side library to manipulate the query, leading to performance improvements and reduced amount of code to maintain
 - The API becomes easier to consume. For instance, we can visualize the results of the query directly on the browser, without depending on GraphiQL
 
+```php
+?query=...
+```
+
 #### Similar but different query syntax
 
 The syntax used in PoP is a re-imagining of the GraphQL syntax, supporting all the required elements (field names, arguments, variables, aliases, fragments and directives), however designed to be easy to both read and write in a single line, so the developer can already code the query in the browser without depending on special tooling.
@@ -80,10 +84,16 @@ The syntax used in PoP is a re-imagining of the GraphQL syntax, supporting all t
 It looks like this:
 
 ```php
+?query=query1,query2,query3&variable1=value&fragment1=fragmentQuery
+```
+
+Each query has this shape:
+
+```php
 fieldName(fieldArgs)@alias<fieldDirective(directiveArgs)>
 ```
 
-To make it clearer to code, the query can be split into several lines:
+To make it clear to visualize, the query can be split into several lines:
 
 ```php
 fieldName(
@@ -95,11 +105,12 @@ fieldName(
 >
 ```
 
-The syntax is described in detail in [its GitHub repo](https://github.com/getpop/field-query). I will keep explaining how it works below, while implementing the use case.
-
-> **Note:**<br/>Firefox already handles the multi-line query: Copy/pasting it into the URL bar works perfectly. Chrome and Safari, though, require to strip all the whitespaces and line returns before pasting the query into the URL bar.
+> **Note 1:**<br/>Firefox already handles the multi-line query: Copy/pasting it into the URL bar works perfectly. Chrome and Safari, though, require to strip all the whitespaces and line returns before pasting the query into the URL bar.
 > 
 > (Conclusion: use Firefox!)
+
+> **Note 2:**<br/>
+> The syntax is described in detail in [its GitHub repo](https://github.com/getpop/field-query). I will keep explaining how it works below, while implementing the use case.
 
 #### Operators
 
