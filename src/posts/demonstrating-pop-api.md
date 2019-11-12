@@ -63,7 +63,7 @@ By now, we have all the data: Rows of `email` and `emailContent` fields. We can 
 
 ### Explaining some concepts
 
-Before we start the implementation of the use case, I will explain a few concepts particular to PoP.
+Before we start the implementation of the use case, I will explain a few concepts particular to PoP. (If you know already how to PoP works, you can skip straight to section "Implementing the Query" below.)
 
 #### URL-based queries
 
@@ -117,9 +117,9 @@ Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `spri
 
 [<a href="https://nextapi.getpop.org/api/graphql?query=not(true)">Query 1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">Query 2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">Query 3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">Query 4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">Query 5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">Query 6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">Query 7</a>]
 
-#### Nested Fields
+#### Nested fields
 
-Arguments passed to a field can include other fields or operators.
+Arguments passed to a field can receive other fields or operators as input.
 
 ```
 1. ?query=posts.has-comments|not(has-comments())
@@ -130,6 +130,33 @@ Arguments passed to a field can include other fields or operators.
 ```
 
 [<a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|not(has-comments())">Query 1</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])">Query 2</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(),comments-count()]),sprintf(Post with ID %s was created on %s,[id(),date(d/m/Y)]))@postDesc">Query 3</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.comments(limit:divide(comments-count(),2)).id|date|content">Query 4</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=users.name|equals(name(),leo)">Query 5</a>)]
+
+### Nested directives
+
+A directive can modify the behaviour of another directive.
+
+```
+echo([
+	first:[
+		fruits: [banana, apple]
+	],
+	second:[
+		fruits: [strawberry, grape]
+	]
+])<
+	forEach<
+		transformProperty(
+			function: arrayJoin,
+			addParams: [
+				array: extract(%value%, fruits),
+				separator: "---"
+			]
+		)
+	>
+>
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?query=echo([first:[fruits:[banana,apple]],second:[fruits:[strawberry,grape]]])%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:extract(%value%,fruits),separator:%22---%22])%3E%3E">Query</a>]
 
 
 ### Implementing the Query (with explanations along the way)
