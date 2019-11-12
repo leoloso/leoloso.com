@@ -12,13 +12,13 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 **Introduction to the “schemaless” GraphQL** @ [Nomad JS](https://nomadjs.com/live/kSk2ymG1OgnfnDchrCuVp/Introduction-to-the--schemaless--GraphQL/) (Online webinar)
 
-**“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Kuala Lumpur 2019](https://2019.kualalumpur.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/), [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
+**“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
 
 -----
 
 ## Previous engagements
 
-**COPE with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070)
+**“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070), [WordCamp Kuala Lumpur 2019](https://2019.kualalumpur.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
 
 <iframe width="966" height="543" src="https://www.youtube.com/embed/fK8NcwA6SGs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
