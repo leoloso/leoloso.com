@@ -816,19 +816,27 @@ post($postId)@post.
     date:date(d/m/Y)
   ])@postData,
 getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList|
-arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|
-extract(getSelfProp(%self%,userList),email)@userEmails|
+arrayUnique(
+  extract(
+    getSelfProp(%self%, userList),
+    lang
+  )
+)@userLangs|
+extract(
+  getSelfProp(%self%, userList),
+  email
+)@userEmails|
 arrayFill(
   getJSON(
     sprintf(
       "https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s",
       [arrayJoin(
-        getSelfProp(%self%,userEmails),
+        getSelfProp(%self%, userEmails),
         "%26emails[]="
       )]
     )
   ),
-  getSelfProp(%self%,userList),
+  getSelfProp(%self%, userList),
   email
 )@userData,
 id.
@@ -841,13 +849,13 @@ id.
       translate(
         from:en,
         to:arrayDiff([
-          getSelfProp(%self%,userLangs),
+          getSelfProp(%self%, userLangs),
           [en]
         ])
       ),
       renameProperty(postContent-en)
     >|
-    getSelfProp(%self%,userData)@userPostData<
+    getSelfProp(%self%, userData)@userPostData<
       forEach<
         transformProperty(
           function:arrayAddItem(
@@ -885,7 +893,7 @@ id.
         )
       >
     >|
-    getSelfProp(%self%,userPostData)@translatedUserPostProps<
+    getSelfProp(%self%, userPostData)@translatedUserPostProps<
       forEach(
         if:not(equals(extract(%value%,lang),en))
       )<
