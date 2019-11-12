@@ -79,13 +79,13 @@ The syntax used in PoP is a re-imagining of the GraphQL syntax, supporting all t
 
 It looks like this:
 
-```
+```php
 fieldName(fieldArgs)@alias<fieldDirective(directiveArgs)>
 ```
 
 To make it clearer to code, the query can be split into several lines:
 
-```
+```php
 fieldName(
   fieldArgs
 )@alias<
@@ -105,37 +105,53 @@ The syntax is described in detail in [its GitHub repo](https://github.com/getpop
 
 Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `sprintf` and many others, can be made available on the API as fields:
 
-```
+```php
 1. ?query=not(true)
-2. ?query=or([true,false])
-3. ?query=and([true,false])
+2. ?query=or([true, false])
+3. ?query=and([true, false])
 4. ?query=if(true, Show this text, Hide this text)
 5. ?query=equals(first text, second text)
 6. ?query=isNull(),isNull(something)
 7. ?query=sprintf(%s API is %s, [PoP, cool])
 ```
 
-[<a href="https://nextapi.getpop.org/api/graphql?query=not(true)">Query 1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">Query 2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">Query 3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">Query 4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">Query 5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">Query 6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">Query 7</a>]
+[Visualize: <a href="https://nextapi.getpop.org/api/graphql?query=not(true)">query #1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">query #2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">query #3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">query #4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">query #5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">query #6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">query #7</a>]
 
 #### Nested fields
 
 Arguments passed to a field can receive other fields or operators as input.
 
-```
-1. ?query=posts.has-comments|not(has-comments())
-2. ?query=posts.has-comments|has-featuredimage|or([has-comments(), has-featuredimage()])
-3. ?query=posts.if(has-comments(), sprintf(Post with title '%s' has %s comments, [title(), comments-count()]), sprintf(Post with ID %s was created on %s, [id(), date(d/m/Y)]))@postDesc
-4. ?query=posts.comments(limit:divide(comments-count(), 2)).id|date|content
-5. ?query=users.name|equals(name(), leo)
+```php
+?query=
+  posts.
+    if (
+      has-comments(), 
+      sprintf(
+        "Post with title '%s' has %s comments", 
+        [
+          title(), 
+          comments-count()
+        ]
+      ), 
+      sprintf(
+        "Post with ID %s, created on %s, has no comments", 
+        [
+          id(), 
+          date(d/m/Y)
+        ]
+      )
+    )@postDesc
 ```
 
-[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|not(has-comments())">Query 1</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])">Query 2</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(),comments-count()]),sprintf(Post with ID %s was created on %s,[id(),date(d/m/Y)]))@postDesc">Query 3</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.comments(limit:divide(comments-count(),2)).id|date|content">Query 4</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=users.name|equals(name(),leo)">Query 5</a>)]
+[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(),comments-count()]),sprintf(%22Post with ID %s, created on %s, has no comments%22,[id(),date(d/m/Y)]))@postDesc">Visualize query</a>]
 
 ### Nested directives
 
 A directive can modify the behaviour of another directive.
 
-```
+For instance, in the example below, directive `<forEach>` iterates through all the items in an array and passes each to its nested directive `<transformProperty>`.
+
+```php
 echo([
 	first:[
 		fruits: [banana, apple]
@@ -156,7 +172,7 @@ echo([
 >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?query=echo([first:[fruits:[banana,apple]],second:[fruits:[strawberry,grape]]])%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:extract(%value%,fruits),separator:%22---%22])%3E%3E">Query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?query=echo([first:[fruits:[banana,apple]],second:[fruits:[strawberry,grape]]])%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:extract(%value%,fruits),separator:%22---%22])%3E%3E">Visualize query</a>]
 
 
 ### Implementing the Query (with explanations along the way)
@@ -167,7 +183,7 @@ Let's start.
 
 **Fetching the blog post**
 
-```
+```php
 ?query=
   post($postId)@post.
     echo([
