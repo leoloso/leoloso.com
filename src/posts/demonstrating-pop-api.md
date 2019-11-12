@@ -812,8 +812,8 @@ We have everything we need! Let's get it all together into the one, final, monst
 ```php
 post($postId)@post.
   echo([
-    content:content(),
-    date:date(d/m/Y)
+    content: content(),
+    date: date(d/m/Y)
   ])@postData,
 getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList|
 arrayUnique(
@@ -844,11 +844,14 @@ id.
     copyRelationalResults([postData])
   >|
   id.
-    extract(getSelfProp(%self%,postData),content)@postContent|
-    getSelfProp(%self%,postContent)@postContent<
+    extract(
+      getSelfProp(%self%, postData),
+      content
+    )@postContent|
+    getSelfProp(%self%, postContent)@postContent<
       translate(
-        from:en,
-        to:arrayDiff([
+        from: en,
+        to: arrayDiff([
           getSelfProp(%self%, userLangs),
           [en]
         ])
@@ -858,36 +861,39 @@ id.
     getSelfProp(%self%, userData)@userPostData<
       forEach<
         transformProperty(
-          function:arrayAddItem(
-            array:[],
-            value:""
+          function: arrayAddItem(
+            array: [],
+            value: ""
           ),
-          addParams:[
-            key:postContent,
-            array:%value%,
-            value:getSelfProp(
+          addParams: [
+            key: postContent,
+            array: %value%,
+            value: getSelfProp(
               %self%,
               sprintf(
                 postContent-%s,
-                [extract(%value%,lang)]
+                [extract(%value%, lang)]
               )
             )
           ]
         ),
         transformProperty(
-          function:arrayAddItem(
-            array:[],
-            value:""
+          function: arrayAddItem(
+            array: [],
+            value: ""
           ),
-          addParams:[
-            key:header,
-            array:%value%,
-            value:sprintf(
-              string:"<p>Hi %s, we published this post on %s, enjoy!</p>",
-              values:[extract(%value%,name),extract(
-                getSelfProp(%self%,postData),
-                date
-              )]
+          addParams: [
+            key: header,
+            array: %value%,
+            value: sprintf(
+              string: "<p>Hi %s, we published this post on %s, enjoy!</p>",
+              values: [
+                extract(%value%, name),
+                extract(
+                  getSelfProp(%self%, postData),
+                  date
+                )
+              ]
             )
           ]
         )
@@ -895,19 +901,24 @@ id.
     >|
     getSelfProp(%self%, userPostData)@translatedUserPostProps<
       forEach(
-        if:not(equals(extract(%value%,lang),en))
+        if: not(
+          equals(
+            extract(%value%, lang),
+            en
+          )
+        )
       )<
         advancePointerInArray(
-          path:header,
-          appendExpressions:[
-            toLang:extract(%value%,lang)
+          path: header,
+          appendExpressions: [
+            toLang: extract(%value%, lang)
           ]
         )<
           translate(
-            from:en,
-            to:%toLang%,
-            oneLanguagePerField:true,
-            override:true
+            from: en,
+            to: %toLang%,
+            oneLanguagePerField: true,
+            override: true
           )
         >
       >
@@ -915,39 +926,39 @@ id.
     getSelfProp(%self%,translatedUserPostProps)@emails<
       forEach<
         transformProperty(
-          function:arrayAddItem(
-            array:[],
-            value:[]
+          function: arrayAddItem(
+            array: [],
+            value: []
           ),
-          addParams:[
-            key:content,
-            array:%value%,
-            value:concat([
-              extract(%value%,header),
-              extract(%value%,postContent)
+          addParams: [
+            key: content,
+            array: %value%,
+            value: concat([
+              extract(%value%, header),
+              extract(%value%, postContent)
             ])
           ]
         ),
         transformProperty(
-          function:arrayAddItem(
-            array:[],
-            value:[]
+          function: arrayAddItem(
+            array: [],
+            value: []
           ),
-          addParams:[
-            key:to,
-            array:%value%,
-            value:extract(%value%,email)
+          addParams: [
+            key: to,
+            array: %value%,
+            value: extract(%value%, email)
           ]
         ),
         transformProperty(
-          function:arrayAddItem(
-            array:[],
-            value:[]
+          function: arrayAddItem(
+            array: [],
+            value: []
           ),
-          addParams:[
-            key:subject,
-            array:%value%,
-            value:"PoP API example :)"
+          addParams: [
+            key: subject,
+            array: %value%,
+            value: "PoP API example :)"
           ]
         ),
         sendByEmail
