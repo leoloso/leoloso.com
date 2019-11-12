@@ -97,11 +97,13 @@ fieldName(
 
 The syntax is described in detail in [its GitHub repo](https://github.com/getpop/field-query). I will keep explaining how it works below, while implementing the use case.
 
-> **Note:** Firefox already handles the multi-line query: Copy/pasting it into the URL bar works perfectly. For Chrome and Safari, though, we must strip all the whitespaces and line returns before pasting it to the URL bar. (Conclusion: use Firefox!)
+> **Note:**<br/>Firefox already handles the multi-line query: Copy/pasting it into the URL bar works perfectly. Chrome and Safari, though, require to strip all the whitespaces and line returns before pasting the query into the URL bar.
+> 
+> (Conclusion: use Firefox!)
 
 ### Implementing the Query (with explanations along the way)
 
-Time to implement the query! I promise this is going to be fun (at least, I certainly enjoyed doing it). Along the way I will explain how/why it works, and how it differs from the standard GraphQL whenever there is some difference.
+Time to implement the query! I promise this is going to be fun (at least, I certainly enjoyed doing it). Along the way I will explain how/why it works.
 
 Let's start.
 
