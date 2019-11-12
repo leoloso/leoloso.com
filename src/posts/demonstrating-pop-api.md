@@ -155,7 +155,7 @@ Arguments passed to a field can receive other fields or operators as input.
     )@postDesc
 ```
 
-[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with ID %s has %s comment(s) and title '%s',[id(),comments-count(),title()]),sprintf(%22Post with ID %s, created on %s, has no comments%22,[id(),date(d/m/Y)]))@postDesc">Visualize query</a>]
+[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with ID %s has %s comment(s) and title '%s',[id(),comments-count(),title()]),sprintf(%22Post with ID %s, created on %s, has no comments%22,[id(),date(d/m/Y)]))@postDesc">View query results</a>]
 
 ### Nested directives
 
@@ -180,7 +180,7 @@ echo([
 >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?query=echo([[banana,apple],[strawberry,grape,melon]])@fruitJoin%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:%value%,separator:%22---%22])%3E%3E">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?query=echo([[banana,apple],[strawberry,grape,melon]])@fruitJoin%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:%value%,separator:%22---%22])%3E%3E">View query results</a>]
 
 ### Implementing the Query
 
@@ -204,7 +204,7 @@ posts(
   url
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:1,order:date|DESC).id|title|url">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:1,order:date|DESC).id|title|url">View query results</a>]
 
 > **Note 1:**<br/> Use `,` to separate field arguments, each of them in `key:value` format
 
@@ -223,7 +223,7 @@ post(
   url
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?query=post(id:1).id|title|url">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?query=post(id:1).id|title|url">View query results</a>]
 
 Fields argument names are optional. The query above is similar to the one below, which skips fieldArg name `"id"`:
 
@@ -234,7 +234,7 @@ post(1).
   url
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?query=post(1).id|title|url">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?query=post(1).id|title|url">View query results</a>]
 
 We can pass the ID through a variable, which is resolved through a URL parameter under the variable name. For the query below, we add param `postId=1` to the URL:
 
@@ -245,7 +245,7 @@ post($postId).
   url
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId).id|title|url">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId).id|title|url">View query results</a>]
 
 > **Note:**<br/>Use `$` to define a variable
 
@@ -258,7 +258,7 @@ post($postId)@post.
   url
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.id|title|url">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.id|title|url">View query results</a>]
 
 > **Note:**<br/>Use `@` to define an alias
 
@@ -274,7 +274,7 @@ post($postId)@post.
   ])@postData
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData">View query results</a>]
 
 > **Note:**<br/>Use `[...]` to define an array and `,` to separate its items. The format for each item is either `key:value` or `value` (making the key numeric)
 
@@ -286,7 +286,7 @@ To fetch the list of newsletter subscribers from a REST endpoint, we can use fie
 getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList">View query results</a>]
 
 #### Calculating the list of unique languages
 
@@ -302,7 +302,7 @@ extract(
 )
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),lang)">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),lang)">View query results</a>]
 
 > **Note:**<br/>Expression `%self%` contains an object which has a pointer to all data retrieved for the current object. Accessed through function `getSelfProp`, it enables to access this data, under the property name or alias under which it was stored.
 
@@ -318,7 +318,7 @@ arrayUnique(
 )@userLangs
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs">View query results</a>]
 
 #### Retrieving the rest of the user information
 
@@ -333,7 +333,7 @@ extract(
 )@userEmails
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails">View query results</a>]
 
 Our CRM exposes a REST endpoint which allows to filter users by email, like this:
 
@@ -355,7 +355,7 @@ sprintf(
 )
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])">View query results</a>]
 
 > **Note 1:**<br/>The string can't have character `"&"` in it, or it will create trouble when appending it in the URL param. Instead, we must use its code `"%26"`
 
@@ -375,39 +375,27 @@ getJSON(
 )@userProps
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))@userProps">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))@userProps">View query results</a>]
 
-Finally, we must combine the 2 lists into one, generating a new list containing all user fields: `name`, `email` and `lang`. 
-
-```php
-
-```
-
-[<a href="">Visualize query</a>]
-
-
+Finally, we must combine the 2 lists into one, generating a new list containing all user fields: `name`, `email` and `lang`. To achieve this, we use function `arrayFill`, which, given 2 arrays, returns an array containing the entries from each of them where the index (in this case, property `email`) is the same, and we save the results under property `userProps`:
 
 ```php
-
+arrayFill(
+  getJSON(
+    sprintf(
+      "https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s",
+      [arrayJoin(
+        getSelfProp(%self%, userEmails),
+        "%26emails[]="
+      )]
+    )
+  ),
+  getSelfProp(%self%, userList),
+  email
+)@userProps
 ```
 
-[<a href="">Visualize query</a>]
-
-
-
-```php
-
-```
-
-[<a href="">Visualize query</a>]
-
-
-
-```php
-
-```
-
-[<a href="">Visualize query</a>]
+[<a href="pop-api-wp.localhost:8888/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userProps">View query results</a>]
 
 
 
@@ -415,7 +403,7 @@ Finally, we must combine the 2 lists into one, generating a new list containing 
 
 ```
 
-[<a href="">Visualize query</a>]
+[<a href="">View query results</a>]
 
 
 
@@ -423,7 +411,7 @@ Finally, we must combine the 2 lists into one, generating a new list containing 
 
 ```
 
-[<a href="">Visualize query</a>]
+[<a href="">View query results</a>]
 
 
 
@@ -431,7 +419,7 @@ Finally, we must combine the 2 lists into one, generating a new list containing 
 
 ```
 
-[<a href="">Visualize query</a>]
+[<a href="">View query results</a>]
 
 
 
@@ -439,7 +427,7 @@ Finally, we must combine the 2 lists into one, generating a new list containing 
 
 ```
 
-[<a href="">Visualize query</a>]
+[<a href="">View query results</a>]
 
 
 
@@ -447,7 +435,7 @@ Finally, we must combine the 2 lists into one, generating a new list containing 
 
 ```
 
-[<a href="">Visualize query</a>]
+[<a href="">View query results</a>]
 
 
 
@@ -455,7 +443,31 @@ Finally, we must combine the 2 lists into one, generating a new list containing 
 
 ```
 
-[<a href="">Visualize query</a>]
+[<a href="">View query results</a>]
+
+
+
+```php
+
+```
+
+[<a href="">View query results</a>]
+
+
+
+```php
+
+```
+
+[<a href="">View query results</a>]
+
+
+
+```php
+
+```
+
+[<a href="">View query results</a>]
 
 
 
