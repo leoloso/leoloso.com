@@ -138,10 +138,11 @@ Arguments passed to a field can receive other fields or operators as input.
     if (
       has-comments(), 
       sprintf(
-        "Post with title '%s' has %s comments", 
+        "Post with ID %s has %s comment(s) and title '%s'", 
         [
-          title(), 
-          comments-count()
+          id(),
+          comments-count(),
+          title()
         ]
       ), 
       sprintf(
@@ -154,7 +155,7 @@ Arguments passed to a field can receive other fields or operators as input.
     )@postDesc
 ```
 
-[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(),comments-count()]),sprintf(%22Post with ID %s, created on %s, has no comments%22,[id(),date(d/m/Y)]))@postDesc">Visualize query</a>]
+[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with ID %s has %s comment(s) and title '%s',[id(),comments-count(),title()]),sprintf(%22Post with ID %s, created on %s, has no comments%22,[id(),date(d/m/Y)]))@postDesc">Visualize query</a>]
 
 ### Nested directives
 
