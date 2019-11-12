@@ -1,8 +1,8 @@
 ---
-title: 😁 Demonstrating the PoP API, an implementation of GraphQL on steroids
+title: 🧨 Demonstrating the PoP API, an implementation of GraphQL on steroids
 metaDesc: After you've seen this, there's no turning back
-socialImage: https://leoloso.com/images/pop-logo-whitebg.png
-date: '2020-11-12'
+socialImage: https://leoloso.com/images/matrix.jpg
+date: '2019-11-12'
 tags:
   - pop
   - api
@@ -118,15 +118,15 @@ Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `spri
 
 ```php
 1. ?query=not(true)
-2. ?query=or([true, false])
-3. ?query=and([true, false])
+2. ?query=or([1,0])
+3. ?query=and([1,0])
 4. ?query=if(true, Show this text, Hide this text)
 5. ?query=equals(first text, second text)
 6. ?query=isNull(),isNull(something)
 7. ?query=sprintf(%s API is %s, [PoP, cool])
 ```
 
-[View query results: <a href="https://nextapi.getpop.org/api/graphql?query=not(true)">query #1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">query #2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">query #3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">query #4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">query #5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">query #6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">query #7</a>]
+[View query results: <a href="https://nextapi.getpop.org/api/graphql?query=not(true)">query #1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([1,0])">query #2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([1,0])">query #3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">query #4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">query #5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">query #6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(%s API is %s, [PoP, cool])">query #7</a>]
 
 #### Nested fields
 
@@ -527,7 +527,7 @@ The real, underlying data structure in PoP is simply a set of relationships acro
 
 ![This is how removing /graphql feels like. Image source: huffpost.com](/images/matrix.jpg "This is how removing /graphql feels like. Image source: huffpost.com")
 
-That is why I call this implementation “schemaless”: The developer needs not define schemas, and certainly need not deal with the SDL. Intead, it's all about defining the relationships among the different database entities in the application, which will quite likely already exist! Just by replicating the relationships already defined in the data model, we got a free “schemaless” GraphQL: Free as in "no need to code it", not as in "it doesn't exist". After all, the schema can be automatically generated from the component model itself, and visualized by [querying the `__schema` field](https://newapi.getpop.org/api/graphql/?query=__schema).
+That is why I call this implementation “schemaless”: The developer needs not define schemas, and certainly need not deal with the SDL. Instead, it's all about defining the relationships among the different database entities in the application, which will quite likely already exist! Just by replicating the relationships already defined in the data model, we got a free “schemaless” GraphQL: Free as in "no need to code it", not as in "it doesn't exist". After all, the schema can be automatically generated from the component model itself, and visualized by [querying the `__schema` field](https://newapi.getpop.org/api/graphql/?query=__schema).
 
 Finally, we can provide an explanation of why the query results in <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> for directive `<copyRelationalResults>` are shown, but not in the <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>: The PoP native format displays all the data it has accumulated, thereby there it is. The GraphQL format, though, doesn't show it because the property under which the data is copied to, `postData`, is not being queried. If we do (adding 2 levels of `id` to make sure we query the data after it has been copied), the data then does appear in the response:
 
@@ -805,25 +805,170 @@ id.
 
 [<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),transformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),extract(getSelfProp(%self%,postData),date)])])%3E%3E|getSelfProp(%self%,userPostData)@translatedUserPostProps%3CforEach(if:not(equals(extract(%value%,lang),en)))%3CadvancePointerInArray(path:header,appendExpressions:[toLang:extract(%value%,lang)])%3Ctranslate(from:en,to:%toLang%,oneLanguagePerField:true,override:true)%3E%3E%3E|getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:content,array:%value%,value:concat([extract(%value%,header),extract(%value%,postContent)])]),transformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:to,array:%value%,value:extract(%value%,email)]),transformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:subject,array:%value%,value:%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
 
+### The final query!
+
+We have everything we need! Let's get it all together into the one, final, monstruous, magnificent query:
+
+```php
+post($postId)@post.
+  echo([
+    content:content(),
+    date:date(d/m/Y)
+  ])@postData,
+getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList|
+arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|
+extract(getSelfProp(%self%,userList),email)@userEmails|
+arrayFill(
+  getJSON(
+    sprintf(
+      "https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s",
+      [arrayJoin(
+        getSelfProp(%self%,userEmails),
+        "%26emails[]="
+      )]
+    )
+  ),
+  getSelfProp(%self%,userList),
+  email
+)@userData,
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >|
+  id.
+    extract(getSelfProp(%self%,postData),content)@postContent|
+    getSelfProp(%self%,postContent)@postContent<
+      translate(
+        from:en,
+        to:arrayDiff([
+          getSelfProp(%self%,userLangs),
+          [en]
+        ])
+      ),
+      renameProperty(postContent-en)
+    >|
+    getSelfProp(%self%,userData)@userPostData<
+      forEach<
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:""
+          ),
+          addParams:[
+            key:postContent,
+            array:%value%,
+            value:getSelfProp(
+              %self%,
+              sprintf(
+                postContent-%s,
+                [extract(%value%,lang)]
+              )
+            )
+          ]
+        ),
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:""
+          ),
+          addParams:[
+            key:header,
+            array:%value%,
+            value:sprintf(
+              string:"<p>Hi %s, we published this post on %s, enjoy!</p>",
+              values:[extract(%value%,name),extract(
+                getSelfProp(%self%,postData),
+                date
+              )]
+            )
+          ]
+        )
+      >
+    >|
+    getSelfProp(%self%,userPostData)@translatedUserPostProps<
+      forEach(
+        if:not(equals(extract(%value%,lang),en))
+      )<
+        advancePointerInArray(
+          path:header,
+          appendExpressions:[
+            toLang:extract(%value%,lang)
+          ]
+        )<
+          translate(
+            from:en,
+            to:%toLang%,
+            oneLanguagePerField:true,
+            override:true
+          )
+        >
+      >
+    >|
+    getSelfProp(%self%,translatedUserPostProps)@emails<
+      forEach<
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:[]
+          ),
+          addParams:[
+            key:content,
+            array:%value%,
+            value:concat([
+              extract(%value%,header),
+              extract(%value%,postContent)
+            ])
+          ]
+        ),
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:[]
+          ),
+          addParams:[
+            key:to,
+            array:%value%,
+            value:extract(%value%,email)
+          ]
+        ),
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:[]
+          ),
+          addParams:[
+            key:subject,
+            array:%value%,
+            value:"PoP API example :)"
+          ]
+        ),
+        sendByEmail
+      >
+    >
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),transformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),extract(getSelfProp(%self%,postData),date)])])%3E%3E|getSelfProp(%self%,userPostData)@translatedUserPostProps%3CforEach(if:not(equals(extract(%value%,lang),en)))%3CadvancePointerInArray(path:header,appendExpressions:[toLang:extract(%value%,lang)])%3Ctranslate(from:en,to:%toLang%,oneLanguagePerField:true,override:true)%3E%3E%3E|getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:content,array:%value%,value:concat([extract(%value%,header),extract(%value%,postContent)])]),transformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:to,array:%value%,value:extract(%value%,email)]),transformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:subject,array:%value%,value:%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
+
 We are done now!!!!!
 
-<p style="text-align: center;"><span style="font-size: 80px;">🥳</span></p>
+<p><span style="font-size: 100px;">🥳</span></p>
 
 ### Conclusion: That was a lot! What comes next?
 
-I'm sure that if you have reached up to here, you must be tired! You certainly must not want to keep reading technical, boring stuff, even if it's the most shinily awesome API ever... right?
+I'm sure that if you have reached up to here, you must be tired! You certainly must not want to keep reading technical, boring code, even if were about the most shinily awesome API ever... right?
 
-Me neither. So I will continue in another blog post to describe how the PoP API either already deals with, or soon will, the following issues (which are very very hot topics of discussion in the GraphQL community right now):
+Me neither. So I will continue in another blog post to describe how this API either already deals with, or will soon, the following issues (which are very very very hot topics of discussion in the GraphQL community right now):
 
 - HTTP Cache 
 - Federation and Decentralization
 - One-Graph solution for everything
-- Public/Private API
+- User permissions, Public/Private API
 
 I hope you have enjoyed this. If so, please check out the project on its several repos:
 
 - [GraphQL API for PoP](https://github.com/getpop/api-graphql)
 - [PoP API](https://github.com/getpop/api)
+- [Field Query](https://github.com/getpop/field-query)
 - [PoP](https://github.com/leoloso/PoP) (there is no code here, but the description of how the component-based architecture works and what its intended goals are)
 
 Thanks for reading!
