@@ -985,8 +985,11 @@ Me neither. So I will continue in another blog post to describe how this API eit
 
 I hope you have enjoyed this. If so, please check out the project on its several repos:
 
-- [GraphQL API for PoP](https://github.com/getpop/api-graphql)
-- [PoP API](https://github.com/getpop/api)
+- [GraphQL API](https://github.com/getpop/api-graphql)
+- [REST API](https://github.com/getpop/api-graphql)
+- [API](https://github.com/getpop/api)
+- [Component Model](https://github.com/getpop/component-model)
+- [Engine](https://github.com/getpop/engine)
 - [Field Query](https://github.com/getpop/field-query)
 - [PoP](https://github.com/leoloso/PoP) (there is no code here, but the description of how the component-based architecture works and what its intended goals are)
 
