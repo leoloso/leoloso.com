@@ -361,7 +361,7 @@ sprintf(
 
 > **Note 2:**<br/>The REST endpoint used for this example is also satisfied by the PoP API, which combines features of both REST and GraphQL at the same time (eg: the queried resources are `/users/`, and we avoid overfetching by passing `?query=name|email`)
 
-Having generated the URL, we execute `getJSON` on it and store the results under property `userProps`:
+Having generated the URL, we execute `getJSON` on it:
 
 ```php
 getJSON(
@@ -372,12 +372,12 @@ getJSON(
       "%26emails[]="
     )]
   )
-)@userProps
+)
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))@userProps">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))">View query results</a>]
 
-Finally, we must combine the 2 lists into one, generating a new list containing all user fields: `name`, `email` and `lang`. To achieve this, we use function `arrayFill`, which, given 2 arrays, returns an array containing the entries from each of them where the index (in this case, property `email`) is the same, and we save the results under property `userProps`:
+Finally, we must combine the 2 lists into one, generating a new list containing all user fields: `name`, `email` and `lang`. To achieve this, we use function `arrayFill`, which, given 2 arrays, returns an array containing the entries from each of them where the index (in this case, property `email`) is the same, and we save the results under property `userData`:
 
 ```php
 arrayFill(
@@ -392,12 +392,40 @@ arrayFill(
   ),
   getSelfProp(%self%, userList),
   email
-)@userProps
+)@userData
 ```
 
-[<a href="pop-api-wp.localhost:8888/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userProps">View query results</a>]
+[<a href="pop-api-wp.localhost:8888/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">View query results</a>]
 
+#### Translating the post content to all different languages
 
+By now we have collected the post data, saved under property `postData`, and all the user data, saved under property `userData`. It is time to mix these 2.
+
+In order to work with these 2 arrays, we need to have both of them at the same level. However, if we pay attention to the <a href="pop-api-wp.localhost:8888/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData">latest query</a>, we can notice that they are under 2 different paths:
+
+- `userData` is under `/` (root)
+- `postData` is under `/post/`
+
+Hence, we must either move `userData` down to the `post` level, or move the `postData` up to the root level. Due to PoP's graph dataloading architecture, only the latter option is feasible. The reason is a bit difficult to explain in words, but I'll try my best. (It would be much better to show the process in images, but I'm not great at design in any case.)
+
+#### A digression to explain how data is loaded
+
+(This will be a bit technical. Apologies in advance.)
+
+When resolving the query to load data, the dataloader processes all elements from a same entity all at the same time, as to load all their data in a single query and completely avoiding the N+1 problem. (Indeed, PoP's dataloading mechanism has linear time complexity, or `O(n)`, based on the number of nodes in the graph. That's why it is so fast to load data, even for deeply nested graphs.) Then, let's imagine that we have the following query:
+
+```php
+posts.
+  title|
+  author.
+    name
+```
+
+Let's say this query returns 10 posts and, for each post, it retrieves its author, and some authors have 2 or more posts, so that the query retrieves 10 posts but only 4 unique authors. The dataloading mechanism will first process all 10 posts, fetching all their required data (properties `title` and `author`), and then it will fetch all data for all 4 authors (property `name`). 
+
+If posts with IDs `1` and `2` both have author with ID `5`, and we copy a property downwards in the graph, post `1` will first copy its properties down to author `5`, then immediately post `2` will copy its own properties down to author `5`, overriding the properties set by post `1`. By the time the dataloading mechanism reaches the users level, author `5` will only have the data from posts `2`. This situation could be avoided by copying the properties the post ID in the user object, as to not override previous values. However, while the post entity knows that it is loading data for its author, the author entity doesn't know who loaded it (the graph direction is only top-to-bottom). Hence, the post entiy can fetch properties from the author entity and store them under theauthor ID (which the post knows about), but the other way around doesn't work.
+
+That's why we can only copy properties upwards. In this case, the `postData` property must be copied upwards, to the root.
 
 ```php
 
