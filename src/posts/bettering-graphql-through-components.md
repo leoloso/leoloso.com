@@ -56,7 +56,7 @@ _**Overriding behaviour #2** (available under the `"try-new-features"` branch):_
 
 Imagine that you need to implement the following functionality:
 
-- In some system, you have a REST API endpoing returning the subscribers to a newsletter: a list of `email` and `lang` fields
+- In some system, you have a REST API endpoint returning the subscribers to a newsletter: a list of `email` and `lang` fields
 - In another system, you have a database with user information: rows of `id`, `email` and `name` fields
 - In another system, you have blog posts
 - You want to send the content of a blog post in a newsletter to all your users, like this:
