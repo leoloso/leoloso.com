@@ -262,11 +262,148 @@ post($postId)@post.
 
 > **Note:**<br/>Use `@` to define an alias
 
-#### Fetching the blog post for our query
+#### Fetching the blog post (again)
 
 The previous queries were demonstrating how to fetch data for the post. Now that we know, let's fetch the data needed for our use case: the `content` and `date` fields, which will be placed under an array under alias `postData`:
 
 ```php
+post($postId)@post.
+  echo([
+    content:content(),
+    date:date(d/m/Y)
+  ])@postData
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData">Visualize query</a>]
+
+> **Note:**<br/>Use `[...]` to define an array and `,` to separate its items. The format for each item is either `key:value` or `value` (making the key numeric)
+
+#### Fetching the list of newsletter subscribers
+
+To fetch the list of newsletter subscribers from a REST endpoint, we can use field `getJSON` and specify the URL:
+
+```php
+getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList">Visualize query</a>]
+
+#### Calculating the list of unique languages
+
+The previous list contains pairs of `email` and `lang` fields. Next, we calculate the list of unique languages, as to translate the blog post to all those languages. This task will be composed of two steps.
+
+First, we extract the field `lang` from the array through field `extract` (which takes an array and a path):
+
+```php
+getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList|
+extract(
+  getSelfProp(%self%, userList),
+  lang
+)
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),lang)">Visualize query</a>]
+
+> **Note:**<br/>Expression `%self%` contains an object which has a pointer to all data retrieved for the current object. Accessed through function `getSelfProp`, it enables to access this data, under the property name or alias under which it was stored.
+
+Then, we apply operator `arrayUnique`, and assign the results under alias `userLangs`:
+
+```php
+getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userList|
+arrayUnique(
+  extract(
+    getSelfProp(%self%, userList),
+    lang
+  )
+)@userLangs
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs">Visualize query</a>]
+
+#### Retrieving the rest of the user information
+
+So far, we have a list of pairs of `email` and `lang` fields stored under property `userList`. Next, using `email` as the common identifier for the data, we query the REST endpoint from the CRM to fetch the remaining user information: the `name` field. This task is composed of several steps.
+
+First, we extract the list of all emails from `userList`, and place them under `userEmails`:
+
+```php
+extract(
+  getSelfProp(%self%, userList),
+  email
+)@userEmails
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails">Visualize query</a>]
+
+Our CRM exposes a REST endpoint which allows to filter users by email, like this:
+
+```php
+/users/api/rest/?emails[]=email1&emails[]=email2&...
+```
+
+Then, we must generate the endpoint URL by converting the array of emails into a string with the right format, and then executing `getJSON` on this URL. Let's do that.
+
+To generate the URL, we use a combination of `sprintf` and `arrayJoin`:
+
+```php
+sprintf(
+  "https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s",
+  [arrayJoin(
+    getSelfProp(%self%, userEmails),
+    "%26emails[]="
+  )]
+)
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])">Visualize query</a>]
+
+> **Note 1:**<br/>The string can't have character `"&"` in it, or it will create trouble when appending it in the URL param. Instead, we must use its code `"%26"`
+
+> **Note 2:**<br/>The REST endpoint used for this example is also satisfied by the PoP API, which combines features of both REST and GraphQL at the same time (eg: the queried resources are `/users/`, and we avoid overfetching by passing `?query=name|email`)
+
+Having generated the URL, we execute `getJSON` on it and store the results under property `userProps`:
+
+```php
+getJSON(
+  sprintf(
+    "https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s",
+    [arrayJoin(
+      getSelfProp(%self%,userEmails),
+      "%26emails[]="
+    )]
+  )
+)@userProps
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|extract(getSelfProp(%self%,userList),email)@userEmails|getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)]))@userProps">Visualize query</a>]
+
+Finally, we must combine the 2 lists into one, generating a new list containing all user fields: `name`, `email` and `lang`. 
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
 
 ```
 
@@ -303,6 +440,24 @@ The previous queries were demonstrating how to fetch data for the post. Now that
 ```
 
 [<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
 
 
 ### Conclusion: Benefits
