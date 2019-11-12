@@ -65,7 +65,7 @@ By now, we have all the data: Rows of `email` and `emailContent` fields. We can 
 
 Before we start the implementation of the use case, I will explain a few concepts particular to PoP.
 
-**URL-based queries**
+#### URL-based queries
 
 While the standard GraphQL sends the query contained in the body of the request, PoP sends it as a URL parameter. This has the following advantages:
 
@@ -73,7 +73,7 @@ While the standard GraphQL sends the query contained in the body of the request,
 - It removes the need for a client-side library to manipulate the query, leading to performance improvements and reduced amount of code to maintain
 - The API becomes easier to consume. For instance, we can visualize the results of the query directly on the browser, without depending on GraphiQL
 
-**Similar but different query syntax**
+#### Similar but different query syntax
 
 The syntax used in PoP is a re-imagining of the GraphQL syntax, supporting all the required elements (field names, arguments, variables, aliases, fragments and directives), however designed to be easy to both read and write in a single line, so the developer can already code the query in the browser without depending on special tooling.
 
@@ -101,6 +101,37 @@ The syntax is described in detail in [its GitHub repo](https://github.com/getpop
 > 
 > (Conclusion: use Firefox!)
 
+#### Operators
+
+Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `sprintf` and many others, can be made available on the API as fields:
+
+```
+1. ?query=not(true)
+2. ?query=or([true,false])
+3. ?query=and([true,false])
+4. ?query=if(true, Show this text, Hide this text)
+5. ?query=equals(first text, second text)
+6. ?query=isNull(),isNull(something)
+7. ?query=sprintf(%s API is %s, [PoP, cool])
+```
+
+[<a href="https://nextapi.getpop.org/api/graphql?query=not(true)">Query 1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">Query 2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">Query 3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">Query 4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">Query 5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">Query 6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">Query 7</a>]
+
+#### Nested Fields
+
+Arguments passed to a field can include other fields or operators.
+
+```
+1. ?query=posts.has-comments|not(has-comments())
+2. ?query=posts.has-comments|has-featuredimage|or([has-comments(), has-featuredimage()])
+3. ?query=posts.if(has-comments(), sprintf(Post with title '%s' has %s comments, [title(), comments-count()]), sprintf(Post with ID %s was created on %s, [id(), date(d/m/Y)]))@postDesc
+4. ?query=posts.comments(limit:divide(comments-count(), 2)).id|date|content
+5. ?query=users.name|equals(name(), leo)
+```
+
+[<a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|not(has-comments())">Query 1</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])">Query 2</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(),comments-count()]),sprintf(Post with ID %s was created on %s,[id(),date(d/m/Y)]))@postDesc">Query 3</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=posts.comments(limit:divide(comments-count(),2)).id|date|content">Query 4</a>, <a href="https://nextapi.getpop.org/api/graphql/?query=users.name|equals(name(),leo)">Query 5</a>)]
+
+
 ### Implementing the Query (with explanations along the way)
 
 Time to implement the query! I promise this is going to be fun (at least, I certainly enjoyed doing it). Along the way I will explain how/why it works.
@@ -109,7 +140,14 @@ Let's start.
 
 **Fetching the blog post**
 
-
+```
+?query=
+  post($postId)@post.
+    echo([
+      content:content(),
+      date:date(d/m/Y)
+    ])@postData,
+```
 
 
 ### Conclusion: Benefits
