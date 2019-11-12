@@ -182,23 +182,127 @@ echo([
 
 [<a href="https://newapi.getpop.org/api/graphql/?query=echo([[banana,apple],[strawberry,grape,melon]])@fruitJoin%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:%value%,separator:%22---%22])%3E%3E">Visualize query</a>]
 
-
-### Implementing the Query (with explanations along the way)
+### Implementing the Query
 
 Time to implement the query! I promise this is going to be fun (at least, I certainly enjoyed doing it). Along the way I will explain how/why it works.
 
 Let's start.
 
-**Fetching the blog post**
+> **Note:**<br/>At any time, you can review the documentation for the fields/directives employed by querying the [__schema](https://newapi.getpop.org/api/graphql/?query=__schema) field.
+
+#### Fetching the blog post
+
+We can query field `posts` to find the latest published blog post:
 
 ```php
-?query=
-  post($postId)@post.
-    echo([
-      content:content(),
-      date:date(d/m/Y)
-    ])@postData,
+posts(
+  limit:1, 
+  order:date|DESC
+).
+  id|
+  title|
+  url
 ```
+
+[<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:1,order:date|DESC).id|title|url">Visualize query</a>]
+
+> **Note 1:**<br/> Use `,` to separate field arguments, each of them in `key:value` format
+
+> **Note 2:**<br/> Use `.` to fetch nested properties from the object
+
+> **Note 3:**<br/> Use `|` to fetch several fields from an object
+
+This query retrieves an array of posts. To operate with a single post, we can better use field `post`, which receives the ID by argument:
+
+```php
+post(
+  id:1
+).
+  id|
+  title|
+  url
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?query=post(id:1).id|title|url">Visualize query</a>]
+
+Fields argument names are optional. The query above is similar to the one below, which skips fieldArg name `"id"`:
+
+```php
+post(1).
+  id|
+  title|
+  url
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?query=post(1).id|title|url">Visualize query</a>]
+
+We can pass the ID through a variable, which is resolved through a URL parameter under the variable name. For the query below, we add param `postId=1` to the URL:
+
+```php
+post($postId).
+  id|
+  title|
+  url
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId).id|title|url">Visualize query</a>]
+
+> **Note:**<br/>Use `$` to define a variable
+
+Finally, we add an alias to make the response more compact:
+
+```php
+post($postId)@post.
+  id|
+  title|
+  url
+```
+
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.id|title|url">Visualize query</a>]
+
+> **Note:**<br/>Use `@` to define an alias
+
+#### Fetching the blog post for our query
+
+The previous queries were demonstrating how to fetch data for the post. Now that we know, let's fetch the data needed for our use case: the `content` and `date` fields, which will be placed under an array under alias `postData`:
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
+
+
+
+```php
+
+```
+
+[<a href="">Visualize query</a>]
 
 
 ### Conclusion: Benefits
