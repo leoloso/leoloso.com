@@ -61,9 +61,9 @@ By now, we have all the data: Rows of `email` and `emailContent` fields. We can 
 
 7. Iterate the list, and send the email
 
-### Explaining some concepts
+### Before starting: Let's explore some core concepts
 
-Before we start the implementation of the use case, I will explain a few concepts particular to PoP. (If you know already how to PoP works, you can skip straight to section "Implementing the Query" below.)
+Before we start the implementation of the use case, I will explain a few concepts particular to PoP.
 
 #### URL-based queries
 
@@ -147,28 +147,28 @@ Arguments passed to a field can receive other fields or operators as input.
 
 ### Nested directives
 
-A directive can modify the behaviour of another directive.
+A directive can modify the behaviour of another directive. Values can be passed from one to another through "expressions": special variables set by each directive, wrapped with `%`.
 
-For instance, in the example below, directive `<forEach>` iterates through all the items in an array and passes each to its nested directive `<transformProperty>`.
+For instance, in the example below, directive `<forEach>` iterates through all the items in an array, passing them to its nested directive `<transformProperty>` through expression `%value%`.
 
 ```php
 echo([
-	first:[
-		fruits: [banana, apple]
-	],
-	second:[
-		fruits: [strawberry, grape]
-	]
+  first:[
+    fruits: [banana, apple]
+  ],
+  second:[
+    fruits: [strawberry, grape]
+  ]
 ])<
-	forEach<
-		transformProperty(
-			function: arrayJoin,
-			addParams: [
-				array: extract(%value%, fruits),
-				separator: "---"
-			]
-		)
-	>
+  forEach<
+    transformProperty(
+      function: arrayJoin,
+      addParams: [
+        array: extract(%value%, fruits),
+        separator: "---"
+      ]
+    )
+  >
 >
 ```
 
