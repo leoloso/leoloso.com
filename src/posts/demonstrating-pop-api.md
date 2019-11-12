@@ -61,9 +61,51 @@ By now, we have all the data: Rows of `email` and `emailContent` fields. We can 
 
 7. Iterate the list, and send the email
 
+### Explaining some concepts
+
+Before we start the implementation of the use case, I will explain a few concepts particular to PoP.
+
+**URL-based queries**
+
+While the standard GraphQL sends the query contained in the body of the request, PoP sends it as a URL parameter. This has the following advantages:
+
+- It enables server-side caching
+- It removes the need for a client-side library to manipulate the query, leading to performance improvements and reduced amount of code to maintain
+- The API becomes easier to consume. For instance, we can visualize the results of the query directly on the browser, without depending on GraphiQL
+
+**Similar but different query syntax**
+
+The [syntax used in PoP](https://github.com/getpop/field-query) is a re-imagining of the GraphQL syntax, supporting all the same elements (field arguments, variables, aliases, fragments, directives, and a few others), however designed to be easy to both read and write in a single line, so the developer can already code the query in the browser without depending on special tooling.
+
+It looks like this:
+
+```
+fieldName(fieldArgs)@alias<fieldDirective(directiveArgs)>
+```
+
+To make it clearer to code, the query can be split into several lines:
+
+```
+fieldName(
+  key1: value1,
+  key2: value2
+)@alias<
+  fieldDirective(
+    key3: value3,
+    key4: value4
+  )
+>
+```
+
+> **Note:** Firefox handles the multi-line query: Copy/pasting it into the URL bar works perfectly. For Chrome and Safari, though, we must strip all the whitespaces and line returns before pasting it to the URL bar. (Conclusion: use Firefox!)
+
 ### Implementing the Query (with explanations along the way)
 
-Time to implement the query! I promise this is going to be fun! (I certainly enjoyed doing it.) Along the way I will also explain how/why it works.
+Time to implement the query! I promise this is going to be fun (at least, I certainly enjoyed doing it). Along the way I will explain how/why it works, and how it differs from the standard GraphQL whenever there is some difference.
+
+Let's start.
+
+**Fetching the blog post**
 
 
 
@@ -72,7 +114,13 @@ Time to implement the query! I promise this is going to be fun! (I certainly enj
 
 Decentralized
 Federation/Decentralization
-HTTP Cache 
 Fast and Safe
-Public/Private API
 One-Graph solution for everything
+
+### What next
+
+Mutations
+Symfony Notifier
+<CacheControl>
+HTTP Cache 
+Public/Private API
