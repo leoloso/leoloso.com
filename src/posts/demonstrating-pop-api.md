@@ -114,7 +114,7 @@ fieldName(
 
 #### Operators
 
-Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `sprintf` and many others, can be made available on the API as fields:
+Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `sprintf` and many others, are supported as fields:
 
 ```php
 1. ?query=not(true)
@@ -158,24 +158,20 @@ Arguments passed to a field can receive other fields or operators as input.
 
 ### Nested directives
 
-A directive can modify the behaviour of another directive. Values can be passed from one to another through "expressions": special variables set by each directive, wrapped with `%`.
+A directive can modify the behaviour of another directive. Values can be passed from one to another through "expressions": special variables set by each directive, wrapped with `%...%`.
 
-For instance, in the example below, directive `<forEach>` iterates through all the items in an array, passing them to its nested directive `<transformProperty>` through expression `%value%`.
+For instance, in the example below, directive `<forEach>` iterates through all the items in an array, passing each of them to its nested directive `<transformProperty>` through expression `%value%`.
 
 ```php
 echo([
-  first:[
-    fruits: [banana, apple]
-  ],
-  second:[
-    fruits: [strawberry, grape]
-  ]
-])<
+  [banana, apple],
+  [strawberry, grape, melon]
+])@fruitJoin<
   forEach<
     transformProperty(
       function: arrayJoin,
       addParams: [
-        array: extract(%value%, fruits),
+        array: %value%,
         separator: "---"
       ]
     )
@@ -183,7 +179,7 @@ echo([
 >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?query=echo([first:[fruits:[banana,apple]],second:[fruits:[strawberry,grape]]])%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:extract(%value%,fruits),separator:%22---%22])%3E%3E">Visualize query</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?query=echo([[banana,apple],[strawberry,grape,melon]])@fruitJoin%3CforEach%3CtransformProperty(function:arrayJoin,addParams:[array:%value%,separator:%22---%22])%3E%3E">Visualize query</a>]
 
 
 ### Implementing the Query (with explanations along the way)
