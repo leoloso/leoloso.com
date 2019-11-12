@@ -597,7 +597,7 @@ posts.
   >
 ```
 
-... the directive `<transformProperty>` will be executed only once (even if it appears twice), receiving a set of posts and properties `title` and `content` for each post.
+... the directive `<transformProperty>` will be executed only once (even if it appears twice in the query, once for each field), receiving a set of posts and properties `title` and `content` for each post.
 
 Hence, we must use directives when:
 
@@ -617,69 +617,213 @@ id.
       translate(
         from:en,
         to:arrayDiff([
-          getSelfProp(%self%,userLangs),
+          getSelfProp(%self%, userLangs),
           [en]
         ])
       )
     >
 ```
 
-[<a href="">View query results</a>]
+[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]]))%3E">GraphQL output</a> (changes not yet visible), <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]]))%3E">PoP native output</a> (changes already there)]
 
+We can see that the `<translate>` directive takes 2 inputs through directive arguments: the `from` language (English) and the `to` language or array of languages. Since we want to translate to many languages, we provide this list, but first removing English from the list (through operator `arrayDiff`)! Otherwise, the Google Translate API throws an error when attempting to translate from English to English.
 
-
-```php
-
-```
-
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]]))%3E">View query results</a>]
-
-
+The `<translate>` directive did not override the original value, but instead created additional properties on the object appending `-languagecode` for each language. Hence, by now, we have the following entries with the post content: `postContent` (original in English), `postContent-es` (Spanish), `postContent-fr` (French) and `postContent-de` (German). To homogenize it, we rename property `postContent` to `postContent-en` through directive `<renameProperty>`:
 
 ```php
-
+id.
+  id.
+    getSelfProp(%self%,postContent)@postContent<
+      translate(
+        from:en,
+        to:arrayDiff([
+          getSelfProp(%self%, userLangs),
+          [en]
+        ])
+      ),
+      renameProperty(postContent-en)
+    >
 ```
 
-[<a href="">View query results</a>]
+[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E">GraphQL output</a> (changes not yet visible), <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E">PoP native output</a> (changes already there)]
 
+> **Note:**<br/>When applying more than 1 directive to the same affected objects and fields, we can simply concatenate them with `,` in the order in which they will be executed, as in `<translate(...), renameProperty(...)>`. 
+> 
+> However, because a directive is executed on its selected slot from among `"Front"`, `"Middle"` and `"Back"`, only the order within the slot will always be respected. It may be that defining `<directive1, directive2>` will have `<directive2>` execute before than `<directive1>` if its slot is executed earlier.
 
+#### Selecting the corresponding translation for each user
+
+By now, we have translated the post content to all different unique languages. Next, let's add the corresponding translation for each user, creating a new property `userPostData`.
+
+To achieve this, we will make use of directive `<forEach>` which iterates over an array, and passes each array item to its nested directive `<transformProperty>` through expression `%value%`. This directive then executes function `arrayAddItem` on each item, which adds an element (the translated post content) to an array (the user data). In order to deduce the selected language, it uses functions `extract` to get the `lang` property from the user data array, then injects it into `sprintf` to generate the corresponding `postContent-languagecode` property, which is then retrieved from the current object (the root) and placed under property `postContent` on the array. All field arguments needed by function `arrayAddItem` are injected by the directive `<transformProperty>` on runtime through the array defined in argument `addParams`.
 
 ```php
-
+id.
+  id.
+    getSelfProp(%self%, userData)@userPostData<
+      forEach<
+        transformProperty(
+          function: arrayAddItem(
+            array: [],
+            value: ""
+          ),
+          addParams:[
+            key: postContent,
+            array: %value%,
+            value: getSelfProp(
+              %self%,
+              sprintf(
+                postContent-%s,
+                [extract(%value%,lang)]
+              )
+            )
+          ]
+        )
+      >
 ```
 
-[<a href="">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))])%3E%3E">View query results</a>]
 
+> **Note:**<br/>Function `arrayAddItem` still initially defines field arguments `array` and `value`, even if initialized with empty values. This must be done because these arguments are set as mandatory in the schema definition, so if they are not present, it is considered a schema validation error and this section of the query is ignored.
 
+#### Adding a greeting message, and translating it to the user's language
+
+Let's next deal with the greeting message, which must be translated to the user's language. Initially the message is a placeholder, and we customize it through the user `name` field and the post `date` field. Only then we can do the translation, as to help Google Translate do a better job at it (translating "Hi Leo!" should produce better results than translating "Hi %s!")
+
+We first add the message into the array containing all other user data under property `header`, and already customizing it with the user data. The logic is similar as in the previous query, for which we also use directive `<transformProperty>`, which can be executed within the same iteration of the previous `<forEach>` directive:
 
 ```php
-
+id.
+  id.
+    getSelfProp(%self%, userData)@userPostData<
+      forEach<
+        transformProperty(
+          function: arrayAddItem(
+            array: [],
+            value: ""
+          ),
+          addParams: [
+            key: header,
+            array: %value%,
+            value: sprintf(
+              string: "<p>Hi %s, we published this post on %s, enjoy!</p>",
+              values:[
+                extract(%value%, name),
+                extract(
+                  getSelfProp(%self%, postData),
+                  date
+                )
+              ]
+            )
+          ]
+        )
+      >
+    >
 ```
 
-[<a href="">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),transformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),extract(getSelfProp(%self%,postData),date)])])%3E%3E">View query results</a>]
 
+Finally, we translate the message to the user's language. To do this, we use directive `<forEach>` to iterate on all array items whose `lang` field is `"en"` (for English), since we don't want to translate those. This is accomplished through the filter condition passed through argument `if`. Then, each array item is passed to the nested directive `<advancePointerInArray>`, which can navigate the inner structure of the array and position itself on the property that needs be translated: `header`. 
 
+Finally the element is passed to the next nested directive, `<translate>`, which receives a string of arrays to translate as its affected fields, and an array of languages to translate to passed through expression `toLang` (which we create on-the-fly just for this purpose of communicating data across directives), and by setting argument `oneLanguagePerField` to `true` and `override` to `true` the directive knows to match each element on these 2 arrays to do the translation and place the result back on the original property.
 
 ```php
-
+id.
+  id.
+    getSelfProp(%self%, userPostData)@translatedUserPostProps<
+      forEach(
+        if:not(equals(extract(%value%,lang),en))
+      )<
+        advancePointerInArray(
+          path: header,
+          appendExpressions: [
+            toLang:extract(%value%,lang)
+          ]
+        )<
+          translate(
+            from: en,
+            to: %toLang%,
+            oneLanguagePerField: true,
+            override: true
+          )
+        >
+      >
+    >
 ```
 
-[<a href="">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),transformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),extract(getSelfProp(%self%,postData),date)])])%3E%3E|getSelfProp(%self%,userPostData)@translatedUserPostProps%3CforEach(if:not(equals(extract(%value%,lang),en)))%3CadvancePointerInArray(path:header,appendExpressions:[toLang:extract(%value%,lang)])%3Ctranslate(from:en,to:%toLang%,oneLanguagePerField:true,override:true)%3E%3E%3E">View query results</a>]
 
+#### Generating and sending the email
 
+We are almost there! All that there is left to do is to generate the content for all the emails to send: arrays containing properties `content`, `to` and `subject`, and then this array is passed to directive `<sendByEmail>` which, voilà, does what it must do! (Or actually not: Since I don't like spam, the email sending is actually disabled... I just print the email data instead)
 
+```php
+id.
+  id.
+    getSelfProp(%self%,translatedUserPostProps)@emails<
+      forEach<
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:[]
+          ),
+          addParams:[
+            key:content,
+            array:%value%,
+            value:concat([
+              extract(%value%,header),
+              extract(%value%,postContent)
+            ])
+          ]
+        ),
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:[]
+          ),
+          addParams:[
+            key:to,
+            array:%value%,
+            value:extract(%value%,email)
+          ]
+        ),
+        transformProperty(
+          function:arrayAddItem(
+            array:[],
+            value:[]
+          ),
+          addParams:[
+            key:subject,
+            array:%value%,
+            value:"PoP API example :)"
+          ]
+        ),
+        sendByEmail
+      >
+    >
+```
 
-### Conclusion: Benefits
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E|id.extract(getSelfProp(%self%,postData),content)@postContent|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),transformProperty(function:arrayAddItem(array:[],value:%22%22),addParams:[key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),extract(getSelfProp(%self%,postData),date)])])%3E%3E|getSelfProp(%self%,userPostData)@translatedUserPostProps%3CforEach(if:not(equals(extract(%value%,lang),en)))%3CadvancePointerInArray(path:header,appendExpressions:[toLang:extract(%value%,lang)])%3Ctranslate(from:en,to:%toLang%,oneLanguagePerField:true,override:true)%3E%3E%3E|getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CtransformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:content,array:%value%,value:concat([extract(%value%,header),extract(%value%,postContent)])]),transformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:to,array:%value%,value:extract(%value%,email)]),transformProperty(function:arrayAddItem(array:[],value:[]),addParams:[key:subject,array:%value%,value:%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
 
-Decentralized
-Federation/Decentralization
-Fast and Safe
-One-Graph solution for everything
+We are done now!!!!!
 
-### What next
+<p style="text-align: center;"><span style="font-size: 80px;">🥳</span></p>
 
-Mutations
-Symfony Notifier
-<CacheControl>
-HTTP Cache 
-Public/Private API
+### Conclusion: That was a lot! What comes next?
+
+I'm sure that if you have reached up to here, you must be tired! You certainly must not want to keep reading technical, boring stuff, even if it's the most shinily awesome API ever... right?
+
+Me neither. So I will continue in another blog post to describe how the PoP API either already deals with, or soon will, the following issues (which are very very hot topics of discussion in the GraphQL community right now):
+
+- HTTP Cache 
+- Federation and Decentralization
+- One-Graph solution for everything
+- Public/Private API
+
+I hope you have enjoyed this. If so, please check out the project on its several repos:
+
+- [GraphQL API for PoP](https://github.com/getpop/api-graphql)
+- [PoP API](https://github.com/getpop/api)
+- [PoP](https://github.com/leoloso/PoP) (there is no code here, but the description of how the component-based architecture works and what its intended goals are)
+
+Thanks for reading!
