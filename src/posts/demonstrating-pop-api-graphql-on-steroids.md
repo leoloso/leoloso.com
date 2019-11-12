@@ -986,7 +986,7 @@ Me neither. So I will continue in another blog post to describe how this API eit
 I hope you have enjoyed this. If so, please check out the project on its several repos:
 
 - [GraphQL API](https://github.com/getpop/api-graphql)
-- [REST API](https://github.com/getpop/api-graphql)
+- [REST API](https://github.com/getpop/api-rest)
 - [API](https://github.com/getpop/api)
 - [Component Model](https://github.com/getpop/component-model)
 - [Engine](https://github.com/getpop/engine)
