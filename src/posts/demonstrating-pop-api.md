@@ -126,7 +126,7 @@ Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `spri
 7. ?query=sprintf(%s API is %s, [PoP, cool])
 ```
 
-[Visualize: <a href="https://nextapi.getpop.org/api/graphql?query=not(true)">query #1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">query #2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">query #3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">query #4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">query #5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">query #6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">query #7</a>]
+[View query results: <a href="https://nextapi.getpop.org/api/graphql?query=not(true)">query #1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([true,false])">query #2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([true,false])">query #3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">query #4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">query #5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">query #6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(API %s is %s, [PoP, cool])">query #7</a>]
 
 #### Nested fields
 
@@ -427,17 +427,84 @@ If posts with IDs `1` and `2` both have author with ID `5`, and we copy a proper
 
 That's why we can only copy properties upwards. In this case, the `postData` property must be copied upwards, to the root.
 
-```php
+We can now go back to the query.
 
+#### Translating the post content to all different languages (again)
+
+To copy the `postData` property upwards to the root level, we use directive `<copyRelationalResults>`. This directive is applied on the root entity, and it receives 2 inputs:
+
+1. The name of the relational property, in this case `post($postId)@post`
+2. The name of the properties to copy, in this case only `postData`
+
+```php
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >
 ```
 
-[<a href="">View query results</a>]
+[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a>]
 
+That this works is not evident at all. Moreover, you need to click on the link <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a> to see the results, and appreciate that the data was indeed copied one level up. The other link, <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">GraphQL output</a>, would seem to not work... it also does, but the results are not being output!
 
+To understand why this is so, I'll need to take several detours, to explain how data is loaded (once again) and how directives work.
+
+#### How directives work
+
+Directives are sheer power: They can affect execution of the query in any desired way. They are as close to the bare metal of the dataloading engine as possible. They have access to all previously loaded data and can modify it, remove it, etc.
+
+#### Revisiting how PoP loads data
+
+Let's examine the query above together with the previous query bit that loads the property `postData`:
 
 ```php
-
+post($postId)@post.
+  echo([
+    content:content(),
+    date:date(d/m/Y)
+  ])@postData,
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >
 ```
+
+[View query results: <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a>]
+
+We can see that these 2 queries are separated using `,` instead of `|`, and that there is an entity `id` after which we repeat the same field `post($postId)@post`, and only then we apply directive `<copyRelationalResults>`. Why is this so? 
+
+Field `id` is an identity field: It returns the same object currently being operated on. In this case, it returns once again the entity `root`. (Doing `id` returns the `root` object, doing `post.id` returns the same `post` object, doing `post.author.id` returns the `user` object, and so on.) 
+
+As I mentioned before, the dataloader loads data in stages, in which all data for a same type of entity (all posts, all users, etc) is fetched all together. Using `,` to separate a query makes it start iterating from the root all over again. Then, when processing this query...
+
+```php
+post,
+id.post
+``` 
+
+...the entites being handled by the dataloader are these ones, in this exact order: `root` (the first one, always), `posts` (loaded by query `posts`, before the `,`), `root` (the first one again, after `,`), `root` again (loaded by doing `id` on the `root` object) and then `posts` again (by doing `id.post`).
+
+As can be seen, the `id` field then enables to go back to an already loaded object, and keep loading properties on it. As such, it allows to delay loading certain data until a later iteration of the dataloader, to make sure a certain condition is satisfied.
+
+That is exactly why we need it: Directive `<copyRelationalResults>` copies a property one level up, but it is applied on the `root` object and, by the time it is executed, the properties to copy must exist on the `post` object. Hence the iteration: `root` loads the `post`, the `post` loads its properties, then back to `root` copies the properties from the `post` to itself.
+
+
+
+Let's first execute the query as we had been doing until now: concatenating fields using `|`. In this case, the query becomes:
+
+```php
+post($postId)@post.
+  echo([
+    content:content(),
+    date:date(d/m/Y)
+  ])@postData,
+id.
+  post($postId)@post<
+    copyRelationalResults([postData])
+  >
+```
+
+[View query results: <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.echo([content:content(),date:date(d/m/Y)])@postData,id.post($postId)@post%3CcopyRelationalResults([postData])%3E">PoP native output</a>]
 
 [<a href="">View query results</a>]
 
