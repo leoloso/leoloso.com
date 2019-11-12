@@ -75,7 +75,7 @@ While the standard GraphQL sends the query contained in the body of the request,
 
 **Similar but different query syntax**
 
-The [syntax used in PoP](https://github.com/getpop/field-query) is a re-imagining of the GraphQL syntax, supporting all the same elements (field arguments, variables, aliases, fragments, directives, and a few others), however designed to be easy to both read and write in a single line, so the developer can already code the query in the browser without depending on special tooling.
+The syntax used in PoP is a re-imagining of the GraphQL syntax, supporting all the required elements (field names, arguments, variables, aliases, fragments and directives), however designed to be easy to both read and write in a single line, so the developer can already code the query in the browser without depending on special tooling.
 
 It looks like this:
 
@@ -87,17 +87,17 @@ To make it clearer to code, the query can be split into several lines:
 
 ```
 fieldName(
-  key1: value1,
-  key2: value2
+  fieldArgs
 )@alias<
   fieldDirective(
-    key3: value3,
-    key4: value4
+    directiveArgs
   )
 >
 ```
 
-> **Note:** Firefox handles the multi-line query: Copy/pasting it into the URL bar works perfectly. For Chrome and Safari, though, we must strip all the whitespaces and line returns before pasting it to the URL bar. (Conclusion: use Firefox!)
+The syntax is described in detail in [its GitHub repo](https://github.com/getpop/field-query). I will keep explaining how it works below, while implementing the use case.
+
+> **Note:** Firefox already handles the multi-line query: Copy/pasting it into the URL bar works perfectly. For Chrome and Safari, though, we must strip all the whitespaces and line returns before pasting it to the URL bar. (Conclusion: use Firefox!)
 
 ### Implementing the Query (with explanations along the way)
 
