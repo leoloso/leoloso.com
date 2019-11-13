@@ -565,14 +565,15 @@ Having extracted the content under its own property, we apply directive `<transl
 
 #### Differences between directives and operators
 
-When coding a query, it may be sometimes unclear what is better, if to use an operator or use a directive. After all, the two of them can both execute functionality (such as sending an email, or translating a piece of text). So, when to use one or the other?
+When coding a query, it may be sometimes unclear what is better, if to use an operator or use a directive. After all, the two of them can both execute functionality (such as sending an email, or translating a piece of text). For instance, we could do either `posts.translate(title)` (operator) or `posts.title<translate>` (directive). So, when to use one or the other?
 
 When executing functionality, the main difference between these 2 is the following:
 
 An operator is a field. A field computes a value from a single object; every field is executed independently of each other field, and it is executed once per object. For instance, for the following query...
 
 ```php
-post.title
+post.
+  title
 ```
 
 ... the field `title` is executed once on each post object. If there are 10 posts, then `title` is executed 10 times, once in each. And they see no history: given a set of inputs, they just return their output. They don't have really a lot of logic, or complexity.
@@ -580,7 +581,11 @@ post.title
 Since operators are fields, we have the same situation: For the following query...
 
 ```php
-post.sprintf("Post title is", [title()])
+post.
+  sprintf(
+    "Post title is", 
+    [title()]
+  )
 ```
 
 ... the `sprintf` operator is executed once in each `title` property, which is executed 10 times, once per post, all independently from each other, and oblivious of each other.
