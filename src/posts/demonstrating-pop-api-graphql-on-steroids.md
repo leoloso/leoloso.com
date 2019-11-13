@@ -981,23 +981,50 @@ We are done now! Use case accomplished!!!!
 
 I'm sure that if you have reached up to here, you must be tired! You certainly must not want to keep reading technical, boring code, even if were about the most shinily awesome API ever... right?
 
-Me neither. So I will continue in another blog post to describe how this API either already deals with, or will soon, the following issues (which are very very very hot topics of discussion in the GraphQL community right now):
+Me neither. So I will continue in another blog post to describe how this API either already deals with, or will soon, the following issues:
 
 - HTTP Cache 
 - Federation and Decentralization
 - One-Graph solution for everything
 - User permissions, Public/Private API
+- Mutations
 
-I hope you have enjoyed this. If so, please check out the project on its several repos:
+I hope you have enjoyed this. If so, please check out [PoP](https://github.com/leoloso/PoP) (where it explains how the component model works), and the myriad of repos implementing the logic:
 
 - [GraphQL API](https://github.com/getpop/api-graphql)
-- [REST API](https://github.com/getpop/api-rest)
 - [API](https://github.com/getpop/api)
-- [Component Model](https://github.com/getpop/component-model)
 - [Engine](https://github.com/getpop/engine)
+- [Component Model](https://github.com/getpop/component-model)
 - [Field Query](https://github.com/getpop/field-query)
+- [REST API](https://github.com/getpop/api-rest)
 - [Translate Directive](https://github.com/getpop/translate-directive)
 - [Google Translate Directive](https://github.com/getpop/google-translate-directive)
-- [PoP](https://github.com/leoloso/PoP) (there is no code here, but the description of how the component-based architecture works and what its intended goals are)
 
-Thanks for reading!
+PoP has been implemented in PHP, it relies on Composer for installation, and it can work with most popular CMSs and frameworks (WordPress, Symfony, Laravel). It is still under heavy development, so I would advise against using it in PROD for the time being. But all code is stable, so please go ahead, download it, and play with it in your DEV environment. Fortunately, the data model in the PoP API is the existing one in the application (remember: There are no schemas!), so its introduction to an existing project can demand very low effort. 
+
+The version for WordPress is ready to install. Simply add the following packages in your `composer.json` file:
+
+```javascript
+"require": {
+  "getpop/engine-wp": "dev-master",
+  "getpop/commentmeta-wp": "dev-master",
+  "getpop/comments-wp": "dev-master",
+  "getpop/pages-wp": "dev-master",
+  "getpop/postmeta-wp": "dev-master",
+  "getpop/posts-wp": "dev-master",
+  "getpop/posts-api": "dev-master",
+  "getpop/postmedia-wp": "dev-master",
+  "getpop/taxonomies-wp": "dev-master",
+  "getpop/taxonomymeta-wp": "dev-master",
+  "getpop/taxonomyquery-wp": "dev-master",
+  "getpop/usermeta-wp": "dev-master",
+  "getpop/users-wp": "dev-master",
+  "getpop/api-graphql": "dev-master",
+  "getpop/api-rest": "dev-master",
+  "getpop/google-translate-directive": "dev-master"
+}
+```
+
+More detailed instructions for installation can be found in [this GitHub repo](https://github.com/leoloso/PoP-API-WP). 
+
+Adopters and contributors are welcome... Thanks for reading! 😀
