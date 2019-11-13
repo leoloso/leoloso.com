@@ -991,6 +991,8 @@ I hope you have enjoyed this. If so, please check out the project on its several
 - [Component Model](https://github.com/getpop/component-model)
 - [Engine](https://github.com/getpop/engine)
 - [Field Query](https://github.com/getpop/field-query)
+- [Translate Directive](https://github.com/getpop/translate-directive)
+- [Google Translate Directive](https://github.com/getpop/google-translate-directive)
 - [PoP](https://github.com/leoloso/PoP) (there is no code here, but the description of how the component-based architecture works and what its intended goals are)
 
 Thanks for reading!
