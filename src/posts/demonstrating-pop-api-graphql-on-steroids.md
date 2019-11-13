@@ -997,6 +997,7 @@ I hope you have enjoyed this. If so, please check out [PoP](https://github.com/l
 - [Component Model](https://github.com/getpop/component-model)
 - [Field Query](https://github.com/getpop/field-query)
 - [REST API](https://github.com/getpop/api-rest)
+- [Posts](https://github.com/getpop/posts)
 - [Translate Directive](https://github.com/getpop/translate-directive)
 - [Google Translate Directive](https://github.com/getpop/google-translate-directive)
 
