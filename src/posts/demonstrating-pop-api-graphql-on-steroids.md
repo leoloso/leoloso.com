@@ -604,12 +604,12 @@ posts.
 
 Hence, we must use directives when:
 
-- It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections.
+- It is more efficient to batch execute operations. For instance, a `<sendByEmail>` directive sending 10 emails at once is more effective than a `sendByEmail()` operator sending 10 emails independently, and making 10 SMTP connections; a `<translate>` directive can make a single call to the translation API to translate all strings at once, which is more efficient than calling `translate()` on 10 strings which will make 10 calls to the translation API.
 - We need low-level functionality, such as: modifying or deleting previous data, copying data to another object, iterating through a series of properties to apply a function to each of them, etc.
 
 #### Translating the post content to all different languages (again x3)
 
-Then, because the directive is executed only once, implementing this functionality as a directive makes much more sense than as an operator: We are able to translate multiple pieces of text (eg: fields `title`, `content` and `extract` from a post, for many posts) with a single call to the Google Translate API. It's so efficient!
+Now we know why we are doing `content<translate>` instead of `translate(content)`. Let's continue.
 
 The following query takes care of translating the post content to all the different unique languages gathered earlier on from the user data:
 
