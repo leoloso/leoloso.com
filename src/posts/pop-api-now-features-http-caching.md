@@ -9,7 +9,7 @@ tags:
   - graphql
 ---
 
-The [GraphQL API for PoP](https://github.com/getpop/api-graphql) now features [HTTP caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)! From now on, whenever requesting the API, the response will be cached (in the server, intermediate caches such as CDNs, and the user's browser) as indicated through the `Cache-Control` header. 
+The [GraphQL API for PoP](https://github.com/getpop/api-graphql) now features [HTTP caching](https://github.com/getpop/cache-control)! From now on, whenever requesting the API, the response will be cached (in the server, intermediate caches such as CDNs, and the user's browser) as indicated through the `Cache-Control` header. 
 
 (Really, GraphQL, how comes you still don't support it? Why do you keep re-inventing the wheel?)
 
@@ -47,10 +47,10 @@ Nested fields are also taken into account when computing the lowest max-age:
 
 ```php
 /?query=
-  echo(arrayAsQueryStr(posts()))
+  echo(posts())
 ```
 
-<a href="https://newapi.getpop.org/api/graphql/?query=echo(arrayAsQueryStr(posts()))">[View query results]</a>
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(posts())">[View query results]</a>
 
 `"time"` field is not to be cached (max-age: 0):
 
