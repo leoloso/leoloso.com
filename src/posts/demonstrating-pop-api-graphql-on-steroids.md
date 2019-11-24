@@ -627,7 +627,7 @@ id.
     >
 ```
 
-[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]]))%3E">GraphQL output</a> (changes not yet visible), <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]]))%3E">PoP native output</a> (changes already there)]
+[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]]))%3E">GraphQL output</a> (changes not yet visible), <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]]))%3E">PoP native output</a> (changes already there)]
 
 We can see that the `<translate>` directive takes 2 inputs through directive arguments: the `from` language (English) and the `to` language or array of languages. Since we want to translate to many languages, we provide this list, but first removing English from the list (through operator `arrayDiff`). Otherwise, the Google Translate API throws an error when attempting to translate from English to English.
 
@@ -648,7 +648,7 @@ id.
     >
 ```
 
-[View query results: <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E">GraphQL output</a> (changes not yet visible), <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E">PoP native output</a> (changes already there)]
+[View query results: <a href="https://newapi.getpop.org/api/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E">GraphQL output</a> (changes not yet visible), <a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E">PoP native output</a> (changes already there)]
 
 > **Note:**<br/>When applying more than 1 directive to the same affected objects and fields, we can simply concatenate them with `,` in the order in which they will be executed, as in `<translate(...), renameProperty(...)>`. 
 > 
@@ -685,7 +685,7 @@ id.
       >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CapplyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))])%3E%3E">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))])%3E%3E">View query results</a>]
 
 > **Note:**<br/>Function `arrayAddItem` still initially defines field arguments `array` and `value`, even if initialized with empty values. This must be done because these arguments are set as mandatory in the schema definition, so if they are not present, it is considered a schema validation error and this section of the query is ignored.
 
@@ -721,7 +721,7 @@ id.
     >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CapplyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),applyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),getSelfProp(%self%,postDate)])])%3E%3E">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20header,array:%20%value%,value:%20sprintf(string:%20%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:%20[extract(%value%,%20name),getSelfProp(%self%,%20postDate)])])%3E%3E">View query results</a>]
 
 Finally, we translate the message to the user's language. To do this, we use directive `<forEach>` to iterate on all array items whose `lang` field is `"en"` (for English), since we don't want to translate those. This is accomplished through the filter condition passed through argument `if`. Then, each array item is passed to the nested directive `<advancePointerInArray>`, which can navigate the inner structure of the array and position itself on the property that needs be translated: `header`. 
 
@@ -730,28 +730,29 @@ Finally the element is passed to the next nested directive, `<translate>`, which
 ```php
 id.
   id.
-    getSelfProp(%self%, userPostData)@translatedUserPostProps<
-      forEach(
-        if:not(equals(extract(%value%,lang),en))
-      )<
-        advancePointerInArray(
-          path: header,
-          appendExpressions: [
-            toLang:extract(%value%,lang)
-          ]
+    id.
+      getSelfProp(%self%, userPostData)@translatedUserPostProps<
+        forEach(
+          if:not(equals(extract(%value%,lang),en))
         )<
-          translate(
-            from: en,
-            to: %toLang%,
-            oneLanguagePerField: true,
-            override: true
-          )
+          advancePointerInArray(
+            path: header,
+            appendExpressions: [
+              toLang:extract(%value%,lang)
+            ]
+          )<
+            translate(
+              from: en,
+              to: %toLang%,
+              oneLanguagePerField: true,
+              override: true
+            )
+          >
         >
       >
-    >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CapplyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),applyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),getSelfProp(%self%,postDate)])])%3E%3E|getSelfProp(%self%,userPostData)@translatedUserPostProps%3CforEach(if:not(equals(extract(%value%,lang),en)))%3CadvancePointerInArray(path:header,appendExpressions:[toLang:extract(%value%,lang)])%3Ctranslate(from:en,to:%toLang%,oneLanguagePerField:true,override:true)%3E%3E%3E">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20header,array:%20%value%,value:%20sprintf(string:%20%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:%20[extract(%value%,%20name),getSelfProp(%self%,%20postDate)])])%3E%3E|id.getSelfProp(%self%,%20userPostData)@translatedUserPostProps%3CforEach(if:%20not(equals(extract(%value%,%20lang),en)))%3CadvancePointerInArray(path:%20header,appendExpressions:%20[toLang:%20extract(%value%,%20lang)])%3Ctranslate(from:%20en,to:%20%toLang%,oneLanguagePerField:%20true,override:%20true)%3E%3E%3E">View query results</a>]
 
 #### Generating and sending the email
 
@@ -760,50 +761,52 @@ We are almost there! All that there is left to do is to generate the content for
 ```php
 id.
   id.
-    getSelfProp(%self%,translatedUserPostProps)@emails<
-      forEach<
-        applyFunction(
-          function: arrayAddItem(
-            array: [],
-            value: []
-          ),
-          addArguments: [
-            key: content,
-            array: %value%,
-            value: concat([
-              extract(%value%,header),
-              extract(%value%,postContent)
-            ])
-          ]
-        ),
-        applyFunction(
-          function: arrayAddItem(
-            array: [],
-            value: []
-          ),
-          addArguments: [
-            key: to,
-            array: %value%,
-            value: extract(%value%,email)
-          ]
-        ),
-        applyFunction(
-          function: arrayAddItem(
-            array: [],
-            value: []
-          ),
-          addArguments: [
-            key: subject,
-            array: %value%,
-            value: "PoP API example :)"
-          ]
-        ),
-        sendByEmail
-      >
-    >
+    id.
+      id.
+        getSelfProp(%self%,translatedUserPostProps)@emails<
+          forEach<
+            applyFunction(
+              function: arrayAddItem(
+                array: [],
+                value: []
+              ),
+              addArguments: [
+                key: content,
+                array: %value%,
+                value: concat([
+                  extract(%value%,header),
+                  extract(%value%,postContent)
+                ])
+              ]
+            ),
+            applyFunction(
+              function: arrayAddItem(
+                array: [],
+                value: []
+              ),
+              addArguments: [
+                key: to,
+                array: %value%,
+                value: extract(%value%,email)
+              ]
+            ),
+            applyFunction(
+              function: arrayAddItem(
+                array: [],
+                value: []
+              ),
+              addArguments: [
+                key: subject,
+                array: %value%,
+                value: "PoP API example :)"
+              ]
+            ),
+            sendByEmail
+          >
+        >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,userList),lang))@userLangs|extract(getSelfProp(%self%,userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|getSelfProp(%self%,postContent)@postContent%3Ctranslate(from:en,to:arrayDiff([getSelfProp(%self%,userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,userData)@userPostData%3CforEach%3CapplyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:postContent,array:%value%,value:getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,lang)]))]),applyFunction(function:arrayAddItem(array:[],value:%22%22),addArguments: [key:header,array:%value%,value:sprintf(string:%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:[extract(%value%,name),getSelfProp(%self%,postDate)])])%3E%3E|getSelfProp(%self%,userPostData)@translatedUserPostProps%3CforEach(if:not(equals(extract(%value%,lang),en)))%3CadvancePointerInArray(path:header,appendExpressions:[toLang:extract(%value%,lang)])%3Ctranslate(from:en,to:%toLang%,oneLanguagePerField:true,override:true)%3E%3E%3E|getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CapplyFunction(function:arrayAddItem(array:[],value:[]),addArguments: [key:content,array:%value%,value:concat([extract(%value%,header),extract(%value%,postContent)])]),applyFunction(function:arrayAddItem(array:[],value:[]),addArguments: [key:to,array:%value%,value:extract(%value%,email)]),applyFunction(function:arrayAddItem(array:[],value:[]),addArguments: [key:subject,array:%value%,value:%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20header,array:%20%value%,value:%20sprintf(string:%20%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:%20[extract(%value%,%20name),getSelfProp(%self%,%20postDate)])])%3E%3E|id.getSelfProp(%self%,%20userPostData)@translatedUserPostProps%3CforEach(if:%20not(equals(extract(%value%,%20lang),en)))%3CadvancePointerInArray(path:%20header,appendExpressions:%20[toLang:%20extract(%value%,%20lang)])%3Ctranslate(from:%20en,to:%20%toLang%,oneLanguagePerField:%20true,override:%20true)%3E%3E%3E|id.getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20content,array:%20%value%,value:%20concat([extract(%value%,%20header),extract(%value%,%20postContent)])]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20to,array:%20%value%,value:%20extract(%value%,%20email)]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20subject,array:%20%value%,value:%20%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
 
 ### The final query!
 
@@ -893,74 +896,76 @@ id.
         )
       >
     >|
-    getSelfProp(%self%, userPostData)@translatedUserPostProps<
-      forEach(
-        if: not(
-          equals(
-            extract(%value%, lang),
-            en
+    id.
+      getSelfProp(%self%, userPostData)@translatedUserPostProps<
+        forEach(
+          if: not(
+            equals(
+              extract(%value%, lang),
+              en
+            )
           )
-        )
-      )<
-        advancePointerInArray(
-          path: header,
-          appendExpressions: [
-            toLang: extract(%value%, lang)
-          ]
         )<
-          translate(
-            from: en,
-            to: %toLang%,
-            oneLanguagePerField: true,
-            override: true
-          )
+          advancePointerInArray(
+            path: header,
+            appendExpressions: [
+              toLang: extract(%value%, lang)
+            ]
+          )<
+            translate(
+              from: en,
+              to: %toLang%,
+              oneLanguagePerField: true,
+              override: true
+            )
+          >
         >
-      >
-    >|
-    getSelfProp(%self%,translatedUserPostProps)@emails<
-      forEach<
-        applyFunction(
-          function: arrayAddItem(
-            array: [],
-            value: []
-          ),
-          addArguments: [
-            key: content,
-            array: %value%,
-            value: concat([
-              extract(%value%, header),
-              extract(%value%, postContent)
-            ])
-          ]
-        ),
-        applyFunction(
-          function: arrayAddItem(
-            array: [],
-            value: []
-          ),
-          addArguments: [
-            key: to,
-            array: %value%,
-            value: extract(%value%, email)
-          ]
-        ),
-        applyFunction(
-          function: arrayAddItem(
-            array: [],
-            value: []
-          ),
-          addArguments: [
-            key: subject,
-            array: %value%,
-            value: "PoP API example :)"
-          ]
-        ),
-        sendByEmail
-      >
-    >
+      >|
+      id.
+        getSelfProp(%self%,translatedUserPostProps)@emails<
+          forEach<
+            applyFunction(
+              function: arrayAddItem(
+                array: [],
+                value: []
+              ),
+              addArguments: [
+                key: content,
+                array: %value%,
+                value: concat([
+                  extract(%value%, header),
+                  extract(%value%, postContent)
+                ])
+              ]
+            ),
+            applyFunction(
+              function: arrayAddItem(
+                array: [],
+                value: []
+              ),
+              addArguments: [
+                key: to,
+                array: %value%,
+                value: extract(%value%, email)
+              ]
+            ),
+            applyFunction(
+              function: arrayAddItem(
+                array: [],
+                value: []
+              ),
+              addArguments: [
+                key: subject,
+                array: %value%,
+                value: "PoP API example :)"
+              ]
+            ),
+            sendByEmail
+          >
+        >
 ```
 
-[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20header,array:%20%value%,value:%20sprintf(string:%20%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:%20[extract(%value%,%20name),getSelfProp(%self%,%20postDate)])])%3E%3E|getSelfProp(%self%,%20userPostData)@translatedUserPostProps%3CforEach(if:%20not(equals(extract(%value%,%20lang),en)))%3CadvancePointerInArray(path:%20header,appendExpressions:%20[toLang:%20extract(%value%,%20lang)])%3Ctranslate(from:%20en,to:%20%toLang%,oneLanguagePerField:%20true,override:%20true)%3E%3E%3E|getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20content,array:%20%value%,value:%20concat([extract(%value%,%20header),extract(%value%,%20postContent)])]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20to,array:%20%value%,value:%20extract(%value%,%20email)]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20subject,array:%20%value%,value:%20%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
+[<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,id.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|id.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20header,array:%20%value%,value:%20sprintf(string:%20%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:%20[extract(%value%,%20name),getSelfProp(%self%,%20postDate)])])%3E%3E|id.getSelfProp(%self%,%20userPostData)@translatedUserPostProps%3CforEach(if:%20not(equals(extract(%value%,%20lang),en)))%3CadvancePointerInArray(path:%20header,appendExpressions:%20[toLang:%20extract(%value%,%20lang)])%3Ctranslate(from:%20en,to:%20%toLang%,oneLanguagePerField:%20true,override:%20true)%3E%3E%3E|id.getSelfProp(%self%,translatedUserPostProps)@emails%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20content,array:%20%value%,value:%20concat([extract(%value%,%20header),extract(%value%,%20postContent)])]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20to,array:%20%value%,value:%20extract(%value%,%20email)]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20[]),addArguments:%20[key:%20subject,array:%20%value%,value:%20%22PoP%20API%20example%20:)%22]),sendByEmail%3E%3E">View query results</a>]
 
 We are done now! Use case accomplished!!!!
 
