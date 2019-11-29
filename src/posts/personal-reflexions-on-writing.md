@@ -54,6 +54,6 @@ The sensation is more pronounced when your content is truly appreciated by the t
 
 ![A sincere "thank you" comment can make my day](/images/comment-feels-good.jpg)
 
-Until my next blog post... See you, and thanks for reading!
+Until my next blog post... See you, and thanks for reading! (No comments on my blog yet 😢 If you want to leave a comment, or simply share this blog post with your friends, please use [this Twitter link](https://twitter.com/losoviz/status/1200330210500997125).)
 
 <span style="font-size: 100px;">👋</span>
