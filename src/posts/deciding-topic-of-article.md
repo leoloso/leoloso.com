@@ -1,7 +1,7 @@
 ---
 title: Deciding what to write about
 metaDesc: Writing (or wanting to write) for a prestigious magazine? But you still don't know what to write about? Here some ideas that have worked for me.
-socialImage: https://leoloso.com/images/smashing-cat.png
+socialImage: https://leoloso.com/images/proud-goat.jpg
 date: '2020-09-25'
 tags:
   - smashing

@@ -1,7 +1,7 @@
 ---
 title: Good Writing in 10 Smashing Cases
 metaDesc: Smashing articles from smashing authors for a smashing experience
-socialImage: https://leoloso.com/images/smashing-cat.png
+socialImage: https://leoloso.com/images/proud-goat.jpg
 date: '2020-09-25'
 tags:
   - smashing
