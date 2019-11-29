@@ -1,8 +1,8 @@
 ---
 title: 🔪 Decoupling PoP from WordPress - How it was achieved
-metaDesc: Doing things properly is hard work, but well worth it!
-socialImage: https://leoloso.com/images/pop-logo-whitebg.png
-date: '2020-10-29'
+metaDesc: Doing things properly is hard work, but well worth it
+socialImage: https://leoloso.com/images/wordpress-logo.png
+date: '2019-11-29'
 tags:
   - wordpress
   - laravel
@@ -12,15 +12,28 @@ tags:
   - smashing
 ---
 
-Several months ago I started doing the migration of [PoP](https://github.com/leoloso/PoP)'s codebase to using Composer as its foundational framework for package management. In that moment, I decided to also decouple PoP's codebase from WordPress, making it CMS-agnostic. 
+When some time ago I started modernizing [PoP](https://github.com/leoloso/PoP)'s codebase to using [Composer](https://getcomposer.org) as its foundational framework for package management, I decided to also decouple PoP's codebase from [WordPress](https://wordpress.org), making it CMS-agnostic. 
 
-Oh boy, that was a lot of work! But sure it was all worth it! As a consequence, PoP can now run pretty much with any PHP-based framework, including [Symfony](https://symfony.com) and [Laravel](https://laravel.com/)! 
+Oh boy, that was a lot of work, but sure it was all worth it: PoP can now run pretty much with any PHP-based framework, including [Symfony](https://symfony.com) and [Laravel](https://laravel.com/)! 
 
 Yay!!!!!
 
-If you are interested to know how the abstraction was accomplished, I have recently published an extensive account of it (split into 2 parts) for Smashing Magazine. Check it out here:
+<span style="font-size: 100px;">🤘🏻</span>
 
-- Part 1: Abstracting WordPress code to reuse with other CMSs - Concepts
-- Part 2: Abstracting WordPress code to reuse with other CMSs - Implementation
+I have recently published an extensive account of it, split into 2 parts, for Smashing Magazine. If you need to:
+
+👉 Migrate your WordPress PHP code to other platforms 
+
+👉 Or re-use your Gutenblock PHP code for Laravel, Drupal
+
+👉 Or make your application code more understandable, dealing only with business logic
+
+👉 Or you are simply interested to know how the abstraction is accomplished
+
+...then check my articles on Smashing:
+
+- Part 1: [Abstracting WordPress code to reuse with other CMSs - Concepts](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-cms-concepts/)
+
+- Part 2: [Abstracting WordPress code to reuse with other CMSs - Implementation](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/)
 
 Enjoy!
