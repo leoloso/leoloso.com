@@ -12,7 +12,7 @@ _I code, I learn, I share._
 
 ---
 
-**I am available for hiring!** I specialize in building APIs (I authored [a library](https://github.com/getpop/api-graphql) to implement a schemaless GraphQL), creating sites that run with any CMS or PHP framework (such as WordPress, Laravel and Symfony) and can be deployed on serverless PHP (I authored a [component model](https://github.com/getpop/component-model) which is the optimal mechanism to deploy atomic functionality), and optimizing content management across platforms (I authored [a WordPress plugin](https://wordpress.org/plugins/block-metadata/) to tackle this problem).
+**I am available for hiring!** I specialize in building APIs (I authored [an improved version of GraphQL](https://github.com/getpop/api-graphql) on PHP, which is faster and offers more capabilities than the standard GraphQL), creating sites that run with any CMS or PHP framework and can be deployed on serverless PHP (I authored a [component model](https://github.com/getpop/component-model) which is the optimal mechanism to deploy atomic functionality, and which can work with WordPress, Laravel, Symfony and others), and optimizing content management across platforms (I authored [a WordPress plugin](https://wordpress.org/plugins/block-metadata/) to tackle this problem).
 
 <!-- ---
 
