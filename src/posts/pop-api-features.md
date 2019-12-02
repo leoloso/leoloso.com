@@ -866,6 +866,8 @@ Issues are handled differently depending on their severity:
 
 ### Type casting/validation
 
+When an argument has its type declared in the schema, its inputs will be casted to the type. If the input and the type are incompatible, it ignores setting the input and throws a warning.
+
 ```less
 /?query=
   posts(limit:3.5).
@@ -874,10 +876,9 @@ Issues are handled differently depending on their severity:
 
 <a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:3.5).title" target="_blank">View query results</a>
 
-- When an argument has its type declared in the schema, its inputs will be casted to the type
-- If the input and the type are incompatible, it ignores setting the input and throws a warning
-
 ### Issues bubble upwards
+
+If a field or directive fails and it is input to another field, this one may also fail.
 
 ```less
 /?query=
@@ -887,9 +888,9 @@ Issues are handled differently depending on their severity:
 
 <a href="https://newapi.getpop.org/api/graphql/?query=post(divide(a,4)).title" target="_blank">View query results</a>
 
-- If a field or directive fails and it is input to another field, this one may also fail
-
 ### Path to the issue
+
+Issues contain the path to the nested field or directive were it was produced.
 
 ```less
 /?query=
@@ -902,9 +903,9 @@ Issues are handled differently depending on their severity:
 
 <a href="https://newapi.getpop.org/api/graphql/?query=echo(%5Bhola,chau%5D)%3CforEach%3Ctranslate(notexisting:prop)%3E%3E" target="_blank">View query results</a>
 
-- Issues contain the path to the nested field or directive were it was produced
-
 ### Log information
+
+Any informative piece of information can be logged (enabled/disabled through configuration).
 
 ```less
 /?
