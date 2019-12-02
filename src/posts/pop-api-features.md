@@ -1,0 +1,933 @@
+---
+title: 🚀 Iterating over, and improving, GraphQL - How the PoP API achieves new heights
+metaDesc: All the features from this brand-new API
+socialImage: https://leoloso.com/images/pop-logo-whitebng.png
+date: '2020-12-02'
+tags:
+  - pop
+  - api
+  - graphql
+---
+
+I had originally started implementing the [GraphQL](https://graphql.org) spec using server-side components, providing yet another implementation of GraphQL on PHP (such as those based on the popular [graphql-php](https://github.com/webonyx/graphql-php) library), but attempting to also support those features that GraphQL fails at supporting, such as HTTP caching.
+
+I can now claim my attempt was a success: The implementation satisfies the GraphQL spec (except for the syntax... more on this below), and adding native support for [HTTP caching](https://github.com/getpop/cache-control) took only 1 week. (And the way it works is just beautiful: a `max-cache` value can be set for each field from the schema, and the requested page will automatically calculate its `max-cache` from all required fields.)
+
+HTTP caching is only one success case from many. Indeed, I have been steadily expanding the capabilities of this API in the last few weeks... By now, its capabilities are extremely powerful, much more so than the typical GraphQL implementation out there. So, I'd say this is a good time to introduce it to the world, and hope that the world will notice it.
+
+Please be introduced to the [PoP API](https://github.com/getpop/api), an iteration and improvement over GraphQL.
+
+Below is the set of its unique, distinctive features (displayed [through slides here](https://slides.com/leoloso/schemaless-graphql/#/14)).
+
+### Queries are URL-based
+
+Structure of the request:
+
+```less
+/?query=query&amp;variable=value&amp;fragment=fragmentQuery
+```
+
+Structure of the query:
+
+```less
+/?query=field(args)@alias<directive(args)>
+```
+
+This syntax:
+
+- Enables HTTP/Server-side caching
+- Simplifies visualization/execution of queries (straight in the browser, without any client)
+- GET when it's a GET, POST when it's a POST, pass variables through URL params
+
+This syntax can be expressed in multiple lines:
+
+```less
+/?
+query=
+  field(
+    args
+  )@alias<
+    directive(
+      args
+    )
+  > 
+```
+
+Advantages:
+
+- It is easy to read and write as a URL param (it doesn't make use of `{` and `}` like GraphQL)
+- Copy/pasting in Firefox works straight!
+
+Example:
+
+```less
+/?
+query=
+  posts(
+    limit: 5
+  )@posts.
+    id|
+    date(format: d/m/Y)|
+    title<
+      skip(if: false)
+    >
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:5)@posts.id%7Cdate(format:d/m/Y)%7Ctitle<skip(if:false)>" target="_blank">View query results</a>
+
+The syntax has the following elements:
+
+- `(key:value)` : Arguments
+- `[key:value]` or `[value]` : Array
+- `$` : Variable
+- `@` : Alias
+- `.` : Advance relationship
+- `|` : Fetch multiple fields
+- `<...>` : Directive
+- `--` : Fragment
+
+Example:
+
+```less
+/?
+query=
+  posts(
+    ids: [1, 1499, 1178],
+    order: $order
+  )@posts.
+    id|
+    date(format: d/m/Y)|
+    title<
+      skip(if: false)
+    >|
+    --props&amp;
+order=title|ASC&amp;
+props=
+  url|
+  author.
+    name|
+    url
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?order=title%7CASC&amp;props=url%7Cauthor.name%7Curl&amp;query=posts(ids:%5B1,1499,1178%5D,order:%24order)@posts.id%7Cdate(format:d/m/Y)%7Ctitle<skip(if:false)>%7C--props" target="_blank">View query results</a>
+
+### Dynamic schema
+
+Because it is generated from code, different schemas can be created for different use cases, from a single source of truth.
+
+To visualize it, we use the standard introspection field `__schema`:
+
+```less
+/?query=__schema
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=__schema" target="_blank">View query results</a>
+
+### Skip argument names
+
+Field and directive argument names can be deduced from the schema. 
+
+This query...
+
+```less
+// Query 1
+/?
+postId=1&amp;
+query=
+  post($postId).
+    date(d/m/Y)|
+    title<
+      skip(false)
+    >
+```
+
+...is equivalent to this query:
+
+```less
+// Query 2
+/?
+postId=1&amp;
+query=
+  post(id:$postId).
+    date(format:d/m/Y)|
+    title<
+      skip(if:false)
+    >
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?postId=1&amp;query=post(%24postId).date(d/m/Y)%7Ctitle%3Cskip(false)%3E" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?postId=1&amp;query=post(id:%24postId).date(format:d/m/Y)%7Ctitle<skip(if:false)>" target="_blank">View query results #2</a>
+
+### Operators and Helpers
+
+All operators and functions provided by the language (PHP) can be made available as standard fields, and any custom “helper” functionality can be easily implemented too:
+
+```less
+1. /?query=not(true)
+2. /?query=or([1,0])
+3. /?query=and([1,0])
+4. /?query=if(true, Show this text, Hide this text)
+5. /?query=equals(first text, second text)
+6. /?query=isNull(),isNull(something)
+7. /?query=sprintf(%s API is %s, [PoP, cool])
+8. /?query=context
+```
+
+<a href="https://nextapi.getpop.org/api/graphql?query=not(true)" target="_blank">View query results #1</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=or(%5B1,0%5D)" target="_blank">View query results #2</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=and(%5B1,0%5D)" target="_blank">View query results #3</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show%20this%20text,Hide%20this%20text)" target="_blank">View query results #4</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=equals(first%20text,%20second%20text)" target="_blank">View query results #5</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)" target="_blank">View query results #6</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=sprintf(%s%20API%20is%20%s,%20%5BPoP,%20cool%5D)" target="_blank">View query results #7</a>
+
+<a href="https://nextapi.getpop.org/api/graphql?query=context" target="_blank">View query results #8</a>
+
+### Nested fields
+
+The value from a field can be the input to another field, and there is no limit how many levels deep it can be.
+
+In the example below, field `post` is injected, in its field argument `id`, the value from field `arrayItem` applied to field `posts`:
+
+```less
+/?query=
+  post(
+    id: arrayItem(
+      posts(
+        limit: 1,
+        order: date|DESC
+      ), 
+    0)
+  )@latestPost.
+    id|
+    title|
+    date
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=post(id:arrayItem(posts(limit:1,order:date%7CDESC),0))@latestPost.id%7Ctitle%7Cdate" target="_blank">View query results</a>
+
+To tell if a field argument must be considered a field or a string, if it contains `()` it is a field, otherwise it is a string (eg: `posts()` is a field, and `posts` is a string)
+
+### Nested fields with operators and helpers
+
+Operators and helpers are standard fields, so they can be employed for nested fields. This makes available composable elements to the query, which removes the need to implement custom code in the resolvers, or to fetch raw data that is then processed in the application in the client-side. Instead, logic can be provided in the query itself.
+
+```less
+/?
+format=Y-m-d&amp;
+query=
+  posts.
+    if (
+      has-comments(), 
+      sprintf(
+        "This post has %s comment(s) and title '%s'", [
+          comments-count(),
+          title()
+        ]
+      ), 
+      sprintf(
+        "This post was created on %s and has no comments", [
+          date(format: if(not(empty($format)), $format, d/m/Y))
+        ]
+      )
+    )@postDesc
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?format=Y-m-d&amp;query=posts.if(has-comments(),sprintf(%22This%20post%20has%20%s%20comment(s)%20and%20title%20%27%s%27%22,%5Bcomments-count(),title()%5D),sprintf(%22This%20post%20was%20created%20on%20%s%20and%20has%20no%20comments%22,%5Bdate(format:if(not(empty(%24format)),%24format,d/m/Y))%5D))@postDesc" target="_blank">View query results</a>
+
+This solves one issue with GraphQL: That it transfers the REST way of creating multiple endpoints to satisfy different needs (such as `/posts-with-this-data/` and `/posts-with-that-data/`) and then `/posts-with-that-data-2/` into the data model. For instance, exploring the [live demo](https://graphiql-test.netlify.com/) to demonstrate [GraphiQL](https://github.com/graphql/graphiql) with the DevTools' network tab, we see that the schema contains fields `fileName_not`, `fileName_in`, `fileName_not_in`, etc:
+
+![GraphiQL “RESTy” data model](/images/graphql-schema.jpg "GraphiQL “RESTy” data model")
+
+### Nested fields in directive arguments
+
+Through nested fields, the directive can be evaluated against the object, granting it a dynamic behavior.
+
+The example below implements the standard GraphQL `skip` directive, however it is able to decide if to skip the field or not based on a condition from the object itself:
+
+```less
+/?query=
+  posts.
+    title|
+    featuredimage<
+      skip(if:isNull(featuredimage()))
+    >.
+      src
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.title%7Cfeaturedimage<skip(if:isNull(featuredimage()))>.src" target="_blank">View query results</a>
+
+### Skip output if null
+
+Exactly the same result above (`<skip(if(isNull(...)))>`) can be accomplished using the `?` operator: Adding it after a field, it skips the output of its value if it is null.
+
+```less
+/?query=
+  posts.
+    title|
+    featuredimage?.
+      src
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.title%7Cfeaturedimage?.src" target="_blank">View query results</a>
+
+### Nested directives
+
+Directives can be nested, unlimited levels deep, enabling to create complex logic such as iterating over array elements and applying a function on them, changing the context under which a directive must execute, and others.
+
+In the example below, directive `<forEach>` iterates all the elements from an array, and passes each of them to directive `<applyFunction>` which executes field `arrayJoin` on them:
+
+```less
+/?query=
+  echo([
+    [banana, apple],
+    [strawberry, grape, melon]
+  ])@fruitJoin<
+    forEach<
+      applyFunction(
+        function: arrayJoin,
+        addArguments: [
+          array: %value%,
+          separator: "---"
+        ]
+      )
+    >
+  >
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(%5B%5Bbanana,apple%5D,%5Bstrawberry,grape,melon%5D%5D)@fruitJoin%3CforEach%3CapplyFunction(function:arrayJoin,addArguments:%5Barray:%value%,separator:%22---%22%5D)%3E%3E" target="_blank">View query results</a>
+
+### Directive expressions
+
+An expression, defined through symbols `%...%`, is a variable used by directives to pass values to each other. An expression can be pre-defined by the directive or created on-the-fly in the query itself.
+
+In the example below, an array contains strings to translate and the language to translate the string to. The array element is passed from directive `<forEach>` to directive `<advancePointerInArray>` through pre-defined expression `%value%`, and the language code is passed from directive `<advancePointerInArray>` to directive `<translate>` through variable `%toLang%`, which is defined only in the query:
+
+```less
+/?query=
+  echo([
+    [
+      text: Hello my friends,
+      translateTo: fr
+    ],
+    [
+      text: How do you like this software so far?,
+      translateTo: es
+    ],
+  ])@translated<
+    forEach<
+      advancePointerInArray(
+        path: text,
+        appendExpressions: [
+          toLang:extract(%value%,translateTo)
+        ]
+      )<
+        translate(
+          from: en,
+          to: %toLang%,
+          oneLanguagePerField: true,
+          override: true
+        )
+      >
+    >
+  >
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(%5B%5Btext:%20Hello%20my%20friends,translateTo:%20fr%5D,%5Btext:%20How%20do%20you%20like%20this%20software%20so%20far?,translateTo:%20es%5D,%5D)@translated%3CforEach%3CadvancePointerInArray(path:%20text,appendExpressions:%20%5BtoLang:extract(%value%,translateTo)%5D)%3Ctranslate(from:%20en,to:%20%toLang%,oneLanguagePerField:%20true,override:%20true)%3E%3E%3E" target="_blank">View query results</a>
+
+### HTTP Caching
+
+```less
+//1. Operators have max-age 1 year
+/?query=
+  echo(Hello world!)
+
+//2. Most fields have max-age 1 hour
+/?query=
+  echo(Hello world!)|
+  posts.
+    title
+
+//3. Nested fields also supported
+/?query=
+  echo(posts())
+
+//4. "time" field has max-age 0
+/?query=
+  time
+
+//5. To not cache a response:
+//a. Add field "time"
+/?query=
+  time|
+  echo(Hello world!)|
+  posts.
+    title
+
+//b. Add <cacheControl(maxAge:0)>
+/?query=
+  echo(Hello world!)|
+  posts.
+    title<cacheControl(maxAge:0)>
+```
+
+- Response contains Cache-Control header with max-age
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(posts())" target="_blank">View query results #3</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(Hello+world!)%7Cposts.title" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(Hello+world!)" target="_blank">View query results #1</a>
+
+- Max-age values are configured field by field
+- Response max-age is the lowest max-age among all requested fields
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(Hello+world!)%7Cposts.title<cacheControl(maxAge:0)>" target="_blank">View query results #6</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=time%7Cecho(Hello+world!)%7Cposts.title" target="_blank">View query results #5</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=time" target="_blank">View query results #4</a>
+
+### Many resolvers per field
+
+```less
+//1. Standard behaviour
+/?query=
+  posts.
+    excerpt
+
+//2. New feature not yet available
+/?query=
+  posts.
+    excerpt(length:30)
+
+//3. New feature available under 
+// experimental branch
+/?query=
+  posts.
+    excerpt(
+      length:30,
+      branch:experimental
+    )
+```
+
+- Customize data model for client/project
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.excerpt(length:30,branch:experimental)" target="_blank">View query results #3</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.excerpt(length:30)" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.excerpt" target="_blank">View query results #1</a>
+
+- Autonomous teams, avoid bureaucracy
+- Rapid iteration, quick bug fixing
+- Decentralized / federated schema
+- Field-based versioning
+
+### Validate user state/roles
+
+```less
+/?query=
+  me.
+    name
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=me.name" target="_blank">View query results</a>
+
+- Fields can be made available only if user is logged-in, or has a specific role
+- When validation fails, the schema can be set to either show an error or hide the field
+- The schema can be public/private at the same time, depending on the user
+
+### O(n) time complexity
+
+```less
+/?query=
+  posts.
+     author.
+       posts.
+         comments.
+           author.
+             id|
+             name|
+             posts.
+               id|
+               title|
+               url|
+               tags.
+                 id|
+                 slug
+```
+
+- To resolve the query graph (n: #nodes)
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.author.posts.comments.author.id%7Cname%7Cposts.id%7Ctitle%7Curl%7Ctags.id%7Cslug" target="_blank">View query results</a>
+
+- N+1 problem avoided by architectural design
+- Feasible to resolve deeply-nested graphs
+
+### Efficient directive calls
+
+```less
+// The Google Translate API is called once,
+// containing 10 pieces of text to translate:
+// 2 fields (title and excerpt) for 5 posts
+/?query=
+  posts(limit:5).
+    --props|
+    --props@spanish<
+      translate(en,es)
+    >&amp;
+props=
+  title|
+  excerpt
+
+// Here there are 3 calls to the API, one for
+// every language (Spanish, French and German),
+// 10 strings each, all calls are concurrent
+/?query=
+  posts(limit:5).
+    --props|
+    --props@spanish<
+      translate(en,es)
+    >|
+    --props@french<
+      translate(en,fr)
+    >|
+    --props@german<
+      translate(en,de)
+    >&amp;
+props=
+  title|
+  excerpt
+```
+
+- Directives receive all their affected objects and fields together, for a single execution
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:5).--props%7C--props@spanish<translate(en,es)>&amp;props=title%7Cexcerpt" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:5).--props%7C--props@spanish%3Ctranslate(en,es)%3E%7C--props@french%3Ctranslate(en,fr)%3E%7C--props@german%3Ctranslate(en,de)%3E&amp;props=title%7Cexcerpt" target="_blank">View query results #2</a>
+
+### Interact with APIs...
+
+```less
+//1. <translate> calls the Google Translate API
+/?query=
+  posts(limit:5).
+    title|
+    title@spanish<
+      translate(en,es)
+    >
+    
+//2. Translate to Spanish and back to English
+/?query=
+  posts(limit:5).
+    title|
+    title@translateAndBack<
+      translate(en,es),
+      translate(es,en)
+    >
+    
+//3. Change the provider through arguments
+// (link gives error: Azure is not implemented)
+/?query=
+  posts(limit:5).
+    title|
+    title@spanish<
+      translate(en,es,provider:azure)
+    >
+```
+
+- ...from the back-end
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:5).title%7Ctitle@spanish%3Ctranslate(en,es)%3E" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:5).title%7Ctitle@translateAndBack%3Ctranslate(en,es),translate(es,en)%3E" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:5).title%7Ctitle@spanish%3Ctranslate(en,es,provider:azure)%3E" target="_blank">View query results #3</a>
+
+### Interact with APIs...
+
+```less
+/?query=
+echo([
+  usd: [
+    bitcoin: extract(
+      getJSON("https://api.cryptonator.com/api/ticker/btc-usd"), 
+      ticker.price
+    ),
+    ethereum: extract(
+      getJSON("https://api.cryptonator.com/api/ticker/eth-usd"), 
+      ticker.price
+    )
+  ],
+  euro: [
+    bitcoin: extract(
+      getJSON("https://api.cryptonator.com/api/ticker/btc-eur"), 
+      ticker.price
+    ),
+    ethereum: extract(
+      getJSON("https://api.cryptonator.com/api/ticker/eth-eur"), 
+      ticker.price
+    )
+  ]
+])@cryptoPrices
+```
+
+- ...from the client-side
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(%5Busd:%5Bbitcoin:extract(getJSON(%22https://api.cryptonator.com/api/ticker/btc-usd%22),ticker.price),ethereum:extract(getJSON(%22https://api.cryptonator.com/api/ticker/eth-usd%22),ticker.price)%5D,euro:%5Bbitcoin:extract(getJSON(%22https://api.cryptonator.com/api/ticker/btc-eur%22),ticker.price),ethereum:extract(getJSON(%22https://api.cryptonator.com/api/ticker/eth-eur%22),ticker.price)%5D%5D)@cryptoPrices" target="_blank">View query results</a>
+
+### Interact with APIs...
+
+```less
+//1. Get data from a REST endpoint
+/?query=
+  getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions")@userEmailLangList
+    
+//2. Access and manipulate the data
+/?query=
+  extract(
+    getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions"),
+    email
+  )@userEmailList
+  
+//3. Convert the data into an input to another system
+/?query=
+  getJSON(
+    sprintf(
+      "https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s",
+      [arrayJoin(
+        extract(
+          getJSON("https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions"),
+          email
+        ),
+        "%26emails[]="
+      )]
+    )
+  )@userNameEmailList
+```
+
+- A single query can perform all required logic
+
+<a href="https://newapi.getpop.org/api/graphql/?query=getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userEmailLangList" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=extract(getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22),email)@userEmailList" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name%7Cemail%26emails%5B%5D=%s%22,%5BarrayJoin(extract(getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22),email),%22%26emails%5B%5D=%22)%5D))@userEmailNameList" target="_blank">View query results #3</a>
+
+### All services in one query
+
+```less
+/?query=
+  echo([
+    github: "https://api.github.com/repos/leoloso/PoP",
+    weather: "https://api.weather.gov/zones/forecast/MOZ028/forecast",
+    photos: "https://picsum.photos/v2/list"
+  ])@meshServices|
+  getAsyncJSON(getSelfProp(%self%, meshServices))@meshServiceData|
+  echo([
+    weatherForecast: extract(
+      getSelfProp(%self%, meshServiceData),
+      weather.periods
+    ),
+    photoGalleryURLs: extract(
+      getSelfProp(%self%, meshServiceData),
+      photos.url
+    ),
+    githubMeta: echo([
+      description: extract(
+        getSelfProp(%self%, meshServiceData),
+        github.description
+      ),
+      starCount: extract(
+        getSelfProp(%self%, meshServiceData),
+        github.stargazers_count
+      )
+    ])
+  ])@contentMesh
+```
+
+- Create your content or service mesh
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(%5Bgithub:%22https://api.github.com/repos/leoloso/PoP%22,weather:%22https://api.weather.gov/zones/forecast/MOZ028/forecast%22,photos:%22https://picsum.photos/v2/list%22%5D)@meshServices%7CgetAsyncJSON(getSelfProp(%self%,meshServices))@meshServiceData%7Cecho(%5BweatherForecast:extract(getSelfProp(%self%,meshServiceData),weather.periods),photoGalleryURLs:extract(getSelfProp(%self%,meshServiceData),photos.url),githubMeta:echo(%5Bdescription:extract(getSelfProp(%self%,meshServiceData),github.description),starCount:extract(getSelfProp(%self%,meshServiceData),github.stargazers_count)%5D)%5D)@contentMesh" target="_blank">View query results</a>
+
+### One-graph ready
+
+```less
+// 1. Inspect services
+/?query=
+  meshServices
+
+// 2. Retrieve data
+/?query=
+  meshServiceData
+
+// 3. Process data
+/?query=
+  contentMesh
+
+// 4. Customize data
+/?query=
+  contentMesh(
+    githubRepo: "getpop/api-graphql",
+    weatherZone: AKZ017,
+    photoPage: 3
+  )@contentMesh
+```
+
+- Use custom fields to expose your data and create a single, comprehensive, unified graph
+
+<a href="https://newapi.getpop.org/api/graphql/?query=meshServices" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=meshServiceData" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=contentMesh" target="_blank">View query results #3</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=contentMesh(githubRepo:%22getpop/api-graphql%22,weatherZone:AKZ017,photoPage:3)@contentMesh" target="_blank">View query results #4</a>
+
+### Persisted fragments
+
+```less
+// 1. Save services
+/?query=
+  --meshServices
+
+// 2. Retrieve data
+/?query=
+  --meshServiceData
+
+// 3. Process data
+/?query=
+  --contentMesh
+
+// 4. Customize data
+/?
+githubRepo=getpop/api-graphql&amp;
+weatherZone=AKZ017&amp;
+photoPage=3&amp;
+query=
+  --contentMesh
+```
+
+- Query sections of any size and shape can be stored in the server
+
+<a href="https://newapi.getpop.org/api/graphql/?query=--meshServices" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=--meshServiceData" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=--contentMesh" target="_blank">View query results #3</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?githubRepo=getpop/api-graphql&amp;weatherZone=AKZ017&amp;photoPage=3&amp;query=--contentMesh" target="_blank">View query results #4</a>
+
+### Combine with REST
+
+```less
+// Query data for a single resource
+{single-post-url}/api/rest/?query=
+  id|
+  title|
+  author.
+    id|
+    name
+
+// Query data for a set of resources
+{post-list-url}/api/rest/?query=
+  id|
+  title|
+  author.
+    id|
+    name
+```
+
+- Get the best from both GraphQL and REST: query resources based on endpoint, with no under/overfetching
+
+<a href="https://nextapi.getpop.org/posts/api/rest/?query=id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #2</a>
+
+<a href="https://nextapi.getpop.org/2013/01/11/markup-html-tags-and-formatting/api/rest/?query=id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #1</a>
+
+### Output in many formats
+
+```less
+// Output as XML: Replace /graphql with /xml
+/api/xml/?query=
+  posts.
+    id|
+    title|
+    author.
+      id|
+      name
+
+// Output as props: Replace /graphql with /props
+/api/props/?query=
+  posts.
+    id|
+    title|
+    excerpt
+```
+
+- Replace "/graphql" to output the data in a different format
+
+<a href="https://newapi.getpop.org/api/props/?query=posts.id%7Ctitle%7Cexcerpt" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/xml/?query=posts.id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #1</a>
+
+### Normalize data for client
+
+```less
+/api/?query=
+  posts.
+     author.
+       posts.
+         comments.
+           author.
+             id|
+             name|
+             posts.
+               id|
+               title|
+               url
+```
+
+- Reduced output size when a same field is fetched multiple times
+
+<a href="https://newapi.getpop.org/api/?query=posts.author.posts.comments.author.id%7Cname%7Cposts.id%7Ctitle%7Curl" target="_blank">View query results</a>
+
+- Just remove the "/graphql" bit from the URL
+
+### Handle issues by severity
+
+```less
+//1. Deprecated fields
+/?query=
+  posts.
+    title|
+    published
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.title%7Cpublished" target="_blank">View query results #1</a>
+
+- Deprecated fields/directives (informative): To be replaced
+- Schema/Database warnings (non-blocking): issues on non-mandatory arguments
+- Query/Schema/Database errors (blocking): Use a wrong syntax, non-existing fields/directives, issues on mandatory argu</h3>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:3.5).title" target="_blank">View query results #2</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=users.posts(limit:name()).title" target="_blank">View query results #3</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.id%5Bbook%5D(key:value)" target="_blank">View query results #4</a>
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts.non-existant-field%7Cis-status(status:non-existant-value)" target="_blank">View query results #5</a>
+
+```less
+//1. Deprecated fields
+/?query=
+  posts.
+    title|
+    published
+    
+//2. Schema warning
+/?query=
+  posts(limit:3.5).
+    title
+    
+//3. Database warning
+/?query=
+  users.
+    posts(limit:name()).
+      title
+      
+//4. Query error
+/?query=
+  posts.
+    id[book](key:value)
+    
+//5. Schema error
+/?query=
+  posts.
+    non-existant-field|
+    is-status(
+      status:non-existant-value
+    )
+```
+
+		
+		```less
+    //1. Deprecated fields
+/?query=
+  posts.
+    title|
+    published
+    
+//2. Schema warning
+/?query=
+  posts(limit:3.5).
+    title
+    
+//3. Database warning
+/?query=
+  users.
+    posts(limit:name()).
+      title
+```
+
+### Type casting/validation
+
+```less
+/?query=
+  posts(limit:3.5).
+    title
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=posts(limit:3.5).title" target="_blank">View query results</a>
+
+- When an argument has its type declared in the schema, its inputs will be casted to the type
+- If the input and the type are incompatible, it ignores setting the input and throws a warning
+
+### Issues bubble upwards
+
+```less
+/?query=
+  post(divide(a,4)).
+    title
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=post(divide(a,4)).title" target="_blank">View query results</a>
+
+- If a field or directive fails and it is input to another field, this one may also fail
+
+### Path to the issue
+
+```less
+/?query=
+  echo([hola,chau])<
+    forEach<
+      translate(notexisting:prop)
+    >
+  >
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?query=echo(%5Bhola,chau%5D)%3CforEach%3Ctranslate(notexisting:prop)%3E%3E" target="_blank">View query results</a>
+
+- Issues contain the path to the nested field or directive were it was produced
+
+### Log information
+
+```less
+/?
+actions[]=show-logs&amp;
+postId=1&amp;
+query=
+  post($postId).
+    title|
+    date(d/m/Y)
+```
+
+<a href="https://newapi.getpop.org/api/graphql/?actions%5B%5D=show-logs&amp;postId=1&amp;query=post(%24postId).title%7Cdate(d/m/Y)" target="_blank">View query results</a>
+
