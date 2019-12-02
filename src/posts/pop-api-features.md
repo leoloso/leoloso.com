@@ -448,7 +448,7 @@ For instance, the following query will give an error message, since you, dear re
 
 <a href="https://newapi.getpop.org/api/graphql/?query=me.name" target="_blank">View query results</a>
 
-### Linear time complexity to resolve queries (`O(n)`, where `n` is #nodes)
+### Linear time complexity to resolve queries (`O(n)`, where `n` is #types)
 
 The “N+1 problem” is completely avoided already by architectural design. It doesn't matter how many levels deep the graph is, it will resolve fast.
 
@@ -782,9 +782,9 @@ Replace `"/graphql"` from the URL to output the data in a different format: XML 
     excerpt
 ```
 
-<a href="https://newapi.getpop.org/api/props/?query=posts.id%7Ctitle%7Cexcerpt" target="_blank">View query results #2</a>
-
 <a href="https://newapi.getpop.org/api/xml/?query=posts.id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #1</a>
+
+<a href="https://newapi.getpop.org/api/props/?query=posts.id%7Ctitle%7Cexcerpt" target="_blank">View query results #2</a>
 
 ### Normalize data for client
 
