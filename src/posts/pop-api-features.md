@@ -1,8 +1,8 @@
 ---
-title: 🚀 Iterating over, and improving, GraphQL - How the PoP API achieves new heights
-metaDesc: All the features from this brand-new API
-socialImage: https://leoloso.com/images/pop-logo-whitebng.png
-date: '2020-12-02'
+title: 🚀 Improving GraphQL - How the PoP API achieves new heights
+metaDesc: Showing the features from this brand-new API
+socialImage: https://leoloso.com/images/pop-logo-whitebg.png
+date: '2019-12-02'
 tags:
   - pop
   - api
@@ -11,11 +11,9 @@ tags:
 
 I had originally started implementing the [GraphQL](https://graphql.org) spec using server-side components, providing yet another implementation of GraphQL on PHP (such as those based on the popular [graphql-php](https://github.com/webonyx/graphql-php) library), but attempting to also support those features that GraphQL fails at supporting, such as HTTP caching.
 
-I can now claim my attempt was a success: The implementation satisfies the GraphQL spec (except for the syntax... more on this below), and adding native support for [HTTP caching](https://github.com/getpop/cache-control) took only 1 week. (And the way it works is just beautiful: a `max-cache` value can be set for each field from the schema, and the requested page will automatically calculate its `max-cache` from all required fields.)
+I can now claim my attempt was a success: The implementation satisfies the GraphQL spec (except for the syntax... more on this below), adding native support for [HTTP caching](https://github.com/getpop/cache-control) took only 1 week, and I could even add new features that the typical GraphQL implementation out there could possibly never support.
 
-HTTP caching is only one success case from many. Indeed, I have been steadily expanding the capabilities of this API in the last few weeks... By now, its capabilities are extremely powerful, much more so than the typical GraphQL implementation out there. So, I'd say this is a good time to introduce it to the world, and hope that the world will notice it.
-
-Please be introduced to the [PoP API](https://github.com/getpop/api), an iteration and improvement over GraphQL.
+So, I'd say this is a good time to introduce this API to the world, and hope that the world will notice it: Please be introduced to the brand-new [PoP API](https://github.com/getpop/api), an iteration and improvement over GraphQL.
 
 Below is the set of its unique, distinctive features (displayed [through slides here](https://slides.com/leoloso/schemaless-graphql/#/14)).
 
@@ -24,7 +22,7 @@ Below is the set of its unique, distinctive features (displayed [through slides 
 Structure of the request:
 
 ```less
-/?query=query&amp;variable=value&amp;fragment=fragmentQuery
+/?query=query&variable=value&fragment=fragmentQuery
 ```
 
 Structure of the query:
@@ -100,8 +98,8 @@ query=
     title<
       skip(if: false)
     >|
-    --props&amp;
-order=title|ASC&amp;
+    --props&
+order=title|ASC&
 props=
   url|
   author.
@@ -132,7 +130,7 @@ This query...
 ```less
 // Query 1
 /?
-postId=1&amp;
+postId=1&
 query=
   post($postId).
     date(d/m/Y)|
@@ -146,7 +144,7 @@ query=
 ```less
 // Query 2
 /?
-postId=1&amp;
+postId=1&
 query=
   post(id:$postId).
     date(format:d/m/Y)|
@@ -174,21 +172,21 @@ All operators and functions provided by the language (PHP) can be made available
 8. /?query=context
 ```
 
-<a href="https://nextapi.getpop.org/api/graphql?query=not(true)" target="_blank">View query results #1</a>
+<a href="https://newapi.getpop.org/api/graphql?query=not(true)" target="_blank">View query results #1</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=or(%5B1,0%5D)" target="_blank">View query results #2</a>
+<a href="https://newapi.getpop.org/api/graphql?query=or(%5B1,0%5D)" target="_blank">View query results #2</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=and(%5B1,0%5D)" target="_blank">View query results #3</a>
+<a href="https://newapi.getpop.org/api/graphql?query=and(%5B1,0%5D)" target="_blank">View query results #3</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show%20this%20text,Hide%20this%20text)" target="_blank">View query results #4</a>
+<a href="https://newapi.getpop.org/api/graphql?query=if(true,Show%20this%20text,Hide%20this%20text)" target="_blank">View query results #4</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=equals(first%20text,%20second%20text)" target="_blank">View query results #5</a>
+<a href="https://newapi.getpop.org/api/graphql?query=equals(first%20text,%20second%20text)" target="_blank">View query results #5</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)" target="_blank">View query results #6</a>
+<a href="https://newapi.getpop.org/api/graphql?query=isNull(),isNull(something)" target="_blank">View query results #6</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=sprintf(%s%20API%20is%20%s,%20%5BPoP,%20cool%5D)" target="_blank">View query results #7</a>
+<a href="https://newapi.getpop.org/api/graphql?query=sprintf(%s%20API%20is%20%s,%20%5BPoP,%20cool%5D)" target="_blank">View query results #7</a>
 
-<a href="https://nextapi.getpop.org/api/graphql?query=context" target="_blank">View query results #8</a>
+<a href="https://newapi.getpop.org/api/graphql?query=context" target="_blank">View query results #8</a>
 
 ### Nested fields
 
@@ -221,7 +219,7 @@ Operators and helpers are standard fields, so they can be employed for nested fi
 
 ```less
 /?
-format=Y-m-d&amp;
+format=Y-m-d&
 query=
   posts.
     if (
@@ -242,7 +240,7 @@ query=
 
 <a href="https://newapi.getpop.org/api/graphql/?format=Y-m-d&amp;query=posts.if(has-comments(),sprintf(%22This%20post%20has%20%s%20comment(s)%20and%20title%20%27%s%27%22,%5Bcomments-count(),title()%5D),sprintf(%22This%20post%20was%20created%20on%20%s%20and%20has%20no%20comments%22,%5Bdate(format:if(not(empty(%24format)),%24format,d/m/Y))%5D))@postDesc" target="_blank">View query results</a>
 
-This solves one issue with GraphQL: That it transfers the REST way of creating multiple endpoints to satisfy different needs (such as `/posts-with-this-data/` and `/posts-with-that-data/`) and then `/posts-with-that-data-2/` into the data model. For instance, exploring the [live demo](https://graphiql-test.netlify.com/) to demonstrate [GraphiQL](https://github.com/graphql/graphiql) with the DevTools' network tab, we see that the schema contains fields `fileName_not`, `fileName_in`, `fileName_not_in`, etc:
+This solves one issue with GraphQL: That it transfers the REST way of creating multiple endpoints to satisfy different needs (such as `/posts-1st-format/` and `/posts-2nd-format/`) into the data model. For instance, exploring the [live demo](https://graphiql-test.netlify.com/) to demonstrate [GraphiQL](https://github.com/graphql/graphiql) with the DevTools' network tab, we see that the schema contains fields `fileName_not`, `fileName_in`, `fileName_not_in`, etc:
 
 ![GraphiQL “RESTy” data model](/images/graphql-schema.jpg "GraphiQL “RESTy” data model")
 
@@ -432,8 +430,9 @@ Advantages:
 
 - The data model can be customized for client/project
 - Teams become autonoumous, and can avoid the bureaucracy of communicating/planning/coordinating changes to the schema
-- It enables rapid iteration (eg: allowing a selected group of testers to try out new features in production) and quick bug fixing (eg: fixing a bug specifically for a client, without worrying about breaking changes for other clients)
-- It enabled field-based versioning
+- Rapid iteration, such as allowing a selected group of testers to try out new features in production
+- Quick bug fixing, such as fixing a bug specifically for a client, without worrying about breaking changes for other clients
+- Field-based versioning
 
 ### Validate user state/roles
 
@@ -490,7 +489,7 @@ In the examples below, the Google Translate API is called the minimum possible a
     --props|
     --props@spanish<
       translate(en,es)
-    >&amp;
+    >&
 props=
   title|
   excerpt
@@ -509,7 +508,7 @@ props=
     >|
     --props@german<
       translate(en,de)
-    >&amp;
+    >&
 props=
   title|
   excerpt
@@ -591,7 +590,7 @@ echo([
 
 ### Interact with APIs, performing all required logic in a single query
 
-The last query, from the examples below, codes all its required logic to access, extract and manipulate data from an external API:
+The last query from the examples below accesses, extracts and manipulates data from an external API, and then uses this result to accesse yet another external API:
 
 ```less
 //1. Get data from a REST endpoint
@@ -720,9 +719,9 @@ The example below demonstrates, once again, the same logic from the example abov
 
 // 4. Customize data
 /?
-githubRepo=getpop/api-graphql&amp;
-weatherZone=AKZ017&amp;
-photoPage=3&amp;
+githubRepo=getpop/api-graphql&
+weatherZone=AKZ017&
+photoPage=3&
 query=
   --contentMesh
 ```
@@ -757,13 +756,13 @@ Get the best from both GraphQL and REST: query resources based on endpoint, with
     name
 ```
 
-<a href="https://nextapi.getpop.org/2013/01/11/markup-html-tags-and-formatting/api/rest/?query=id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #1</a>
+<a href="https://newapi.getpop.org/2013/01/11/markup-html-tags-and-formatting/api/rest/?query=id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #1</a>
 
-<a href="https://nextapi.getpop.org/posts/api/rest/?query=id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #2</a>
+<a href="https://newapi.getpop.org/posts/api/rest/?query=id%7Ctitle%7Cauthor.id%7Cname" target="_blank">View query results #2</a>
 
 ### Output in many formats
 
-Replace "/graphql" to output the data in a different format: XML, as props, or any other (implementation takes very few LOC).
+Replace `"/graphql"` from the URL to output the data in a different format: XML or as properties, or any custom one (implementation takes very few lines of code).
 
 ```less
 // Output as XML: Replace /graphql with /xml
@@ -909,8 +908,8 @@ Any informative piece of information can be logged (enabled/disabled through con
 
 ```less
 /?
-actions[]=show-logs&amp;
-postId=1&amp;
+actions[]=show-logs&
+postId=1&
 query=
   post($postId).
     title|
