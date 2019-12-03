@@ -11,7 +11,7 @@ tags:
 
 I had originally started implementing the [GraphQL](https://graphql.org) spec using server-side components, providing yet another implementation of GraphQL on PHP (such as those based on the popular [graphql-php](https://github.com/webonyx/graphql-php) library), but attempting to also support those features that GraphQL fails at supporting, such as HTTP caching.
 
-I can now claim my attempt was a success: The implementation satisfies the GraphQL spec (except for the syntax... more on this below), adding native support for [HTTP caching](https://github.com/getpop/cache-control) took only 1 week, and I could even add new features that the typical GraphQL implementation out there could possibly never support.
+I can now claim my attempt was a success: The implementation satisfies the GraphQL spec (except for the syntax... more on this below), adding native support for [HTTP caching](https://github.com/getpop/cache-control) was straightforward, and I could even add new features that the typical GraphQL implementation out there does not support.
 
 So, I'd say this is a good time to introduce this API to the world, and hope that the world will notice it: Please be introduced to the brand-new [PoP API](https://github.com/getpop/api), an iteration and improvement over GraphQL.
 
