@@ -2,7 +2,7 @@
 title: ✍️ Reflexions on writing - Doing the writing
 metaDesc: So you have decided to write an article. Now what?
 socialImage: https://leoloso.com/images/writing.jpg
-date: '2020-12-13'
+date: '2019-12-13'
 tags:
   - smashing
   - writing
