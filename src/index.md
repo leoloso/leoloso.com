@@ -6,7 +6,7 @@ archiveButtonText: See all posts
 metaDesc: Welcome to Leo's blog! Writings on things that I encounter every day, from attending events, working on random projects, reading books, or anything noteworthy
 socialImage: ''
 ---
-Howdy! My name is **Leonardo Losoviz**, I'm an [award winning](https://www.smashingmagazine.com/2018/01/performance-challenge-winners-results/) freelance developer and consultant, creator of the open source [PoP](https://github.com/leoloso/PoP) project (for building applications based on server-side components), regular contributor to [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), and ocassional conference speaker. 
+Howdy! My name is **Leonardo Losoviz**, I'm an [award winning](https://www.smashingmagazine.com/2018/01/performance-challenge-winners-results/) freelance developer and consultant, creator of the open source [PoP](https://github.com/leoloso/PoP) project (for building applications based on server-side components), regular contributor to [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), and occasional conference speaker. 
 
 _I code, I learn, I share._
 
