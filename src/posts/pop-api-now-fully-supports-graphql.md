@@ -13,7 +13,7 @@ tags:
 
 **Fields:**
 
-<div id="graphiql-nested-field" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+<div id="graphiql-nested-field" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
 **Field arguments:**
 
@@ -88,7 +88,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query {\n  posts {\n    id\n    title\n    author {\n      id\n      name\n      posts {\n        id\n        url\n        title\n        date\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
+        query: "query {\n  posts {\n    id\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n    }\n    comments {\n      content\n      author {\n        id\n        name\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-nested-field'),
