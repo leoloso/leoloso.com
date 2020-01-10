@@ -31,47 +31,47 @@ Alternatively, you can access the GraphiQL client under [https://newapi.getpop.o
 
 <link href="https://unpkg.com/graphiql/graphiql.min.css" rel="stylesheet" />
 
-**Fields:**
+#### Fields
 
 <div id="graphiql-nested-field" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Field arguments:**
+#### Field arguments
 
 <div id="graphiql-field-arguments" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Aliases:**
+#### Aliases
 
 <div id="graphiql-aliases" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Fragments:**
+#### Fragments
 
 <div id="graphiql-fragments" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Operation name:**
+#### Operation name
 
 <div id="graphiql-operation-name" style="height: 40vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Variables:**
+#### Variables
 
 <div id="graphiql-variables" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Variables inside fragments:**
+#### Variables inside fragments
 
 <div id="graphiql-variables-inside-fragments" style="height: 80vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Default variables:**
+#### Default variables
 
 <div id="graphiql-default-variables" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Directives:**
+#### Directives
 
 <div id="graphiql-directives" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Fragments with directives:**
+#### Fragments with directives
 
 <div id="graphiql-fragments-with-directives" style="height: 80vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-**Inline fragments:**
+#### Inline fragments
 
 <div id="graphiql-inline-fragments" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
