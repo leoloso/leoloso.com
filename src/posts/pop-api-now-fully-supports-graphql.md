@@ -11,11 +11,7 @@ tags:
 
 <link href="https://unpkg.com/graphiql/graphiql.min.css" rel="stylesheet" />
 
-**Field:**
-
-<div id="graphiql-field" style="height: 25vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
-
-**Nested fields:**
+**Fields:**
 
 <div id="graphiql-nested-field" style="height: 75vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -83,20 +79,6 @@ tags:
     })
       .then(response => response.json())
       .catch(() => response.text());
-
-  ReactDOM.render(
-    React.createElement(
-      GraphiQL, 
-      { 
-        fetcher: graphQLFetcher,
-        schema: null,
-        defaultVariableEditorOpen: false,
-        response: response,
-        query: "query {\n  time\n}"
-      }
-    ),
-    document.getElementById('graphiql-field'),
-  );
 
   ReactDOM.render(
     React.createElement(
