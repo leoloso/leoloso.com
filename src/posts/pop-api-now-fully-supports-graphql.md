@@ -106,7 +106,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query {\n  posts {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      posts {\n        id\n        url\n        title\n        __typename\n        date\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query {\n  posts {\n    id\n    title\n    author {\n      id\n      name\n      posts {\n        id\n        url\n        title\n        date\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-nested-field'),
@@ -120,7 +120,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query {\n  posts(limit:2) {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      posts(limit:3) {\n        id\n        url\n        title\n        __typename\n        date(format:\"d/m/Y\")\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query {\n  posts(limit:2) {\n    id\n    title\n    author {\n      id\n      name\n      posts(limit:3) {\n        id\n        url\n        title\n        date(format:\"d/m/Y\")\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-field-arguments'),
@@ -134,7 +134,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query {\n  rootPosts: posts(limit:2) {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:3) {\n        id\n        url\n        title\n        __typename\n        date\n        formattedDate: date(format:\"d/m/Y\")\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query {\n  rootPosts: posts(limit:2) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:\"d/m/Y\")\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-aliases'),
@@ -148,7 +148,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query {\n  rootPosts: posts(limit:2) {\n    ...postProperties\n    author {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:3) {\n        url\n        ...postProperties\n        formattedDate: date(format:\"d/m/Y\")\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}\nfragment postProperties on Post {\n  id\n  title\n  __typename\n  tags {\n    name\n    __typename\n  }\n}"
+        query: "query {\n  rootPosts: posts(limit:2) {\n    ...postProperties\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        url\n        ...postProperties\n        formattedDate: date(format:\"d/m/Y\")\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}\nfragment postProperties on Post {\n  id\n  title\n  tags {\n    name\n  }\n}"
       }
     ),
     document.getElementById('graphiql-fragments'),
@@ -162,7 +162,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query GetPosts {\n  rootPosts: posts(limit:2) {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:3) {\n        id\n        url\n        title\n        __typename\n        date\n        formattedDate: date(format:\"d/m/Y\")\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query GetPosts {\n  rootPosts: posts(limit:2) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:\"d/m/Y\")\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-operation-name'),
@@ -178,7 +178,7 @@ tags:
         response: response,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"rootLimit\": 3,\n  \"nestedLimit\": 2,\n  \"dateFormat\": \"d/m/Y\"\n}",
-        query: "query GetPosts($rootLimit: Int, $nestedLimit: Int, $dateFormat: String) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        __typename\n        date\n        formattedDate: date(format:$dateFormat)\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query GetPosts($rootLimit: Int, $nestedLimit: Int, $dateFormat: String) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:$dateFormat)\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-variables'),
@@ -194,7 +194,7 @@ tags:
         response: response,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"tagsLimit\": 3\n}",
-        query: "query GetPosts($tagsLimit: Int) {\n  rootPosts: posts(limit:2) {\n    ...postProperties\n    author {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:3) {\n        url\n        ...postProperties\n      }\n    }\n  }\n}\nfragment postProperties on Post {\n  id\n  title\n  __typename\n  tags(limit:$tagsLimit) {\n    name\n    __typename\n  }\n}"
+        query: "query GetPosts($tagsLimit: Int) {\n  rootPosts: posts(limit:2) {\n    ...postProperties\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        url\n        ...postProperties\n      }\n    }\n  }\n}\nfragment postProperties on Post {\n  id\n  title\n  tags(limit:$tagsLimit) {\n    name\n  }\n}"
       }
     ),
     document.getElementById('graphiql-variables-inside-fragments'),
@@ -209,7 +209,7 @@ tags:
         defaultVariableEditorOpen: false,
         response: response,
         defaultVariableEditorOpen: true,
-        query: "query GetPosts($rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        __typename\n        date\n        formattedDate: date(format:$dateFormat)\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query GetPosts($rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:$dateFormat)\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-default-variables'),
@@ -225,7 +225,7 @@ tags:
         response: response,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"includeAuthor\": true\n}",
-        query: "query GetPosts($includeAuthor: Boolean!, $rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    __typename\n    author @include(if: $includeAuthor) {\n      id\n      name\n      __typename\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        __typename\n        date\n        formattedDate: date(format:$dateFormat)\n        tags {\n          name\n          __typename\n        }\n        featuredimage {\n          id\n          src\n          __typename\n        }\n      }\n    }\n  }\n}"
+        query: "query GetPosts($includeAuthor: Boolean!, $rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author @include(if: $includeAuthor) {\n      id\n      name\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:$dateFormat)\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-directives'),
@@ -241,7 +241,7 @@ tags:
         response: response,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"includeAuthor\": true\n}",
-        query: "query GetPosts($includeAuthor: Boolean!, $rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    ...postProperties\n  }\n}\nfragment postProperties on Post {\n  __typename\n  author @include(if: $includeAuthor) {\n    id\n    name\n    __typename\n    nestedPosts: posts(limit:$nestedLimit) {\n      id\n      url\n      title\n      __typename\n      date\n      formattedDate: date(format:$dateFormat)\n      tags {\n        name\n        __typename\n      }\n      featuredimage {\n        id\n        src\n        __typename\n      }\n    }\n  }\n}"
+        query: "query GetPosts($includeAuthor: Boolean!, $rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    ...postProperties\n  }\n}\nfragment postProperties on Post {\n  author @include(if: $includeAuthor) {\n    id\n    name\n    nestedPosts: posts(limit:$nestedLimit) {\n      id\n      url\n      title\n      date\n      formattedDate: date(format:$dateFormat)\n      tags {\n        name\n      }\n      featuredimage {\n        id\n        src\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-fragments-with-directives'),
@@ -255,7 +255,7 @@ tags:
         schema: null,
         defaultVariableEditorOpen: false,
         response: response,
-        query: "query GetPosts($rootLimit: Int = 3, $nestedLimit: Int = 2) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    __typename\n    author {\n      id\n      name\n      __typename\n      content(limit:$nestedLimit) {\n        title\n        ... on Post {\n          excerpt\n          featuredimage {\n            id\n            src\n          }\n        }\n        ... on Media {\n          url\n        }\n      }\n    }\n  }\n}"
+        query: "query GetPosts($rootLimit: Int = 3, $nestedLimit: Int = 2) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author {\n      id\n      name\n      content(limit:$nestedLimit) {\n        title\n        ... on Post {\n          excerpt\n          featuredimage {\n            id\n            src\n          }\n        }\n        ... on Media {\n          url\n        }\n      }\n    }\n  }\n}"
       }
     ),
     document.getElementById('graphiql-inline-fragments'),
