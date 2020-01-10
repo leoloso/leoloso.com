@@ -88,7 +88,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
 
 <script>
   const apiURL = 'https://newapi.getpop.org/api/graphql/';
-  const response = "Click the \"Execute Query\" button";
+  const responseText = "Click the \"Execute Query\" button";
   const graphQLFetcher = graphQLParams =>
     fetch(apiURL, {
       method: 'post',
@@ -105,7 +105,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         query: "query {\n  posts {\n    id\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n    }\n    comments {\n      content\n      author {\n        id\n        name\n      }\n    }\n  }\n}"
       }
     ),
@@ -119,7 +119,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         query: "query {\n  posts(limit:2) {\n    id\n    title\n    author {\n      id\n      name\n      posts(limit:3) {\n        id\n        url\n        title\n        date(format:\"d/m/Y\")\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
@@ -133,7 +133,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         query: "query {\n  rootPosts: posts(limit:2) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:\"d/m/Y\")\n        tags {\n          name\n        }\n        featuredimage {\n          id\n          src\n        }\n      }\n    }\n  }\n}"
       }
     ),
@@ -147,7 +147,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         query: "query {\n  rootPosts: posts(limit:2) {\n    ...postProperties\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        url\n        ...postProperties\n        formattedDate: date(format:\"d/m/Y\")\n      }\n    }\n  }\n}\nfragment postProperties on Post {\n  id\n  title\n  tags {\n    name\n  }\n}"
       }
     ),
@@ -161,7 +161,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         query: "query GetPosts {\n  rootPosts: posts(limit:2) {\n    id\n    title\n    author {\n      id\n      name\n    }\n  }\n}"
       }
     ),
@@ -175,7 +175,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"rootLimit\": 3,\n  \"nestedLimit\": 2,\n  \"dateFormat\": \"d/m/Y\"\n}",
         query: "query GetPosts($rootLimit: Int, $nestedLimit: Int, $dateFormat: String) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:$dateFormat)\n      }\n    }\n  }\n}"
@@ -191,7 +191,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"tagsLimit\": 3\n}",
         query: "query GetPosts($tagsLimit: Int) {\n  rootPosts: posts(limit:2) {\n    ...postProperties\n    author {\n      id\n      name\n      nestedPosts: posts(limit:3) {\n        url\n        ...postProperties\n      }\n    }\n  }\n}\nfragment postProperties on Post {\n  id\n  title\n  tags(limit:$tagsLimit) {\n    name\n  }\n}"
@@ -207,7 +207,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         defaultVariableEditorOpen: true,
         query: "query GetPosts($rootLimit: Int = 3, $nestedLimit: Int = 2, $dateFormat: String = \"d/m/Y\") {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author {\n      id\n      name\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        date\n        formattedDate: date(format:$dateFormat)\n      }\n    }\n  }\n}"
       }
@@ -222,7 +222,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"includeAuthor\": true\n}",
         query: "query GetPosts($includeAuthor: Boolean!, $rootLimit: Int = 3, $nestedLimit: Int = 2) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author @include(if: $includeAuthor) {\n      id\n      name\n      nestedPosts: posts(limit:$nestedLimit) {\n        id\n        url\n        title\n        date\n      }\n    }\n  }\n}"
@@ -238,7 +238,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         defaultVariableEditorOpen: true,
         variables: "{\n  \"includeAuthor\": true\n}",
         query: "query GetPosts($includeAuthor: Boolean!, $rootLimit: Int = 3, $nestedLimit: Int = 2) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    ...postProperties\n  }\n}\nfragment postProperties on Post {\n  author @include(if: $includeAuthor) {\n    id\n    name\n    nestedPosts: posts(limit:$nestedLimit) {\n      id\n      url\n      title\n      date\n    }\n  }\n}"
@@ -254,7 +254,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         fetcher: graphQLFetcher,
         schema: null,
         defaultVariableEditorOpen: false,
-        response: response,
+        response: responseText,
         query: "query GetPosts($rootLimit: Int = 3, $nestedLimit: Int = 2) {\n  rootPosts: posts(limit:$rootLimit) {\n    id\n    title\n    author {\n      id\n      name\n      content(limit:$nestedLimit) {\n        title\n        ... on Post {\n          excerpt\n          tags {\n            name\n          }\n        }\n        ... on Media {\n          url\n        }\n      }\n    }\n  }\n}"
       }
     ),
