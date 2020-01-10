@@ -9,9 +9,7 @@ tags:
   - graphql
 ---
 
-After several months of work, I can announce that my project [GraphQL API for PoP](https://github.com/getpop/api-graphql/) finally provides a spec-compliant implementation of a [GraphQL](https://graphql.org) server in PHP!
-
-Yay!!!!!
+After several months of work, I can announce that my project [GraphQL API for PoP](https://github.com/getpop/api-graphql/) finally provides a spec-compliant implementation of a [GraphQL](https://graphql.org) server in PHP! Yay!!!!!
 
 The missing part, which I finished adding today, was the GraphQL syntax parser. Until today, the PoP API relied on [its own syntax](https://github.com/getpop/field-query) (which is needed to support the engine's broader set of features compared to a standard GraphQL server, such as [nested fields](https://github.com/getpop/api-graphql#nested-fields), [nested directives](https://github.com/getpop/api-graphql#nested-directives), and others). However, I had the realization that this custom syntax is a superset of GraphQL's syntax and, as such, it would not be a problem to support it. After exploring all the [existing GraphQL server implementations in PHP](https://devhub.io/repos/chentsulin-awesome-graphql#lib-php), I took the one [implemented by Youshido](https://github.com/youshido-php/GraphQL) and used their parser, and it works like magic!
 
@@ -21,11 +19,11 @@ The missing part, which I finished adding today, was the GraphQL syntax parser. 
 
 ### Trying out the new GraphQL server in PHP
 
-Let's play with this brand-new implementation of GraphQL, to make sure it works as expected.
+Let's play with this brand-new implementation of GraphQL, to make sure it works as expected. For this, I have set-up [this WordPress site](https://newapi.getpop.org), and installed in it the GraphQL API for PoP, available [under this endpoint](https://newapi.getpop.org/api/graphql/). 
 
-I have set-up [this WordPress site](https://newapi.getpop.org), and installed in it the GraphQL API for PoP, available [under this endpoint](https://newapi.getpop.org/api/graphql/). The GraphiQL clients below contain queries to demonstrate the [GraphQL features](https://graphql.org/learn/queries/). To execute the query and see the results, press on the round button (with alt text "Execute query (Ctrl-Enter)"). 
+The GraphiQL clients below contain queries to demonstrate the [GraphQL features](https://graphql.org/learn/queries/). Click the round button (with alt text "Execute query (Ctrl-Enter)") to execute the query and see the results, and you can also edit the query and the variables and run it again.
 
-Alternatively, you can access the GraphiQL client under [https://newapi.getpop.org/graphiql/](https://newapi.getpop.org/graphiql/). 
+Alternatively, you can access the website's own GraphiQL client [here](https://newapi.getpop.org/graphiql/). 
 
 > *Note:* there are no docs and no information hinting yet, because I still need to support field `"__schema"` (see section below).
 
@@ -266,9 +264,30 @@ Alternatively, you can access the GraphiQL client under [https://newapi.getpop.o
 
 ### Adding 100% compliance to the GraphQL spec
 
-100% compliance of the [GraphQL spec](https://graphql.github.io/graphql-spec/draft/) is almost there. The only remaining items are: 
+100% compliance of the [GraphQL spec](https://graphql.github.io/graphql-spec/draft/) is almost there. The remaining items to implement are: 
 
 1. Satisfying the `"__schema"` field
-2. Adding support mutations
+2. Adding support for mutations
 
-The first item, I'm already working on that, it should be finished in a few days. The second item, I have already started work on it, hopefully it will be finished in a couple of months. 
+I'm already working on the first item, I expect it to be finished in a few days. Concerning the second item, I have already started work on it, depending on my time availability I may be able to finish it in a couple of months. 
+
+### Support for REST too
+
+Bonus feature: From a unique source code, the API also supports REST! Check out these example links:
+
+- [List of posts](https://newapi.getpop.org/posts/api/rest/)
+- [Single post](https://newapi.getpop.org/posts/cope-with-wordpress-post-demo-containing-plenty-of-blocks/api/rest/)
+
+### Are you using WordPress? Do you need a good API? Try this one out!
+
+Currently, WordPress users have two API alternatives:
+
+1. REST, through the WP REST API which is already included in core
+2. GraphQL, through [WPGraphQL](https://www.wpgraphql.com/)
+
+Now, I want to add a third alternative:
+
+3. Both GraphQL and REST, through [GraphQL API for PoP](https://github.com/getpop/api-graphql)
+
+Please check it out, it will make your life easier. I promise. And let me know how it goes.
+
