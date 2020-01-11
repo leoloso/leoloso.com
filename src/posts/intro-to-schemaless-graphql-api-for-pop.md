@@ -49,7 +49,7 @@ This API is natively powered by a syntax compatible with [URL-based queries](htt
 
 - The possibility to be cached on the server
 - Operators and Helper fields
-- Nested fields
+- Composable fields
 
 I provided several examples of these new features in my previous post [😲 Making GraphQL cacheable through a new, single-line query syntax!?](/posts/graphql-query-in-a-single-line/).
 

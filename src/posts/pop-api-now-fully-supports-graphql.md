@@ -11,7 +11,7 @@ tags:
 
 After several months of work, I can announce that my project [GraphQL API for PoP](https://github.com/getpop/api-graphql/) finally provides a spec-compliant implementation of a [GraphQL](https://graphql.org) server in PHP! Yay!!!!!
 
-The missing part, which I finished adding today, was the GraphQL syntax parser. Until today, the PoP API relied on [its own syntax](https://github.com/getpop/field-query) (which is needed to support the engine's broader set of features compared to a standard GraphQL server, such as [nested fields](https://github.com/getpop/api-graphql#nested-fields), [nested directives](https://github.com/getpop/api-graphql#nested-directives), and others). However, I had the realization that this custom syntax is a superset of GraphQL's syntax and, as such, it would not be a problem to support it. After exploring all the [existing GraphQL server implementations in PHP](https://devhub.io/repos/chentsulin-awesome-graphql#lib-php), I took the one [implemented by Youshido](https://github.com/youshido-php/GraphQL) and used their parser, and it works like magic!
+The missing part, which I finished adding today, was the GraphQL syntax parser. Until today, the PoP API relied on [its own syntax](https://github.com/getpop/field-query) (which is needed to support the engine's broader set of features compared to a standard GraphQL server, such as [composable fields](https://github.com/getpop/api-graphql#composable-fields), [nested directives](https://github.com/getpop/api-graphql#nested-directives), and others). However, I had the realization that this custom syntax is a superset of GraphQL's syntax and, as such, it would not be a problem to support it. After exploring all the [existing GraphQL server implementations in PHP](https://devhub.io/repos/chentsulin-awesome-graphql#lib-php), I took the one [implemented by Youshido](https://github.com/youshido-php/GraphQL) and used their parser, and it works like magic!
 
 <div style="font-size: 100px">
 🥳
@@ -31,7 +31,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
 
 #### Fields
 
-<div id="graphiql-nested-field" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+<div id="graphiql-fields" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
 #### Field arguments
 
@@ -109,7 +109,7 @@ Alternatively, you can access the website's own GraphiQL client [here](https://n
         query: "query {\n  posts {\n    id\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n    }\n    comments {\n      content\n      author {\n        id\n        name\n      }\n    }\n  }\n}"
       }
     ),
-    document.getElementById('graphiql-nested-field'),
+    document.getElementById('graphiql-fields'),
   );
 
   ReactDOM.render(

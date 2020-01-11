@@ -109,7 +109,7 @@ _**Helpers:**_<br/>
 <a href="https://nextapi.getpop.org/api/graphql?query=context">/?query=context</a><br/>
 <a href="https://nextapi.getpop.org/api/graphql?query=var(route),var(target)@target,var(datastructure)">/?query=var(route),var(target)@target,var(datastructure)</a>
 
-_**Nested fields:**_<br/>
+_**Composable fields:**_<br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|not(has-comments())">/?query=posts.has-comments|not(has-comments())</a><br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])">/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])</a><br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=var(fetching-site),posts.has-featuredimage|and([has-featuredimage(), var(fetching-site)])">/?query=var(fetching-site),posts.has-featuredimage|and([has-featuredimage(), var(fetching-site)])</a><br/>
@@ -117,7 +117,7 @@ _**Nested fields:**_<br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=users.name|equals(name(), leo)">/?query=users.name|equals(name(), leo)</a><br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=posts.featuredimage|isNull(featuredimage())">/?query=posts.featuredimage|isNull(featuredimage())</a>
 
-_**Nested fields with directives:**_<br/>
+_**Composable fields with directives:**_<br/>
 
 [/?query=posts.id|title|featuredimage<include(if:not(isNull(featuredimage())))>.id|src](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|featuredimage<include(if:not(isNull(featuredimage())))>.id|src)<br/>
 [/?query=posts.id|title|featuredimage<skip(if:isNull(featuredimage()))>.id|src](https://nextapi.getpop.org/api/graphql/?query=posts.id|title|featuredimage<skip(if:isNull(featuredimage()))>.id|src)

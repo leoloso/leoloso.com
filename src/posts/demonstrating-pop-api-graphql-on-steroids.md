@@ -128,7 +128,7 @@ Standard operations, such as `not`, `or`, `and`, `if`, `equals`, `isNull`, `spri
 
 [View query results: <a href="https://nextapi.getpop.org/api/graphql?query=not(true)">query #1</a>, <a href="https://nextapi.getpop.org/api/graphql?query=or([1,0])">query #2</a>, <a href="https://nextapi.getpop.org/api/graphql?query=and([1,0])">query #3</a>, <a href="https://nextapi.getpop.org/api/graphql?query=if(true,Show this text,Hide this text)">query #4</a>, <a href="https://nextapi.getpop.org/api/graphql?query=equals(first text, second text)">query #5</a>, <a href="https://nextapi.getpop.org/api/graphql?query=isNull(),isNull(something)">query #6</a>, <a href="https://nextapi.getpop.org/api/graphql?query=sprintf(%s API is %s, [PoP, cool])">query #7</a>]
 
-#### Nested fields
+#### Composable fields
 
 Arguments passed to a field can receive other fields or operators as input.
 
