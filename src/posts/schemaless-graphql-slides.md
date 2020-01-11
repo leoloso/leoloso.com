@@ -15,7 +15,7 @@ I have listed down all the features that I have implemented for the PoP API, whi
 
 If you want to find out what I'm talking about, please check the slides (if they bore you, just skip to slide #24 and check the features... I promise that will be fun):
 
-<iframe src="//slides.com/leoloso/schemaless-graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//slides.com/leoloso/graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 If after checking these slides you want to find out a bit more, please read my [previous blog post](/posts/demonstrating-pop-api-graphql-on-steroids/), in which I give a step-by-step explanation of how a rather complex use case is resolved with a single query. It's a bit long, but hopefully it will be worth your time.
 

@@ -41,7 +41,7 @@ Even though similar to [WP GraphQL](https://www.wpgraphql.com/) the PoP API impl
 
 The PoP API is based on [server-side components](https://github.com/getpop/component-model) (about which I wrote [here](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)), from which it can generate a graph to output the response as in GraphQL. Hence, the PoP API follows and satisfies the GraphQL spec, however it is not limited to it, and is able to also support REST.
 
-In addition, it is easier to code and set-up, and it is more performant (eg: it supports server-side caching). The complete list of unique features from this API can be found [in these slides](https://slides.com/leoloso/schemaless-graphql/), starting from [slide #13](https://slides.com/leoloso/schemaless-graphql/#/13/).
+In addition, it is easier to code and set-up, and it is more performant (eg: it supports server-side caching). The complete list of unique features from this API can be found [in these slides](https://slides.com/leoloso/graphql/), starting from [slide #13](https://slides.com/leoloso/graphql/#/15/).
 
 ### Is it ready?
 

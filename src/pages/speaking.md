@@ -16,9 +16,9 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 -->
 ## Previous engagements
 
-**Introduction to the “schemaless” GraphQL** @ [Nomad JS](https://nomadjs.com/live/kSk2ymG1OgnfnDchrCuVp/Introduction-to-the--schemaless--GraphQL/) (Online webinar)
+**Introduction to “PoP API”, a new GraphQL server in PHP** @ [Nomad JS](https://nomadjs.com/live/kSk2ymG1OgnfnDchrCuVp/Introduction-to-the--schemaless--GraphQL/) (Online webinar)
 
-<iframe src="//slides.com/leoloso/schemaless-graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//slides.com/leoloso/graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070), [WordCamp Kuala Lumpur 2019](https://2019.kualalumpur.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/), [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
 

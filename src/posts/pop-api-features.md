@@ -15,7 +15,7 @@ I can now claim my attempt was a success: The implementation satisfies the Graph
 
 So, I'd say this is a good time to introduce this API to the world, and hope that the world will notice it: Please be introduced to the brand-new [PoP API](https://github.com/getpop/api), an iteration and improvement over GraphQL.
 
-Below is the set of its unique, distinctive features (displayed [through slides here](https://slides.com/leoloso/schemaless-graphql/#/13)).
+Below is the set of its unique, distinctive features (displayed [through slides here](https://slides.com/leoloso/graphql/#/15)).
 
 ### Queries are URL-based
 
