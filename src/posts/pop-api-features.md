@@ -274,7 +274,7 @@ Exactly the same result above (`<skip(if(isNull(...)))>`) can be accomplished us
 
 <a href="https://newapi.getpop.org/api/graphql/?query=posts.title%7Cfeaturedimage?.src" target="_blank">View query results</a>
 
-### Nested directives
+### Composable directives
 
 Directives can be nested, unlimited levels deep, enabling to create complex logic such as iterating over array elements and applying a function on them, changing the context under which a directive must execute, and others.
 

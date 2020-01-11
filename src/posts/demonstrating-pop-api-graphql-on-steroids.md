@@ -157,11 +157,11 @@ Arguments passed to a field can receive other fields or operators as input.
 
 [<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with ID %s has %s comment(s) and title '%s',[id(),comments-count(),title()]),sprintf(%22Post with ID %s, created on %s, has no comments%22,[id(),date(d/m/Y)]))@postDesc">View query results</a>]
 
-### Nested directives
+### Composable directives
 
 A directive can modify the behaviour of another directive. Values can be passed from one to another through "expressions": special variables set by each directive, wrapped with `%...%`.
 
-For instance, in the example below, directive `<forEach>` iterates through all the items in an array, passing each of them to its nested directive `<applyFunction>` through expression `%value%`.
+For instance, in the example below, directive `<forEach>` iterates through all the items in an array, passing each of them to its composed directive `<applyFunction>` through expression `%value%`.
 
 ```php
 echo([
@@ -658,7 +658,7 @@ self.
 
 By now, we have translated the post content to all different unique languages. Next, let's add the corresponding translation for each user, creating a new property `userPostData`.
 
-To achieve this, we will make use of directive `<forEach>` which iterates over an array, and passes each array item to its nested directive `<applyFunction>` through expression `%value%`. This directive then executes function `arrayAddItem` on each item, which adds an element (the translated post content) to an array (the user data). In order to deduce the selected language, it uses functions `extract` to get the `lang` property from the user data array, then injects it into `sprintf` to generate the corresponding `postContent-languagecode` property, which is then retrieved from the current object (the root) and placed under property `postContent` on the array. All field arguments needed by function `arrayAddItem` are injected by the directive `<applyFunction>` on runtime through the array defined in argument `addArguments`.
+To achieve this, we will make use of directive `<forEach>` which iterates over an array, and passes each array item to its composed directive `<applyFunction>` through expression `%value%`. This directive then executes function `arrayAddItem` on each item, which adds an element (the translated post content) to an array (the user data). In order to deduce the selected language, it uses functions `extract` to get the `lang` property from the user data array, then injects it into `sprintf` to generate the corresponding `postContent-languagecode` property, which is then retrieved from the current object (the root) and placed under property `postContent` on the array. All field arguments needed by function `arrayAddItem` are injected by the directive `<applyFunction>` on runtime through the array defined in argument `addArguments`.
 
 ```php
 self.
@@ -723,9 +723,9 @@ self.
 
 [<a href="https://newapi.getpop.org/api/graphql/?postId=1&query=post($postId)@post.content|date(d/m/Y)@date,getJSON(%22https://newapi.getpop.org/wp-json/newsletter/v1/subscriptions%22)@userList|arrayUnique(extract(getSelfProp(%self%,%20userList),lang))@userLangs|extract(getSelfProp(%self%,%20userList),email)@userEmails|arrayFill(getJSON(sprintf(%22https://newapi.getpop.org/users/api/rest/?query=name|email%26emails[]=%s%22,[arrayJoin(getSelfProp(%self%,%20userEmails),%22%26emails[]=%22)])),getSelfProp(%self%,%20userList),email)@userData,self.post($postId)@post%3CcopyRelationalResults([content,%20date],[postContent,%20postDate])%3E|self.getSelfProp(%self%,%20postContent)@postContent%3Ctranslate(from:%20en,to:%20arrayDiff([getSelfProp(%self%,%20userLangs),[en]])),renameProperty(postContent-en)%3E|getSelfProp(%self%,%20userData)@userPostData%3CforEach%3CapplyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20postContent,array:%20%value%,value:%20getSelfProp(%self%,sprintf(postContent-%s,[extract(%value%,%20lang)]))]),applyFunction(function:%20arrayAddItem(array:%20[],value:%20%22%22),addArguments:%20[key:%20header,array:%20%value%,value:%20sprintf(string:%20%22%3Cp%3EHi%20%s,%20we%20published%20this%20post%20on%20%s,%20enjoy!%3C/p%3E%22,values:%20[extract(%value%,%20name),getSelfProp(%self%,%20postDate)])])%3E%3E">View query results</a>]
 
-Finally, we translate the message to the user's language. To do this, we use directive `<forEach>` to iterate on all array items whose `lang` field is `"en"` (for English), since we don't want to translate those. This is accomplished through the filter condition passed through argument `if`. Then, each array item is passed to the nested directive `<advancePointerInArray>`, which can navigate the inner structure of the array and position itself on the property that needs be translated: `header`. 
+Finally, we translate the message to the user's language. To do this, we use directive `<forEach>` to iterate on all array items whose `lang` field is `"en"` (for English), since we don't want to translate those. This is accomplished through the filter condition passed through argument `if`. Then, each array item is passed to the composed directive `<advancePointerInArray>`, which can navigate the inner structure of the array and position itself on the property that needs be translated: `header`. 
 
-Finally the element is passed to the next nested directive, `<translate>`, which receives a string of arrays to translate as its affected fields, and an array of languages to translate to passed through expression `toLang` (which we create on-the-fly just for this purpose of communicating data across directives), and by setting argument `oneLanguagePerField` to `true` and `override` to `true` the directive knows to match each element on these 2 arrays to do the translation and place the result back on the original property.
+Finally the element is passed to the next composed directive, `<translate>`, which receives a string of arrays to translate as its affected fields, and an array of languages to translate to passed through expression `toLang` (which we create on-the-fly just for this purpose of communicating data across directives), and by setting argument `oneLanguagePerField` to `true` and `override` to `true` the directive knows to match each element on these 2 arrays to do the translation and place the result back on the original property.
 
 ```php
 self.
