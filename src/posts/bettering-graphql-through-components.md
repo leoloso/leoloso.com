@@ -10,7 +10,7 @@ tags:
   - schema
 ---
 
-I have recently [introduced the “schemaless” GraphQL](/posts/intro-to-schemaless-graphql-api-for-pop/), which is based on the [PoP API](https://github.com/getpop/api). In this post, I will write about the improvements that using the component-based architecture can achieve over a typical schema-based implementation of GraphQL.
+I have recently [introduced a new implementation of GraphQL for PHP](/posts/intro-to-schemaless-graphql-api-for-pop/), which is based on the [PoP API](https://github.com/getpop/api). In this post, I will write about the improvements that using the component-based architecture can achieve over a typical schema-based implementation of GraphQL.
 
 ### Improved Speed and Safety
 
@@ -35,7 +35,7 @@ Through a special directive, each field can indicate its `cache-control` configu
 
 GraphQL's schema requires a type definition to live on a single location, making it difficult for team members to collaborate, often leading to a monolith architecture, or to the need to set-up special tooling to generate the schema. 
 
-Because PoP is schemaless, it overcomes these drawbacks, and supports:
+Because PoP is not based on the Schema Definition Language (or SDL), it overcomes these drawbacks, and supports:
 
 - Cleanly splitting the data model into different responsibilities (implemented by different, disconnected teams), without the need to set-up special tooling
 - Deprecation of fields based on the needs from the team/project, not on the API schema definition
@@ -72,7 +72,7 @@ Imagine that you need to implement the following functionality:
 
 - The newsletter must be translated to the user's preferred language!
 
-How would you do that using a standard GraphQL implementation? Would you believe me if I say that, through the schemaless GraphQL, this can be resolved in only 1 line, and without implementing any custom server-side code?
+How would you do that using a standard GraphQL implementation? Would you believe me if I say that it can be resolved in only 1 line, and without implementing any custom server-side code?
 
 <span style="font-size: 80px;">🤔</span>
 

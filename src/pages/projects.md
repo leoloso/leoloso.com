@@ -10,7 +10,7 @@ title: 💼 Projects
 
 ## Libraries
 
-[GraphQL API](https://github.com/getpop/api-graphql) is a “schemaless” implementation of GraphQL, using components. It is based on PoP's component-based architecture, making the application become a GraphQL server.
+[GraphQL API](https://github.com/getpop/api-graphql) is an implementation of GraphQL, using components. It is based on PoP's component-based architecture, making the application become a GraphQL server.
 
 [Field Query](https://github.com/getpop/field-query) is a syntax to query GraphQL through URL params, which grants a GraphQL API the capability to be cached on the server.
 

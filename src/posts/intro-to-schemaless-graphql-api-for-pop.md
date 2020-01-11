@@ -1,6 +1,6 @@
 ---
-title: 🚀 Introducing a “schemaless” implementation of GraphQL through components
-metaDesc: Schemaless GraphQL? Is that even possible? Click to find out!
+title: 🚀 Introducing an implementation of GraphQL through components
+metaDesc: A new implementation of GraphQL in PHP? How is it any special? Click to find out!
 socialImage: https://leoloso.com/images/graphql-logo.png
 date: '2019-10-22'
 tags:
@@ -17,7 +17,7 @@ It sounds good, right? But, is it even possible to implement?
 
 <p style="text-align: center;"><span style="font-size: 150px;">🤔</span></p>
 
-Yes it is... through a “schemaless” GraphQL!
+Yes it is!
 
 <p style="text-align: center;"><span style="font-size: 150px;">😲</span></p>
 
@@ -27,17 +27,13 @@ Now, I can claim without a doubt or regret: Schemas are not only the foundation 
 
 Components can avoid all of these issues...
 
-### Introducing the schemaless GraphQL API
+### Introducing the PoP API, a new implementation of GraphQL
 
-The result of my research is the new project [GraphQL API](https://github.com/getpop/api-graphql) (based on the [PoP API](https://github.com/getpop/api)), which may possibly be the first “schemaless” implementation of GraphQL. 
+The result of my research is the new project [GraphQL API](https://github.com/getpop/api-graphql) (based on the [PoP API](https://github.com/getpop/api)). The implementation of the GraphQL spec is not 100% complete: Support for GraphQL's input query is currently missing (but I'm working on it and should be ready within a few weeks) and other minor differences. However, it complies with everything that makes GraphQL great, particularly retrieving the queried data and nothing more or less, and having the response reflect the shape of the query.
 
-The implementation of the GraphQL spec is not 100% complete: Support for GraphQL's input query is currently missing (but I'm working on it and should be ready within a few weeks) and other minor differences. However, it complies with everything that makes GraphQL great, particularly retrieving the queried data and nothing more or less, and having the response reflect the shape of the query.
+### No need to code the schema?
 
-### No schema? Really?
-
-So, how can it be GraphQL and have no schema? 
-
-Even though I call it “schemaless”, there is actually a schema... but **it is not coded by anyone**! Instead, it is automatically-generated from the component model itself: Simply by coding classes following OOP principles, the application will generate the schema.
+The API has a schema... but **it is not coded by anyone**! Instead, it is automatically-generated from the component model itself: Simply by coding classes following OOP principles, the application will generate the schema.
 
 To visualize it, similar to GraphQL, the schema can be queried through the introspection `"__schema"` field:
 
