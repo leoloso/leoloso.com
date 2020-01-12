@@ -29,11 +29,11 @@ However, it requires PHP 7.1 or above (the WordPress minimum required PHP versio
 
 I honestly don't know. However, I wonder if you are already planning the v3 for the WP REST API and what architectural foundations it will have (I wonder if Adam will talk about this in his WordCamp Asia talk?). In that case, maybe this API could be useful?
 
-### Does it provide a schema?
+### Does it provide the required JSON schema?
 
-Yes. The API generates its schema automatically from PHP code, and the schema can be dynamic (i.e. different users can access different fields). The API can then generate the [JSON schema required for the WP REST API](https://timothybjacobs.com/2017/05/17/json-schema-and-the-wp-rest-api/), however this has to be done. 
+It hasn't been done, but it can be done with no problems: because the schema is coded through PHP code (so that it can be dynamic, eg: different users can access different fields), it can then be rendered in any format desired, including the [JSON schema format required for the WP REST API](https://timothybjacobs.com/2017/05/17/json-schema-and-the-wp-rest-api/).
 
-(I have only almost-finished implementing the [schema for GraphQL](https://newapi.getpop.org/api/graphql/?query=__schema) so far).
+For instance, currently for GraphQL the schema is printed in 2 different formats: [field `__schema`](https://newapi.getpop.org/api/graphql/?query=__schema.fields) satisfies the GraphQL schema specification, and [field `__fullSchema`] (https://newapi.getpop.org/api/graphql/?query=__fullSchema) is an alternative, more readable visualization of the full schema.
 
 ### How is it different from WP GraphQL?
 

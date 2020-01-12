@@ -35,9 +35,9 @@ The result of my research is the new project [GraphQL API](https://github.com/ge
 
 The API has a schema... but **it is not coded by anyone**! Instead, it is automatically-generated from the component model itself: Simply by coding classes following OOP principles, the application will generate the schema.
 
-To visualize it, similar to GraphQL, the schema can be queried through the introspection `"__schema"` field:
+To visualize it, in addition to the standard introspection field `__schema`, we can query field `__fullSchema`:
 
-[/api/graphql/?query=__schema](https://nextapi.getpop.org/api/graphql/?query=__schema)
+[/api/graphql/?query=__fullSchema](https://nextapi.getpop.org/api/graphql/?query=__fullSchema)
 
 ### New syntax, supporting URL-based queries
 
