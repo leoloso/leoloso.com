@@ -69,7 +69,7 @@ Since supporting introspection field `"__schema"`, we can now use GraphiQL's Doc
 
 ### What's next?
 
-I must stil add support for mutations. I have already started work on it, and depending on my time availability, I may be able to finish it in a couple of months. 
+I must still add support for mutations. I have already started work on it, and depending on my time availability, I may be able to finish it in a couple of months. 
 
 ### Check it out!
 
