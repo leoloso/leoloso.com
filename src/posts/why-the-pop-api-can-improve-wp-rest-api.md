@@ -2,7 +2,7 @@
 title: 👀 Why the PoP API can improve the WP REST API
 metaDesc: Blog post for contibutors to the WP REST API
 socialImage: https://leoloso.com/images/wordpress-logo.png
-date: '2021-01-16'
+date: '2059-01-16'
 tags:
   - pop
   - api
@@ -33,7 +33,7 @@ I honestly don't know. However, I wonder if you are already planning the v3 for 
 
 It hasn't been done, but it can be done with no problems: because the schema is coded through PHP code (so that it can be dynamic, eg: different users can access different fields), it can then be rendered in any format desired, including the [JSON schema format required for the WP REST API](https://timothybjacobs.com/2017/05/17/json-schema-and-the-wp-rest-api/).
 
-For instance, currently for GraphQL the schema is printed in 2 different formats: [field `__schema`](https://newapi.getpop.org/api/graphql/?query=__schema.fields) satisfies the GraphQL schema specification, and [field `__fullSchema`] (https://newapi.getpop.org/api/graphql/?query=__fullSchema) is an alternative, more readable visualization of the full schema.
+For instance, currently for GraphQL the schema is printed in 2 different formats: [field `__schema`](https://newapi.getpop.org/api/graphql/?query=__schema.fields) satisfies the GraphQL schema specification, and [field `fullSchema`] (https://newapi.getpop.org/api/graphql/?query=fullSchema) is an alternative, more readable visualization of the full schema.
 
 ### How is it different from WP GraphQL?
 
