@@ -40,7 +40,7 @@ min.js"></script>
 ></script>
 <script>
 function introspectionProvider(query) {
-  return fetch('https://newapi.getpop.org/api/graphql', {
+  return fetch('https://newapi.getpop.org/api/graphql/', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({query: query}),
