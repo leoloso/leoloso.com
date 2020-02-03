@@ -21,7 +21,7 @@ This is how it looks in [its namespaced version](https://newapi.getpop.org/graph
 
 In the namespaced schema, all types are automatically prepended using the PHP package's owner and name (in this case it is `PoP_ComponentModel_`, where `PoP` is the package owner, and `ComponentModel` is the package name).
 
-### Why namespaces
+## Why namespaces
 
 Namespaces help manage the complexity of the schema. This is particularly useful when embedding components from a 3rd party, where we can't control how the types have been named. For instance, different plugins in [WordPress](https://wordpress.org) may implement a `Product` custom post type (such as [WooCommerce](https://woocommerce.com/) or [Easy Digital Downloads](https://easydigitaldownloads.com)); if they wish to create a GraphQL type for it, they can't just name it `Product` or it may clash with another plugin. Hence, they would have to manually prepend their their type names with the company name (such as doing `WooCommerce_Product`), which is not the most beautiful solution. 
 
@@ -29,7 +29,7 @@ Now, GraphQL by PoP enables to define an environment variable, and it will autom
 
 There are many more use cases where namespaces can be pretty useful, listed down in [this GitHub issue](https://github.com/graphql/graphql-spec/issues/163).
 
-### GraphiQL Demo!
+## GraphiQL Demo!
 
 If you want to play with the namespaced schema, you can do it in the GraphiQL clients below.
 
@@ -104,6 +104,14 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
   );
 </script>
 
+## Coming next... 🥁
+
 I'll end my blog post as usual: if you are using WordPress and you need a kick-ass API, then give [GraphQL by PoP](https://github.com/getpop/graphql) a try, what are you waiting for!? 
 
-This is gooooood stuff, I promise! 🤪
+Oh, you're waiting for the plugin, you say? 
+
+Well, good news then... it is coming sooooon...
+
+![](/images/shocked.jpg)
+
+This is going to be gooooood stuff, I promise! 🤪
