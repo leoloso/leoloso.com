@@ -1,7 +1,7 @@
 ---
 title: 🚀 Here they are => All the features from my GraphQL server in PHP
 metaDesc: Oh boy, I'm so proud of this!
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2019-11-15'
 tags:
   - pop

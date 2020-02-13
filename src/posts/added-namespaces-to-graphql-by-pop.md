@@ -1,7 +1,7 @@
 ---
 title: 👏 Types and interfaces in GraphQL by PoP are now namespaced! 
 metaDesc: Let 2 WordPress plugins implement type "Portfolio"
-socialImage: https://leoloso.com/images/shocked.jpg
+socialImage: /images/shocked.jpg
 date: '2020-02-03'
 tags:
   - pop

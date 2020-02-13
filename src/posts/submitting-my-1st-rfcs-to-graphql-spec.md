@@ -1,7 +1,7 @@
 ---
 title: 😸 Submitting my first RFCs to the GraphQL spec
 metaDesc: Composable fields and composable directives
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2020-02-05'
 tags:
   - pop

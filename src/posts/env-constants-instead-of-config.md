@@ -1,7 +1,7 @@
 ---
 title: 👨‍🔧 Using environment constants when installing WordPress (a.k.a. How to not hardcode wp-config.php)
 metaDesc: A Composer script makes it easy to install WordPress. Find out all about it!
-socialImage: https://leoloso.com/images/wordpress-logo.png
+socialImage: /images/wordpress-logo.png
 date: '2019-08-14'
 tags:
   - wordpress

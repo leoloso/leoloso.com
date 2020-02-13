@@ -1,7 +1,7 @@
 ---
 title: ✍️ Reflexions on writing - Attempting to become a good writer
 metaDesc: Everyone can become a writer, but not everyone does. What qualities do I think are needed to make it?
-socialImage: https://leoloso.com/images/writing.jpg
+socialImage: /images/writing.jpg
 date: '2019-12-02'
 tags:
   - smashing

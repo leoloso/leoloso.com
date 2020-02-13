@@ -1,7 +1,7 @@
 ---
 title: 🔪 Decoupling PoP from WordPress - How it was achieved
 metaDesc: Doing things properly is hard work, but well worth it
-socialImage: https://leoloso.com/images/wordpress-logo.png
+socialImage: /images/wordpress-logo.png
 date: '2019-11-29'
 tags:
   - wordpress

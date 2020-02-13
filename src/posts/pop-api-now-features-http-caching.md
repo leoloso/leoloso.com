@@ -1,7 +1,7 @@
 ---
 title: 💪 The PoP API now features HTTP caching!
 metaDesc: Time to catch up, GraphQL!
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2019-11-24'
 tags:
   - pop

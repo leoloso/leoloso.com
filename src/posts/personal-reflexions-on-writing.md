@@ -1,7 +1,7 @@
 ---
 title: ✍️ Reflexions on writing - Why, when, how, and more...
 metaDesc: What I have learnt from publishing 20 articles on Smashing Magazine
-socialImage: https://leoloso.com/images/proud-goat.jpg
+socialImage: /images/proud-goat.jpg
 date: '2019-11-29'
 tags:
   - smashing

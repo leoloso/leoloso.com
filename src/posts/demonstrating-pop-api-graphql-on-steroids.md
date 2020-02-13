@@ -1,7 +1,7 @@
 ---
 title: 🧨 Demonstrating the PoP API, an implementation of GraphQL on steroids
 metaDesc: After you've seen this, there's no turning back
-socialImage: https://leoloso.com/images/matrix.jpg
+socialImage: /images/matrix.jpg
 date: '2019-11-12'
 tags:
   - pop

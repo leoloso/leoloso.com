@@ -1,7 +1,7 @@
 ---
 title: 👀 Why the PoP API can improve the WP REST API
 metaDesc: Blog post for contibutors to the WP REST API
-socialImage: https://leoloso.com/images/wordpress-logo.png
+socialImage: /images/wordpress-logo.png
 date: '2059-01-16'
 tags:
   - pop

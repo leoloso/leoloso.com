@@ -1,7 +1,7 @@
 ---
 title: 🗓 Webinar on the “PoP API” GraphQL server
 metaDesc: On November 13th at 6:00pm PST, for free
-socialImage: https://leoloso.com/images/nomadjs-logo.png
+socialImage: /images/nomadjs-logo.png
 date: '2019-10-30'
 tags:
   - pop

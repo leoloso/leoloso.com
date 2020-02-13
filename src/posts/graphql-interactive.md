@@ -1,7 +1,7 @@
 ---
 title: 👁 Visualize the GraphQL-powered WordPress schema!
 metaDesc: The GraphQL Voyager makes you see the full picture
-socialImage: https://leoloso.com/images/graphql-voyager.png
+socialImage: /images/graphql-voyager.png
 date: '2020-01-24'
 tags:
   - pop

@@ -2,12 +2,12 @@
   "showThemeCredit": true,
   "name": "Leo's blog",
   "shortDesc": "Random thoughts, tips, tricks, accidental findings or whatever trivial or noteworthy crosses my way.",
-  "url": "https://hylia.website",
+  "url": "https://leoloso.com",
   "authorEmail": "leo@getpop.org",
   "authorHandle": "@losoviz",
   "authorName": "Leonardo Losoviz",
   "enableThirdPartyComments": false,
   "maxPostsPerPage": 5,
-  "paymentPointer": "$pay.stronghold.co/1a171baca7344614a63a0b798870af43b82",
+  "paymentPointer": "",
   "faviconPath": "/images/favicon.png"
 }

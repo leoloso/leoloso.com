@@ -1,7 +1,7 @@
 ---
 title: 🙏 Adding 100% compliance with GraphQL!
 metaDesc: Introspection fields are now supported
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2020-01-20'
 tags:
   - pop

@@ -1,7 +1,7 @@
 ---
 title: 🥳 The PoP API is now a GraphQL server!
 metaDesc: A brand-new GraphQL server in PHP is coming to town
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2020-01-10'
 tags:
   - pop

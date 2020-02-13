@@ -1,7 +1,7 @@
 ---
 title: 🚀 Updated slides for my GraphQL server in PHP
 metaDesc: With all the new features
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2020-01-22'
 tags:
   - pop

@@ -1,7 +1,7 @@
 ---
 title: 🚀 Improving GraphQL - How the PoP API achieves new heights
 metaDesc: Showing the features from this brand-new API
-socialImage: https://leoloso.com/images/pop-logo-whitebg.png
+socialImage: /images/pop-logo-whitebg.png
 date: '2019-12-02'
 tags:
   - pop

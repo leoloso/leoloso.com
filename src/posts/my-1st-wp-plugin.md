@@ -1,7 +1,7 @@
 ---
 title: 🤘 Today I published my 1st WordPress plugin, yay!
 metaDesc: My plugin “Block Metadata” extracts all the metadata from all blocks inside of a blog post, enabling to implement the “COPE” strategy in WordPress 🙏
-socialImage: https://leoloso.com/images/block-metadata-icon.jpg
+socialImage: /images/block-metadata-icon.jpg
 date: '2019-08-22'
 tags:
   - wordpress

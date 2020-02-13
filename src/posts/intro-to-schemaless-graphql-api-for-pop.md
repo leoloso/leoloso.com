@@ -1,7 +1,7 @@
 ---
 title: 🚀 Introducing an implementation of GraphQL through components
 metaDesc: A new implementation of GraphQL in PHP? How is it any special? Click to find out!
-socialImage: https://leoloso.com/images/graphql-logo.png
+socialImage: /images/graphql-logo.png
 date: '2019-10-22'
 tags:
   - pop

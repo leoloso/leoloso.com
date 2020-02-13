@@ -1,7 +1,7 @@
 ---
 title: 😎 I've been named Smashing person of the week
 metaDesc: That's an honour!
-socialImage: https://leoloso.com/images/smashing-cat.png
+socialImage: /images/smashing-cat.png
 date: '2019-12-03'
 tags:
   - smashing

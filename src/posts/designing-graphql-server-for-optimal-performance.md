@@ -1,7 +1,7 @@
 ---
 title: 🏎 Designing a GraphQL server for optimal performance
 metaDesc: First article on the series
-socialImage: https://leoloso.com/images/graphql-by-pop-logo.jpg
+socialImage: /images/graphql-by-pop-logo.jpg
 date: '2020-02-12'
 tags:
   - concept

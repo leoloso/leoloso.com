@@ -1,7 +1,7 @@
 ---
 title: ✍️ Reflexions on writing - Deciding what to write about
 metaDesc: Wanting to write about something, but not sure about what? Here some ideas that have worked for me.
-socialImage: https://leoloso.com/images/writing.jpg
+socialImage: /images/writing.jpg
 date: '2019-12-04'
 tags:
   - smashing

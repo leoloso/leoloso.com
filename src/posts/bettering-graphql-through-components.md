@@ -1,7 +1,7 @@
 ---
 title: 😎 Components all the way down - A better GraphQL implementation!
 metaDesc: Components make GraphQL shine... take that, schema!
-socialImage: https://leoloso.com/images/pop-logo-whitebg.png
+socialImage: /images/pop-logo-whitebg.png
 date: '2019-10-30'
 tags:
   - pop
