@@ -45,7 +45,7 @@ Use the latest version of the field whenever the `versionConstraint` is not set,
 
 ## Choosing the version for all fields in the query
 
-Adding the `versionConstraint` parameter in the GraphQL endpoint itself (set in the [GraphiQL client below](https://newapi.getpop.org/graphiql/?versionConstraint=^0.1) as `/api/endpoint/?versionConstraint=^0.1`) will implicitly define that version constraint in all fields:
+Adding the `versionConstraint` parameter in the GraphQL endpoint itself (set in the [GraphiQL client below](https://newapi.getpop.org/graphiql/?versionConstraint=%5E0.1&query=query%20%7B%0A%20%20%23This%20will%20produce%20version%200.1.0%0A%20%20userServiceURLs%0A%7D) as `/api/endpoint/?versionConstraint=^0.1`) will implicitly define that version constraint in all fields:
 
 <div id="graphiql-6th" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
