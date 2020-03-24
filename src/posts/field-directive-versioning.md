@@ -13,9 +13,9 @@ I just added support for another lovely new feature in [GraphQL by PoP](https://
 
 Versioning the schema this way solves a basic problem produced by the [evolution strategy](https://graphql.org/learn/best-practices/#versioning) adopted by GraphQL: when deprecating a field, as to replace it with a newer implementation, the new field will need to have a new field name. Then, if the deprecated field cannot be removed (eg: because some clients are still accessing it, from queries that were never revised), then these fields tend to accumulate, making the schema have different fields for a same functionality, most of them already outdated, and the new, latest implementation of the field not able to have the original field name, indeed polluting the schema and making it not as lean as it should be.
 
-## Demonstration
+## Querying
 
-Check this out: in this query, field `userServiceURLs` has 2 versions, `0.1.0` and `0.2.0`, and we can choose one or the other through field argument `versionConstraint`:
+Let's see it in action. In this query, field `userServiceURLs` has 2 versions, `0.1.0` and `0.2.0`, and we can choose one or the other through field argument `versionConstraint`:
 
 <div id="graphiql-1st" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
