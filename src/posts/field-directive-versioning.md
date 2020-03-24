@@ -9,7 +9,7 @@ tags:
   - development
 ---
 
-I just added support for another lovely new feature in [GraphQL by PoP](https://graphql-by-pop.com): the ability to independently version fields and directives, which can then be used in the query as field/directive arguments. It is similar to how REST supports versioning, but extremely fine grained: instead of versioning the whole API, or the endpoint, what is versioned is a single field or directive, and a query can involve different versions for different fields.
+I just added support for another lovely new feature in [GraphQL by PoP](https://graphql-by-pop.com): the ability to independently version fields and directives, which can then be selected in the query through field/directive arguments. It is similar to how REST supports versioning, but extremely fine grained: instead of versioning the whole API, or the endpoint, what is versioned is a single field or directive, and a query can involve different versions for different fields.
 
 Versioning the schema this way solves a basic problem produced by the [evolution strategy](https://graphql.org/learn/best-practices/#versioning) adopted by GraphQL: when deprecating a field, as to replace it with a newer implementation, the new field will need to have a new field name. Then, if the deprecated field cannot be removed (eg: because some clients are still accessing it, from queries that were never revised), then these fields tend to accumulate, making the schema have different fields for a same functionality, most of them already outdated, and the new, latest implementation of the field not able to have the original field name, indeed polluting the schema and making it not as lean as it should be.
 
