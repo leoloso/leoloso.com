@@ -1,5 +1,5 @@
 ---
-title: ⚙️ GraphQL by PoP now supports field/directive-based versioning
+title: 💯 GraphQL by PoP now supports field/directive-based versioning
 metaDesc: My GraphQL server just got another lovely new feature
 socialImage: /images/graphql-by-pop-logo.png
 date: '2020-03-24'
