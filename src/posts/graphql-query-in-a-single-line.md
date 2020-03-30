@@ -87,7 +87,7 @@ _**Fragments with variables:**_<br/>
 [/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1](https://nextapi.getpop.org/api/graphql/?query=posts.--fr1.--fr2&fragments[fr1]=author.posts(limit:$limit)&fragments[fr2]=id|title&variables[limit]=1)
 
 _**Fragments with directives:**_<br/>
-[/?query=posts.id|--props<include(if:has-comments())>&fragments[props]=title|url<include(if:not(has-comments()))>](https://nextapi.getpop.org/api/graphql/?query=posts.id|--props<include(if:has-comments())>&fragments[props]=title|url<include(if:not(has-comments()))>)
+[/?query=posts.id|--props<include(if:hasComments())>&fragments[props]=title|url<include(if:not(hasComments()))>](https://nextapi.getpop.org/api/graphql/?query=posts.id|--props<include(if:hasComments())>&fragments[props]=title|url<include(if:not(hasComments()))>)
 
 _**Fragments with "Skip output if null":**_<br/>
 [/?query=posts.id|--props?&fragments[props]=title|url|featuredimage](https://nextapi.getpop.org/api/graphql/?query=posts.id|--props?&fragments[props]=title|url|featuredimage)
@@ -110,10 +110,10 @@ _**Helpers:**_<br/>
 <a href="https://nextapi.getpop.org/api/graphql?query=var(route),var(target)@target,var(datastructure)">/?query=var(route),var(target)@target,var(datastructure)</a>
 
 _**Composable fields:**_<br/>
-<a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|not(has-comments())">/?query=posts.has-comments|not(has-comments())</a><br/>
-<a href="https://nextapi.getpop.org/api/graphql/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])">/?query=posts.has-comments|has-featuredimage|or([has-comments(),has-featuredimage()])</a><br/>
-<a href="https://nextapi.getpop.org/api/graphql/?query=var(fetching-site),posts.has-featuredimage|and([has-featuredimage(), var(fetching-site)])">/?query=var(fetching-site),posts.has-featuredimage|and([has-featuredimage(), var(fetching-site)])</a><br/>
-<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(), comments-count()]),sprintf(Post with ID %s was created on %s, [id(),date(d/m/Y)]))@postDesc">/?query=posts.if(has-comments(),sprintf(Post with title '%s' has %s comments,[title(), comments-count()]),sprintf(Post with ID %s was created on %s, [id(),date(d/m/Y)]))@postDesc</a><br/>
+<a href="https://nextapi.getpop.org/api/graphql/?query=posts.hasComments|not(hasComments())">/?query=posts.hasComments|not(hasComments())</a><br/>
+<a href="https://nextapi.getpop.org/api/graphql/?query=posts.hasComments|hasFeaturedImage|or([hasComments(),hasFeaturedImage()])">/?query=posts.hasComments|hasFeaturedImage|or([hasComments(),hasFeaturedImage()])</a><br/>
+<a href="https://nextapi.getpop.org/api/graphql/?query=var(fetching-site),posts.hasFeaturedImage|and([hasFeaturedImage(), var(fetching-site)])">/?query=var(fetching-site),posts.hasFeaturedImage|and([hasFeaturedImage(), var(fetching-site)])</a><br/>
+<a href="https://nextapi.getpop.org/api/graphql/?query=posts.if(hasComments(),sprintf(Post with title '%s' has %s comments,[title(), commentsCount()]),sprintf(Post with ID %s was created on %s, [id(),date(d/m/Y)]))@postDesc">/?query=posts.if(hasComments(),sprintf(Post with title '%s' has %s comments,[title(), commentsCount()]),sprintf(Post with ID %s was created on %s, [id(),date(d/m/Y)]))@postDesc</a><br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=users.name|equals(name(), leo)">/?query=users.name|equals(name(), leo)</a><br/>
 <a href="https://nextapi.getpop.org/api/graphql/?query=posts.featuredimage|isNull(featuredimage())">/?query=posts.featuredimage|isNull(featuredimage())</a>
 
