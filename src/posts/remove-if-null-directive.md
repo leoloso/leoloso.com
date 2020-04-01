@@ -1,7 +1,7 @@
 ---
 title: 🚀 Added @removeIfNull directive to GraphQL by PoP
 metaDesc: Implementing unsupported features by GraphQL
-socialImage: /images/graphql-by-pop-logo.png
+socialImage: /images/graphql-by-pop-logo.jpg
 date: '2020-03-30'
 tags:
   - pop

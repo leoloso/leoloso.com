@@ -1,7 +1,7 @@
 ---
 title: 📦 Added @cache and @traceExecutionTime directives to GraphQL by PoP
 metaDesc: Keep implementing features to improve GraphQL
-socialImage: /images/graphql-by-pop-logo.png
+socialImage: /images/graphql-by-pop-logo.jpg
 date: '2020-04-01'
 tags:
   - pop

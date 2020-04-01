@@ -1,7 +1,7 @@
 ---
 title: ⚙️ Mandatory directives for fields/directives in GraphQL by PoP
 metaDesc: My GraphQL server just got a lovely new feature
-socialImage: /images/graphql-by-pop-logo.png
+socialImage: /images/graphql-by-pop-logo.jpg
 date: '2020-03-03'
 tags:
   - pop
