@@ -28,7 +28,7 @@
   --color-selection-text: #{get-color('dark')};
   --color-selection-bg: #{get-color('light')};
   --color-stroke: #{get-color('slate')};
-  --color-theme-primary: #{lighten(get-color('primary'), 50%)};
+  --color-theme-primary: #{lighten(get-color('primary'), 35%)};
   --color-theme-primary-glare: #{lighten(get-color('primary-glare'), 50%)};
   --color-action-bg: var(--color-theme-primary-glare);
   --color-action-text: #{get-color('dark')};
