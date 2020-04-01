@@ -50,6 +50,6 @@ I am on my way to become an entrepreneur, through the following ventures (which 
 
 <!-- ![Verticals](/images/verticals-1200.jpg "Verticals") -->
 
-[SukiPoP](https://sukipop.com) - An implementation of a social network from Verticals. This website demonstrates how a community can own its own social network.
+<!-- [SukiPoP](https://sukipop.com) - An implementation of a social network from Verticals. This website demonstrates how a community can own its own social network. -->
 
 <!-- ![SukiPoP](/images/sukipop-1200.jpg "SukiPoP") -->
