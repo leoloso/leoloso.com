@@ -10,9 +10,9 @@ tags:
   - directives
 ---
 
-Here comes my latest new custom directive implemented for [GraphQL by PoP](https://graphql-by-pop.com) (rounding-up a great week, producing new directives [@cache and @traceExecutionTime](https://leoloso.com/posts/cache-and-logtime-directives/) and [@removeIfNull](https://leoloso.com/posts/remove-if-null-directive/)): the [`@export` directive](https://github.com/getpop/graphql/blob/109d194c11dd2510d0ea5ce42b88fb556397400c/src/DirectiveResolvers/ExportDirectiveResolver.php), to export the value of a field (or set of fields) into a variable, to be used somewhere else in the query.
+Here comes my latest new custom directive implemented for [GraphQL by PoP](https://graphql-by-pop.com): the [`@export` directive](https://github.com/getpop/graphql/blob/109d194c11dd2510d0ea5ce42b88fb556397400c/src/DirectiveResolvers/ExportDirectiveResolver.php), to export the value of a field (or set of fields) into a variable, to be used somewhere else in the query.
 
-The need for this directive is documented in [this issue](https://github.com/graphql/graphql-spec/issues/583) from the GraphQL spec repository. The biggest use case is to enable to combine 2 queries into 1, avoiding the second query to wait for the 1st one to be executed, improving the performance.
+The need for this directive is documented in [this issue](https://github.com/graphql/graphql-spec/issues/583) from the GraphQL spec. The biggest use case is to enable to combine 2 queries into 1, avoiding the second query to wait for the 1st one to be executed, improving the performance.
 
 This directive is not part of the official GraphQL spec, though, because it's not easy to support in some circumstances. In particular, [`graphql-js`](https://github.com/graphql/graphql-js), the reference implementation of GraphQL in JavaScript, resolves fields in parallel through promises, so it doesn't know in advance which field will be resolved before which other field; this is a problem for `@export`, since the field exporting the value must be executed before the field reading the value.
 
