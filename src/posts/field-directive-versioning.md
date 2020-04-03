@@ -108,7 +108,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  olderVersion:userServiceURLs(versionConstraint:\"0.1.0\")\n  newerVersion:userServiceURLs(versionConstraint:\"0.2.0\")\n}"
+        query: "query {\n  olderVersion:userServiceURLs(versionConstraint:\"0.1.0\")\n  newerVersion:userServiceURLs(versionConstraint:\"0.2.0\")\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-1st'),
@@ -121,7 +123,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  #This will produce version 0.1.0\n  firstVersion:userServiceURLs(versionConstraint:\"^0.1\")\n  # This will produce version 0.2.0\n  secondVersion:userServiceURLs(versionConstraint:\">0.1\")\n  # This will produce version 0.2.0\n  thirdVersion:userServiceURLs(versionConstraint:\"^0.2\")\n}"
+        query: "query {\n  #This will produce version 0.1.0\n  firstVersion:userServiceURLs(versionConstraint:\"^0.1\")\n  # This will produce version 0.2.0\n  secondVersion:userServiceURLs(versionConstraint:\">0.1\")\n  # This will produce version 0.2.0\n  thirdVersion:userServiceURLs(versionConstraint:\"^0.2\")\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-2nd'),
@@ -134,7 +138,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  #This will produce version 0.1.0, and warn the users\n  #to explicitly set a version on the query\n  userServiceURLs\n}"
+        query: "query {\n  #This will produce version 0.1.0, and warn the users\n  #to explicitly set a version on the query\n  userServiceURLs\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-3rd'),
@@ -147,7 +153,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  #This will produce version 0.2.0 and show\n  #all available versions to the users\n  userServiceData\n}"
+        query: "query {\n  #This will produce version 0.2.0 and show\n  #all available versions to the users\n  userServiceData\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-4th'),
@@ -160,7 +168,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  post(id:1) {\n    titleCase:title@makeTitle(versionConstraint:\"^0.1\")\n    upperCase:title@makeTitle(versionConstraint:\"^0.2\")\n  }\n}"
+        query: "query {\n  post(id:1) {\n    titleCase:title@makeTitle(versionConstraint:\"^0.1\")\n    upperCase:title@makeTitle(versionConstraint:\"^0.2\")\n  }\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-5th'),
@@ -173,7 +183,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: versionedGraphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  #This will produce version 0.1.0\n  userServiceURLs\n}"
+        query: "query {\n  #This will produce version 0.1.0\n  userServiceURLs\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-6th'),
@@ -186,7 +198,9 @@ Please also notice that I have added the field's version as part of the field's 
         fetcher: versionedGraphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  #This will produce version 0.1.0\n  implicitVersion: userServiceURLs\n  #This will produce version 0.2.0\n  explicitVersion: userServiceURLs(versionConstraint:\"^0.2\")\n}"
+        query: "query {\n  #This will produce version 0.1.0\n  implicitVersion: userServiceURLs\n  #This will produce version 0.2.0\n  explicitVersion: userServiceURLs(versionConstraint:\"^0.2\")\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-7th'),

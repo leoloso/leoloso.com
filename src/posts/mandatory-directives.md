@@ -97,7 +97,9 @@ When executing the query, dear reader, you won't be allowed to access those fiel
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  user(id:1) {\n    name\n    capabilities\n    roles {\n      name\n    }\n  }\n}"
+        query: "query {\n  user(id:1) {\n    name\n    capabilities\n    roles {\n      name\n    }\n  }\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql'),

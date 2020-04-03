@@ -115,7 +115,9 @@ Hasta la vista 👋
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts(limit:3) {\n    id\n    title @translate(from:"en", to:"es")\n  }\n}'
+        query: 'query {\n  posts(limit:3) {\n    id\n    title @translate(from:"en", to:"es")\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-1st'),
@@ -128,7 +130,9 @@ Hasta la vista 👋
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts(limit:3) {\n    id\n    title @translate(from:"en", to:"es") @cache(time:10)\n  }\n}'
+        query: 'query {\n  posts(limit:3) {\n    id\n    title @translate(from:"en", to:"es") @cache(time:10)\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-2nd'),
@@ -141,7 +145,9 @@ Hasta la vista 👋
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts(limit:3) {\n    id\n    title @translate(from:"en", to:"es") @cache(time:10) @traceExecutionTime\n  }\n}'
+        query: 'query {\n  posts(limit:3) {\n    id\n    title @translate(from:"en", to:"es") @cache(time:10) @traceExecutionTime\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-3rd'),

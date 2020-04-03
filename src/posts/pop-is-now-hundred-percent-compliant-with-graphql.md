@@ -60,7 +60,9 @@ Since supporting introspection field `"__schema"`, we can now use GraphiQL's Doc
         fetcher: graphQLFetcher,
         docExplorerOpen: true,
         response: responseText,
-        query: "query {\n  posts {\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n      url\n    }\n    comments {\n      content\n      date\n      author {\n        name\n      }\n    }\n  }\n}"
+        query: "query {\n  posts {\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n      url\n    }\n    comments {\n      content\n      date\n      author {\n        name\n      }\n    }\n  }\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql'),

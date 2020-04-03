@@ -56,7 +56,9 @@ Tadaaa, that's it! Check it out [here](https://newapi.getpop.org/graphiql/?query
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: "query {\n  posts(limit:2) {\n    id\n    title\n    featuredImageOrNothing: featuredImage @removeIfNull {\n      id\n      src\n    }\n    featuredImage {\n      id\n      src\n    }\n  }\n}"
+        query: "query {\n  posts(limit:2) {\n    id\n    title\n    featuredImageOrNothing: featuredImage @removeIfNull {\n      id\n      src\n    }\n    featuredImage {\n      id\n      src\n    }\n  }\n}",
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql'),
