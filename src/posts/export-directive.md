@@ -41,7 +41,7 @@ query GetPostsContainingString($search: String = "") {
 }
 ```
 
-The @export directive allows to export the value from a field, and inject this value into a second field through a variable with name defined under argument `as`, allowing to combine the 2 queries into 1:
+The `@export` directive allows to export the value from a field, and inject this value into a second field through a variable with name defined under argument `as`, allowing to combine the 2 queries into 1:
 
 ```graphql
 query GetPostsContainingLoggedInUserName($search: String = "") {
@@ -57,7 +57,7 @@ query GetPostsContainingLoggedInUserName($search: String = "") {
 
 ## Handling different cases
 
-The query above exports a single value: the user's name. Fields returning lists can also be exported. For instance, in this query, the exported value is the list of names from the logged-in user's friends (hence the type of the `$search` variable went from `String` to `[String]`):
+The query above exports a single value: the user's name. Fields returning lists can also be exported. For instance, in the query below, the exported value is the list of names from the logged-in user's friends (hence the type of the `$search` variable went from `String` to `[String]`):
 
 ```graphql
 query GetPostsContainingLoggedInUserName($search: [String] = []) {
@@ -116,7 +116,7 @@ query GetPostsContainingLoggedInUserName($search: [Map] = []) {
 
 I have implemented the 4 cases, let's play with them. I have replaced the field `me` with `user(id: 1)`, since otherwise non logged-in users cannot run it.
 
-This is the [first query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(id%3A%201)%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20posts(searchfor%3A%20%24_authorName)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames): it extracts the user's name into variable `$_authorName`, and then performs a search of all posts containing this string. Click on Run to see the results:
+This is the [first query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(id%3A%201)%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20posts(searchfor%3A%20%24_authorName)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames): it extracts the user's name into variable `$_authorName`, and then performs a search of all posts containing this string. Click on the "Execute query" button to see the results:
 
 <div id="graphiql-1st" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -158,7 +158,7 @@ posts(limit:5) {
 }
 ```
 
-To visualize the value stored in the dynamic variables, I created fields `exportedVariables`, which returns the list of all the dynamic variables created in the query, and `echoVar`, which echoes back the value of a single one. Since I do not know in advance the type of the values, these fields deal with a generic `Mixed` type; there will be a mismatch in the GraphiQL client (that's why there's a red line over the argument definitions), but the query can be executed without any problem. Check it out by pressing the Run button:
+To visualize the value stored in the dynamic variables, I created fields `exportedVariables`, which returns the list of all the dynamic variables created in the query, and `echoVar`, which echoes back the value of a single one. Since I do not know in advance the type of the values, these fields deal with a generic `Mixed` type; there will be a mismatch in the GraphiQL client (that's why there's a red line over the argument definitions), but the query can be executed without any problem. Check it out by pressing the "Execute query" button:
 
 <div id="graphiql-2nd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -166,19 +166,19 @@ To visualize the value stored in the dynamic variables, I created fields `export
 
 Nothing is perfect: in order for `@export` to work, there are 3 considerations that need to be satisfied in the query:
 
-1. The name of the variable must start with "_"
+1. The name of the variable must start with `"_"`
 2. The fields must be executed in order
 3. The variable must always receive a default value
 
 I'll explain why these are mandatory and how they work, one by one.
 
-### 1. The name of the variable must start with "_"
+### 1. The name of the variable must start with `"_"`
 
-As mention earlier on, the `@export` directive is not part of the GraphQL spec, so there are no considerations on the language itself for its implementation. Then, the GraphQL server implementers must find their own way to satisfy their requirements, but without deviating from the GraphQL syntax, expecting that the solution could one day become part of the spec.
+As mentioned earlier on, the `@export` directive is not part of the GraphQL spec, so there are no considerations on the language itself for its implementation. Then, the GraphQL server implementers must find their own way to satisfy their requirements, but without deviating from the GraphQL syntax, expecting that it could one day become part of the official solution.
 
 For [my implementation](https://github.com/getpop/graphql/blob/109d194c11dd2510d0ea5ce42b88fb556397400c/src/DirectiveResolvers/ExportDirectiveResolver.php), I decided that `@export` will export the value into a normal variable, accessible as `$variable`. Please notice that this is a design decision which may vary across implementers; for instance, [Apollo's `@export` directive](https://www.apollographql.com/docs/link/links/rest/#export-directive) is accessed under entry `exportVariables` (as doing `{exportVariables.id}`), not under entry `args` as its inputs. Then, while Apollo doesn't require to declare the exported variables in the operation name, my implementation does.
 
-The issue with this solution is that static (i.e. "normal") variables and dynamic variables behave differently: while the value for a static variable can be determined when parsing the query, the value for a dynamic variable must be determined on runtime, right when reading the value fo the variable. Then, the GraphQL engine must be able to tell which way to treat a variable, if the static or the dynamic way.
+The issue with this solution is that static (i.e. "normal") variables and dynamic variables behave differently: while the value for a static variable can be determined when parsing the query, the value for a dynamic variable must be determined on runtime, right when reading the value of the variable. Then, the GraphQL engine must be able to tell which way to treat a variable, if the static or the dynamic way.
 
 Given the constraints, and in order to avoid introducing new, unsupported syntax into the query (such as having `$staticVariables` and `%dynamicVariables%`), the solution I found is to have the dynamic variable name start with `"_"`: `$_dynamicVariable`.
 
@@ -198,7 +198,7 @@ If after processed, a type is referenced again in the query to retrieve non-load
 
 ![Repeated types in iterations](/images/dataloading-engine-repeated-type-iterations.png "Repeated types in iterations")
 
-Let's see how this plays out for our query. For our first attempt, we create the [basic query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(id%3A%201)%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20posts(searchfor%3A%20%24_authorName)%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames). When pressing the Run button:
+Let's see how this plays out for our query. For our first attempt, we create the [basic query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(id%3A%201)%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20posts(searchfor%3A%20%24_authorName)%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames). When pressing the "Execute query" button:
 
 <div id="graphiql-3rd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -209,18 +209,14 @@ Let's see how this plays out for our query. For our first attempt, we create the
   "errors": [
     {
       "message": "Expression '_authorName' is undefined",
-      "extensions": {
-        "type": "query"
-      }
+      // ...
     }
   ],
   //...
 }
 ```
 
-What this means is that variable `$_authorName` was read before being set. Let's see why this happens.
-
-The types that appear in the query are:
+What this means is that variable `$_authorName` was read before being set. Let's see why this happens. The types that appear in the query are:
 
 ```graphql
 query GetPostsAuthorNames($_authorName: String = "") { # Type: Root
@@ -236,33 +232,49 @@ query GetPostsAuthorNames($_authorName: String = "") { # Type: Root
 
 To process the types and load their data, the dataloading engine adds the query type (`Root`) into a FIFO (First-In, First-Out) list (becoming `[Root]`), and iterates over the types:
 
-1. Pop the first type of the list, `Root` (list becomes: `[]`)
-2. Process all fields queried from the `Root` type, `user` and `posts`, and add their types to the list, `User` and `Post` respectively (list becomes: `[User, Post]`)
-3. Pop the first type of the list, `User` (list becomes: `[Post]`)
-4. Process the field queried from the `User` type, `name`. Because it is a scalar type (`String`), there is no need to add it to the list
-5. Pop the first type of the list, `Post` (list becomes: `[]`)
-6. Process all fields queried from the `Post` type, `id` and `title`. Because these are scalar types (`ID` and `String`), there is no need to add them to the list
-7. List is `[]`, iteration ends.
+<table class="table">
+<thead>
+<tr>
+<th>#</th><th>Operation</th>
+</tr>
+<tbody>
+<tr><td>1</td><td>Pop the first type of the list, <code>Root</code> (list becomes: <code>[]</code>)</td></tr>
+<tr><td>2</td><td>Process all fields queried from the <code>Root</code> type, <code>user</code> and <code>posts</code>, and add their types to the list, <code>User</code> and <code>Post</code> respectively (list becomes: <code>[User, Post]</code>)</td></tr>
+<tr><td>3</td><td>Pop the first type of the list, <code>User</code> (list becomes: <code>[Post]</code>)</td></tr>
+<tr><td>4</td><td>Process the field queried from the <code>User</code> type, <code>name</code>. Because it is a scalar type (<code>String</code>), there is no need to add it to the list</td></tr>
+<tr><td>5</td><td>Pop the first type of the list, <code>Post</code> (list becomes: <code>[]</code>)</td></tr>
+<tr><td>6</td><td>Process all fields queried from the <code>Post</code> type, <code>id</code> and <code>title</code>. Because these are scalar types (<code>ID</code> and <code>String</code>), there is no need to add them to the list</td></tr>
+<tr><td>7</td><td>List is <code>[]</code>, iteration ends.</td></tr>
+</tbody>
+</table>
 
 Here we can see the problem: `@export` is executed on line `4` (when resolving field `name` on type `User`), but it was read on line `2` (when resolving field `posts(searchfor: $_authorName)` on type `Root`).
 
-To address this issue, we must "delay" reading the exported variable. This can be done through field `self` from type `Root` which, as its name indicates, returns once again the root object. You may wonder: "I already have the root object... why do I need to retrieve it again?". Because `self` if applied on type `Root`, and it returns once again an object of type `Root`, then this type will be added once again to the end of the FIFO list! This (hacky) way allows to effectively control in what order are fields executed.
+We can address this issue by delaying when the exported variable is read. This can be done through field `self` from type `Root` which, as its name indicates, returns once again the root object. You may wonder: "I already have the root object... why do I need to retrieve it again?". Because `self` if applied on type `Root`, and it returns once again an object of type `Root`, then this type will be added once again to the end of the FIFO list! This (hacky) way allows to effectively control in what order are fields executed.
 
-Let's put it into practice, placing field `posts(searchfor: $_authorName)` inside a `self` field, like in [this query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(id%3A%201)%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20posts(searchfor%3A%20%24_authorName)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames). Press on the Run button to see if now works:
+Let's put it into practice, placing field `posts(searchfor: $_authorName)` inside a `self` field, like in [this query](https://newapi.getpop.org/graphiql/?query=query%20GetPostsAuthorNames(%24_authorName%3A%20String%20%3D%20%22%22)%20%7B%0A%20%20user(id%3A%201)%20%7B%0A%20%20%20%20name%20%40export(as%3A%20%22_authorName%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20posts(searchfor%3A%20%24_authorName)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=GetPostsAuthorNames). Press on the "Execute query" button to see how now it works:
 
 <div id="graphiql-4th" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
 Let's explore the order in which types are resolved for this new query:
 
-1. Pop the first type of the list, `Root` (list becomes: `[]`)
-2. Process all fields queried from the `Root` type, `user` and `self`, and add their types to the list, `User` and `Root` respectively (list becomes: `[User, Root]`)
-3. Pop the first type of the list, `User` (list becomes: `[Root]`)
-4. Process the field queried from the `User` type, `name`. Because it is a scalar type (`String`), there is no need to add it to the list
-5. Pop the first type of the list, `Root` (list becomes: `[]`)
-6. Process the field queried from the `Root` type, `posts`, and add its type to the list, `Post` (list becomes: `[Post]`)
-7. Pop the first type of the list, `Post` (list becomes: `[]`)
-8. Process all fields queried from the `Post` type, `id` and `title`. Because these are scalar types (`ID` and `String`), there is no need to add them to the list
-9. List is `[]`, iteration ends.
+<table class="table">
+<thead>
+<tr>
+<th>#</th><th>Operation</th>
+</tr>
+<tbody>
+<tr><td>1</td><td>Pop the first type of the list, <code>Root</code> (list becomes: <code>[]</code>)</td></tr>
+<tr><td>2</td><td>Process all fields queried from the <code>Root</code> type, <code>user</code> and <code>self</code>, and add their types to the list, <code>User</code> and <code>Root</code> respectively (list becomes: <code>[User, Root]</code>)</td></tr>
+<tr><td>3</td><td>Pop the first type of the list, <code>User</code> (list becomes: <code>[Root]</code>)</td></tr>
+<tr><td>4</td><td>Process the field queried from the <code>User</code> type, <code>name</code>. Because it is a scalar type (<code>String</code>), there is no need to add it to the list</td></tr>
+<tr><td>5</td><td>Pop the first type of the list, <code>Root</code> (list becomes: <code>[]</code>)</td></tr>
+<tr><td>6</td><td>Process the field queried from the <code>Root</code> type, <code>posts</code>, and add its type to the list, <code>Post</code> (list becomes: <code>[Post]</code>)</td></tr>
+<tr><td>7</td><td>Pop the first type of the list, <code>Post</code> (list becomes: <code>[]</code>)</td></tr>
+<tr><td>8</td><td>Process all fields queried from the <code>Post</code> type, <code>id</code> and <code>title</code>. Because these are scalar types (<code>ID</code> and <code>String</code>), there is no need to add them to the list</td></tr>
+<tr><td>9</td><td>List is <code>[]</code>, iteration ends.</td></tr>
+</tbody>
+</table>
 
 Now, we can see that the problem has been resolved: `@export` is executed on line `4` (when resolving field `name` on type `User`), and it is read on line `6` (when resolving field `posts(searchfor: $_authorName)` on type `Root`). 🥳
 
@@ -288,7 +300,7 @@ query {
 
 These directives receive the condition to evaluate through argument `"if"`, which can only be the actual boolean value (`true` or `false`) or a variable with the boolean value (`$showExcerpt`). This is pretty static.
 
-What about executing the condition based on some property from the object itself? For instance, we may want to show the `excerpt` based on the object having comments or not. Now this is doable! Run [this query](https://newapi.getpop.org/graphiql/?query=query%20ShowExcerptIfPostHasComments(%24id%3A%20ID!%2C%20%24_hasComments%3A%20Boolean%20%3D%20false)%20%7B%0A%20%20post(id%3A%20%24id)%20%7B%0A%20%20%20%20hasComments%20%40export(as%3A%20%22_hasComments%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20post(id%3A%20%24id)%20%7B%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20excerpt%20%40include(if%3A%20%24_hasComments)%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=ShowExcerptIfPostHasComments&variables=%7B%0A%20%20%22id%22%3A%201%0A%7D) changing variable `"id"` from `1499` to `1` to see it working:
+What about executing the condition based on some property from the object itself? For instance, we may want to show the `excerpt` based on the object having comments or not. Now this is doable! Press the "Execute query" button for [this query](https://newapi.getpop.org/graphiql/?query=query%20ShowExcerptIfPostHasComments(%24id%3A%20ID!%2C%20%24_hasComments%3A%20Boolean%20%3D%20false)%20%7B%0A%20%20post(id%3A%20%24id)%20%7B%0A%20%20%20%20hasComments%20%40export(as%3A%20%22_hasComments%22)%0A%20%20%7D%0A%20%20self%20%7B%0A%20%20%20%20post(id%3A%20%24id)%20%7B%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20excerpt%20%40include(if%3A%20%24_hasComments)%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=ShowExcerptIfPostHasComments&variables=%7B%0A%20%20%22id%22%3A%201%0A%7D), and changing variable `"id"` from `1499` to `1` to see how the response changes:
 
 <div id="graphiql-5th" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -341,7 +353,9 @@ It will take me a few weeks though... in the meantime, if you want to find out m
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query GetPostsAuthorNames($_authorName: String = "") {\n  user(id: 1) {\n    name @export(as: "_authorName")\n  }\n  self {\n    posts(searchfor: $_authorName) {\n      id\n      title\n    }\n  }\n}'
+        query: 'query GetPostsAuthorNames($_authorName: String = "") {\n  user(id: 1) {\n    name @export(as: "_authorName")\n  }\n  self {\n    posts(searchfor: $_authorName) {\n      id\n      title\n    }\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-1st'),
@@ -354,7 +368,9 @@ It will take me a few weeks though... in the meantime, if you want to find out m
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query GetSomeData($_firstPostTitle: String = "", $_postTitles: [String] = [], $_firstPostData: Mixed = {}, $_postData: [Mixed] = []) {\n  post(id:1) {\n    title @export(as: "_firstPostTitle")\n    title @export(as: "_firstPostData")\n    url @export(as: "_firstPostData")\n    date @export(as: "_firstPostData")\n  }\n  posts(limit:5) {\n    title @export(as: "_postTitles")\n    title @export(as: "_postData")\n    url @export(as: "_postData")\n    date @export(as: "_postData")\n  }\n  self {\n    exportedVariables\n    _firstPostTitle: echoVar(variable: $_firstPostTitle)\n    _postTitles: echoVar(variable: $_postTitles)\n    _firstPostData: echoVar(variable: $_firstPostData)\n    _postData: echoVar(variable: $_postData)\n  }\n}'
+        query: 'query GetSomeData($_firstPostTitle: String = "", $_postTitles: [String] = [], $_firstPostData: Mixed = {}, $_postData: [Mixed] = []) {\n  post(id:1) {\n    title @export(as: "_firstPostTitle")\n    title @export(as: "_firstPostData")\n    url @export(as: "_firstPostData")\n    date @export(as: "_firstPostData")\n  }\n  posts(limit:5) {\n    title @export(as: "_postTitles")\n    title @export(as: "_postData")\n    url @export(as: "_postData")\n    date @export(as: "_postData")\n  }\n  self {\n    exportedVariables\n    _firstPostTitle: echoVar(variable: $_firstPostTitle)\n    _postTitles: echoVar(variable: $_postTitles)\n    _firstPostData: echoVar(variable: $_firstPostData)\n    _postData: echoVar(variable: $_postData)\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-2nd'),
@@ -367,7 +383,9 @@ It will take me a few weeks though... in the meantime, if you want to find out m
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query GetPostsAuthorNames($_authorName: String = "") {\n  user(id: 1) {\n    name @export(as: "_authorName")\n  }\n  posts(searchfor: $_authorName) {\n    id\n    title\n  }\n}'
+        query: 'query GetPostsAuthorNames($_authorName: String = "") {\n  user(id: 1) {\n    name @export(as: "_authorName")\n  }\n  posts(searchfor: $_authorName) {\n    id\n    title\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-3rd'),
@@ -380,7 +398,9 @@ It will take me a few weeks though... in the meantime, if you want to find out m
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query GetPostsAuthorNames($_authorName: String = "") {\n  user(id: 1) {\n    name @export(as: "_authorName")\n  }\n  self {\n    posts(searchfor: $_authorName) {\n      id\n      title\n    }\n  }\n}'
+        query: 'query GetPostsAuthorNames($_authorName: String = "") {\n  user(id: 1) {\n    name @export(as: "_authorName")\n  }\n  self {\n    posts(searchfor: $_authorName) {\n      id\n      title\n    }\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
       }
     ),
     document.getElementById('graphiql-4th'),
