@@ -51,7 +51,7 @@ if ($roles = Environment::anyRoleLoggedInUserMustHaveToAccessRolesFields()) {
     UserRolesAccessControlGroups::ROLES,
     [
       [RootTypeResolver::class, 'roles', $roles],
-      [SiteTypeResolver::class, 'roles', $roles],
+      [RootTypeResolver::class, 'capabilities', $roles],
       [UserTypeResolver::class, 'roles', $roles],
       [UserTypeResolver::class, 'capabilities', $roles],
     ]
