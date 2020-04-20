@@ -30,7 +30,7 @@ Attach a [`@validateDoesLoggedInUserHaveAnyRole`](https://github.com/getpop/user
 
 By chaining up directives, we can make sure that, whenever validating if the user can access a field/directive, the response will not be cached. For instance:
 
-- Attach directive `@validateIsUserLoggedIn` to field [`@me`](https://github.com/getpop/user-state/blob/5731dced0f645c9ca6d631b3ea21794655653539/src/FieldResolvers/MeFieldResolverTrait.php)
+- Attach directive `@validateIsUserLoggedIn` to field [`me`](https://github.com/getpop/user-state/blob/5731dced0f645c9ca6d631b3ea21794655653539/src/FieldResolvers/MeFieldResolverTrait.php)
 - Attach directive `@CacheControl` with `maxAge` argument value of `0` to directive `@validateIsUserLoggedIn`.
 
 **Beef up security** 
