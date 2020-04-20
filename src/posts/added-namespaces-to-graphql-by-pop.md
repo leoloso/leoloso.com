@@ -23,7 +23,7 @@ In the namespaced schema, all types are automatically prepended using the PHP pa
 
 ## Why namespaces
 
-Namespaces help manage the complexity of the schema. This is particularly useful when embedding components from a 3rd party, where we can't control how the types have been named. For instance, different plugins in [WordPress](https://wordpress.org) may implement a `Product` custom post type (such as [WooCommerce](https://woocommerce.com/) or [Easy Digital Downloads](https://easydigitaldownloads.com)); if they wish to create a GraphQL type for it, they can't just name it `Product` or it may clash with another plugin. Hence, they would have to manually prepend their their type names with the company name (such as doing `WooCommerce_Product`), which is not the most beautiful solution. 
+Namespaces help manage the complexity of the schema. This is particularly useful when embedding components from a 3rd party, where we can't control how the types have been named. For instance, different plugins in [WordPress](https://wordpress.org) may implement a `Product` custom post type (such as [WooCommerce](https://woocommerce.com/) or [Easy Digital Downloads](https://easydigitaldownloads.com)); if they wish to create a GraphQL type for it, they can't just name it `Product` or it may clash with another plugin. Hence, they would have to manually prepend their type names with the company name (such as doing `WooCommerce_Product`), which is not the most beautiful solution.
 
 Now, GraphQL by PoP enables to define an environment variable, and it will automatically prepend all types from a package with the PHP namespace used for that package (following the [PSR-4](https://www.php-fig.org/psr/psr-4/) convention, PHP namespaces have the form of `ownerName\projectName`, such as `"PoP\ComponentModel"`).
 
@@ -70,8 +70,8 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
 
   ReactDOM.render(
     React.createElement(
-      GraphiQL, 
-      { 
+      GraphiQL,
+      {
         fetcher: graphQLFetcher,
         docExplorerOpen: true,
         response: responseText,
@@ -94,8 +94,8 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
 
   ReactDOM.render(
     React.createElement(
-      GraphiQL, 
-      { 
+      GraphiQL,
+      {
         fetcher: graphQLFetcher2,
         docExplorerOpen: true,
         response: responseText,
@@ -110,9 +110,9 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
 
 ## Coming next... 🥁
 
-I'll end my blog post as usual: if you are using WordPress and you need a kick-ass API, then give [GraphQL by PoP](https://github.com/getpop/graphql) a try, what are you waiting for!? 
+I'll end my blog post as usual: if you are using WordPress and you need a kick-ass API, then give [GraphQL by PoP](https://github.com/getpop/graphql) a try, what are you waiting for!?
 
-Oh, you're waiting for the plugin, you say? 
+Oh, you're waiting for the plugin, you say?
 
 Well, good news then... it is coming sooooon...
 
