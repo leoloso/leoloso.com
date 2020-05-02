@@ -2,6 +2,10 @@
 title: 💼 Projects
 ---
 
+## GraphQL servers
+
+[GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. Its source code is distributed in the repos from the [PoP](https://github.com/getpop) account.
+
 ## Frameworks/Specifications
 
 [PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application. Currently implemented in PHP, it is intended to become a specification so that it can be implemented in any language.
@@ -42,11 +46,11 @@ I have created the following websites for different NGOs. All of them are social
 
 ![SDG-SSE](/images/sdg-sse-1200.jpg "SDG-SSE")
 
-## Ventures
+<!-- ## Ventures
 
 I am on my way to become an entrepreneur, through the following ventures (which I'm still working on):
 
-[Verticals](https://verticals.io) - a Platform as a Service (PaaS) solution to provide decentralized vertical portals, composed by niche websites (which are autonomous, living under their own URL), to anyone. It's a B2B, providing the infrastructure, software and tools for entrepreneurs to launch their own businesses, to own and monetize their own vertical portals.
+[Verticals](https://verticals.io) - a Platform as a Service (PaaS) solution to provide decentralized vertical portals, composed by niche websites (which are autonomous, living under their own URL), to anyone. It's a B2B, providing the infrastructure, software and tools for entrepreneurs to launch their own businesses, to own and monetize their own vertical portals. -->
 
 <!-- ![Verticals](/images/verticals-1200.jpg "Verticals") -->
 

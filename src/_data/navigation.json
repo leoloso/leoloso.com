@@ -6,6 +6,16 @@
       "external": false
     },
     {
+      "text": "✍️ Posts",
+      "url": "/posts",
+      "external": false
+    },
+    {
+      "text": "✒️ Writing",
+      "url": "/pages/writing",
+      "external": false
+    },
+    {
       "text": "🎤 Speaking",
       "url": "/pages/speaking",
       "external": false
@@ -16,28 +26,8 @@
       "external": false
     },
     {
-      "text": "⭐ GraphQL",
-      "url": "https://graphql-by-pop.com",
-      "external": true
-    },
-    {
-      "text": "😼 Smashing",
-      "url": "https://www.smashingmagazine.com/author/leonardolosoviz/",
-      "external": true
-    },
-    {
-      "text": "🚀 LogRocket",
-      "url": "https://blog.logrocket.com/author/leonardolosoviz/",
-      "external": true
-    },
-    {
-      "text": "🐦 Twitter",
-      "url": "https://twitter.com/losoviz",
-      "external": true
-    },
-    {
-      "text": "✉️ Email",
-      "url": "mailto:leo@getpop.org",
+      "text": "✉️ Contact",
+      "url": "/pages/contact",
       "external": false
     }
   ]
