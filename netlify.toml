@@ -1,3 +1,23 @@
 [build]
   command = "npm run production"
   publish = "dist"
+  
+[[redirects]]
+  from = "/pages/projects"
+  to = "/work"
+
+[[redirects]]
+  from = "/pages/work"
+  to = "/work"
+
+[[redirects]]
+  from = "/pages/contact"
+  to = "/contact"
+
+[[redirects]]
+  from = "/pages/speaking"
+  to = "/speaking"
+
+[[redirects]]
+  from = "/pages/writing"
+  to = "/writing"
