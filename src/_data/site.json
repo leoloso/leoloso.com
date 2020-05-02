@@ -7,7 +7,7 @@
   "authorHandle": "@losoviz",
   "authorName": "Leonardo Losoviz",
   "enableThirdPartyComments": false,
-  "maxPostsPerPage": 5,
+  "maxPostsPerPage": 10,
   "paymentPointer": "",
   "faviconPath": "/assets/favicon.png"
 }
