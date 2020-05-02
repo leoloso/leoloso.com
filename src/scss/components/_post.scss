@@ -19,19 +19,25 @@
     }
 
     a:not([class]) {
-      color: var(--color-dark);
-      position: relative;
-      display: inline-block;
-      background: var(--color-theme-highlight);
-      padding: 0.2rem 0.4rem 0.3rem 0.4rem;
-      text-decoration: none;
-      word-break: break-word;
+      color: var(--color-theme-primary-glare);
+      // color: var(--color-dark);
+      // position: relative;
+      // display: inline-block;
+      // background: var(--color-theme-highlight);
+      // padding: 0.2rem 0.4rem 0.3rem 0.4rem;
+      // text-decoration: none;
+      // word-break: break-word;
+      -webkit-transition: background-color 0.25s; /* Safari */
+      transition: background-color 0.25s;
+      -webkit-transition-delay: 0.25s; /* Safari */
+      transition-delay: 0.25s;
 
       @include apply-utility('leading', 'tight');
     }
 
     a:not([class]):hover {
-      text-decoration: underline;
+      // text-decoration: underline;
+      background-color: var(--color-theme-highlight-block);
     }
 
     code {
