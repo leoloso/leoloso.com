@@ -4,15 +4,15 @@
   <ol class="[ field-list ]">
     <li class="[ field-list__field-group ]">
       {{ label("What’s your name?", "name") }}
-      {{ field( "text", "name", { required: true, placeholder: "Katherine Johnson", autocomplete: "name", autocorrect: "off", autocapitalize: "off" } ) }}
+      {{ field( "text", "name", { required: true, placeholder: "Pedro Rivas", autocomplete: "name", autocorrect: "off", autocapitalize: "off" } ) }}
     </li>
     <li class="[ field-list__field-group ]">
       {{ label("What’s your email address?", "email") }}
-      {{ field( "email", "email", { required: true, placeholder: "katherine@johnson.tld", autocomplete: "email" } ) }}
+      {{ field( "email", "email", { required: true, placeholder: "pedro@yahoo.com", autocomplete: "email" } ) }}
     </li>
     <li class="[ field-list__field-group ]">
-      {{ label("What’s on your mind?", "message") }}
-      {{ textarea( "message", { required: true, autocapitalize: "sentences", spellcheck: "true" } ) }}
+      {{ label("What is it about?", "message") }}
+      {{ textarea( "message", { required: true, placeholder: "Let's work together!", autocapitalize: "sentences", spellcheck: "true" } ) }}
     </li>
     <li hidden>
       <label>Don’t fill this out if you're human: <input name="bot-field" /></label>

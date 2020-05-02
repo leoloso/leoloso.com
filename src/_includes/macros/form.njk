@@ -83,6 +83,7 @@
             name="{{ name }}"
             {% if data.rows %}rows="{{ data.rows }}"{% else %}rows="5"{% endif %}
             cols="100"
+            {% if data.placeholder %}placeholder="{{ data.placeholder }}"{% endif %}
             {% if data.required %}required aria-required="true"{% endif %}
             {% if data.autocorrect %}autocorrect="{{ data.autocorrect }}"{% endif %}
             {% if data.spellcheck %}spellcheck="{{ data.spellcheck }}"{% endif %}
