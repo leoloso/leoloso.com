@@ -1,5 +1,6 @@
 ---
 title: 🎤 Speaking
+layout: 'layouts/page.njk'
 ---
 
 I love attending conferences and local meetups, not only as an attendee but, even more, as a speaker! If I have experience on some topic, and it is of interest to the community, I will try my best to be accepted to a relevant conference and share my knowledge. 

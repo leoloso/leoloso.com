@@ -1,16 +1,21 @@
 ---
-title: 💼 Projects
+title: 💼 Work
+layout: 'layouts/page.njk'
 ---
+
+My open source work is concentrated on [my own GitHub account](https://github.com/leoloso) and [PoP's GitHub account](https://github.com/getpop).
 
 ## GraphQL servers
 
 [GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. Its source code is distributed in the repos from the [PoP](https://github.com/getpop) account.
 
+<a href="https://graphql-by-pop.com" title="GraphQL by PoP logo" style="max-width: 250px"><img src="/images/graphql-by-pop-logo.jpg"></a>
+
 ## Frameworks/Specifications
 
 [PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application. Currently implemented in PHP, it is intended to become a specification so that it can be implemented in any language.
 
-![PoP logo](/images/pop-logo-horizontal-whitebg.png)
+<a href="https://github.com/leoloso/PoP" title="PoP logo"><img src="/images/pop-logo-horizontal-whitebg.png"></a>
 
 ## Libraries
 

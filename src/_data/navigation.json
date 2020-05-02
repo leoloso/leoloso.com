@@ -12,22 +12,22 @@
     },
     {
       "text": "✒️ Writing",
-      "url": "/pages/writing",
+      "url": "/writing",
       "external": false
     },
     {
       "text": "🎤 Speaking",
-      "url": "/pages/speaking",
+      "url": "/speaking",
       "external": false
     },
     {
-      "text": "💼 Projects",
-      "url": "/pages/projects",
+      "text": "💼 Work",
+      "url": "/work",
       "external": false
     },
     {
       "text": "✉️ Contact",
-      "url": "/pages/contact",
+      "url": "/contact",
       "external": false
     }
   ]

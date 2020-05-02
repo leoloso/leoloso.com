@@ -1,8 +1,9 @@
 ---
 title: ✒️ Writing
+layout: 'layouts/page.njk'
 ---
 
-I have published articles in several online magazines
+Whenever I can, I share my insights through different magazines, both in print and online. To date, I have contributed articles to the following ones:
 
 ## Smashing Magazine
 
