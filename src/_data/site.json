@@ -9,5 +9,5 @@
   "enableThirdPartyComments": false,
   "maxPostsPerPage": 5,
   "paymentPointer": "",
-  "faviconPath": "/images/favicon.png"
+  "faviconPath": "/assets/favicon.png"
 }

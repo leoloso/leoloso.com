@@ -10,7 +10,7 @@ Get started now by **[deploying Hylia to Netlify.][deploy-to-netlify]**
 
 ## Features
 
-Hylia version 0.5.0 features:
+Hylia version 0.7.0 features:
 
 ✍️ A pre-configured [Netlify CMS](https://www.netlifycms.org/) setup  
 🎨 Customisable design tokens to make it your own  
@@ -20,12 +20,13 @@ Hylia version 0.5.0 features:
 🎈 _Super_ lightweight front-end  
 🚰 Sass powered CSS system with utility class generator  
 ⚙️ Service worker that caches pages so people can read your articles offline  
-🚀 An RSS feed for your posts
+🚀 An RSS feed for your posts  
+💌 A basic contact form, ready for [Netlify Forms](https://docs.netlify.com/forms/setup/#html-forms)
 
 ## Roadmap
 
 💬 [Netlify Forms](https://www.netlify.com/docs/form-handling/) powered comments  
-💡 ~~Dark/Light mode toggle~~ [Added in 0.4.0](https://github.com/andybelldesign/hylia/releases/tag/0.4.0)  
+💡 ~~Dark/Light mode toggle~~ [Added in 0.4.0](https://github.com/hankchizljaw/hylia/releases/tag/0.4.0)  
 🗣 Webmentions  
 📖 Pagination  
 🐦 Web sharing API integration  
@@ -33,7 +34,7 @@ Hylia version 0.5.0 features:
 📄 Documentation site  
 💅 Proper Sass documentation  
 ✍️ Proper CMS documentation  
-🖼 A facility for you to be able to add your logo / branding
+🖼 A facility for you to be able to add your logo / branding  
 
 ---
 
@@ -49,7 +50,7 @@ I recorded a quick start video of me deploying Hylia to Netlify and getting the 
 
 ### Method two: Clone / Fork
 
-1. Clone or fork this repo: `git clone https://github.com/andybelldesign/hylia`
+1. Clone or fork this repo: `git clone https://github.com/hankchizljaw/hylia`
 2. `cd` into the project directory and run `npm install`
 3. Once all the dependencies are installed run `npm start`
 4. Open your browser at `http://localhost:8080` and away you go!
@@ -109,7 +110,7 @@ Although Hylia has a pretty simple design, you can configure the core design tok
 
 To change the design tokens in the CMS, find the “Globals” in the sidebar then in the presented options, select “Theme Settings”.
 
-To change the design tokens directly, edit [`_src/data/tokens.json`](https://github.com/andybelldesign/hylia/blob/master/src/_data/tokens.json).
+To change the design tokens directly, edit [`_src/data/tokens.json`](https://github.com/hankchizljaw/hylia/blob/master/src/_data/tokens.json).
 
 The tokens are converted into maps that the Sass uses to compile the front-end CSS, so make sure that you maintain the correct structure of `tokens.json`.
 
@@ -117,17 +118,17 @@ The tokens are converted into maps that the Sass uses to compile the front-end C
 
 Your version of Hylia ships with a Styleguide by default. You can see a demo of the Styleguide at <https://hylia.website/styleguide/>.
 
-You can edit the Styleguide by opening [`src/styleguide.njk`](https://github.com/andybelldesign/hylia/blob/master/src/styleguide.njk). If you don’t want the Styleguide, delete that file and the page will vanish.
+You can edit the Styleguide by opening [`src/styleguide.njk`](https://github.com/hankchizljaw/hylia/blob/master/src/styleguide.njk). If you don’t want the Styleguide, delete that file and the page will vanish.
 
 ## Sass
 
-Hylia is based on the [WIP v2 version of Stalfos](https://github.com/andybelldesign/stalfos/tree/feature/v2), which currently has no documentation (I know, I’m bad). Here is some very basic documentation for elements of the new framework that you will encounter on this project.
+Hylia is based on the [WIP v2 version of Stalfos](https://github.com/hankchizljaw/stalfos/tree/feature/v2), which currently has no documentation (I know, I’m bad). Here is some very basic documentation for elements of the new framework that you will encounter on this project.
 
 ### Configuration
 
-The whole Sass system is powered by central config file, which lives here: [`_src/scss/_config.scss`](https://github.com/andybelldesign/hylia/blob/master/src/scss/_config.scss).
+The whole Sass system is powered by central config file, which lives here: [`_src/scss/_config.scss`](https://github.com/hankchizljaw/hylia/blob/master/src/scss/_config.scss).
 
-Before Sass is compiled, a `_tokens.scss` file is generated from the [design tokens config](https://github.com/andybelldesign/hylia/blob/master/src/_data/tokens.json) which is required.
+Before Sass is compiled, a `_tokens.scss` file is generated from the [design tokens config](https://github.com/hankchizljaw/hylia/blob/master/src/_data/tokens.json) which is required.
 
 Key elements:
 
@@ -181,7 +182,7 @@ Pass in the key of one of your breakpoints set in `$stalfos-config['breakpoints'
 
 ## CMS
 
-Hylia has [Netlify CMS](https://www.netlifycms.org/) pre-configured as standard. You can customise the configuration by editing [`src/admin/config.yml`](https://github.com/andybelldesign/hylia/blob/master/src/admin/config.yml).
+Hylia has [Netlify CMS](https://www.netlifycms.org/) pre-configured as standard. You can customise the configuration by editing [`src/admin/config.yml`](https://github.com/hankchizljaw/hylia/blob/master/src/admin/config.yml).
 
 ### Content that you can edit
 
@@ -196,7 +197,7 @@ The basic CMS setup allows you to edit the following:
 
 ## Get involved
 
-This project is _super_ early and feedback is very much welcome. In order to keep things running smooth, please consult the [contribution guide and code of conduct](https://github.com/andybelldesign/hylia/blob/master/contributing.md).
+This project is _super_ early and feedback is very much welcome. In order to keep things running smooth, please consult the [contribution guide and code of conduct](https://github.com/hankchizljaw/hylia/blob/master/contributing.md).
 
 The stuff that I need the most help with is:
 
@@ -204,4 +205,4 @@ The stuff that I need the most help with is:
 - [Webmentions](https://www.w3.org/TR/webmention/)
 - Performance
 
-[deploy-to-netlify]: https://app.netlify.com/start/deploy?repository=https://github.com/andybelldesign/hylia&stack=cms
+[deploy-to-netlify]: https://app.netlify.com/start/deploy?repository=https://github.com/hankchizljaw/hylia&stack=cms
