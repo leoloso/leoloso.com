@@ -1,5 +1,5 @@
 ---
-title: 👀 Sneak preview to the GraphQL API for WordPress brand-new plugin
+title: 👀 Slides for the sneak preview to the GraphQL API for WordPress brand-new plugin
 metaDesc: To be released this May!
 socialImage: /images/graphql-by-pop-logo.jpg
 date: '2020-05-01'
