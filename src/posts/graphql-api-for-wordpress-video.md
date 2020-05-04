@@ -13,4 +13,4 @@ The video for the [sneak preview](https://cmsphilly.org/talks/introduction-graph
 
 <iframe width="966" height="543" src="https://www.youtube.com/embed/ViSP4ILAEjY?list=PL60zYEq1EAuYcSSza0bcykYtYZwj1z5SB" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-The quality of the video uploaded to YouTube is terrible though 😢, the videos are pretty much static. So in the upcoming days I'll link to each of the demoed videos, which I've uploaded to this channel in Vimeo.
+The quality of the video uploaded to YouTube is terrible though 😢, the videos are pretty much static. So in the upcoming days I'll link to each of the demoed videos, which I've uploaded to [this channel in Vimeo](https://vimeo.com/channels/1576608).
