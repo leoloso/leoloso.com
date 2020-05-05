@@ -2,7 +2,7 @@
 title: 🎦 Video - Creating custom endpoints with the GraphQL API for WordPress plugin
 metaDesc: To be released this May!
 socialImage: /images/video-thumb-graphql-api-for-wp-endpoints.jpg
-date: '2021-05-02'
+date: '2020-05-05'
 tags:
   - graphql
   - api
