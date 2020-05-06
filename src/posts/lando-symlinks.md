@@ -28,7 +28,7 @@ config:
 services:
   appserver:
     run_as_root:
-      - ln -s /user/GitHubRepos/graphql-api /app/wordpress/wp-content/plugins/graphql-api
+      - ln -snf /user/GitHubRepos/graphql-api /app/wordpress/wp-content/plugins/graphql-api
 ```
 
 This works perfectly! Now, when modifying the source code from my repository, I can see the changes take effect immediately on the testing website. 😎
