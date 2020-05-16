@@ -1,7 +1,7 @@
 ---
 title: 🔥 Registering a Gutenberg block for a specific Custom Post Type only
 metaDesc: Avoid polluting the WordPress editor with unneeded blocks
-socialImage: /images/gutenberg-logo.png
+socialImage: /images/Registering-Gutenberg-blocks-for-some-Custom-Post-Type-only.png
 date: '2020-05-16'
 tags:
   - wordpress
