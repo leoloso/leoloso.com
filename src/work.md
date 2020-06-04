@@ -3,25 +3,33 @@ title: 💼 Work
 layout: 'layouts/page.njk'
 ---
 
-My open source work is concentrated on [my own GitHub account](https://github.com/leoloso) and [PoP's GitHub account](https://github.com/getpop).
+My open source work is concentrated on the following GitHub accounts:
+
+👨🏼‍🍳 [My own](https://github.com/leoloso)
+
+👨🏻‍💻 [PoP](https://github.com/getpop)
+
+🙋🏻‍♂️ [GraphQL by PoP](https://github.com/GraphQLByPoP)
 
 ## GraphQL servers
 
-[GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. Its source code is distributed in the repos from the [PoP](https://github.com/getpop) account.
+[GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. Its source code is distributed in the repos from the [PoP](https://github.com/getpop) and [GraphQL by PoP](https://github.com/GraphQLByPoP) accounts.
 
-<a href="https://graphql-by-pop.com" title="GraphQL by PoP logo" style="max-width: 250px"><img src="/images/graphql-by-pop-logo.jpg"></a>
+<a href="https://graphql-by-pop.com" title="GraphQL by PoP logo"><img src="/images/graphql-by-pop-logo.jpg" style="max-width: 250px;"></a>
 
 ## Frameworks/Specifications
 
-[PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application. Currently implemented in PHP, it is intended to become a specification so that it can be implemented in any language.
+[PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application. 
+
+Currently implemented in PHP, I hope it can eventually become a specification, so that it can be implemented in other languages too.
 
 <a href="https://github.com/leoloso/PoP" title="PoP logo"><img src="/images/pop-logo-horizontal-whitebg.png"></a>
 
 ## Libraries
 
-[GraphQL API](https://github.com/getpop/api-graphql) is an implementation of GraphQL, using components. It is based on PoP's component-based architecture, making the application become a GraphQL server.
+<!-- [GraphQL API](https://github.com/getpop/api-graphql) is an implementation of GraphQL, using components. It is based on PoP's component-based architecture, making the application become a GraphQL server. -->
 
-[Field Query](https://github.com/getpop/field-query) is a syntax to query GraphQL through URL params, which grants a GraphQL API the capability to be cached on the server.
+[Field Query](https://github.com/getpop/field-query) is a reimagination of the GraphQL syntax to query it through URL params. By passing the GraphQL query through the URL, the response can be cached.
 
 <!-- ![GraphQL logo](/images/graphql-logo.png) -->
 
@@ -29,7 +37,7 @@ My open source work is concentrated on [my own GitHub account](https://github.co
 
 [Block Metadata](https://wordpress.org/plugins/block-metadata/) enables to extract all the metadata for all the Gutenberg blocks inside of a blog post, converting this metadata into a medium-agnostic format. Its goal is to implement the "Create Once, Publish Everywhere" strategy (alias COPE), enabling to have our blog posts become the single source of truth for all content, for all different mediums or platforms: web, email/newsletters, iOS/Android apps, home assistants (like Amazon Alexa), car-entertainment systems, and so on.
 
-<!-- ![Banner for my plugin "Block Metadata"](/images/block-metadata-banner.jpg) -->
+<a href="https://wordpress.org/plugins/block-metadata/" title="Block Metadata"><img src="/images/block-metadata-banner.jpg"></a>
 
 ## Websites
 
