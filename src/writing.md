@@ -3,7 +3,7 @@ title: ✒️ Writing
 layout: 'layouts/page.njk'
 ---
 
-I regularly contribute articles to several magazines, including the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), [Design Bombs](https://www.designbombs.com/author/leo/) and [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/).
+I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), [Design Bombs](https://www.designbombs.com/author/leo/) and [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/).
 
 To date, these are my articles:
 
@@ -12,6 +12,8 @@ To date, these are my articles:
 Tips for making the most out of the WordPress editor.
 
 🎩 [Adding a Custom Welcome Guide to the WordPress Block Editor ](https://css-tricks.com/adding-a-custom-welcome-guide-to-the-wordpress-block-editor/)
+
+---
 
 ## LogRocket blog
 
@@ -29,6 +31,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 🚀 [Designing a GraphQL server for optimal performance](https://blog.logrocket.com/designing-graphql-server-optimal-performance/)
 
+---
+
 ## Design Bombs
 
 Mostly concerning tooling around WordPress.
@@ -42,6 +46,8 @@ Mostly concerning tooling around WordPress.
 💣 [Creating a Gutenberg block using the official new package](https://www.designbombs.com/creating-a-gutenberg-block-using-the-official-new-package/)
 
 💣 [Bootstrapping WordPress projects with Composer and WP-CLI](https://www.designbombs.com/bootstrapping-wordpress-projects-with-composer-and-wp-cli/)
+
+---
 
 ## Smashing Magazine
 
