@@ -7,6 +7,12 @@ I regularly contribute articles to several magazines, including the [LogRocket b
 
 To date, these are my articles:
 
+## CSS-Tricks
+
+Tips for making the most out of the WordPress editor.
+
+🎩 [Adding a Custom Welcome Guide to the WordPress Block Editor ](https://css-tricks.com/adding-a-custom-welcome-guide-to-the-wordpress-block-editor/)
+
 ## LogRocket blog
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
