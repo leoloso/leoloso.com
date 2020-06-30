@@ -39,6 +39,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Mostly concerning tooling around WordPress.
 
+💣 [Adding Modal Windows in the WordPress Admin Without JavaScript](https://www.designbombs.com/adding-modal-windows-in-the-wordpress-admin/)
+
 💣 [Tips of Building Large-scale Applications in PHP](https://www.designbombs.com/tips-of-building-large-scale-applications-in-php/)
 
 💣 [How to Register Gutenberg Blocks for Some Custom Post Type only, using PHP (not JS!)](https://www.designbombs.com/registering-gutenberg-blocks-for-custom-post-type/)
