@@ -19,6 +19,8 @@ Tips for making the most out of the WordPress editor.
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
 
+🚀 [Creating an @export GraphQL directive](https://blog.logrocket.com/creating-an-export-graphql-directive/)
+
 🚀 [Treating GraphQL directives as middleware](https://blog.logrocket.com/treating-graphql-directives-as-middleware/) 
 
 🚀 [GraphQL directives are underrated](https://blog.logrocket.com/graphql-directives-are-underrated/)
