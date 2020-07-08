@@ -60,3 +60,13 @@ I just found a tool that enables to read the WordPress database from within Lara
 - 👉 User-facing application based on Laravel, deployed as "serverless" PHP through Laravel Vapor
 
 This is a beautiful stack, which obtains the best of both worlds: Great content creation through Gutenberg, while removing the need to provision/maintain servers through Laravel Vapor. 😺
+
+## Update 08/07: Somebody is working on a serverless WordPress!
+
+Carl Alexander was equally impacted as I was when watching Taylor Otwell's presentation. But while I merely talked about it, he actually [decided to build a serverless WordPress solution](https://carlalexander.ca/wordpress-serverless-platform/). 
+
+This is how his project, [Ymir](https://ymirapp.com/), looks so far:
+
+<iframe width="1194" height="672" src="https://www.youtube.com/embed/SIXBwcEOIck" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Let's hope he finishes it soon!
