@@ -1,7 +1,7 @@
 ---
 title: 😢 Last glimpses of my CouchSurfing profile, before gone.
 metaDesc: I got my Couchsurfing data
-socialImage: /images/couchsurfing/profile/cs-contribution-hostage.jpg
+socialImage: /images/cs-leo-profile-short.png
 date: '2020-07-15'
 tags:
   - couchsurfing
