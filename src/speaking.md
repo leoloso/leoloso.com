@@ -19,7 +19,7 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 **Introduction to the GraphQL API for WordPress** @ [CMS Philly](https://cmsphilly.org/talks/introduction-graphql-api-wordpress) (Online conference)
 
-<iframe src="//slides.com/leoloso/graphql-api-for-wordpress/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//slides.com/leoloso/graphql-api-for-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Introduction to “PoP API”, a new GraphQL server in PHP** @ [Nomad JS](https://nomadjs.com/live/kSk2ymG1OgnfnDchrCuVp/Introduction-to-the--schemaless--GraphQL/) (Online webinar)
 

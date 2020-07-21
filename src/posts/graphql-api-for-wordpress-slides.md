@@ -11,4 +11,4 @@ tags:
 
 I just gave a sneak preview to my upcoming GraphQL API for WordPress plugin [for CMS Philly](https://cmsphilly.org/talks/introduction-graphql-api-wordpress) (to be released this May!). I will share the video once it's ready. In the meantime, I share my beautiful slides:
 
-<iframe src="//slides.com/leoloso/graphql-api-for-wordpress/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//slides.com/leoloso/graphql-api-for-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
