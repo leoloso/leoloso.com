@@ -19,6 +19,8 @@ Tips for making the most out of the WordPress editor.
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server, and a few on setting-up Gutenberg.
 
+🚀 [Essentials for building your first Gutenberg block](https://blog.logrocket.com/building-first-gutenberg-block/)
+
 🚀 [Setting up your first Gutenberg project](https://blog.logrocket.com/setting-up-first-gutenberg-project/)
 
 🚀 [Creating an @export GraphQL directive](https://blog.logrocket.com/creating-an-export-graphql-directive/)
