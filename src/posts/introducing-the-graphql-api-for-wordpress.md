@@ -54,13 +54,19 @@ With **REST**, you create multiple endpoints, each returning a pre-defined set o
 
 | Advantages | Disadvantages |
 | --- | --- |
-| ✅ It's simple<br/>✅ Accessed via `GET` or `POST`<br/>✅ Can be cached on the server or CDN<br/>✅ It's secure: only intended data is exposed | ❌ It's tedious to create all the endpoints<br/>❌ A project may face bottlenecks waiting for endpoints to be ready<br/>❌ Producing documentation is mandatory<br/>❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data |
+| ✅ It's simple | ❌ It's tedious to create all the endpoints |
+| ✅ Accessed via `GET` or `POST` | ❌ A project may face bottlenecks waiting for endpoints to be ready |
+| ✅ Can be cached on the server or CDN | ❌ Producing documentation is mandatory |
+| ✅ It's secure: only intended data is exposed | ❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data |
 
 With **GraphQL**, you provide any query to a single endpoint, which returns exactly the requested data.
 
 | Advantages | Disadvantages |
 | --- | --- |
-| ✅ It can be fast, since all data is retrieved in a single request<br/>✅ It enables rapid iteration of the project<br/>✅ It can be self-documented<br/>✅ It provides an editor for the query (GraphiQL) that simplifies the task | ❌ Accessed only via `POST`<br/>❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be<br/>❌ It may require to reinvent the wheel (eg: uploading files) |
+| ✅ It can be fast, since all data is retrieved in a single request | ❌ Accessed only via `POST` |
+| ✅ It enables rapid iteration of the project | ❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be |
+| ✅ It can be self-documented | ❌ It may require to reinvent the wheel (eg: uploading files) |
+| ✅ It provides an editor for the query (GraphiQL) that simplifies the task | ❌ Must deal with additional complexities, such as the N+1 problem |
 
 **Persisted queries** combine these 2 approaches together:
 
@@ -72,13 +78,26 @@ As a result, it provides the advantages of both REST and GraphQL at the same tim
 
 | Advantages |
 | --- |
-| ✅ It provides an editor for the query (GraphiQL)<br/>✅ Accessed via `GET` or `POST`<br/>✅ Can be cached on the server or CDN<br/>✅ It's secure: only intended data is exposed<br/>✅ It can be fast, since all data is retrieved in a single request<br/>✅ It enables rapid iteration of the project<br/>✅ It can be self-documented |
+| ✅ It provides an editor for the query (GraphiQL) |
+| ✅ Accessed via `GET` or `POST` |
+| ✅ Can be cached on the server or CDN |
+| ✅ It's secure: only intended data is exposed |
+| ✅ It can be fast, since all data is retrieved in a single request |
+| ✅ It enables rapid iteration of the project |
+| ✅ It can be self-documented |
 
 And it eliminates their disadvantages:
 
 | Disadvantages |
 | --- |
-| <strike>❌ It's tedious to create all the endpoints<br/>❌ A project may face bottlenecks waiting for endpoints to be ready<br/>❌ Producing documentation is mandatory<br/>❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data<br/>❌ Accessed only via `POST`<br/>❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be<br/>❌ It may require to reinvent the wheel (eg: uploading files)</strike> |
+| <strike>❌ It's tedious to create all the endpoints</strike> |
+| <strike>❌ A project may face bottlenecks waiting for endpoints to be ready</strike> |
+| <strike>❌ Producing documentation is mandatory</strike> |
+| <strike>❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data</strike> |
+| <strike>❌ Accessed only via `POST`</strike> |
+| <strike>❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be</strike> |
+| <strike>❌ It may require to reinvent the wheel (eg: uploading files)</strike> |
+| <strike>❌ Must deal with additional complexities, such as the N+1 problem</strike> 👈🏻 this issue is [resolved by the underlying engine](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html) |
 
 ### 2. Security
 
