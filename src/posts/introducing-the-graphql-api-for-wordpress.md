@@ -138,9 +138,9 @@ Here an overview of the features shipped with the first version of the plugin.
 
 [GraphiQL](https://github.com/graphql/graphiql) is a user-friendly client to create GraphQL queries.
 
-The [GraphiQL Explorer](https://github.com/OneGraph/graphiql-explorer) is an interactive tool attached to GraphiQL, that allows to create the query by clicking on fields.
+The [GraphiQL Explorer](https://github.com/OneGraph/graphiql-explorer) is an interactive tool attached to GraphiQL, that allows to create the query by point-and-clicking on fields.
 
-These 2 tools are embedded in the plugin, to make it very eays to create the queries:
+These 2 tools are embedded in the plugin, making it very easy to create the queries:
 
 ![GraphiQL with Explorer](/images/graphiql-explorer.gif "GraphiQL with Explorer")
 
@@ -165,15 +165,15 @@ A custom endpoint with a specific schema configuration can be created for any ta
 
 The custom endpoint is a Custom Post Type, and its slug becomes the endpoint. An endpoint with title `"My endpoint"` and slug `my-endpoint` will:
 
-- be accessible under `/graphql/my-endpoint/`
+- Be accessible under `/graphql/my-endpoint/`
 - Expose its own GraphiQL client under `/graphql/my-endpoint/?view=graphiql`
-- Expose its own Interactive schema client under `/graphql/my-endpoint/?view=schema`
+- Expose its own Interactive schema under `/graphql/my-endpoint/?view=schema`
 
 ![Creating a custom endpoint](/images/custom-endpoint.png "Creating a custom endpoint")
 
-![GraphiQL client to query the custom endpoint](/images/custom-endpoint-graphiql.png "GraphiQL client to query the custom endpoin")
+![Custom endpoint's GraphiQL client](/images/custom-endpoint-graphiql.png "Custom endpoint's GraphiQL client")
 
-![Custom endpoint's interactive schema visualizer](/images/custom-endpoint-interactive-schema.png "Custom endpoint's interactive schema visualize")
+![Custom endpoint's Interactive schema](/images/custom-endpoint-interactive-schema.png "Custom endpoint's Interactive schema")
 
 ### Schema configurations
 
@@ -190,11 +190,11 @@ We define permissions to access every field and directive in the schema through 
 - Grant access if the user has some role
 - Grant access if the user has some capability
 
-New custom rules can be added:
+New custom rules can be added, such as:
 
 - Grant access by IP
-- Grant access by header/value present in the request
-- Grant access if user is PRO
+- Grant access by validating some header from the request
+- Grant access if user has a PRO membership
 - Grant access on weekends only
 - Anything
 
@@ -211,7 +211,7 @@ When access to some a field or directive is defined, there are 2 ways for the AP
 
 ### HTTP caching
 
-Because it sends the queries via `POST`, GraphQL is normally not cacheable on the server-side or intermediate stages, such a CDN.
+Because it sends the queries via `POST`, GraphQL is normally not cacheable on the server-side or intermediate stages between the client and the server, such as a CDN.
 
 However, persisted queries can be accessed via `GET`, hence we can cache their response.
 
@@ -231,72 +231,82 @@ Persisted queries (and also custom endpoints) can declare a parent persisted que
 
 Inheritance is useful for creating a hierarchy of API endpoints, such as:
 
-- `/graphql/clients/client-A/`
-- `/graphql/clients/client-B/`
-- ...
+- `/graphql/posts/mobile-app/`
+- `/graphql/posts/website/`
 
-In this hierarchy, we are able to define the query only on the parent `clients` persisted query, and then each child persisted query, `client-A` and `client-B`, will obtain the query from the parent, and define only its schema configuration, as to set the custom access control rules for each client.
+In this hierarchy, we are able to define the query only on the parent `posts` persisted query, and then each child persisted query, `mobile-app` and `website`, will obtain the query from the parent, and define only its schema configuration (as to set the custom access control rules, HTTP caching and deprecated fields) for each application.
 
-Children queries can also override variables defined in the parent query. For instance, we can generate this structure:
+Likewise, we can declare the configuration at the parent level, and then all children implement only the GraphQL query.
 
-- `/graphql/langs/english/`
-- `/graphql/langs/french/`
-- ...
+- `/graphql/mobile-app/posts/`
+- `/graphql/mobile-app/users/`
+- `/graphql/website/posts/`
+- `/graphql/website/users/`
 
-The GraphQL query in `langs` can have variable `$lang`, which is then set in each of the children queries with the value for the language: `"en"` and `"fr"`.
+Children queries can override variables defined in the parent query. For instance, we can generate this structure:
 
-![Field deprecation](/images/api-inheritance.gif "Field deprecation")
+- `/graphql/posts/english/`
+- `/graphql/posts/french/`
+
+The GraphQL query in `posts` can have variable `$lang`, which is then set in each of the children queries with the value for the language: `"en"` and `"fr"`.
+
+The number of levels is unlimited, so we can also create:
+
+- `/graphql/mobile-app/posts/english/`
+- `/graphql/mobile-app/posts/french/`
+
+![API inheritance](/images/api-inheritance.gif "API inheritance")
 
 ### Namespacing
 
-When different plugins use the same name for a type or interface, there will be a conflict in the schema. Namespacing avoids this situation, by prepending a unique namespace to the types and schemas.
+When different plugins use the same name for a type or interface, there will be a conflict in the schema. Whenever this happens, enabling schema namespacing will fix the problem, since it prepends all types and interfaces with their namespace.
 
-For instance, if WooCommerce and EasyDigitalDownloads both implement a type `Product`, there there will be a conflict. With namespacing enabled, these become `Automattic_WooCommerce_Product` and `SandhillsDevelopment_EasyDigitalDownloads_Product`, and the conflict is resolved.
+For instance, if WooCommerce and Easy Digital Downloads both implement a type `Product`, there there will be a conflict. With namespacing enabled, these types become `Automattic_WooCommerce_Product` and `SandhillsDevelopment_EDD_Product`, and the conflict is resolved.
 
-![A namespaced schema](/images/namespaced-interactive-schema.jpg "A namespaced schem")
+![A namespaced schema](/images/namespaced-interactive-schema.jpg "A namespaced schema")
 
 ## Q&A
 
-Here a response to some questions I've received:
+Here a response to some questions I've so far received:
 
 ### Is it ready for production?
 
 In theory yes, but since I've just launched the plugin, you'd better test if for some time to make sure there are no issues.
 
-In addition, please be aware that the GraphQL API requires several external components, which must be scoped to avoid potential problems with a different version of the same component being used by another plugin in the site, but this scoping [must yet be done](https://github.com/GraphQLAPI/graphql-api/issues/9). 
+In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/GraphQLAPI/graphql-api/issues/9). 
 
 Hence, test the plugin in your development environment first, and with all other plugins also activated. If you run into any trouble, please [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new).
 
-### Can I use it with WooCommerce/ACF?
+### Can I use it with WooCommerce/ACF/{Place your name here}?
 
-Yes, you can, because the GraphQL API for WordPress supports integration with any plugin (i.e. creating the corresponding types, and resolvers for the fields). But, this integration must still be done!
+Yes, you can, because the GraphQL API for WordPress is extensible, supporting integration with any plugin. But, this integration must still be done!
+
+If there is any plugin you need support for, and you're willing to do the implementation (i.e. creating the corresponding types and resolvers for the fields), please be welcome to [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new) and I will help.
 
 ### Can I use with Gatsby?
 
-In theory yes, you can, but I don't know why you'd want to do that, at least right now: Jason Bahl, the creator of WPGraphQL, works for Gatsby, so relying on WPGraphQL makes more sense.
+In theory it is doable, but I don't know why you'd want to do that: Jason Bahl, the creator of WPGraphQL, works for Gatsby, so relying on WPGraphQL is clearly the way to go.
 
 ### Who can use it?
 
-Hopefully, everyone! Even though GraphQL involves technical concepts, I've worked hard to make the plugin be as user-friendly as possible.
+Hopefully, everyone! Even though GraphQL involves technical concepts, I've worked hard to make the plugin as easy-to-use as possible.
 
 Following the ethos from WordPress, this plugin attempts to allow anyone, i.e. bloggers, designers, marketers, salesmen, and everyone else, to be able to create an API in a simple way:
 
 - Composing the GraphQL query by clicking on fields, and hitting "Publish"
-- Granting access to the API by clicking on fields and selecting what access control rules to apply
+- Granting access to the API by clicking on fields, selecting what access control rules to apply, and hitting "Publish"
 
-This is, I believe, "democratizing data publishing".
+Also, because the single endpoint is disabled by default, the risk of unintentionally exposing sensitive data is minimal.
 
-### Can I seamlessly switch from WPGraphQL to GraphQL API?
+### Can I switch from WPGraphQL to GraphQL API?
 
-Not so much. Ideally, you should be able to keep your existing GraphQL queries, and just change the engine processing them, from WPGraphQL to the GraphQL API. But this doesn't work, because the shape of the schema provided by both plugins is different. 
+You can, but you will need to rewrite your existing GraphQL queries, because the shape of the schema provided by both plugins is different. 
 
-Some differences include:
+For instance, some differences are:
 
-- A different name for the same field, such as `postTags` instead of `tags`.
-- A different set of arguments to a field, such as `where` to query the `posts` field
+- A different name for the same field, such as `postTags` instead of `tags`
+- A different set of arguments to a field, such as WPGraphQL's `where` argument for the `posts` field, handled differently in GraphQL API
 - WPGraphQL uses the Relay spec for edge and node data, while GraphQL API doesn't
-
-Hence, to do the switch, you would have to rewrite the GraphQL queries.
 
 ### What's the status of the plugin?
 
@@ -305,9 +315,9 @@ GraphQL API is stable and, I'd dare say, ready for production (that is, after pl
 - [The documentation for the shipped modules](https://github.com/GraphQLAPI/graphql-api/issues/11). I'm working on them currently, so they should be ready soon.
 - [Scoping of the external PHP dependencies](https://github.com/GraphQLAPI/graphql-api/issues/9). I'll work on this issue then.
 
-When these two issues are resolved, I may already upload the GraphQL API plugin to the WordPress plugin repository, if feedback from users is encouraging.
+When these two issues are resolved, I may already decide to publish the GraphQL API plugin to the WordPress plugin repository, depending on the feedback I have received by then.
 
-Then, the schema must be upgraded, with:
+Moving forward, the schema must be completed to cover all WordPress entities, including:
 
 - Categories
 - Menus
@@ -316,21 +326,27 @@ Then, the schema must be upgraded, with:
 
 Finally, GraphQL API does not currently support mutations. It must also be implemented.
 
-## Parting thoughts
+## WordPress and GraphQL seamlessly integrated
 
-WordPress is the most popular CMS in the world, because it makes it easy to anyone to create and publish content.
+WordPress is the most popular CMS in the world, because it makes it easy to anyone to create and publish content. It provides a great user experience.
 
-GraphQL is steadily becoming the most popular API solution, because it makes it easy to access the data from a website.
+GraphQL is steadily becoming the most popular API solution, because it makes it easy to access the data from a website. It provides a great developer experience.
 
-I believe that the GraphQL API for WordPress manages to integrate these 2 together seamlessly, and combining their characteristics: to make it easy to anyone to expose and access their data.
+I believe that the GraphQL API for WordPress can succeed to integrate these 2 together, combining their characteristics: to make it easy to anyone to provide access to their content.
 
-![GraphQL for the masses!](/images/graphql-for-everybody.jpg "GraphQL for the masses!")
+This is, I believe, "democratizing data publishing".
 
-If you like it, please:
+## Parting words
 
-🙏 Try it out
-🙏 Give me feedback
-🙏 Talk about it
-🙏 Share it with your friends and colleagues
+If you like what you've seen, please:
+
+🙏 Try it out<br/>
+🙏 Star it on GitHub<br/>
+🙏 Share it with your friends and colleagues<br/>
+🙏 Talk about it (please do! I have no deep-pockets to promote it, I depend on word of mouth)
+
+And please, give me feedback about your experience, either good or bad. If you enjoyed it and found it useful, please let me know. If you think that something can be improved, let me know. If something didn't work, or something else broke in the site, let me know. Be welcome to [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new) on the repo.
+
+![GraphQL for the masses!](/images/graphql-for-everybody.jpg)
 
 Thanks for reading!
