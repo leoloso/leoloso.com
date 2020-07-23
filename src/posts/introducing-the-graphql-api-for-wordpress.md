@@ -79,16 +79,15 @@ With **GraphQL**, you provide any query to a single endpoint, which returns exac
 | --- |
 | ❌ Accessed only via `POST` |
 | ❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be |
-| ❌ It may require to reinvent the wheel (eg: uploading files) |
+| ❌ It may require to reinvent the wheel, such as uploading files or caching |
 | ❌ Must deal with additional complexities, such as the N+1 problem |
 
 **Persisted queries** combine these 2 approaches together:
 
 - It uses GraphQL to create and resolve queries
-- But instead of exposing a single endpoint, it exposes every pre-defined each under its own endpoint
-- Hence, we obtain multiple endpoints with predefined data, as in REST, but these are created using GraphQL
+- But instead of exposing a single endpoint, it exposes every pre-defined query under its own endpoint
 
-As a result, it provides the advantages of both REST and GraphQL at the same time:
+Hence, we obtain multiple endpoints with predefined data, as in REST, but these are created using GraphQL, obtaining the advantages from each:
 
 | Advantages |
 | --- |
@@ -100,7 +99,7 @@ As a result, it provides the advantages of both REST and GraphQL at the same tim
 | ✅ It enables rapid iteration of the project |
 | ✅ It can be self-documented |
 
-And it eliminates their disadvantages:
+And avoiding their disadvantages:
 
 | Disadvantages |
 | --- |
@@ -110,7 +109,7 @@ And it eliminates their disadvantages:
 | <strike>❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data</strike> |
 | <strike>❌ Accessed only via `POST`</strike> |
 | <strike>❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be</strike> |
-| <strike>❌ It may require to reinvent the wheel (eg: uploading files)</strike> |
+| <strike>❌ It may require to reinvent the wheel , such asuploading files or caching</strike> |
 | <strike>❌ Must deal with additional complexities, such as the N+1 problem</strike> 👈🏻 this issue is [resolved by the underlying engine](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html) |
 
 ### 2. Security
@@ -119,13 +118,17 @@ The GraphQL single endpoint, which can return any piece of data accessible throu
 
 The GraphQL API for WordPress provides several mechanisms to protect the data:
 
-👉🏻 We can decide to only expose data through **persisted queries**, and completely disable access through the single endpoint (indeed, it is disabled by default).
+👉 We can decide to only expose data through **persisted queries**, and completely disable access through the single endpoint (indeed, it is disabled by default).
 
-👉🏻 We can create **custom endpoints**, each tailored to different users (such as one or another client).
+👉 We can create **custom endpoints**, each tailored to different users (such as one or another client).
 
-👉🏻 We can set permissions to each field in the schema through **Access Control Lists**, defining rules such as: Is the user logged-in or not? Does the user have a certain role or capability? or any custom rule.
+👉 We can set permissions to each field in the schema through **Access Control Lists**, defining rules such as: Is the user logged-in or not? Does the user have a certain role or capability? or any custom rule.
 
-👉🏻 We can define the API to be either **public or private**. In the public API, the fields in the schema are exposed, and when the permission is not satisfied, the user gets a corresponding error message. In the private API, the schema is customized to every user, containing only the fields available to him or her.
+👉 We can define the API to be either **public or private**:
+
+In the **public API**, the fields in the schema are exposed, and when the permission is not satisfied, the user gets a corresponding error message with a description of why permission was rejected.
+
+In the **private API**, the schema is customized to every user, containing only the fields available to him or her, and so when attempting to access a forbidden field, the error message says that the field doesn't exist.
 
 ## Quick overview of the features
 
