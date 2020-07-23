@@ -52,21 +52,35 @@ Persisted queries use GraphQL to provide pre-defined enpoints as in REST, obtain
 
 With **REST**, you create multiple endpoints, each returning a pre-defined set of data.
 
-| Advantages | Disadvantages |
-| --- | --- |
-| ✅ It's simple | ❌ It's tedious to create all the endpoints |
-| ✅ Accessed via `GET` or `POST` | ❌ A project may face bottlenecks waiting for endpoints to be ready |
-| ✅ Can be cached on the server or CDN | ❌ Producing documentation is mandatory |
-| ✅ It's secure: only intended data is exposed | ❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data |
+| Advantages |
+| --- |
+| ✅ It's simple |
+| ✅ Accessed via `GET` or `POST` |
+| ✅ Can be cached on the server or CDN |
+| ✅ It's secure: only intended data is exposed |
+
+| Disadvantages |
+| --- |
+| ❌ It's tedious to create all the endpoints |
+| ❌ A project may face bottlenecks waiting for endpoints to be ready |
+| ❌ Producing documentation is mandatory |
+| ❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data |
 
 With **GraphQL**, you provide any query to a single endpoint, which returns exactly the requested data.
 
-| Advantages | Disadvantages |
-| --- | --- |
-| ✅ It can be fast, since all data is retrieved in a single request | ❌ Accessed only via `POST` |
-| ✅ It enables rapid iteration of the project | ❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be |
-| ✅ It can be self-documented | ❌ It may require to reinvent the wheel (eg: uploading files) |
-| ✅ It provides an editor for the query (GraphiQL) that simplifies the task | ❌ Must deal with additional complexities, such as the N+1 problem |
+| Advantages |
+| --- |
+| ✅ It can be fast, since all data is retrieved in a single request |
+| ✅ It enables rapid iteration of the project |
+| ✅ It can be self-documented |
+| ✅ It provides an editor for the query (GraphiQL) that simplifies the task |
+
+| Disadvantages |
+| --- |
+| ❌ Accessed only via `POST` |
+| ❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be |
+| ❌ It may require to reinvent the wheel (eg: uploading files) |
+| ❌ Must deal with additional complexities, such as the N+1 problem |
 
 **Persisted queries** combine these 2 approaches together:
 
