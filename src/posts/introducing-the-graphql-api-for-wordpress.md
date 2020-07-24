@@ -103,14 +103,14 @@ And avoiding their disadvantages:
 
 | Disadvantages |
 | --- |
-| <strike>❌ It's tedious to create all the endpoints</strike> |
-| <strike>❌ A project may face bottlenecks waiting for endpoints to be ready</strike> |
-| <strike>❌ Producing documentation is mandatory</strike> |
-| <strike>❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data</strike> |
-| <strike>❌ Accessed only via `POST`</strike> |
-| <strike>❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be</strike> |
-| <strike>❌ It may require to reinvent the wheel , such asuploading files or caching</strike> |
-| <strike>❌ Must deal with additional complexities, such as the N+1 problem</strike> 👈🏻 this issue is [resolved by the underlying engine](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html) |
+| ~~❌ It's tedious to create all the endpoints~~ |
+| ~~❌ A project may face bottlenecks waiting for endpoints to be ready~~ |
+| ~~❌ Producing documentation is mandatory~~ |
+| ~~❌ It can be slow (mainly for mobile apps), since the application may need several requests to retrieve all the data~~ |
+| ~~❌ Accessed only via `POST`~~ |
+| ~~❌ It can't be cached on the server or CDN, making it slower and more expensive than it could be~~ |
+| ~~❌ It may require to reinvent the wheel , such asuploading files or caching~~ |
+| ~~❌ Must deal with additional complexities, such as the N+1 problem~~ 👈🏻 this issue is [resolved by the underlying engine](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html) |
 
 ### 2. Security
 
@@ -122,17 +122,17 @@ The GraphQL API for WordPress provides several mechanisms to protect the data:
 
 👉 We can create **custom endpoints**, each tailored to different users (such as one or another client).
 
-👉 We can set permissions to each field in the schema through **Access Control Lists**, defining rules such as: Is the user logged-in or not? Does the user have a certain role or capability? or any custom rule.
+👉 We can set permissions to each field in the schema through **Access Control Lists**, defining rules such as: Is the user logged-in or not? Does the user have a certain role or capability? Or any custom rule.
 
 👉 We can define the API to be either **public or private**:
 
-In the **public API**, the fields in the schema are exposed, and when the permission is not satisfied, the user gets a corresponding error message with a description of why permission was rejected.
+In the **public API**, the fields in the schema are exposed, and when the permission is not satisfied, the user gets an error message with a description of why the permission was rejected.
 
 In the **private API**, the schema is customized to every user, containing only the fields available to him or her, and so when attempting to access a forbidden field, the error message says that the field doesn't exist.
 
 ## Quick overview of the features
 
-Here an overview of the features shipped with the first version of the plugin.
+Here is an overview of the features shipped with the first version of the plugin.
 
 ### GraphiQL and GraphiQL Explorer
 
@@ -227,33 +227,33 @@ The plugin provides a user interface to deprecate fields, and indicate how they 
 
 ### Query inheritance
 
-Persisted queries (and also custom endpoints) can declare a parent persisted query, from which it can inherit its properties: its schema configuration and its GraphQL query.
+Persisted queries (and also custom endpoints) can declare a parent persisted query, from which it can inherit its properties: Its schema configuration and its GraphQL query.
 
 Inheritance is useful for creating a hierarchy of API endpoints, such as:
 
-- `/graphql/posts/mobile-app/`
-- `/graphql/posts/website/`
+- `/graphql-query/posts/mobile-app/`
+- `/graphql-query/posts/website/`
 
 In this hierarchy, we are able to define the query only on the parent `posts` persisted query, and then each child persisted query, `mobile-app` and `website`, will obtain the query from the parent, and define only its schema configuration (as to set the custom access control rules, HTTP caching and deprecated fields) for each application.
 
 Likewise, we can declare the configuration at the parent level, and then all children implement only the GraphQL query.
 
-- `/graphql/mobile-app/posts/`
-- `/graphql/mobile-app/users/`
-- `/graphql/website/posts/`
-- `/graphql/website/users/`
+- `/graphql-query/mobile-app/posts/`
+- `/graphql-query/mobile-app/users/`
+- `/graphql-query/website/posts/`
+- `/graphql-query/website/users/`
 
 Children queries can override variables defined in the parent query. For instance, we can generate this structure:
 
-- `/graphql/posts/english/`
-- `/graphql/posts/french/`
+- `/graphql-query/posts/english/`
+- `/graphql-query/posts/french/`
 
 The GraphQL query in `posts` can have variable `$lang`, which is then set in each of the children queries with the value for the language: `"en"` and `"fr"`.
 
 The number of levels is unlimited, so we can also create:
 
-- `/graphql/mobile-app/posts/english/`
-- `/graphql/mobile-app/posts/french/`
+- `/graphql-query/mobile-app/posts/english/`
+- `/graphql-query/mobile-app/posts/french/`
 
 ![API inheritance](/images/api-inheritance.gif "API inheritance")
 
@@ -267,7 +267,7 @@ For instance, if WooCommerce and Easy Digital Downloads both implement a type `P
 
 ## Q&A
 
-Here a response to some questions I've so far received:
+Here a response to some questions I've received:
 
 ### Is it ready for production?
 
@@ -283,9 +283,9 @@ Yes, you can, because the GraphQL API for WordPress is extensible, supporting in
 
 If there is any plugin you need support for, and you're willing to do the implementation (i.e. creating the corresponding types and resolvers for the fields), please be welcome to [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new) and I will help.
 
-### Can I use with Gatsby?
+### Can I use it with Gatsby?
 
-In theory it is doable, but I don't know why you'd want to do that: Jason Bahl, the creator of WPGraphQL, works for Gatsby, so relying on WPGraphQL is clearly the way to go.
+In theory yes, it is doable, but I don't know why you'd want to do that: Jason Bahl, the creator of WPGraphQL, works for Gatsby, so relying on WPGraphQL is clearly the way to go.
 
 ### Who can use it?
 
