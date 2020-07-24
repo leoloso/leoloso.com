@@ -2,7 +2,7 @@
 title: 🧩 Adding an @export directive to GraphQL by PoP
 metaDesc: Peeking into the design process of a powerful directive
 socialImage: /images/graphql-by-pop-logo.jpg
-date: '2021-04-03'
+date: '2025-04-03'
 tags:
   - pop
   - graphql

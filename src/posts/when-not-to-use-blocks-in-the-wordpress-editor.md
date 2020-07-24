@@ -2,7 +2,7 @@
 title: 🙅🏻‍♂️ When NOT to use blocks in the WordPress editor
 metaDesc: Showing a design that can't be satisfied through blocks
 socialImage: /images/accordion-video-opened.jpg
-date: '2021-06-13'
+date: '2025-06-13'
 tags:
   - wordpress
   - gutenberg
