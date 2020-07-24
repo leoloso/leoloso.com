@@ -6,7 +6,7 @@ archiveButtonText: See all posts
 metaDesc: Welcome to Leo's blog! Writings on things that I encounter every day, from attending events, working on random projects, reading books, or anything noteworthy
 socialImage: ''
 ---
-Howdy! My name is **Leonardo Losoviz**, I'm an [award winning](https://www.smashingmagazine.com/2018/01/performance-challenge-winners-results/) freelance developer and consultant, creator of [GraphQL by PoP](https://graphql-by-pop.com/) (a CMS-agnostic GraphQL server in PHP) and the open source [PoP](https://github.com/leoloso/PoP) project (for building applications based on server-side components), regular contributor to [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/) and [Design Bombs](https://www.designbombs.com/author/leo/), and occasional conference speaker. 
+Howdy! My name is **Leonardo Losoviz**, I'm an [award winning](https://www.smashingmagazine.com/2018/01/performance-challenge-winners-results/) freelance developer, creator of the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api) (a GraphQL server for WordPress), [GraphQL by PoP](https://graphql-by-pop.com/) (a CMS-agnostic GraphQL server in PHP), and [PoP](https://github.com/leoloso/PoP) (an architecture of server-side components in PHP). I am also a writer, contributing regularly to several online magazines, including [CSS-Tricks](https://css-tricks.com/author/leonardolosoviz/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/) and [Design Bombs](https://www.designbombs.com/author/leo/). And I am an occasional conference speaker.
 
 <!-- _I code, I learn, I share._ -->
 
@@ -21,4 +21,4 @@ To contact me: [email](mailto:leo@getpop.org) or [tweet](https://twitter.com/los
 
 <!-- --- -->
 
-_Happy reading!_
+Welcome to my site! _Happy reading_ 😀
