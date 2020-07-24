@@ -23,11 +23,9 @@ The [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api) is it
 
 <a href="https://graphql-by-pop.com" title="GraphQL by PoP logo"><img src="/images/graphql-by-pop-logo.jpg" style="max-width: 250px;"></a>
 
-## Frameworks/Specifications
+## Frameworks
 
-[PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application. 
-
-Currently implemented in PHP, I hope it can eventually become a specification, so that it can be implemented in other languages too.
+[PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application, and it implements it in PHP.
 
 <a href="https://github.com/leoloso/PoP" title="PoP logo"><img src="/images/pop-logo-horizontal-whitebg.png"></a>
 
