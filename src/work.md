@@ -5,15 +5,21 @@ layout: 'layouts/page.njk'
 
 My open source work is concentrated on the following GitHub accounts:
 
-👨🏼‍🍳 [My own](https://github.com/leoloso)
+🙋🏻‍♂️ [My own](https://github.com/leoloso)
 
-👨🏻‍💻 [PoP](https://github.com/getpop)
+🙋🏻‍♂️ [PoP](https://github.com/getpop)
+
+🙋🏻‍♂️ [PoP Schema](https://github.com/PoPSchema)
 
 🙋🏻‍♂️ [GraphQL by PoP](https://github.com/GraphQLByPoP)
 
+🙋🏻‍♂️ [GraphQL API](https://github.com/GraphQLAPI)
+
 ## GraphQL servers
 
-[GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. Its source code is distributed in the repos from the [PoP](https://github.com/getpop) and [GraphQL by PoP](https://github.com/GraphQLByPoP) accounts.
+[GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. 
+
+The [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api) is its implementation as a plugin for WordPress.
 
 <a href="https://graphql-by-pop.com" title="GraphQL by PoP logo"><img src="/images/graphql-by-pop-logo.jpg" style="max-width: 250px;"></a>
 
