@@ -2,7 +2,7 @@
 title: 🚫 GDPR illegal - Couchsurfing is keeping your (deleted) photos
 metaDesc: Why I created this new WordPress plugin
 socialImage: /images/cs-not-deleted-photo.png
-date: '2020-07-28'
+date: '2020-07-31'
 tags:
   - couchsurfing
   - data
