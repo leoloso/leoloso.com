@@ -70,6 +70,7 @@ With **GraphQL**, you provide any query to a single endpoint, which returns exac
 
 | Advantages |
 | --- |
+| ✅ No under/over fetching of data |
 | ✅ It can be fast, since all data is retrieved in a single request |
 | ✅ It enables rapid iteration of the project |
 | ✅ It can be self-documented |
@@ -91,13 +92,14 @@ Hence, we obtain multiple endpoints with predefined data, as in REST, but these 
 
 | Advantages |
 | --- |
-| ✅ It provides an editor for the query (GraphiQL) |
 | ✅ Accessed via `GET` or `POST` |
 | ✅ Can be cached on the server or CDN |
 | ✅ It's secure: only intended data is exposed |
+| ✅ No under/over fetching of data |
 | ✅ It can be fast, since all data is retrieved in a single request |
 | ✅ It enables rapid iteration of the project |
 | ✅ It can be self-documented |
+| ✅ It provides an editor for the query (GraphiQL) that simplifies the task |
 
 And avoiding their disadvantages:
 
