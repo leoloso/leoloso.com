@@ -37,7 +37,7 @@ So, I created my own action.
 
 The action is [this one](https://github.com/GraphQLAPI/graphql-api/blob/d820f4aa63e42780ea6ce19a8b52cb0261c1052f/.github/workflows/main.yml):
 
-```yml
+```yaml
 name: Generate Installable Plugin, and Upload as Release Asset
 on:
   release:
@@ -74,7 +74,7 @@ The workflow is like this:
 
 The action, called `"Generate Installable Plugin, and Upload as Release Asset"`, is executed whenever a new release is created, i.e. whenever I tag my code, as defined in the `on` entry:
 
-```yml
+```yaml
 name: Generate Installable Plugin, and Upload as Release Asset
 on:
   release:
@@ -83,7 +83,7 @@ on:
 
 The computer (called a "runner") where it runs is a Linux:
 
-```yml
+```yaml
 jobs:
   build:
     name: Upload Release Asset
@@ -92,7 +92,7 @@ jobs:
 
 The first step is to check out the source code from the repo:
 
-```yml
+```yaml
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -102,7 +102,7 @@ Then, it builds the WordPress plugin, by having Composer download the PHP depend
 
 Because this is the plugin for production, we can attach options `--no-dev --optimize-autoloader` to optimize the release:
 
-```yml
+```yaml
       - name: Build project
         run: |
           composer install --no-dev --optimize-autoloader
@@ -110,7 +110,7 @@ Because this is the plugin for production, we can attach options `--no-dev --opt
 
 Next, we will create the .zip file, stored under a `build/` folder. We first create the folder:
 
-```yml
+```yaml
           mkdir build
 ```
 
@@ -126,7 +126,7 @@ In this step, I also exclude those files and folder which are needed when coding
 - Folder `build/`, which is created only to store the .zip file
 - Folder `dev-helpers/`, which contains helpful scripts for development
 
-```yml
+```yaml
       - name: Create artifact
         uses: montudor/action-zip@v0.1.0
         with:
@@ -135,7 +135,7 @@ In this step, I also exclude those files and folder which are needed when coding
 
 After this step, the release will have been created as `build/graphql-api.zip`. Next, as an optional step, we upload it as an artifact to the action:
 
-```yml
+```yaml
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -145,7 +145,7 @@ After this step, the release will have been created as `build/graphql-api.zip`. 
 
 And finally, we make use of [`JasonEtco/upload-to-release`](https://github.com/JasonEtco/upload-to-release) upload the .zip file as a release asset, under the release package which triggered the GitHub action. The secret `secrets.GITHUB_TOKEN` is implicit, GitHub already sets it up for us:
 
-```yml
+```yaml
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
