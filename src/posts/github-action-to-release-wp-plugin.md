@@ -16,9 +16,11 @@ However, these dependencies must be inside the .zip file when installing the plu
 
 The answer is to create a [GitHub action](https://github.com/features/actions) which, upon tagging the code, will automatically create the .zip file and upload it as a release asset.
 
+The end result looks like this: In addition to the `Source code (zip)` (which does not contain the PHP dependencies), the release assets contain a `graphql-api.zip` file, which does have the PHP dependencies, and is the actual plugin to install in the WordPress site:
+
 ![Release assets after tagging code](/images/release-assets.png "Release assets after tagging code")
 
-In this post, I'll explain how the action I created for my plugin works.
+In this post, I'll demonstrate step-by-step the GitHub action to build the plugin.
 
 ## Exploring existing actions
 
