@@ -114,6 +114,10 @@ And avoiding their disadvantages:
 | ~~❌ It may require to reinvent the wheel , such asuploading files or caching~~ |
 | ~~❌ Must deal with additional complexities, such as the N+1 problem~~ 👈🏻 this issue is [resolved by the underlying engine](https://graphql-by-pop.com/docs/architecture/suppressing-n-plus-one-problem.html) |
 
+Check out this video on creating a new persisted query:
+
+<iframe src="https://player.vimeo.com/video/443790273?loop=1" width="900" height="507" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
 ### 2. Security
 
 The GraphQL single endpoint, which can return any piece of data accessible through the schema, could potentially allow malicious actors to retrieve private information. Hence, we must implement security measures to protect the data.
