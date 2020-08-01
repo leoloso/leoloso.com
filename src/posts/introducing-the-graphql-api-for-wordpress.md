@@ -343,11 +343,11 @@ This is, I believe, "democratizing data publishing".
 If you like what you've seen, please:
 
 🙏 Try it out<br/>
-🙏 Star it on GitHub<br/>
+🙏 Star it [on GitHub](https://github.com/GraphQLAPI/graphql-api/)<br/>
 🙏 Share it with your friends and colleagues<br/>
 🙏 Talk about it (please do! I have no deep-pockets to promote it, I depend on word of mouth)
 
-And please, give me feedback about your experience, either good or bad. If you enjoyed it and found it useful, please let me know. If you think that something can be improved, let me know. If something didn't work, or something else broke in the site, let me know. Be welcome to [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new) on the repo.
+And please, give me feedback about your experience, either good or bad. If you enjoyed it and found it useful, please let me know. If you think that something can be improved, let me know. If something didn't work, or something else broke in the site, let me know. Be welcome to create an issue on the repo.
 
 ![GraphQL for the masses!](/images/graphql-for-everybody.jpg)
 
