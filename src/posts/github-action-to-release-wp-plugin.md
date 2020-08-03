@@ -10,7 +10,7 @@ tags:
   - github
 ---
 
-The [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api) plugin ([launched last week](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/)) has plenty of PHP dependencies, managed through Composer. These dependencies, which are located under `vendor/`, are not stored in the GitHub repo, because they do not belong there.
+The [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp) plugin ([launched last week](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/)) has plenty of PHP dependencies, managed through Composer. These dependencies, which are located under `vendor/`, are not stored in the GitHub repo, because they do not belong there.
 
 However, these dependencies must be inside the .zip file when installing the plugin in the WordPress site. Then, when and how do we add them into the release?
 
@@ -37,7 +37,7 @@ So, I created my own action.
 
 ## Creating the action
 
-The action is [this one](https://github.com/GraphQLAPI/graphql-api/blob/d820f4aa63e42780ea6ce19a8b52cb0261c1052f/.github/workflows/main.yml):
+The action is [this one](https://github.com/GraphQLAPI/graphql-api-for-wp/blob/d820f4aa63e42780ea6ce19a8b52cb0261c1052f/.github/workflows/main.yml):
 
 ```yaml
 name: Generate Installable Plugin, and Upload as Release Asset
@@ -162,7 +162,7 @@ When tagging the source code with tag `v0.1.20`, the action is triggered, and we
 
 ![GitHub action run and succeeded](/images/action-run.png "GitHub action run and succeeded")
 
-Now, heading to the [releases for tag `v0.1.20`](https://github.com/GraphQLAPI/graphql-api/releases/tag/v0.1.20), it displays a link to the newly-create release `graphql-api`:
+Now, heading to the [releases for tag `v0.1.20`](https://github.com/GraphQLAPI/graphql-api-for-wp/releases/tag/v0.1.20), it displays a link to the newly-create release `graphql-api`:
 
 ![Release asset success](/images/release-assets.png "Release asset success")
 

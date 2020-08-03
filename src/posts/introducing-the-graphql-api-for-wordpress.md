@@ -9,7 +9,7 @@ tags:
   - api
 ---
 
-Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
+Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
 
 ![Interactive Schema screen in GraphQL API for WordPress](/images/interactive-schema.png "Interactive Schema screen in GraphQL API for WordPres")
 
@@ -279,15 +279,15 @@ Here a response to some questions I've received:
 
 In theory yes, but since I've just launched the plugin, you'd better test if for some time to make sure there are no issues.
 
-In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/GraphQLAPI/graphql-api/issues/9). 
+In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/9). 
 
-Hence, test the plugin in your development environment first, and with all other plugins also activated. If you run into any trouble, please [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new).
+Hence, test the plugin in your development environment first, and with all other plugins also activated. If you run into any trouble, please [create an issue](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/new).
 
 ### Can I use it with WooCommerce/ACF/{Place your name here}?
 
 Yes, you can, because the GraphQL API for WordPress is extensible, supporting integration with any plugin. But, this integration must still be done!
 
-If there is any plugin you need support for, and you're willing to do the implementation (i.e. creating the corresponding types and resolvers for the fields), please be welcome to [create an issue](https://github.com/GraphQLAPI/graphql-api/issues/new) and I will help.
+If there is any plugin you need support for, and you're willing to do the implementation (i.e. creating the corresponding types and resolvers for the fields), please be welcome to [create an issue](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/new) and I will help.
 
 ### Can I use it with Gatsby?
 
@@ -318,8 +318,8 @@ For instance, some differences are:
 
 GraphQL API is stable and, I'd dare say, ready for production (that is, after playing with it in development). But some things are not complete yet:
 
-- [The documentation for the shipped modules](https://github.com/GraphQLAPI/graphql-api/issues/11). I'm working on them currently, so they should be ready soon.
-- [Scoping of the external PHP dependencies](https://github.com/GraphQLAPI/graphql-api/issues/9). I'll work on this issue then.
+- [The documentation for the shipped modules](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/11). I'm working on them currently, so they should be ready soon.
+- [Scoping of the external PHP dependencies](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/9). I'll work on this issue then.
 
 When these two issues are resolved, I may already decide to publish the GraphQL API plugin to the WordPress plugin repository, depending on the feedback I have received by then.
 
@@ -347,7 +347,7 @@ This is, I believe, "democratizing data publishing".
 If you like what you've seen, please:
 
 🙏 Try it out<br/>
-🙏 Star it [on GitHub](https://github.com/GraphQLAPI/graphql-api/)<br/>
+🙏 Star it [on GitHub](https://github.com/GraphQLAPI/graphql-api-for-wp/)<br/>
 🙏 Share it with your friends and colleagues<br/>
 🙏 Talk about it (please do! I have no deep-pockets to promote it, I depend on word of mouth)
 
