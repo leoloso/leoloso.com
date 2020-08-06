@@ -185,7 +185,7 @@ The custom endpoint is a Custom Post Type, and its slug becomes the endpoint. An
 
 Every custom endpoint and persisted query can select a schema configuration, containing the sets of Access Control Lists, HTTP Caching rules, and Field Deprecation entries (and other features, provided by extensions) to be applied on the endpoint.
 
-![Creating a new schema configuration](/images/schema-configuration.png "Creating a new schema configuratio")
+![Creating a new schema configuration](/images/schema-configuration.png "Creating a new schema configuration")
 
 ### Access control
 
