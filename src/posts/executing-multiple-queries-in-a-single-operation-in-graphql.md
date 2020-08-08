@@ -225,7 +225,7 @@ The query above uses a couple of features available in PQL but not in GQL, which
 
 Sadly, I've been told that these features will most likely not be add to the spec.
 
-Hence, GraphQL cannot implement the example. Yet. But through executing multiple queries in a single operation, `@export`, and powerful custom directives, it can support novel use cases.
+Hence, GraphQL cannot implement the example, yet. But through executing multiple queries in a single operation, `@export`, and powerful custom directives, it can certainly support novel use cases.
 
 <script
   crossorigin
