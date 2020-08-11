@@ -29,6 +29,11 @@
       "text": "✉️ Contact",
       "url": "/contact",
       "external": false
+    },
+    {
+      "text": "📰 RSS",
+      "url": "/feed.xml",
+      "external": false
     }
   ]
 }
