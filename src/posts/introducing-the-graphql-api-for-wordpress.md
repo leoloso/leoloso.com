@@ -11,7 +11,7 @@ tags:
 
 Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
 
-![Interactive Schema screen in GraphQL API for WordPress](/images/interactive-schema.png "Interactive Schema screen in GraphQL API for WordPres")
+![Interactive Schema screen in GraphQL API for WordPress](/images/interactive-schema.png "Interactive Schema screen in GraphQL API for WordPres. <a href='/images/interactive-schema.png' target='_blank'>Open in new tab</a>")
 
 I've been developing this plugin full time for most of the last 12 months. And, taken together with [GraphQL by PoP](https://graphql-by-pop.com) (the CMS-agnostic GraphQL server in PHP, on which it is based), I've spent several years into this project.
 
