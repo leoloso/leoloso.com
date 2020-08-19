@@ -208,7 +208,7 @@ New custom rules can be added, such as:
 
 ### Public/private API
 
-When access to some a field or directive is defined, there are 2 ways for the API to behave:
+When access to some a field or directive is denied, there are 2 ways for the API to behave:
 
 - Public API: Provide an error message to the user, indicating why access is denied. This behavior makes the metadata from the schema always available.
 - Private API: The error message indicates that the field or directive does not exist. This behavior exposes the metadata from the schema only to those users who can access it.
