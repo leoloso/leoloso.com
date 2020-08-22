@@ -70,3 +70,11 @@ This is how his project, [Ymir](https://ymirapp.com/), looks so far:
 <iframe width="1194" height="672" src="https://www.youtube.com/embed/SIXBwcEOIck" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Let's hope he finishes it soon!
+
+## Update 22/08: Serverless API for WordPress added to GraphQL by PoP's roadmap
+
+I have officially added the [serverless API for WordPress to the roadmap for GraphQL by PoP](https://graphql-by-pop.com/docs/roadmap/serverless-wordpress.html) (my GraphQL server in PHP).
+
+Of course, this doesn't solve serverless for WordPress in general, only for requesting data from WordPress through an API. But this is already quite awesome, since we could then use WordPress as the CMS to manage the data, spinning its server only when we need to create/update the data, and provide the data to whichever client or application needs it through serverless.
+
+This is WordPress as a CMS without hosting! (Well, we still need a server for the database, but that's unavoidable)
