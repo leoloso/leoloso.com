@@ -1,7 +1,7 @@
 ---
 title: ‼️ Single source of truth => 2 presentations for doc
 metaDesc: Reusing documentation in plugin and repo
-socialImage: /images/interactive-schema.png
+socialImage: /images/module-docs.png
 date: '2020-08-24'
 tags:
   - graphql
