@@ -2,7 +2,7 @@
 title: Bringing the back of the front-end back to the back-end
 metaDesc: The back-end was tacken aback, its responsibilities moved to the front-end. It's time to claim them back!
 socialImage: /images/lego.png
-date: '2020-08-23'
+date: '2025-08-23'
 tags:
   - pop
   - components
