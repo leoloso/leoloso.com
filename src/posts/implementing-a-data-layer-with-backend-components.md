@@ -2,7 +2,7 @@
 title: How implementing a data layer through back-end components gave PoP so much power!
 metaDesc: Sorry GraphQL, but "ComponentQL" kicks your ass 😅
 socialImage: /images/lego.png
-date: '2020-08-25'
+date: '2025-08-25'
 tags:
   - pop
   - components
