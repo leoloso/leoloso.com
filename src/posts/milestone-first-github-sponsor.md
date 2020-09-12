@@ -1,7 +1,7 @@
 ---
 title: 🤩 Personal milestone - My first GitHub sponsor!
 metaDesc: To provide support for my plugin
-socialImage: /images/leoloso-github-sponsors.png
+socialImage: /images/github-sponsors.jpg
 date: '2020-09-12'
 tags:
   - graphql
