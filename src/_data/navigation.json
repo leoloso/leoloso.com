@@ -34,6 +34,11 @@
       "text": "📰 RSS",
       "url": "/feed.xml",
       "external": false
+    },
+    {
+      "text": "❤️ Sponsor",
+      "url": "https://github.com/sponsors/leoloso/",
+      "external": true
     }
   ]
 }
