@@ -31,6 +31,4 @@ Finally, I added a higher tier (at u$d 700) for corporate sponsors. I plan to as
 
 ![My sponsors and sponsored projects](/images/leoloso-github-sponsor-projects.png "My sponsors and sponsored projects")
 
-This first-sponsor milestone is extremely significant for me: I've been working on my code for a few years, and it's the first time I can make a bit of money from it. (Until today, my highest source of income was writing articles for online magazines, using the ideas and material from my open source work.)
-
-Today I'm celebrating! 🎉
+I hope the sponsorware model works, and I can make a living while working on open source. I'll keep writing updates on how it goes, here on my blog, and [on IndieHackers](https://www.indiehackers.com/leoloso).
