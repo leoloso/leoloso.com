@@ -1,6 +1,6 @@
 ---
 title: 🤩 Personal milestone - My first GitHub sponsor!
-metaDesc: To provide support for my plugin
+metaDesc: This is how my sponsorware model works
 socialImage: /images/github-sponsors.jpg
 date: '2020-09-12'
 tags:
