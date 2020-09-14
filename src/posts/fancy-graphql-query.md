@@ -49,3 +49,4 @@ What do you think? Is it worth sponsoring this project? Want to [become a sponso
 
 Please share with your friends and colleagues! 🙏
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;m building (I hope) the most forward-looking GraphQL server out there.<br><br>Here is how I plan to make it happen.<a href="https://t.co/2lOvqqh4lM">https://t.co/2lOvqqh4lM</a></p>&mdash; Leonardo Losoviz (@losoviz) <a href="https://twitter.com/losoviz/status/1305550295657664513?ref_src=twsrc%5Etfw">September 14, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
