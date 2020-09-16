@@ -32,3 +32,9 @@ Finally, I added a higher tier (at u$d 700) for corporate sponsors. I plan to as
 ![My sponsors and sponsored projects](/images/leoloso-github-sponsor-projects.png "My sponsors and sponsored projects")
 
 I hope the sponsorware model works, and I can make a living while working on open source. I'll keep writing updates on how it goes, here on my blog, and [on IndieHackers](https://www.indiehackers.com/leoloso).
+
+## Update 15/09: The list of sponsorable features is ready
+
+I have now [listed down all the features](https://github.com/GraphQLAPI/graphql-api-for-wp/projects/2) I plan to implement if I can get the funding. Right now, there are 23 of them (some of them are low-effort, so they can be bundled together):
+
+<figure><a href="/images/sponsorable-features.png" target="_blank"><img src="/images/sponsorable-features.png" alt="Features looking for sponsors" loading="lazy" width="3200" height="1806"></a><figcaption>Features looking for sponsors</figcaption></figure>
