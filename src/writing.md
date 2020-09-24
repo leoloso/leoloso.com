@@ -11,7 +11,9 @@ To date, these are my articles:
 
 Tips for making the most out of the WordPress editor.
 
-🎩 [Adding a Custom Welcome Guide to the WordPress Block Editor ](https://css-tricks.com/adding-a-custom-welcome-guide-to-the-wordpress-block-editor/)
+🎩 [Using Markdown and Localization in the WordPress Block Editor](https://css-tricks.com/using-markdown-and-localization-in-the-wordpress-block-editor/)
+
+🎩 [Adding a Custom Welcome Guide to the WordPress Block Editor](https://css-tricks.com/adding-a-custom-welcome-guide-to-the-wordpress-block-editor/)
 
 ---
 
