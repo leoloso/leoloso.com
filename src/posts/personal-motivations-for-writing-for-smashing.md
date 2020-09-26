@@ -2,7 +2,7 @@
 title: My personal motivations for writing for Smashing Magazine
 metaDesc: Why do I write for Smashing Magazine (almost) non-stop? What do I get out of it? Read to find out!
 socialImage: /images/proud-goat.jpg
-date: '2020-09-25'
+date: '2025-09-25'
 tags:
   - smashing
   - writing

@@ -2,7 +2,7 @@
 title: Designing appropriate content for respectable magazines
 metaDesc: After a couple of years publishing articles on Smashing Magazine, I have gained some experience into what is good to write about. Here are my tips.
 socialImage: /images/proud-goat.jpg
-date: '2020-09-25'
+date: '2025-09-25'
 tags:
   - smashing
   - writing
