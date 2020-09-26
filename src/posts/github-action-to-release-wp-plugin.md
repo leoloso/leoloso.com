@@ -8,6 +8,7 @@ tags:
   - plugin
   - development
   - github
+templateEngineOverride: md
 ---
 
 The [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp) plugin ([launched last week](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/)) has plenty of PHP dependencies, managed through Composer. These dependencies, which are located under `vendor/`, are not stored in the GitHub repo, because they do not belong there.
@@ -69,10 +70,8 @@ jobs:
         with:
           args: build/graphql-api.zip application/zip
         env:
-          GITHUB_TOKEN: ${ { secrets.GITHUB_TOKEN } }
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
-
-Please notice that `${ { secrets.GITHUB_TOKEN } }` in the code above must not have a space between `{ {`, and between `} }`, but for some reason my Eleventy site fails compiling it 🤷🏻‍♂️.
 
 The workflow is like this:
 
@@ -155,7 +154,7 @@ And finally, we make use of [`JasonEtco/upload-to-release`](https://github.com/J
         with:
           args: build/graphql-api.zip application/zip
         env:
-          GITHUB_TOKEN: ${ { secrets.GITHUB_TOKEN } }
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 When tagging the source code with tag `v0.1.20`, the action is triggered, and we can see in real-time what the process is doing. Once finished, if everything went fine, all the steps executed in the workflow will have a beautiful ✅ mark:

@@ -9,21 +9,22 @@ tags:
   - plugin
   - opensource
   - sponsorship
+templateEngineOverride: md
 ---
 
-The query is this one, but with no space between `{ {` and `} }` (I can't write it, or my 11ty site doesn't compile! 🤷🏻‍♂️):
+The query is this one:
 
 ```graphql
 mutation {
   comment(id: 1) {
     replyToComment(data: data) {
       id @sendEmail(
-        to: "{ { parentComment.author.email } }",
-        subject: "{ { author.name } } has replied to your comment",
+        to: "{{ parentComment.author.email }}",
+        subject: "{{ author.name }} has replied to your comment",
         content: "
-          <p>On { { comment.date(format: \"d/m/Y\") } }, { { author.name } } says:</p>
-          <blockquote>{ { comment.content } }</blockquote>
-          <p>Read online: { { comment.url } }</p>
+          <p>On {{ comment.date(format: \"d/m/Y\") }}, {{ author.name }} says:</p>
+          <blockquote>{{ comment.content }}</blockquote>
+          <p>Read online: {{ comment.url }}</p>
         "
       )
     }
