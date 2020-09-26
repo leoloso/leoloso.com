@@ -182,7 +182,9 @@ query {
 
 ```json
 {
-  "foo": "Hello {{ world }}!"
+  "data": {
+    "foo": "Hello {{ world }}!"
+  }
 }
 ```
 
