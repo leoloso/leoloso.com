@@ -301,7 +301,7 @@ Embeddable fields are supported in GraphQL server [GraphQL by PoP](https://graph
 
 ## Join the discussion!
 
-If there is enough support for this feature, I will add an RFC issue to the GraphQL spec. Everyone is welcome to [provide feedback in this Reddit post]():
+If there is enough support for this feature, I will add an RFC issue to the GraphQL spec. Everyone is welcome to [provide feedback in this Reddit post](https://www.reddit.com/r/graphql/comments/j043rw/proposal_for_embeddable_fields_in_graphql/):
 
 - Do you support embeddable fields in GraphQL? Would you benefit from it? How?
 - Are you against embeddable fields? Why?
