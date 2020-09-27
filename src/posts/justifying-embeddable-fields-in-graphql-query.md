@@ -15,7 +15,7 @@ This post is my response to [this comment on Reddit](https://www.reddit.com/r/gr
 
 > If we want to make GraphQL good at transforming data, we need much more than string interpolation.
 
-You are right about this, and I don't have a clear answer. If we allow `String` interpolation, should we do the same for `Int`s, such as allowing additions or substractions?
+I don't have a clear answer about this. If we allow `String` interpolation, should we do the same for `Int`s, such as allowing additions or substractions?
 
 I'd say no, but then why not? If we do allow it, something like this could be possible:
 
