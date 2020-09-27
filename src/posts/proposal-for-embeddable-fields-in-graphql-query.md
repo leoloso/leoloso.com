@@ -21,15 +21,15 @@ This post is part of the groundwork to find out if there is support for this fea
 
 Embeddable fields is a syntax construct, that enables to resolve a field within an argument for another field from the same type, using the [mustache](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) syntax `{{field}}`.
 
-> **Note:** To make it convenient to use, field `echo(value: String): String` can be added to the schema, as in the examples shown throughout this post.
+> **Note:** To make it convenient to use, field `echoStr(value: String): String` can be added to the schema, as in the examples shown throughout this post.
 
-<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echo(value%3A%20%22Post%20%7B%7Btitle%7D%7D%20was%20published%20on%20%7B%7Bdate%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> contains embedded fields `{{title}}` and `{{date}}`:
+<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echoStr(value%3A%20%22Post%20%7B%7Btitle%7D%7D%20was%20published%20on%20%7B%7Bdate%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> contains embedded fields `{{title}}` and `{{date}}`:
 
 <div id="graphiql-1st" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
 The syntax can contain whitespaces around the field: ```{{ field }}```.
 
-<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echo(value%3A%20%22Post%20%7B%7B%20title%20%7D%7D%20was%20published%20on%20%7B%7B%20date%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> contains embedded fields `{{ title }}` and `{{ date }}`:
+<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echoStr(value%3A%20%22Post%20%7B%7B%20title%20%7D%7D%20was%20published%20on%20%7B%7B%20date%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> contains embedded fields `{{ title }}` and `{{ date }}`:
 
 <div id="graphiql-2nd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -38,7 +38,7 @@ The embedded field may or may not contain arguments:
 - `{{ fieldName }}`
 - `{{ fieldName(fieldArgs) }}`
 
-<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echo(value%3A%20%22Post%20%7B%7B%20title%20%7D%7D%20was%20published%20on%20%7B%7B%20date(format%3A%20%5C%22d%2Fm%2FY%5C%22)%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> formats the date: `date(format: \"d/m/Y\")`:
+<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echoStr(value%3A%20%22Post%20%7B%7B%20title%20%7D%7D%20was%20published%20on%20%7B%7B%20date(format%3A%20%5C%22d%2Fm%2FY%5C%22)%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> formats the date: `date(format: \"d/m/Y\")`:
 
 <div id="graphiql-3rd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -54,7 +54,7 @@ Embedded fields also work within directive arguments.
 >
 > This proposal may suggest to accept embedded fields also on their own, and not only within a string, so they can be casted to their own type: `@skip(if: {{ hasComments }})`. More on this below.
 
-<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20title%3A%20echo(value%3A%20%22(%7B%7B%20commentCount%20%7D%7D)%20%7B%7B%20title%20%7D%7D%20-%20posted%20on%20%7B%7B%20date%20%7D%7D%22)%20%40include(if%3A%20%22%7B%7B%20hasComments%20%7D%7D%22)%0A%20%20%20%20title%20%40skip(if%3A%20%22%7B%7B%20hasComments%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> resolves field `title` in two different ways, depending on the post having comments or not:
+<a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20title%3A%20echoStr(value%3A%20%22(%7B%7B%20commentCount%20%7D%7D)%20%7B%7B%20title%20%7D%7D%20-%20posted%20on%20%7B%7B%20date%20%7D%7D%22)%20%40include(if%3A%20%22%7B%7B%20hasComments%20%7D%7D%22)%0A%20%20%20%20title%20%40skip(if%3A%20%22%7B%7B%20hasComments%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> resolves field `title` in two different ways, depending on the post having comments or not:
 
 <div id="graphiql-5th" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -174,7 +174,7 @@ In our case, if a query currently has this shape:
 
 ```graphql
 query {
-  foo: echo(value: "Hello {{ world }}!")
+  foo: echoStr(value: "Hello {{ world }}!")
 }
 ```
 
@@ -222,7 +222,7 @@ What happens when an embedded field does not exist? For instance, if in the quer
 ```graphql
 {
   users {
-    fullName: echo(value: "{{ name }} {{ surname }}")
+    fullName: echoStr(value: "{{ name }} {{ surname }}")
   }
 }
 ```
@@ -232,7 +232,7 @@ Should the response produce an error message, and skip processing the field? Eg:
 ```json
 {
   "errors": [
-    "Field 'surname' does not exist, so 'echo(value: \"{{ name }} {{ surname }}\")' cannot be resolved"
+    "Field 'surname' does not exist, so 'echoStr(value: \"{{ name }} {{ surname }}\")' cannot be resolved"
   ]
 }
 ```
@@ -342,7 +342,7 @@ If there is enough support for this feature, I will add an RFC issue to the Grap
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts {\n    description: echo(value: "Post {{title}} was published on {{date}}")\n  }\n}',
+        query: 'query {\n  posts {\n    description: echoStr(value: "Post {{title}} was published on {{date}}")\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
@@ -357,7 +357,7 @@ If there is enough support for this feature, I will add an RFC issue to the Grap
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts {\n    description: echo(value: "Post {{ title }} was published on {{ date }}")\n  }\n}',
+        query: 'query {\n  posts {\n    description: echoStr(value: "Post {{ title }} was published on {{ date }}")\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
@@ -372,7 +372,7 @@ If there is enough support for this feature, I will add an RFC issue to the Grap
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts {\n    description: echo(value: "Post {{ title }} was published on {{ date(format: \\"d/m/Y\\") }}")\n  }\n}',
+        query: 'query {\n  posts {\n    description: echoStr(value: "Post {{ title }} was published on {{ date(format: \\"d/m/Y\\") }}")\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
@@ -402,7 +402,7 @@ If there is enough support for this feature, I will add an RFC issue to the Grap
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'query {\n  posts {\n    title: echo(value: "({{ commentCount }}) {{ title }} - posted on {{ date }}") @include(if: "{{ hasComments }}")\n    title @skip(if: "{{ hasComments }}")\n  }\n}',
+        query: 'query {\n  posts {\n    title: echoStr(value: "({{ commentCount }}) {{ title }} - posted on {{ date }}") @include(if: "{{ hasComments }}")\n    title @skip(if: "{{ hasComments }}")\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
