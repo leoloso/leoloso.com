@@ -1,0 +1,77 @@
+---
+title: 💪 Adding extra scripting capabilities to GraphQL⁉️
+metaDesc: Showing how GraphQL could get more elegant and powerful
+socialImage: /images/graphql-logo.png
+date: '2025-10-03'
+tags:
+  - graphql
+  - spec
+templateEngineOverride: md
+---
+
+Last week I made a [proposal to add embeddable fields to GraphQL](https://leoloso.com/posts/proposal-for-embeddable-fields-in-graphql-query/), but it didn't get a lot of support. I got the feedback that the extra complexity added to the server doesn't justify the benefits of this new feature, as in [this comment on Reddit](https://www.reddit.com/r/graphql/comments/j043rw/proposal_for_embeddable_fields_in_graphql/g6pvqcj) (which I replied to through [this post](https://leoloso.com/posts/justifying-embeddable-fields-in-graphql-query/)).
+
+My proposed feature then appears to be not about GraphQL, but about what GraphQL could be. That's either a problem, or an opportunity. In [this write-up](https://artsy.github.io/blog/2018/05/08/is-graphql-the-future/), Alan Johnson says:
+
+> the execution model of GraphQL is in many ways just like a scripting language interpreter. The limitations of its model are strategic, to keep the technology focused on client-server interaction. What's interesting is that you as a developer provide nearly all of the definition of what operations exist, what they mean, and how they compose. For this reason, I consider GraphQL to be a __meta-scripting language__, or, in other words, a toolkit for building scripting languages.
+
+I agree with this observation, but then I wonder: Where do these limitations start? What should be allowed, and what not? If any feature made GraphQL's scripting capabilities a bit more visible, gave a bit more control to the developer, and made the query a bit more powerful, should that be straightforward rejected?
+
+## Show me the stuff!
+
+Alright, let's talk business now. Here is something that GraphQL is not good at.
+
+Say that you have a `@translate` directive that is applied on a `String`, as in [this query](https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%20%40translate(from%3A%20%22en%22%2C%20to%3A%20%22es%22)%0A%20%20%7D%0A%7D):
+
+```graphql
+query {
+  posts {
+    id
+    title @translate(from: "en", to: "es")
+  }
+}
+```
+
+You cannot apply `@translate` on a field different than a `String`. If you need to, you must then create a new directive, which involves extra effort (often being ad-hoc) and pollutes the schema:
+
+- If a field returns `[String]`, you'd need to create another directive `@translateArrays` 
+
+- If only some entries from the array must be translated, you need to add an optional argument `$keys: [String]` to specify which keys to translate
+
+- If the keys are not strings, but are numeric, you need another argument to avoid type conflicts
+
+- If instead of an array, you get an array of arrays, you need yet another directive
+
+- And so on, concerning any random requirement from your clients.
+
+As a result, the schema might eventually become unwieldy.
+
+## How could it be improved?
+
+If we have capabilities to compose or manipulate fields, then a few elements can already satisfy all possible combinations.
+
+[GraphQL by PoP](https://graphql-by-pop.com) is a GraphQL server because it respects the [GraphQL spec](https://spec.graphql.org/), but is also a non-standard API server that provides other capabilities, including [composable fields](https://github.com/graphql/graphql-spec/issues/682) and [composable directives](https://github.com/graphql/graphql-spec/issues/683).
+
+Let's see how this server can satisfy all combinations described above, with just a few elements:
+
+> **Note:** GraphQL by PoP relies on the URL-based [PQL syntax](https://graphql-by-pop.com/docs/extended/pql.html), so you can click on the links to execute the query and see its response
+
+- Translating posts as strings:<br/><a href="https://newapi.getpop.org/api/graphql/?query=posts.title%3Ctranslate(from:en,to:es)%3E" target="_blank">`posts.title<translate(from:en,to:es)>`</a>
+
+- Translating a list of strings:<br/><a href="https://newapi.getpop.org/api/graphql/?query=echo([hello, world, how are you today?])%3CforEach%3Ctranslate(from:en,to:es)%3E%3E" target="_blank">`echo([hello, world, how are you today?])<forEach<translate(from:en,to:es)>>`</a>
+
+- Translating only one element from the list of strings, with numeric keys:<br/><a href="https://newapi.getpop.org/api/graphql/?query=echo([hello,%20world,how%20are%20you%20today?])%3CadvancePointerInArray(path:0)%3Ctranslate(from:en,to:es)%3E%3E" target="_blank">`echo([hello, world, how are you today?])<advancePointerInArray(path: 0)<translate(from:en,to:es)>>`</a>
+
+- Translating only one element from the list of strings, with keys as strings:<br/><a href="https://newapi.getpop.org/api/graphql/?query=echo([first:hello,second:world,third:how%20are%20you%20today?])%3CadvancePointerInArray(path:second)%3Ctranslate(from:en,to:es)%3E%3E" target="_blank">`echo([first:hello, second:world, third:how are you today?])<advancePointerInArray(path:second)<translate(from:en,to:es)>>`</a>
+
+- Translating an array of arrays:<br/><a href="https://newapi.getpop.org/api/graphql/?query=echo([[one,two,three],[four,five,six],[seven,eight,nine]])%3CforEach%3CforEach%3Ctranslate(from:en,to:es)%3E%3E%3E" target="_blank">`echo([[one, two, three], [four, five, six], [seven, eight, nine]])<forEach<forEach<translate(from:en,to:es)>>>`</a>
+
+- And so on, concerning any random requirement from your clients.
+
+In my opinion, these features make the queries more powerful, and the schema more elegant. So they could be perfectly welcome into GraphQL.
+
+## Adding extra scripting capabilities to GraphQL, anyone?
+
+Bringing these additional scripting capabilities to GraphQL, wouldn't it be more valuable than not?
+
+I understand that there is more complexity added to the server. But that's a one-time off. The GraphQL server maintainers can implement these features in a few months, and developers would be able to use them forever. Isn't that a good tradeoff?
