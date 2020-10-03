@@ -45,9 +45,11 @@ You cannot apply `@translate` on a field different than a `String`. If you need 
 
 As a result, the schema might eventually become unwieldy.
 
-## How could it be improved?
+---
 
-If we have capabilities to compose or manipulate fields, then a few elements can already satisfy all possible combinations.
+So, how could this situation be improved for GraphQL?
+
+If GraphQL had capabilities to compose or manipulate fields, then a few elements could already satisfy all possible combinations.
 
 [GraphQL by PoP](https://graphql-by-pop.com) (the engine powering the recently launched [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp)) is a GraphQL server because it respects the [GraphQL spec](https://spec.graphql.org/), but is also a non-standard API server that provides other capabilities, including [composable fields](https://github.com/graphql/graphql-spec/issues/682) and [composable directives](https://github.com/graphql/graphql-spec/issues/683).
 
