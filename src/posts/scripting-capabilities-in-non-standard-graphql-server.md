@@ -23,7 +23,7 @@ Let's talk business now. Here is something that GraphQL is not good at.
 Say that you have a `@translate` directive that is applied on a `String`, as in [this query](https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%20%40translate(from%3A%20%22en%22%2C%20to%3A%20%22es%22)%0A%20%20%7D%0A%7D):
 
 ```graphql
-query {
+{
   posts {
     id
     title @translate(from: "en", to: "es")
