@@ -55,85 +55,84 @@ If GraphQL had capabilities to compose or manipulate fields, then a few elements
 
 Let's see how this server can satisfy all combinations described above, with just a few elements:
 
-> **Note:** GraphQL by PoP relies on the URL-based [PQL syntax](https://graphql-by-pop.com/docs/extended/pql.html), so you can click on the links to execute the query and see its response
+> **Notes:**
+> 
+> - GraphQL by PoP relies on the URL-based [PQL syntax](https://graphql-by-pop.com/docs/extended/pql.html), so you can click on the links to execute the query and see its response
+> - Field `Root.echo` is used to build the arrays
+> - `forEach` is a directive, that composes another directive
 
 Translating posts as strings (<a href="https://newapi.getpop.org/api/graphql/?query=posts.title%3Ctranslate(from:en,to:es)%3E" target="_blank">run query</a>):
 
 ```less
-?query=
-  posts.title<
-    translate(from:en, to:es)
-  >
+posts.title<
+  translate(from:en, to:es)
+>
 ```
 
 Translating a list of strings (<a href="https://newapi.getpop.org/api/graphql/?query=echo([hello, world, how are you today?])%3CforEach%3Ctranslate(from:en,to:es)%3E%3E" target="_blank">run query</a>):
 
 ```less
-?query=
-  echo([
-    hello,
-    world,
-    how are you today?
-  ])<
-    forEach<
-      translate(from:en,to:es)
-    >
+echo([
+  hello,
+  world,
+  how are you today?
+])<
+  forEach<
+    translate(from:en,to:es)
   >
+>
 ```
 
 Translating only one element from the list of strings, with numeric keys (<a href="https://newapi.getpop.org/api/graphql/?query=echo([hello,%20world,how%20are%20you%20today?])%3CadvancePointerInArray(path:0)%3Ctranslate(from:en,to:es)%3E%3E" target="_blank">run query</a>):
 
 ```less
-?query=
-  echo([
-    hello,
-    world,
-    how are you today?
-  ])<
-    advancePointerInArray(path: 0)<
-      translate(from:en,to:es)
-    >
+echo([
+  hello,
+  world,
+  how are you today?
+])<
+  advancePointerInArray(path: 0)<
+    translate(from:en,to:es)
   >
+>
 ```
 
 Translating only one element from the list of strings, with keys as strings (<a href="https://newapi.getpop.org/api/graphql/?query=echo([first:hello,second:world,third:how%20are%20you%20today?])%3CadvancePointerInArray(path:second)%3Ctranslate(from:en,to:es)%3E%3E" target="_blank">run query</a>):
 
 ```less
-?query=
-  echo([
-    first:hello,
-    second:world,
-    third:how are you today?
-  ])<
-    advancePointerInArray(path:second)<
-      translate(from:en,to:es)
-    >
+echo([
+  first:hello,
+  second:world,
+  third:how are you today?
+])<
+  advancePointerInArray(path:second)<
+    translate(from:en,to:es)
   >
+>
 ```
 
 Translating an array of arrays (<a href="https://newapi.getpop.org/api/graphql/?query=echo([[one,two,three],[four,five,six],[seven,eight,nine]])%3CforEach%3CforEach%3Ctranslate(from:en,to:es)%3E%3E%3E" target="_blank">run query</a>):
 
 ```less
-?query=
-  echo([[
-    one,
-    two,
-    three
-  ], [
-    four,
-    five,
-    six
-  ], [
-    seven,
-    eight,
-    nine
-  ]])<
+echo([[
+  one,
+  two,
+  three
+], [
+  four,
+  five,
+  six
+], [
+  seven,
+  eight,
+  nine
+]])<
+  forEach<
     forEach<
-      forEach<
-        translate(from:en,to:es)
-      >
+      translate(from:en,to:es)
     >
   >
+>
 ```
 
 And so on, concerning any random requirement from your clients.
