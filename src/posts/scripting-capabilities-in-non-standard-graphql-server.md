@@ -59,7 +59,7 @@ Let's see how this server can satisfy all combinations described above, with jus
 > 
 > - GraphQL by PoP relies on the URL-based [PQL syntax](https://graphql-by-pop.com/docs/extended/pql.html), so you can click on the links to execute the query and see its response
 > - Field `Root.echo` is used to build the arrays
-> - `forEach` is a directive, that composes another directive
+> - `forEach` and `advancePointerInArray` are directives that composes another directive
 
 Translating posts as strings (<a href="https://newapi.getpop.org/api/graphql/?query=posts.title%3Ctranslate(from:en,to:es)%3E" target="_blank">run query</a>):
 
