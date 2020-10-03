@@ -41,7 +41,7 @@ You cannot apply `@translate` on a field different than a `String`. If you need 
 
 - If instead of an array, you get an array of arrays, you need yet another directive
 
-- And so on, concerning any random requirement from your clients.
+And so on, concerning any random requirement from your clients.
 
 As a result, the schema might eventually become unwieldy.
 
