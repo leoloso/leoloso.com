@@ -2,11 +2,10 @@
 title: 💪 Adding extra scripting capabilities to GraphQL⁉️
 metaDesc: Showing how GraphQL could get more elegant and powerful
 socialImage: /images/graphql-logo.png
-date: '2025-10-03'
+date: '2020-10-03'
 tags:
   - graphql
   - spec
-templateEngineOverride: md
 ---
 
 Last week I made a [proposal to add embeddable fields to GraphQL](https://leoloso.com/posts/proposal-for-embeddable-fields-in-graphql-query/), but it didn't get a lot of support. I got the feedback that the extra complexity added to the server doesn't justify the benefits of this new feature, as in [this comment on Reddit](https://www.reddit.com/r/graphql/comments/j043rw/proposal_for_embeddable_fields_in_graphql/g6pvqcj) (which I replied to through [this post](https://leoloso.com/posts/justifying-embeddable-fields-in-graphql-query/)).
