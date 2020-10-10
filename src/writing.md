@@ -19,13 +19,23 @@ Tips for making the most out of the WordPress editor.
 
 ## LogRocket blog
 
-Series of articles on conceptualizing, designing and implementing a GraphQL server, and a few on setting-up Gutenberg.
+Articles on PHP-based software architecture.
 
-🚀 [Adding directives to the schema in code-first GraphQL servers](https://blog.logrocket.com/adding-directives-schema-code-first-graphql-servers/)
+🚀 [Transpiling PHP code from 8.0 to 7.x via Rector](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/)
+
+---
+
+Articles on implementing functionalities on Gutenberg (the WordPress editor).
 
 🚀 [Essentials for building your first Gutenberg block](https://blog.logrocket.com/building-first-gutenberg-block/)
 
 🚀 [Setting up your first Gutenberg project](https://blog.logrocket.com/setting-up-first-gutenberg-project/)
+
+---
+
+Series of articles on conceptualizing, designing and implementing a GraphQL server.
+
+🚀 [Adding directives to the schema in code-first GraphQL servers](https://blog.logrocket.com/adding-directives-schema-code-first-graphql-servers/)
 
 🚀 [Creating an @export GraphQL directive](https://blog.logrocket.com/creating-an-export-graphql-directive/)
 
