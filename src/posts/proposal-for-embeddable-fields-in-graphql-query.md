@@ -27,7 +27,7 @@ Embeddable fields is a syntax construct, that enables to resolve a field within 
 
 <div id="graphiql-1st" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-The syntax can contain whitespaces around the field: ```{{ field }}```.
+The syntax can contain whitespaces around the field: `{{ field }}`.
 
 <a href="https://newapi.getpop.org/graphiql/?query=query%20%7B%0A%20%20posts%20%7B%0A%20%20%20%20description%3A%20echoStr(value%3A%20%22Post%20%7B%7B%20title%20%7D%7D%20was%20published%20on%20%7B%7B%20date%20%7D%7D%22)%0A%20%20%7D%0A%7D" target="_blank">This query</a> contains embedded fields `{{ title }}` and `{{ date }}`:
 
