@@ -2,7 +2,7 @@
 title: 📹 Video of my talk @ WPLDN is now on Youtube
 metaDesc: Intro the the GraphQL API for WP, at the WordPress London meetup
 socialImage: /images/WPLDN-intro-graphql-api-youtube-video.jpg
-date: '2020-10-13'
+date: '2020-10-12'
 tags:
   - wordpress
   - meetup
