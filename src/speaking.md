@@ -17,7 +17,11 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 -->
 ## Previous engagements
 
-**Introduction to the GraphQL API for WordPress** @ [CMS Philly](https://cmsphilly.org/talks/introduction-graphql-api-wordpress) (Online conference)
+**Intro to the GraphQL API for WordPress** @ [WordPress London Meetup](https://www.meetup.com/London-WordPress/events/273609351/), [CMS Philly](https://cmsphilly.org/talks/introduction-graphql-api-wordpress) (Online conference)
+
+<iframe width="1191" height="670" src="https://www.youtube.com/embed/t6stJN3apGs?t=1537" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+(Presentation in Youtube video above starts at 25:37)
 
 <iframe src="//slides.com/leoloso/graphql-api-for-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
