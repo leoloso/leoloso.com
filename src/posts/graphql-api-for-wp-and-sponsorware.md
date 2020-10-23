@@ -9,7 +9,7 @@ tags:
   - funding
 ---
 
-A few weeks ago I added [this comment in WPTavern](...), on an article discussing strategies to fund open source projects.
+A few weeks ago I added [this comment in WPTavern](https://wptavern.com/eslint-maintainers-share-challenges-of-funding-open-source-utilities-through-sponsorship#comment-349812), on an article discussing strategies to fund open source projects.
 
 Since I like owing my own content, I reproduce it here in my own blog.
 
