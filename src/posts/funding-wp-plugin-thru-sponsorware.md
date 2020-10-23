@@ -2,16 +2,16 @@
 title: 💵 Funding a plugin through sponsorware, how successful is it?
 metaDesc: Looking for working strategies to fund open source
 socialImage: /images/money-jar.jpg
-date: '2020-11-07'
+date: '2020-10-23'
 tags:
   - open source
   - plugin
   - funding
 ---
 
-A few weeks ago I added [this comment in WPTavern](https://wptavern.com/eslint-maintainers-share-challenges-of-funding-open-source-utilities-through-sponsorship#comment-349812), on an article discussing strategies to fund open source projects.
+Yesterday I added [this comment in WPTavern](https://wptavern.com/eslint-maintainers-share-challenges-of-funding-open-source-utilities-through-sponsorship#comment-349812), on an article discussing strategies to fund open source projects.
 
-Since I like owing my own content, I reproduce it here in my own blog.
+For some reason, WPTavern is removing the links (and the formatting) from the comment. I asked about it, but got no response, so here I republish my comment including the links.
 
 ---
 
