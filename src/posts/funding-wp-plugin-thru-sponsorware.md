@@ -39,4 +39,4 @@ I've actually been lucky: just a few days ago, site <a href="https://spatie.be/"
 
 So building the site is now within my reach. I just need to work on creating the videos.
 
-Hopefully next article about this topic, I'll be able to comment if selling tutorial videos can succeed in funding the open source plugin.
+Hopefully I'll soon be able to comment if selling tutorial videos can succeed in funding the open source plugin.
