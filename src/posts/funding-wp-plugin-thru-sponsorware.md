@@ -2,18 +2,18 @@
 title: 💵 Funding a plugin through sponsorware, how successful is it?
 metaDesc: Looking for working strategies to fund open source
 socialImage: /images/money-jar.jpg
-date: '2020-10-23'
+date: '2020-10-24'
 tags:
   - open source
   - plugin
   - funding
 ---
 
-Yesterday I added [this comment in WPTavern](https://wptavern.com/eslint-maintainers-share-challenges-of-funding-open-source-utilities-through-sponsorship#comment-349812), on an article discussing strategies to fund open source projects.
+<!-- Yesterday I added [this comment in WPTavern](https://wptavern.com/eslint-maintainers-share-challenges-of-funding-open-source-utilities-through-sponsorship#comment-349812), on an article discussing strategies to fund open source projects.
 
 For some reason, WPTavern is removing the links (and the formatting) from the comment. I asked about it, but got no response, so here I republish my comment including the links.
 
----
+--- -->
 
 I've learnt about Caleb Porzio's <a href="https://calebporzio.com/sponsorware">sponsorware model</a> as a way to fund an open source project. The idea is to release a new feature only to the funders and, once you got X new funders, only then the new feature becomes open source, available to everyone.
 
