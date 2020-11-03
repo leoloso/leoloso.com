@@ -59,6 +59,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Mostly concerning tooling around WordPress.
 
+💣 [Reusing Functionality for WordPress Plugins with Blocks](https://www.designbombs.com/reusing-functionality-for-wordpress-plugins-with-blocks/)
+
 💣 [Adding Modal Windows in the WordPress Admin Without JavaScript](https://www.designbombs.com/adding-modal-windows-in-the-wordpress-admin/)
 
 💣 [Tips of Building Large-scale Applications in PHP](https://www.designbombs.com/tips-of-building-large-scale-applications-in-php/)
