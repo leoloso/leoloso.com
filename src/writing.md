@@ -21,6 +21,8 @@ Tips for making the most out of the WordPress editor.
 
 Articles on PHP-based software architecture.
 
+🚀 [Coding in PHP 7.4 and deploying to 7.1 via Rector and GitHub Actions](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/)
+
 🚀 [Transpiling PHP code from 8.0 to 7.x via Rector](https://blog.logrocket.com/transpiling-php-code-from-8-0-to-7-x-via-rector/)
 
 ---
