@@ -105,6 +105,12 @@ Check-out the following 3 schemas:
 
 Btw, these are the options from the "Mutation Scheme" section in the Schema configuration, hence you can decide what behavior to apply for individual custom endpoints and persisted queries. 👏
 
+---
+
+Check out the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), and download it from [here](https://github.com/GraphQLAPI/graphql-api-for-wp/releases/latest/download/graphql-api.zip).
+
+Now it's time to start preparing for v0.8! 
+
 <p><span style="font-size: 150px;">🙏</span></p>
 
 <script
