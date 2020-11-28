@@ -25,7 +25,7 @@ Mutations was the big item still missing from the GraphQL API. Now that it's bee
 
 ![Mutation root in the interactive schema](/images/graphql-schema-mutation-root.jpg "Mutation root in the interactive schema")
 
-Let's check an example on adding a comment. But first, we need to execute another mutation to log you in, so you can add comments. For that, press the "Run" button on the GraphiQL client below, to execute mutation field `loginUser` with a pre-created testing user:  
+Let's check an example on adding a comment. But first, we need to execute another mutation to log you in, so you can add comments. Press the "Run" button on the GraphiQL client below, to execute mutation field `loginUser` with a pre-created testing user:  
 
 <link href="https://unpkg.com/graphiql/graphiql.min.css" rel="stylesheet" />
 
@@ -33,7 +33,7 @@ Let's check an example on adding a comment. But first, we need to execute anothe
 
 [<a href="https://newapi.getpop.org/graphiql/?query=mutation%20LogUserIn%20%7B%0A%20%20loginUser(%0A%20%20%20%20usernameOrEmail%3A%22test%22%2C%0A%20%20%20%20password%3A%22pass%22%0A%20%20)%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%7D%0A%7D&operationName=LogUserIn" target="_blank">🔗 Open GraphiQL client in new window</a>]
 
-Now, let's add some comments. When pressing the Run button below, you will be adding a comment to some post by executing mutation field `addCommentToCustomPost` (you can also edit the comment text):
+Now, let's add some comments. Press the Run button below, to add a comment to some post by executing mutation field `addCommentToCustomPost` (you can also edit the comment text):
 
 <div id="graphiql-2nd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
@@ -69,7 +69,7 @@ For instance, the query from above can also be executed with the following query
 
 [<a href="https://newapi.getpop.org/graphiql/?mutation_scheme=nested&query=mutation%20AddComment%20%7B%0A%20%20post(id%3A%201459)%20%7B%0A%20%20addComment(%0A%20%20%20%20comment%3A%20%22Notice%20how%20field%20%60addCommentToCustomPost%60%20under%20the%20%60Root%60%20type%20is%20renamed%20as%20%60addComment%60%20under%20the%20%60Post%60%20type%3F%20The%20schema%20got%20neater!%22%0A%20%20)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20date%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=AddComment" target="_blank">🔗 Open GraphiQL client in new window</a>]
 
-Mutations can also modify data on the result from another mutation, like in the query below, in which we first obtain the post through `Root.post`, then execute mutation `Post.addComment` on it and obtain the created comment object, and finally execute mutation `Comment.reply` on it:
+Mutations can also modify data on the result from another mutation. In the query below, we first obtain the post through `Root.post`, then execute mutation `Post.addComment` on it and obtain the created comment object, and finally execute mutation `Comment.reply` on it:
 
 <div id="graphiql-4th" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
