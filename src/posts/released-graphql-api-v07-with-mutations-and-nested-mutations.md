@@ -11,9 +11,9 @@ tags:
   - release
 ---
 
-I just released version 0.7 of the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp)! 🎉
+I just released version 0.7 of the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), supporting mutations, and nested mutations! 🎉
 
-![Awesome!](/images/awesome.jpg)
+![Mutations are awesome!](/images/finally-got-mutations.jpg)
 
 Here is a tour showing the new additions.
 
