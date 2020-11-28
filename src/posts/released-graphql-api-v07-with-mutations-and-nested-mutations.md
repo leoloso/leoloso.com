@@ -25,11 +25,21 @@ Mutations was the big item still missing from the GraphQL API. Now that it's bee
 
 ![Mutation root in the interactive schema](/images/graphql-schema-mutation-root.jpg "Mutation root in the interactive schema")
 
-For instance, <a href="https://newapi.getpop.org/graphiql/?query=mutation%20LogUserIn%20%7B%0A%20%20loginUser(%0A%20%20%20%20usernameOrEmail%3A%22test%22%2C%0A%20%20%20%20password%3A%22pass%22%0A%20%20)%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%7D%0A%7D%0Amutation%20AddCommentToPost%20%7B%0A%20%20addCommentToCustomPost(%0A%20%20%20%20customPostID%3A%201459%2C%0A%20%20%20%20comment%3A%20%22Finally!%22%0A%20%20)%20%7B%0A%20%20%20%20id%0A%20%20%20%20content%0A%20%20%20%20date%0A%20%20%7D%0A%7D&operationName=LogUserIn" target="_blank">this query</a> adds a comment to some post by executing mutation field `addCommentToCustomPost`. To see it working, press the "Run" button on the GraphiQL client below. This query is actually executing 2 mutations: it logs the user in first, and then adds the comment (because the demo site doesn't enable cross-site cookies, I'm adding the log-in to all queries below):
+Let's check an example on adding a comment. But first, we need to execute another mutation to log you in, so you can add comments. For that, press the "Run" button on the GraphiQL client below, to execute mutation field `loginUser` with a pre-created testing user:  
 
 <link href="https://unpkg.com/graphiql/graphiql.min.css" rel="stylesheet" />
 
-<div id="graphiql-first" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+<div id="graphiql-1st" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+
+[<a href="https://newapi.getpop.org/graphiql/?query=mutation%20LogUserIn%20%7B%0A%20%20loginUser(%0A%20%20%20%20usernameOrEmail%3A%22test%22%2C%0A%20%20%20%20password%3A%22pass%22%0A%20%20)%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%7D%0A%7D&operationName=LogUserIn" target="_blank">🔗 Open GraphiQL client in new window</a>]
+
+Now, let's add some comments. When pressing the Run button below, you will be adding a comment to some post by executing mutation field `addCommentToCustomPost` (you can also edit the comment text):
+
+<div id="graphiql-2nd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+
+[<a href="https://newapi.getpop.org/graphiql/?query=mutation%20AddCommentToPost%20%7B%0A%20%20addCommentToCustomPost(%0A%20%20%20%20customPostID%3A%201459%2C%0A%20%20%20%20comment%3A%20%22Adding%20a%20comment:%20bla%20bla%20bla%22%0A%20%20)%20%7B%0A%20%20%20%20id%0A%20%20%20%20content%0A%20%20%20%20date%0A%20%20%7D%0A%7D&operationName=AddCommentToPost" target="_blank">🔗 Open GraphiQL client in new window</a>]
+
+---
 
 In this first release, the plugin ships with the following mutations:
 
@@ -53,15 +63,21 @@ Then, the plugin supports the 2 behaviors:
 1. The standard GraphQL behavior (i.e. adding mutation fields to the root type), by default
 2. Nested mutations, as an opt-in
 
-For instance, the query from above can also be executed through <a href="https://newapi.getpop.org/graphiql/?mutation_scheme=nested&query=%23%20mutation%20LogUserIn%20%7B%0A%23%20%20%20loginUser(%0A%23%20%20%20%20%20usernameOrEmail%3A%22test%22%2C%0A%23%20%20%20%20%20password%3A%22pass%22%0A%23%20%20%20)%20%7B%0A%23%20%20%20%20%20id%0A%23%20%20%20%20%20name%0A%23%20%20%20%7D%0A%23%20%7D%0Amutation%20AddComment%20%7B%20%0A%20%20post(id%3A%201459)%20%7B%0A%20%20%20%20addComment(comment%3A%20%22Finally%20nested!%22)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20date%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=AddComment" target="_blank">this query</a>, in which we first retrieve the post via `Root.post`, and only then add a comment to it via `Post.addComment`:
+For instance, the query from above can also be executed with the following query, in which we first retrieve the post via `Root.post`, and only then add a comment to it via `Post.addComment`:
 
-<div id="graphiql-second" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+<div id="graphiql-3rd" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
 
-Mutations can also modify data on the result from another mutation, like in <a href="https://newapi.getpop.org/graphiql/?mutation_scheme=nested&query=%23%20mutation%20LogUserIn%20%7B%0A%23%20%20%20loginUser(%0A%23%20%20%20%20%20usernameOrEmail%3A%22test%22%2C%0A%23%20%20%20%20%20password%3A%22pass%22%0A%23%20%20%20)%20%7B%0A%23%20%20%20%20%20id%0A%23%20%20%20%20%20name%0A%23%20%20%20%7D%0A%23%20%7D%0Amutation%20AddCommentAndResponse%20%7B%0A%20%20post(id%3A1459)%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%20%20addComment(comment%3A%22Isn%27t%20this%20awesome%3F%22)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20date%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20reply(comment%3A%22I%20think%20so!%22)%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20date%0A%20%20%20%20%20%20%20%20content%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=AddCommentAndResponse" target="_blank">this query</a>, in which we first obtain the post through `Root.post`, then execute mutation `Post.addComment` on it and obtain the created comment object, and finally execute mutation `Comment.reply` on it:
+[<a href="https://newapi.getpop.org/graphiql/?mutation_scheme=nested&query=mutation%20AddComment%20%7B%0A%20%20post(id%3A%201459)%20%7B%0A%20%20addComment(%0A%20%20%20%20comment%3A%20%22Notice%20how%20field%20%60addCommentToCustomPost%60%20under%20the%20%60Root%60%20type%20is%20renamed%20as%20%60addComment%60%20under%20the%20%60Post%60%20type%3F%20The%20schema%20got%20neater!%22%0A%20%20)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20date%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=AddComment" target="_blank">🔗 Open GraphiQL client in new window</a>]
 
-<div id="graphiql-third" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+Mutations can also modify data on the result from another mutation, like in the query below, in which we first obtain the post through `Root.post`, then execute mutation `Post.addComment` on it and obtain the created comment object, and finally execute mutation `Comment.reply` on it:
 
-This is soooo sweet!!! 😍
+<div id="graphiql-4th" style="height: 65vh; padding-top: 0; margin-top: 1rem;" class="video-player"></div>
+
+[<a href="https://newapi.getpop.org/graphiql/?mutation_scheme=nested&query=mutation%20AddCommentAndResponse%20%7B%0A%20%20post(id%3A1459)%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%20%20addComment(comment%3A%22Isn%27t%20this%20awesome%3F%22)%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20date%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20reply(comment%3A%22I%20think%20so!%22)%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20date%0A%20%20%20%20%20%20%20%20content%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&operationName=AddCommentAndResponse" target="_blank">🔗 Open GraphiQL client in new window</a>]
+
+This is certainly useful! 😍 (The alternative method to produce this same behavior, in a single query, is via the `@export` directive... I'll compare both of them in an upcoming blog post).
+
+---
 
 In this first release, the plugin ships with the following mutations:
 
@@ -99,11 +115,13 @@ The GraphQL API enables to keep both of them, or remove the ones from the root t
 
 Check-out the following 3 schemas:
 
-- [Standard behavior](https://newapi.getpop.org/graphql-interactive/)
-- [Nested mutations keeping mutation fields duplicate](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=nested)
-- [Nested mutations removing redundant mutation fields from the root type](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=lean_nested)
+1. [Standard behavior](https://newapi.getpop.org/graphql-interactive/):<br/>it uses types `QueryRoot` to handle queries and `MutationRoot` to handle queries
+2. [Nested mutations keeping mutation fields duplicate](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=nested):<br/>a single `Root` type handles queries and mutations, and redundant mutation fields in this type are kept
+3. [Nested mutations removing redundant mutation fields from the root type](https://newapi.getpop.org/graphql-interactive/?mutation_scheme=lean_nested):<br/>same as above, but removing all redundant mutation fields from the `Root` type
 
-Btw, these are the options from the "Mutation Scheme" section in the Schema configuration, hence you can decide what behavior to apply for individual custom endpoints and persisted queries. 👏
+✱ Btw1, these 3 schemas all use the same endpoint, but changing a URL param `?mutation_scheme` to values `standard`, `nested` and `lean_nested`. That's possible because the GraphQL server follows the [code-first approach](https://graphql-by-pop.com/docs/architecture/code-first.html). 🤟
+
+✱ Btw2, these options can be selected on the "Mutation Scheme" section in the Schema configuration (shown above), hence you can also decide what behavior to apply for individual custom endpoints and persisted queries. 👏
 
 ---
 
@@ -146,12 +164,27 @@ Now it's time to start preparing for v0.8!
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
         response: responseText,
-        query: 'mutation LogUserInAndAddComment {\n  loginUser(\n    usernameOrEmail:"test",\n    password:"pass"\n  ) {\n    id\n    name\n  }\n\n  addCommentToCustomPost(\n    customPostID: 1459,\n    comment: "Finally!"\n  ) {\n    id\n    content\n    date\n  }\n}',
+        query: 'mutation LogUserIn {\n  loginUser(\n    usernameOrEmail:"test",\n    password:"pass"\n  ) {\n    id\n    name\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
     ),
-    document.getElementById('graphiql-first'),
+    document.getElementById('graphiql-1st'),
+  );
+
+  ReactDOM.render(
+    React.createElement(
+      GraphiQL,
+      {
+        fetcher: graphQLFetcher,
+        docExplorerOpen: false,
+        response: responseText,
+        query: 'mutation AddComment {\n  addCommentToCustomPost(\n    customPostID: 1459,\n    comment: "Adding a comment: bla bla bla"\n  ) {\n    id\n    content\n    date\n  }\n}',
+        variables: null,
+        defaultVariableEditorOpen: false
+      }
+    ),
+    document.getElementById('graphiql-2nd'),
   );
 
   const graphQLFetcher2 = graphQLParams =>
@@ -171,12 +204,12 @@ Now it's time to start preparing for v0.8!
         fetcher: graphQLFetcher2,
         docExplorerOpen: true,
         response: responseText,
-        query: 'mutation LogUserInAndAddComment {\n  loginUser(\n    usernameOrEmail:"test",\n    password:"pass"\n  ) {\n    id\n    name\n  }\n  \n  post(id: 1459) {\n    addComment(comment: "Finally nested!") {\n      id\n      content\n      date\n    }\n  }\n}',
+        query: 'mutation AddComment {\n  post(id: 1459) {\n  addComment(\n    comment: "Notice how field `addCommentToCustomPost` under the `Root` type is renamed as `addComment` under the `Post` type? The schema got neater!"\n  ) {\n      id\n      content\n      date\n    }\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
     ),
-    document.getElementById('graphiql-second'),
+    document.getElementById('graphiql-3rd'),
   );
 
   ReactDOM.render(
@@ -186,11 +219,11 @@ Now it's time to start preparing for v0.8!
         fetcher: graphQLFetcher2,
         docExplorerOpen: true,
         response: responseText,
-        query: 'mutation {\n  loginUser(\n    usernameOrEmail:"test",\n    password:"pass"\n  ) {\n    id\n    name\n  }\n\n  post(id:1459) {\n    id\n    title\n    addComment(comment:"Isn\'t this awesome?") {\n      id\n      date\n      content\n      reply(comment:"I think so!") {\n        id\n        date\n        content\n      }\n    }\n  }\n}',
+        query: 'mutation AddCommentAndResponse {\n  post(id:1459) {\n    id\n    title\n    addComment(comment:"Isn\'t this awesome?") {\n      id\n      date\n      content\n      reply(comment:"I think so!") {\n        id\n        date\n        content\n      }\n    }\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
       }
     ),
-    document.getElementById('graphiql-third'),
+    document.getElementById('graphiql-4th'),
   );
 </script>
