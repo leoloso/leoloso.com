@@ -84,7 +84,7 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
   );
 
   const graphQLFetcher2 = graphQLParams =>
-    fetch(apiURL+'/?use_namespace=1', {
+    fetch(apiURL+'?use_namespace=1', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(graphQLParams),
