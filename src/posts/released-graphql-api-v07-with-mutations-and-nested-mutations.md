@@ -155,7 +155,7 @@ Now it's time to start preparing for v0.8!
   );
 
   const graphQLFetcher2 = graphQLParams =>
-    fetch(apiURL+'/?mutation_scheme=nested', {
+    fetch(apiURL+'?mutation_scheme=nested', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(graphQLParams),
