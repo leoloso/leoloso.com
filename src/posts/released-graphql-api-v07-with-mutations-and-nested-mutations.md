@@ -134,6 +134,7 @@ Now it's time to start preparing for v0.8!
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(graphQLParams),
+      credentials: 'include',
     })
       .then(response => response.json())
       .catch(() => response.text());
@@ -158,6 +159,7 @@ Now it's time to start preparing for v0.8!
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(graphQLParams),
+      credentials: 'include',
     })
       .then(response => response.json())
       .catch(() => response.text());
