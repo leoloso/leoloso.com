@@ -182,7 +182,7 @@ Now it's time to start preparing for v0.8!
   );
 
   const graphQLFetcher2 = graphQLParams =>
-    fetch(getGraphQLEndpointURL(graphQLParams)+'&mutation_scheme=nested', getGraphQLOptions(graphQLParams, 'include'))
+    fetch(getGraphQLEndpointURL(graphQLParams, 'mutation_scheme=nested'), getGraphQLOptions(graphQLParams, 'include'))
       .then(response => response.json())
       .catch(() => response.text());
 
