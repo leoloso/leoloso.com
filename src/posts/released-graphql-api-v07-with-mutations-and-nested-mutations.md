@@ -143,17 +143,11 @@ Now it's time to start preparing for v0.8!
   crossorigin
   src="https://unpkg.com/graphiql/graphiql.min.js"
 ></script>
+<script src="/js/graphql-endpoints.js" type="application/javascript"></script>
 
-<script>
-  const apiURL = 'https://newapi.getpop.org/api/graphql/';
-  const responseText = "Click the \"Execute Query\" button";
+<script type="application/javascript">
   const graphQLFetcher = graphQLParams =>
-    fetch(apiURL, {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(graphQLParams),
-      credentials: 'include',
-    })
+    fetch(getGraphQLEndpointURL(graphQLParams), getGraphQLOptions(graphQLParams, 'include'))
       .then(response => response.json())
       .catch(() => response.text());
 
@@ -163,7 +157,7 @@ Now it's time to start preparing for v0.8!
       {
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
-        response: responseText,
+        response: GRAPHQL_RESPONSE_TEXT,
         query: 'mutation LogUserIn {\n  loginUser(\n    usernameOrEmail:"test",\n    password:"pass"\n  ) {\n    id\n    name\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
@@ -178,7 +172,7 @@ Now it's time to start preparing for v0.8!
       {
         fetcher: graphQLFetcher,
         docExplorerOpen: false,
-        response: responseText,
+        response: GRAPHQL_RESPONSE_TEXT,
         query: 'mutation AddComment {\n  addCommentToCustomPost(\n    customPostID: 1459,\n    comment: "Adding a comment: bla bla bla"\n  ) {\n    id\n    content\n    date\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
@@ -188,12 +182,7 @@ Now it's time to start preparing for v0.8!
   );
 
   const graphQLFetcher2 = graphQLParams =>
-    fetch(apiURL+'?mutation_scheme=nested', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(graphQLParams),
-      credentials: 'include',
-    })
+    fetch(getGraphQLEndpointURL(graphQLParams)+'&mutation_scheme=nested', getGraphQLOptions(graphQLParams, 'include'))
       .then(response => response.json())
       .catch(() => response.text());
 
@@ -203,7 +192,7 @@ Now it's time to start preparing for v0.8!
       {
         fetcher: graphQLFetcher2,
         docExplorerOpen: true,
-        response: responseText,
+        response: GRAPHQL_RESPONSE_TEXT,
         query: 'mutation AddComment {\n  post(id: 1459) {\n  addComment(\n    comment: "Notice how field `addCommentToCustomPost` under the `Root` type is renamed as `addComment` under the `Post` type? The schema got neater!"\n  ) {\n      id\n      content\n      date\n    }\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
@@ -218,7 +207,7 @@ Now it's time to start preparing for v0.8!
       {
         fetcher: graphQLFetcher2,
         docExplorerOpen: true,
-        response: responseText,
+        response: GRAPHQL_RESPONSE_TEXT,
         query: 'mutation AddCommentAndResponse {\n  post(id:1459) {\n    id\n    title\n    addComment(comment:"Isn\'t this awesome?") {\n      id\n      date\n      content\n      reply(comment:"I think so!") {\n        id\n        date\n        content\n      }\n    }\n  }\n}',
         variables: null,
         defaultVariableEditorOpen: false
