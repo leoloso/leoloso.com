@@ -55,16 +55,11 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
   crossorigin
   src="https://unpkg.com/graphiql/graphiql.min.js"
 ></script>
+<script src="/js/graphql-endpoints.js" type="application/javascript"></script>
 
 <script>
-  const apiURL = 'https://newapi.getpop.org/api/graphql/';
-  const responseText = "Click the \"Execute Query\" button";
   const graphQLFetcher = graphQLParams =>
-    fetch(apiURL, {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(graphQLParams),
-    })
+    fetch(getGraphQLEndpointURL(graphQLParams), getGraphQLOptions(graphQLParams))
       .then(response => response.json())
       .catch(() => response.text());
 
@@ -74,7 +69,7 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
       {
         fetcher: graphQLFetcher,
         docExplorerOpen: true,
-        response: responseText,
+        response: GRAPHQL_RESPONSE_TEXT,
         query: "query {\n  posts {\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n      url\n    }\n    comments {\n      content\n      date\n      author {\n        name\n      }\n    }\n  }\n}",
         variables: null,
         defaultVariableEditorOpen: false
@@ -84,11 +79,7 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
   );
 
   const graphQLFetcher2 = graphQLParams =>
-    fetch(apiURL+'?use_namespace=1', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(graphQLParams),
-    })
+    fetch(getGraphQLEndpointURL(graphQLParams, 'use_namespace=1'), getGraphQLOptions(graphQLParams))
       .then(response => response.json())
       .catch(() => response.text());
 
@@ -98,7 +89,7 @@ An this is the [GraphiQL client in namespaced mode](https://newapi.getpop.org/gr
       {
         fetcher: graphQLFetcher2,
         docExplorerOpen: true,
-        response: responseText,
+        response: GRAPHQL_RESPONSE_TEXT,
         query: "query {\n  posts {\n    url\n    title\n    excerpt\n    date\n    tags {\n      name\n      url\n    }\n    comments {\n      content\n      date\n      author {\n        name\n      }\n    }\n  }\n}",
         variables: null,
         defaultVariableEditorOpen: false
