@@ -32,8 +32,10 @@ function doingIntrospectionQuery(graphQLParams) {
 /**
  * If doing introspection, return the CDN, otherwise the endpoint source
  */
-function getGraphQLEndpointURL(graphQLParams) {
-    return doingIntrospectionQuery(graphQLParams) ? GRAPHQL_ENDPOINT_CDN_URL : GRAPHQL_ENDPOINT_SOURCE_URL;
+function getGraphQLEndpointURL(graphQLParams, extraParams) {
+    return doingIntrospectionQuery(graphQLParams) ?
+        GRAPHQL_ENDPOINT_CDN_URL + (extraParams ? '&' + extraParams : '')
+        : GRAPHQL_ENDPOINT_SOURCE_URL + (extraParams ? '?' + extraParams : '');
 }
 
 /**
@@ -51,6 +53,6 @@ function getGraphQLOptionsForSource(graphQLParams, credentials) {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(graphQLParams),
-        credentials: credentials || omit,
+        credentials: credentials || 'omit',
     };
 }
