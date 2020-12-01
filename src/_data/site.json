@@ -9,5 +9,6 @@
   "enableThirdPartyComments": false,
   "maxPostsPerPage": 10,
   "paymentPointer": "",
-  "faviconPath": "/assets/favicon.png"
+  "faviconPath": "/assets/favicon.png",
+  "analyticsURL": "https://stats.leoloso.com/js/plausible.js"
 }
