@@ -10,6 +10,7 @@ const EXCLUDED_URLS = [
   'https://identity.netlify.com/v1/netlify-identity-widget.js',
   'https://unpkg.com/netlify-cms@^2.9.3/dist/netlify-cms.js',
   'https://newapi.getpop.org/api/graphql/',
+  'https://nextapi.getpop.org',
   '/contact',
   '/thank-you'
 ];
