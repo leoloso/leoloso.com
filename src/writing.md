@@ -37,6 +37,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
 
+🚀 [Coding a GraphQL server in JavaScript vs. WordPress](https://blog.logrocket.com/coding-a-graphql-server-in-javascript-vs-wordpress/)
+
 🚀 [Adding directives to the schema in code-first GraphQL servers](https://blog.logrocket.com/adding-directives-schema-code-first-graphql-servers/)
 
 🚀 [Creating an @export GraphQL directive](https://blog.logrocket.com/creating-an-export-graphql-directive/)
