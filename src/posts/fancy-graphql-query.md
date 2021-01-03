@@ -40,7 +40,7 @@ This query demonstrates how [sending notifications](https://github.com/GraphQLAP
 
 ---
 
-I am working to get the funding to implement them, through my recently launched [GitHub sponsors](https://github.com/sponsors/leoloso/). In total, currently there are [23 features looking for sponsorship](https://github.com/GraphQLAPI/graphql-api-for-wp/projects/2):
+I am working to get the funding to implement them, through my recently launched [GitHub sponsors](https://github.com/sponsors/leoloso/). In total, currently there are [23 features looking for sponsorship](https://github.com/leoloso/PoP/projects/1):
 
 <figure><a href="/images/sponsorable-features.png" target="_blank"><img src="/images/sponsorable-features.png" alt="Features looking for sponsors" loading="lazy" width="3200" height="1806"></a><figcaption>Features looking for sponsors</figcaption></figure>
 
