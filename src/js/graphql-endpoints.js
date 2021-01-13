@@ -6,7 +6,7 @@ const GRAPHQL_ENDPOINT_SOURCE_URL = 'https://newapi.getpop.org/api/graphql/';
 /**
  * Route the GraphQL endpoint through a CDN
  */
-const GRAPHQL_ENDPOINT_CDN_URL = 'https://nextapi.getpop.org/api/graphql/?query=!introspectionQuery';
+const GRAPHQL_ENDPOINT_CDN_URL = 'https://nextapi.getpop.org/api/graphql/?query=!introspectionQuery&domain=leoloso.com';
 
 /**
  * Options to pass the CDN
