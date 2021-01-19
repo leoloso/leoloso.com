@@ -9,6 +9,10 @@ To date, these are my articles:
 
 ## CSS-Tricks
 
+Detailed explanation of the driver behind the GraphQL API for WordPress:
+
+🎩 [Rendering the WordPress philosophy in GraphQL](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/)
+
 Tips for making the most out of the WordPress editor.
 
 🎩 [Using Markdown and Localization in the WordPress Block Editor](https://css-tricks.com/using-markdown-and-localization-in-the-wordpress-block-editor/)
@@ -36,6 +40,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 ---
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
+
+🚀 [Supporting opt-in nested mutations in GraphQL](https://blog.logrocket.com/supporting-opt-in-nested-mutations-in-graphql/)
 
 🚀 [Coding a GraphQL server in JavaScript vs. WordPress](https://blog.logrocket.com/coding-a-graphql-server-in-javascript-vs-wordpress/)
 
