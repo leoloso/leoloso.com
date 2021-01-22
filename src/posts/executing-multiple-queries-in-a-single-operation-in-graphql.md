@@ -9,6 +9,11 @@ tags:
   - features
 ---
 
+**Update 23/01/2021:** I created the guides for the Multiple Execution Query in [graphql-api.com](https://graphql-api.com):
+
+- [Demo](https://graphql-api.com/guides/optin/executing-multiple-queries-concurrently/)
+- [Explanation](https://graphql-api.com/guides/forward/multiple-query-execution/)
+
 It's been only 15 days since releasing the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), and I couldn't help myself, so this week I added yet a new feature: the server can now execute multiple queries in a single operation.
 
 ![Executing queries independently, and then all together as a single operation](/images/executing-multiple-queries.gif "Executing queries independently, and then all together as a single operation")
