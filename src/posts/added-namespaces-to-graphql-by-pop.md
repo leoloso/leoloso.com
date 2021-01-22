@@ -9,6 +9,11 @@ tags:
   - graphql
 ---
 
+**Update 23/01/2021:** I created the guides for the Schema Namespacing in [graphql-api.com](https://graphql-api.com):
+
+- [Demo](https://graphql-api.com/guides/forward/schema-namespacing/)
+- [Explanation](https://graphql-api.com/guides/optin/namespacing-the-schema/)
+
 I have just made the types and interfaces in [GraphQL by PoP](https://github.com/getpop/graphql) be automatically namespaced!
 
 This is how the normal schema looks like [in the GraphQL Voyager](https://newapi.getpop.org/graphql-interactive/):
