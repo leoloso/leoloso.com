@@ -9,6 +9,8 @@ tags:
   - api
 ---
 
+**Note:** The GraphQL API for WordPress has its own site now: [graphql-api.com](https://graphql-api.com).
+
 Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
 
 ![Interactive Schema screen in GraphQL API for WordPress](/images/interactive-schema.png "Interactive Schema screen in GraphQL API for WordPres. <a href='/images/interactive-schema.png' target='_blank'>Open in new tab</a>")
