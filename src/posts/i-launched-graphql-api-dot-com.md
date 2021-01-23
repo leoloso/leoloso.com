@@ -20,7 +20,11 @@ It took so long, because when you're doing everything on your own (which is my c
 - CSS animations
 - Screencasting
 
-And I even had to design the logo (with help from my wife). It looks not bad, right? 😅
+And I even had to design the logo (with help from my wife):
+
+![GraphQL API for WordPress logo](/images/graphql-api-logo-with-name.jpg "GraphQL API for WordPress logo")
+
+It looks not bad, right? 😅
 
 And all of that while still [developing the plugin](https://graphql-api.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/), and [writing documentation](https://graphql-api.com/guides), so that users can start playing with it immediately.
 
