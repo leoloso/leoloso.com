@@ -3,6 +3,7 @@ title: 🎉 Released GraphQL API v0.7, with support for mutations, and nested mu
 metaDesc: A new standard feature, and a novel one
 socialImage: /images/mutant-ninja-turtles.jpg
 date: '2021-01-22'
+canonicalUrl: https://graphql-api.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/
 tags:
   - graphql
   - api
