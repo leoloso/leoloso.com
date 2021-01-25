@@ -9,7 +9,7 @@ tags:
   - api
 ---
 
-**Note:** The GraphQL API for WordPress has its own site now: [graphql-api.com](https://graphql-api.com).
+**Update 23/01:** The GraphQL API for WordPress has its own site now: [graphql-api.com](https://graphql-api.com).
 
 Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
 
