@@ -17,7 +17,7 @@ For some reason, WPTavern is removing the links (and the formatting) from the co
 
 I've learnt about Caleb Porzio's <a href="https://calebporzio.com/sponsorware">sponsorware model</a> as a way to fund an open source project. The idea is to release a new feature only to the funders and, once you got X new funders, only then the new feature becomes open source, available to everyone.
 
-But I haven't seen much success with this strategy yet to fund <a href="https://github.com/GraphQLAPI/graphql-api-for-wp">my open source plugin</a>. The reason is clear: Sponsorware initially worked for Caleb because he asked the 10.000 subscribers on his newsletter for support, from which 75 agreed to be part of it. But I do not have 10.000 subscribers or followers or users, and building such a list takes time.
+But I haven't seen much success with this strategy yet to fund <a href="https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp">my open source plugin</a>. The reason is clear: Sponsorware initially worked for Caleb because he asked the 10.000 subscribers on his newsletter for support, from which 75 agreed to be part of it. But I do not have 10.000 subscribers or followers or users, and building such a list takes time.
 
 Caleb's second strategy seems much more promising: He also started selling access to <a href="https://calebporzio.com/i-just-hit-dollar-100000yr-on-github-sponsors-heres-how-i-did-it">tutorials on using the software</a>. He says this strategy has been incredibly successful: as I'm writing this, <a href="https://github.com/sponsors/calebporzio#sponsors">he's surpassed 1100 sponsors</a>!
 

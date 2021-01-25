@@ -21,7 +21,7 @@ This time, I explore several topics:
 - Adding directives to the schema by configuration, not code
 - Server-side field aliases
 
-Now that the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp) has been released, I can use it to demonstrate the IFTTT feature, to add directives to the schema by configuration, not code:
+Now that the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) has been released, I can use it to demonstrate the IFTTT feature, to add directives to the schema by configuration, not code:
 
 ![Adding directives by configuration in the GraphQL API for WP](/images/ifttt-for-access-control.gif "Adding directives by configuration in the GraphQL API for WP")
 

@@ -17,7 +17,7 @@ My talk "Intro to the GraphQL API for WordPress" [for the WordPress London meetu
 
 My presentation starts at 25:37. It is only around 20 min long (15 min presenting + 5 min of Q&A).
 
-Please check it out. It's a succinct summary of the benefits of using GraphQL in WordPress, through my plugin [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp).
+Please check it out. It's a succinct summary of the benefits of using GraphQL in WordPress, through my plugin [GraphQL API for WordPress](https://graphql-api.com).
 
 These are [the slides](https://slides.com/leoloso/graphql-api-for-wp):
 

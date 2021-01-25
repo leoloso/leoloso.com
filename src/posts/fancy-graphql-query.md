@@ -32,7 +32,7 @@ mutation {
 }
 ```
 
-This query demonstrates how [sending notifications](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/40) via Symfony Notifier will be accomplished (for email, Slack and SMS). It makes use of a few pioneering features, still being considered (to more or less extent) for the [GraphQL spec](https://spec.graphql.org/draft/):
+This query demonstrates how [sending notifications](https://github.com/leoloso/PoP/issues/215) via Symfony Notifier will be accomplished (for email, Slack and SMS). It makes use of a few pioneering features, still being considered (to more or less extent) for the [GraphQL spec](https://spec.graphql.org/draft/):
 
 🔥 [Nested mutations](https://github.com/graphql/graphql-spec/issues/252)<br/>
 🔥 [Embeddable fields](https://graphql-by-pop.com/docs/operational/embeddable-fields.html) (based on [composable fields](https://github.com/graphql/graphql-spec/issues/682))<br/>
@@ -44,7 +44,7 @@ I am working to get the funding to implement them, through my recently launched 
 
 <figure><a href="/images/sponsorable-features.png" target="_blank"><img src="/images/sponsorable-features.png" alt="Features looking for sponsors" loading="lazy" width="3200" height="1806"></a><figcaption>Features looking for sponsors</figcaption></figure>
 
-Once implemented, the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp) may perfectly be the most forward-looking GraphQL in the market 🙀.
+Once implemented, the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) may perfectly be the most forward-looking GraphQL in the market 🙀.
 
 What do you think? Is it worth sponsoring this project? Want to [become a sponsor](https://github.com/sponsors/leoloso/)?
 

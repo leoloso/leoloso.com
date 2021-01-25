@@ -10,7 +10,7 @@ tags:
   - sponsorship
 ---
 
-My plugin [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp) just got a new sponsor!
+My plugin [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) just got a new sponsor!
 
 ![My new sponsor](/images/tomas-sponsor.png "My new sponsor")
 
@@ -32,9 +32,9 @@ So I decided to look for some solution, and I discovered [Rector](https://github
 
 So I created them.
 
-I contributed to this open source project full time for some 2 weeks, and produced some 15 rules to downgrade code, which I have applied to my plugin: Now I can code it [using features from PHP 7.4](https://github.com/GraphQLAPI/graphql-api-for-wp#supported-php-features) (and even from PHP 8.0), and release it to run on PHP 7.1, so it can still target most of the WordPress user base (only users running PHP 5.6 and 7.0 are out). That's a huge win!
+I contributed to this open source project full time for some 2 weeks, and produced some 15 rules to downgrade code, which I have applied to my plugin: Now I can code it [using features from PHP 7.4](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp#supported-php-features) (and even from PHP 8.0), and release it to run on PHP 7.1, so it can still target most of the WordPress user base (only users running PHP 5.6 and 7.0 are out). That's a huge win!
 
-After implementing those 15 rules, I [documented the remaining rules](https://github.com/rectorphp/rector/issues?q=is%3Aissue+is%3Aopen+%22%5BDowngrade+PHP%5D%22+) to downgrade PHP code, and called it a day. I didn't mind working on them, but I didn't have the time to do it. Nevertheless, I also created this task as a [sponsorable feature for my plugin](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/56); if anyone sponsored my time to work on it, I could then attempt to finish the task.
+After implementing those 15 rules, I [documented the remaining rules](https://github.com/rectorphp/rector/issues?q=is%3Aissue+is%3Aopen+%22%5BDowngrade+PHP%5D%22+) to downgrade PHP code, and called it a day. I didn't mind working on them, but I didn't have the time to do it. Nevertheless, I also created this task as a [sponsorable feature for my plugin](https://github.com/leoloso/PoP/issues/199); if anyone sponsored my time to work on it, I could then attempt to finish the task.
 
 Well, [Tomáš Votruba](https://tomasvotruba.com/), creator of Rector, liked my contributions so he decided to become my sponsor.
 

@@ -19,7 +19,7 @@ My open source work is concentrated on the following GitHub accounts:
 
 [GraphQL by PoP](https://graphql-by-pop.com) is a CMS-agnostic GraphQL server in PHP. 
 
-The [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp) is its implementation as a plugin for WordPress.
+The [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) is its implementation as a plugin for WordPress.
 
 <a href="https://graphql-by-pop.com" title="GraphQL by PoP logo"><img src="/images/graphql-by-pop-logo.jpg" style="max-width: 250px;"></a>
 

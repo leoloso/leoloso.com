@@ -297,7 +297,7 @@ This feature is a less ambitious version of [composable fields](https://github.c
 
 ## Current implementations
 
-Embeddable fields are supported in GraphQL server [GraphQL by PoP](https://graphql-by-pop.com), and its implementation for WordPress [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), in both as an opt-in feature.
+Embeddable fields are supported in GraphQL server [GraphQL by PoP](https://graphql-by-pop.com), and its implementation for WordPress [GraphQL API for WordPress](https://graphql-api.com), in both as an opt-in feature.
 
 ## Join the discussion!
 

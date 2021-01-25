@@ -19,12 +19,12 @@ The docs have been implemented as Markdown, and they are opened when clicking on
 
 ![Opening the doc for a module](/images/module-doc-view-details.png)
 
-Since Markdown can also be viewed directly in the [GitHub repo](https://github.com/GraphQLAPI/graphql-api-for-wp), I implemented a cool feature: the same docs can be viewed within the plugin, or in the repo, from a single source of truth, but with 2 different presentations:
+Since Markdown can also be viewed directly in the [GitHub repo](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), I implemented a cool feature: the same docs can be viewed within the plugin, or in the repo, from a single source of truth, but with 2 different presentations:
 
 - Tabs + video embeds in plugin
 - Long page in repo
 
-Check out the [doc for Persisted Queries in the repo](https://github.com/GraphQLAPI/graphql-api-for-wp/blob/master/docs/en/modules/persisted-queries.md), and the same doc in the plugin:
+Check out the [doc for Persisted Queries in the repo](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/persisted-queries.md), and the same doc in the plugin:
 
 ![Reading doc for module in the plugin](/images/module-docs.gif)
 
