@@ -128,7 +128,7 @@ Check-out the following 3 schemas:
 
 ---
 
-Check out the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), and download it from [here](https://github.com/GraphQLAPI/graphql-api-for-wp/releases/latest/download/graphql-api.zip).
+Check out the [GraphQL API for WordPress](https://github.com/GraphQLAPI/graphql-api-for-wp), and download it from [here](https://github.com/leoloso/PoP/releases/latest/download/graphql-api.zip).
 
 Now it's time to start preparing for v0.8! 
 
