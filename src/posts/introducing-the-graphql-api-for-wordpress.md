@@ -9,6 +9,8 @@ tags:
   - api
 ---
 
+**Update 04/02:** The plugin [is now scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So it is fully ready for production, and will be soon uploaded to [wp.org](https://wordpress.org/plugins/) 🥳
+
 **Update 23/01:** The GraphQL API for WordPress has its own site now: [graphql-api.com](https://graphql-api.com).
 
 Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
@@ -281,9 +283,11 @@ Here a response to some questions I've received:
 
 In theory yes, but since I've just launched the plugin, you'd better test if for some time to make sure there are no issues.
 
-In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/issues/246). 
+**Update 04/02:** the plugin [is now scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issue below does not apply anymore 🥳
 
-Hence, test the plugin in your development environment first, and with all other plugins also activated. If you run into any trouble, please [create an issue](https://github.com/leoloso/PoP/issues/new).
+~~In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/issues/246).~~ 
+
+~~Hence, test the plugin in your development environment first, and with all other plugins also activated. If you run into any trouble, please [create an issue](https://github.com/leoloso/PoP/issues/new).~~
 
 ### Can I use it with WooCommerce/ACF/{Place your name here}?
 
@@ -318,12 +322,14 @@ For instance, some differences are:
 
 ### What's the status of the plugin?
 
-GraphQL API is stable and, I'd dare say, ready for production (that is, after playing with it in development). But some things are not complete yet:
+**Update 04/02:** the plugin [has guides on how to use it](https://graphql-api.com/guides/), and [has been scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issues below do not apply anymore 🥳
 
-- [The documentation for the shipped modules](https://github.com/GraphQLAPI/graphql-api-for-wp/issues/11). I'm working on them currently, so they should be ready soon.
-- [Scoping of the external PHP dependencies](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/issues/246). I'll work on this issue then.
+GraphQL API is stable and, I'd dare say, ready for production (that is, after playing with it in development). ~~But some things are not complete yet:~~
 
-When these two issues are resolved, I may already decide to publish the GraphQL API plugin to the WordPress plugin repository, depending on the feedback I have received by then.
+- ~~[The documentation for the shipped modules](https://github.com/leoloso/PoP/issues/225). I'm working on them currently, so they should be ready soon.~~
+- ~~[Scoping of the external PHP dependencies](https://github.com/leoloso/PoP/issues/246). I'll work on this issue then.~~
+
+~~When these two issues are resolved, I may already decide to publish the GraphQL API plugin to the WordPress plugin repository, depending on the feedback I have received by then.~~
 
 Moving forward, the schema must be completed to cover all WordPress entities, including:
 
