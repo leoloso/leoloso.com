@@ -1,6 +1,6 @@
 ---
 title: "🏆 Reaching #1 on Google <= How it happened"
-metaDesc: How my blog post made it to the top of the search results
+metaDesc: How my blog post made it to the top of Google's search results
 socialImage: /images/top-of-google-meme.jpg
 date: '2021-03-01'
 tags:
