@@ -25,6 +25,8 @@ Tips for making the most out of the WordPress editor.
 
 Articles on PHP-based software architecture.
 
+🚀 [Hosting all your PHP packages together in a monorepo](https://blog.logrocket.com/hosting-all-your-php-packages-together-in-a-monorepo/)
+
 🚀 [Tips for creating your first Rector rule to transform PHP code](https://blog.logrocket.com/creating-first-rector-rule-transform-php-code/)
 
 🚀 [Coding in PHP 7.4 and deploying to 7.1 via Rector and GitHub Actions](https://blog.logrocket.com/coding-in-php-7-4-and-deploying-to-7-1-via-rector-and-github-actions/)
