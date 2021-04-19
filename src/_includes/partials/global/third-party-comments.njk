@@ -1,7 +1,9 @@
 <!-- ADD YOUR THIRD PARTY COMMENTS CODE HERE -->
-<!-- COMMENTO EXAMPLE 
-<div id="commento"></div>
-<script defer
-  src="https://cdn.commento.io/js/commento.js">
+<div id="replybox"></div>
+<script>
+    window.replybox = {
+        site: '{{ site.commentsSiteCode }}', 
+        identifier: '{{ page.url }}',
+    };
 </script>
--->
+<script src="https://cdn.getreplybox.com/js/embed.js"></script>

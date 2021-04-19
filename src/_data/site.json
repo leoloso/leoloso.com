@@ -6,9 +6,10 @@
   "authorEmail": "leo@getpop.org",
   "authorHandle": "@losoviz",
   "authorName": "Leonardo Losoviz",
-  "enableThirdPartyComments": false,
+  "enableThirdPartyComments": true,
   "maxPostsPerPage": 10,
   "paymentPointer": "",
   "faviconPath": "/assets/favicon.png",
-  "analyticsURL": "https://stats.leoloso.com/js/plausible.js"
+  "analyticsURL": "https://stats.leoloso.com/js/plausible.js",
+  "commentsSiteCode": "oDanDNwR7A"
 }
