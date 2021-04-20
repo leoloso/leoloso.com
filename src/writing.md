@@ -101,6 +101,8 @@ Mostly concerning tooling around WordPress.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [Making GraphQL Work In WordPress](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/)
+
 😸 [Building An E-Commerce Site With October CMS And Shopaholic](https://www.smashingmagazine.com/2020/03/october-cms-shopaholic/)
 
 😸 [Abstracting WordPress Code To Reuse With Other CMSs: Implementation (Part 2)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/)
