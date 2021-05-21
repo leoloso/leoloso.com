@@ -25,6 +25,8 @@ Tips for making the most out of the WordPress editor.
 
 Articles on PHP-based software architecture.
 
+🚀 [Tips for transpiling code from PHP 8.0 down to 7.1](https://blog.logrocket.com/tips-transpiling-code-from-php-8-0-to-7-1/)
+
 🚀 [Hosting all your PHP packages together in a monorepo](https://blog.logrocket.com/hosting-all-your-php-packages-together-in-a-monorepo/)
 
 🚀 [Tips for creating your first Rector rule to transform PHP code](https://blog.logrocket.com/creating-first-rector-rule-transform-php-code/)
@@ -71,7 +73,17 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 ---
 
+## StepZen blog
+
+Anything related to GraphQL
+
+⼻ [A Visual Guide to GraphiQL and GraphQL Voyager](https://stepzen.com/blog/graphiql-voyager-visual-guide)
+
+---
+
 ## WPKube
+
+Anything related to WordPress
 
 🟦 [Implementing a GraphQL server with components in PHP](https://www.wpkube.com/implementing-graphql-server/)
 
