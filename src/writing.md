@@ -77,6 +77,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Anything related to GraphQL
 
+⼻ [How Different Are REST and GraphQL After All?](https://stepzen.com/blog/are-rest-and-graphql-different)
+
 ⼻ [A Visual Guide to GraphiQL and GraphQL Voyager](https://stepzen.com/blog/graphiql-voyager-visual-guide)
 
 ---
