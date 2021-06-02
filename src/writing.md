@@ -85,34 +85,6 @@ Anything related to GraphQL
 
 ---
 
-## WPKube
-
-Anything related to WordPress
-
-🟦 [Implementing a GraphQL server with components in PHP](https://www.wpkube.com/implementing-graphql-server/)
-
----
-
-## Design Bombs
-
-Mostly concerning tooling around WordPress.
-
-💣 [Reusing Functionality for WordPress Plugins with Blocks](https://www.designbombs.com/reusing-functionality-for-wordpress-plugins-with-blocks/)
-
-💣 [Adding Modal Windows in the WordPress Admin Without JavaScript](https://www.designbombs.com/adding-modal-windows-in-the-wordpress-admin/)
-
-💣 [Tips of Building Large-scale Applications in PHP](https://www.designbombs.com/tips-of-building-large-scale-applications-in-php/)
-
-💣 [How to Register Gutenberg Blocks for Some Custom Post Type only, using PHP (not JS!)](https://www.designbombs.com/registering-gutenberg-blocks-for-custom-post-type/)
-
-💣 [Exposing WordPress site data for mobile apps](https://www.designbombs.com/exposing-wordpress-site-data-for-mobile-apps/)
-
-💣 [Creating a Gutenberg block using the official new package](https://www.designbombs.com/creating-a-gutenberg-block-using-the-official-new-package/)
-
-💣 [Bootstrapping WordPress projects with Composer and WP-CLI](https://www.designbombs.com/bootstrapping-wordpress-projects-with-composer-and-wp-cli/)
-
----
-
 ## Smashing Magazine
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
@@ -162,3 +134,31 @@ It concerns a wide array of topics, including web design and performance, coding
 😸 [How To Make A Dynamic Website Become Static Through A Content CDN](https://www.smashingmagazine.com/2018/02/dynamic-website-static-content-cdn/)
 
 😸 [Implementing A Service Worker For Single-Page App WordPress Sites](https://www.smashingmagazine.com/2017/10/service-worker-single-page-application-wordpress-sites/)
+
+---
+
+## Design Bombs
+
+Mostly concerning tooling around WordPress.
+
+💣 [Reusing Functionality for WordPress Plugins with Blocks](https://www.designbombs.com/reusing-functionality-for-wordpress-plugins-with-blocks/)
+
+💣 [Adding Modal Windows in the WordPress Admin Without JavaScript](https://www.designbombs.com/adding-modal-windows-in-the-wordpress-admin/)
+
+💣 [Tips of Building Large-scale Applications in PHP](https://www.designbombs.com/tips-of-building-large-scale-applications-in-php/)
+
+💣 [How to Register Gutenberg Blocks for Some Custom Post Type only, using PHP (not JS!)](https://www.designbombs.com/registering-gutenberg-blocks-for-custom-post-type/)
+
+💣 [Exposing WordPress site data for mobile apps](https://www.designbombs.com/exposing-wordpress-site-data-for-mobile-apps/)
+
+💣 [Creating a Gutenberg block using the official new package](https://www.designbombs.com/creating-a-gutenberg-block-using-the-official-new-package/)
+
+💣 [Bootstrapping WordPress projects with Composer and WP-CLI](https://www.designbombs.com/bootstrapping-wordpress-projects-with-composer-and-wp-cli/)
+
+---
+
+## WPKube
+
+Anything related to WordPress
+
+🟦 [Implementing a GraphQL server with components in PHP](https://www.wpkube.com/implementing-graphql-server/)
