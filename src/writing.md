@@ -24,6 +24,8 @@ Tips for making the most out of the WordPress editor.
 ## LogRocket blog
 
 Articles on PHP-based software architecture.
+		
+🚀 [Building extensible PHP apps with Symfony DI](https://blog.logrocket.com/building-extensible-php-apps-with-symfony-di/)
 
 🚀 [Tips for transpiling code from PHP 8.0 down to 7.1](https://blog.logrocket.com/tips-transpiling-code-from-php-8-0-to-7-1/)
 
@@ -114,6 +116,8 @@ Mostly concerning tooling around WordPress.
 ## Smashing Magazine
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
+
+😸 [Setting Up A Currency Convertor With ExchangeRatesApi.io](https://www.smashingmagazine.com/2021/06/currency-convertor-exchangeratesapi/)
 
 😸 [Making GraphQL Work In WordPress](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/)
 
