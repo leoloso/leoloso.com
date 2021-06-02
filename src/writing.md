@@ -3,7 +3,7 @@ title: ✒️ Writing
 layout: 'layouts/page.njk'
 ---
 
-I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
+I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
 
 To date, these are my articles:
 
