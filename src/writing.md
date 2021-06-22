@@ -49,6 +49,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
 
+🚀 [Designing a URL-based query syntax for GraphQL](https://blog.logrocket.com/designing-url-based-query-syntax-graphql/)
+
 🚀 [HTTP caching in GraphQL](https://blog.logrocket.com/http-caching-graphql/)
 
 🚀 [Supporting opt-in nested mutations in GraphQL](https://blog.logrocket.com/supporting-opt-in-nested-mutations-in-graphql/)
@@ -88,6 +90,8 @@ Anything related to GraphQL
 ## Smashing Magazine
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
+
+😸 [Spinning Up Multiple WordPress Sites Locally With DevKinsta](https://www.smashingmagazine.com/2021/06/multiple-wordpress-sites-locally-devkinsta/)
 
 😸 [Setting Up A Currency Convertor With ExchangeRatesApi.io](https://www.smashingmagazine.com/2021/06/currency-convertor-exchangeratesapi/)
 
