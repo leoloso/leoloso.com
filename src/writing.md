@@ -83,6 +83,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Anything related to GraphQL
 
+⼻ [Exploring Promising New Feature Proposals for the GraphQL Spec](https://stepzen.com/blog/new-graphql-feature-proposals)
+
 ⼻ [Improving the Development Experience with GraphQL](https://stepzen.com/blog/improving-developer-experience-graphql)
 
 ⼻ [Exploring GraphQL Directives in the Wild](https://stepzen.com/blog/graphql-directives-in-the-wild)
