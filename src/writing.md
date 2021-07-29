@@ -83,6 +83,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Anything related to GraphQL
 
+⼻ [Tips for Creating a GraphQL Schema for an Existing Application](https://stepzen.com/blog/creating-graphql-for-existing-apps)
+
 ⼻ [Exploring Promising New Feature Proposals for the GraphQL Spec](https://stepzen.com/blog/new-graphql-feature-proposals)
 
 ⼻ [Improving the Development Experience with GraphQL](https://stepzen.com/blog/improving-developer-experience-graphql)
