@@ -103,6 +103,8 @@ Anything related to GraphQL.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [Four Useful VSCode Extensions For Web Developers](https://www.smashingmagazine.com/2021/08/useful-vscode-extensions-web-developers/)
+
 😸 [Spinning Up Multiple WordPress Sites Locally With DevKinsta](https://www.smashingmagazine.com/2021/06/multiple-wordpress-sites-locally-devkinsta/)
 
 😸 [Setting Up A Currency Convertor With ExchangeRatesApi.io](https://www.smashingmagazine.com/2021/06/currency-convertor-exchangeratesapi/)
