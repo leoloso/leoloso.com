@@ -28,7 +28,7 @@ Tips for making the most out of the WordPress editor.
 ## LogRocket blog
 
 Articles on PHP-based software architecture.
-		
+
 🚀 [Including both PHP 7.1 and 8.0 code in the same plugin … or not?](https://blog.logrocket.com/including-php-7-1-and-8-0-code-same-plugin-or-not/)
 
 🚀 [Building extensible PHP apps with Symfony DI](https://blog.logrocket.com/building-extensible-php-apps-with-symfony-di/)
@@ -86,6 +86,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 ## StepZen blog
 
 Anything related to GraphQL.
+
+⼻ [Manipulating Data in GraphQL with Dynamic Variables](https://stepzen.com/blog/manipulating-data-graphql-part1)
 
 ⼻ [Unconventional Ways of Using GraphQL](https://stepzen.com/blog/unconvential-ways-to-use-graphql)
 
