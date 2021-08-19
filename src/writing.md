@@ -9,6 +9,10 @@ To date, these are my articles:
 
 ## CSS-Tricks
 
+Explaining how the `leoloso/PoP` GitHub repo was setup:
+
+🎩 [From a Single Repo, to Multi-Repos, to Monorepo, to Multi-Monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/)
+
 Detailed explanation of the driver behind the GraphQL API for WordPress:
 
 🎩 [Rendering the WordPress philosophy in GraphQL](https://css-tricks.com/rendering-the-wordpress-philosophy-in-graphql/)
