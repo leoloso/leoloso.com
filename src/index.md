@@ -12,7 +12,7 @@ Howdy! My name is **Leonardo Losoviz**, I am the creator and maintainer of:
 👉 [GraphQL by PoP](https://graphql-by-pop.com/): a CMS-agnostic GraphQL server in PHP<br/>
 👉 [PoP](https://github.com/leoloso/PoP): an architecture of server-side components in PHP
 
-I am also a writer, contributing regularly to several online magazines, including [CSS-Tricks](https://css-tricks.com/author/leonardolosoviz/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/). And I am an occasional conference speaker.
+I am also a writer, contributing regularly to several online magazines, including [CSS-Tricks](https://css-tricks.com/author/leonardolosoviz/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), the [Kinsta blog](https://kinsta.com/blog/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/). And I am an occasional conference speaker.
 
 <!-- _I code, I learn, I share._ -->
 

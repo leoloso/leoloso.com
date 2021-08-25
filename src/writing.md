@@ -3,7 +3,7 @@ title: ✒️ Writing
 layout: 'layouts/page.njk'
 ---
 
-I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
+I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), the [Kinsta blog](https://kinsta.com/blog/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
 
 To date, these are my articles:
 
@@ -22,6 +22,62 @@ Tips for making the most out of the WordPress editor.
 🎩 [Using Markdown and Localization in the WordPress Block Editor](https://css-tricks.com/using-markdown-and-localization-in-the-wordpress-block-editor/)
 
 🎩 [Adding a Custom Welcome Guide to the WordPress Block Editor](https://css-tricks.com/adding-a-custom-welcome-guide-to-the-wordpress-block-editor/)
+
+---
+
+## Smashing Magazine
+
+It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
+
+😸 [Four Useful VSCode Extensions For Web Developers](https://www.smashingmagazine.com/2021/08/useful-vscode-extensions-web-developers/)
+
+😸 [Spinning Up Multiple WordPress Sites Locally With DevKinsta](https://www.smashingmagazine.com/2021/06/multiple-wordpress-sites-locally-devkinsta/)
+
+😸 [Setting Up A Currency Convertor With ExchangeRatesApi.io](https://www.smashingmagazine.com/2021/06/currency-convertor-exchangeratesapi/)
+
+😸 [Making GraphQL Work In WordPress](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/)
+
+😸 [Building An E-Commerce Site With October CMS And Shopaholic](https://www.smashingmagazine.com/2020/03/october-cms-shopaholic/)
+
+😸 [Abstracting WordPress Code To Reuse With Other CMSs: Implementation (Part 2)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/)
+
+😸 [Abstracting WordPress Code To Reuse With Other CMSs: Concepts (Part 1)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-cms-concepts/)
+
+😸 [Exploring New Ways To Manage Content In WordPress](https://www.smashingmagazine.com/2019/11/exploring-new-ways-manage-content-wordpress/)
+
+😸 [“Create Once, Publish Everywhere” With WordPress](https://www.smashingmagazine.com/2019/10/create-once-publish-everywhere-wordpress/)
+
+😸 [Postmortem Of Gutenberg The Launch, So We Can Embrace Gutenberg The Product](https://www.smashingmagazine.com/2019/10/postmortem-gutenberg-launch-product/)
+
+😸 [Automating Website Deployments Through Buddy](https://www.smashingmagazine.com/2019/09/automating-website-deployments-through-buddy/)
+
+😸 [The (Upcoming) WordPress Renaissance](https://www.smashingmagazine.com/2019/08/upcoming-wordpress-renaissance/)
+
+😸 [Going Serverless With Cloudflare Workers](https://www.smashingmagazine.com/2019/04/cloudflare-workers-serverless/)
+
+😸 [A Detailed Comparison Between WordPress And October CMS](https://www.smashingmagazine.com/2019/03/wordpress-october-cms/)
+
+😸 [Using Composer With WordPress](https://www.smashingmagazine.com/2019/03/composer-wordpress/)
+
+😸 [Improving WordPress Code With Modern PHP](https://www.smashingmagazine.com/2019/02/wordpress-modern-php/)
+
+😸 [Introducing The Component-Based API](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)
+
+😸 [Caching Smartly In The Age Of Gutenberg](https://www.smashingmagazine.com/2018/12/caching-smartly-gutenberg/)
+
+😸 [Avoiding The Pitfalls Of Automatically Inlined Code](https://www.smashingmagazine.com/2018/11/pitfalls-automatically-inlined-code/)
+
+😸 [Implications Of Thinking In Blocks Instead Of Blobs](https://www.smashingmagazine.com/2018/11/implications-blocks-blobs/)
+
+😸 [Sending Emails Asynchronously Through AWS SES](https://www.smashingmagazine.com/2018/11/sending-emails-asynchronously-through-aws-ses/)
+
+😸 [Sharing Data Among Multiple Servers Through AWS S3](https://www.smashingmagazine.com/2018/11/sharing-data-among-multiple-servers-through-aws-s3/)
+
+😸 [Adding Code-Splitting Capabilities To A WordPress Website Through PoP](https://www.smashingmagazine.com/2018/02/code-splitting-wordpress-pop/)
+
+😸 [How To Make A Dynamic Website Become Static Through A Content CDN](https://www.smashingmagazine.com/2018/02/dynamic-website-static-content-cdn/)
+
+😸 [Implementing A Service Worker For Single-Page App WordPress Sites](https://www.smashingmagazine.com/2017/10/service-worker-single-page-application-wordpress-sites/)
 
 ---
 
@@ -83,6 +139,14 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 ---
 
+## Kinsta blog
+
+Innovative web development trends, mostly concerning PHP and WordPress.
+
+💻 [Monorepo vs Multi-Repo: Pros and Cons of Code Repository Strategies](https://kinsta.com/blog/monorepo-vs-multi-repo/)
+
+---
+
 ## StepZen blog
 
 Anything related to GraphQL.
@@ -102,62 +166,6 @@ Anything related to GraphQL.
 ⼻ [How Different Are REST and GraphQL After All?](https://stepzen.com/blog/are-rest-and-graphql-different)
 
 ⼻ [A Visual Guide to GraphiQL and GraphQL Voyager](https://stepzen.com/blog/graphiql-voyager-visual-guide)
-
----
-
-## Smashing Magazine
-
-It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
-
-😸 [Four Useful VSCode Extensions For Web Developers](https://www.smashingmagazine.com/2021/08/useful-vscode-extensions-web-developers/)
-
-😸 [Spinning Up Multiple WordPress Sites Locally With DevKinsta](https://www.smashingmagazine.com/2021/06/multiple-wordpress-sites-locally-devkinsta/)
-
-😸 [Setting Up A Currency Convertor With ExchangeRatesApi.io](https://www.smashingmagazine.com/2021/06/currency-convertor-exchangeratesapi/)
-
-😸 [Making GraphQL Work In WordPress](https://www.smashingmagazine.com/2021/04/making-graphql-work-in-wordpress/)
-
-😸 [Building An E-Commerce Site With October CMS And Shopaholic](https://www.smashingmagazine.com/2020/03/october-cms-shopaholic/)
-
-😸 [Abstracting WordPress Code To Reuse With Other CMSs: Implementation (Part 2)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-reuse-with-other-cms-implementation/)
-
-😸 [Abstracting WordPress Code To Reuse With Other CMSs: Concepts (Part 1)](https://www.smashingmagazine.com/2019/11/abstracting-wordpress-code-cms-concepts/)
-
-😸 [Exploring New Ways To Manage Content In WordPress](https://www.smashingmagazine.com/2019/11/exploring-new-ways-manage-content-wordpress/)
-
-😸 [“Create Once, Publish Everywhere” With WordPress](https://www.smashingmagazine.com/2019/10/create-once-publish-everywhere-wordpress/)
-
-😸 [Postmortem Of Gutenberg The Launch, So We Can Embrace Gutenberg The Product](https://www.smashingmagazine.com/2019/10/postmortem-gutenberg-launch-product/)
-
-😸 [Automating Website Deployments Through Buddy](https://www.smashingmagazine.com/2019/09/automating-website-deployments-through-buddy/)
-
-😸 [The (Upcoming) WordPress Renaissance](https://www.smashingmagazine.com/2019/08/upcoming-wordpress-renaissance/)
-
-😸 [Going Serverless With Cloudflare Workers](https://www.smashingmagazine.com/2019/04/cloudflare-workers-serverless/)
-
-😸 [A Detailed Comparison Between WordPress And October CMS](https://www.smashingmagazine.com/2019/03/wordpress-october-cms/)
-
-😸 [Using Composer With WordPress](https://www.smashingmagazine.com/2019/03/composer-wordpress/)
-
-😸 [Improving WordPress Code With Modern PHP](https://www.smashingmagazine.com/2019/02/wordpress-modern-php/)
-
-😸 [Introducing The Component-Based API](https://www.smashingmagazine.com/2019/01/introducing-component-based-api/)
-
-😸 [Caching Smartly In The Age Of Gutenberg](https://www.smashingmagazine.com/2018/12/caching-smartly-gutenberg/)
-
-😸 [Avoiding The Pitfalls Of Automatically Inlined Code](https://www.smashingmagazine.com/2018/11/pitfalls-automatically-inlined-code/)
-
-😸 [Implications Of Thinking In Blocks Instead Of Blobs](https://www.smashingmagazine.com/2018/11/implications-blocks-blobs/)
-
-😸 [Sending Emails Asynchronously Through AWS SES](https://www.smashingmagazine.com/2018/11/sending-emails-asynchronously-through-aws-ses/)
-
-😸 [Sharing Data Among Multiple Servers Through AWS S3](https://www.smashingmagazine.com/2018/11/sharing-data-among-multiple-servers-through-aws-s3/)
-
-😸 [Adding Code-Splitting Capabilities To A WordPress Website Through PoP](https://www.smashingmagazine.com/2018/02/code-splitting-wordpress-pop/)
-
-😸 [How To Make A Dynamic Website Become Static Through A Content CDN](https://www.smashingmagazine.com/2018/02/dynamic-website-static-content-cdn/)
-
-😸 [Implementing A Service Worker For Single-Page App WordPress Sites](https://www.smashingmagazine.com/2017/10/service-worker-single-page-application-wordpress-sites/)
 
 ---
 
@@ -183,6 +191,6 @@ Mostly concerning tooling around WordPress.
 
 ## WPKube
 
-Anything related to WordPress
+Anything related to WordPress.
 
 🟦 [Implementing a GraphQL server with components in PHP](https://www.wpkube.com/implementing-graphql-server/)
