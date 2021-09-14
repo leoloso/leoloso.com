@@ -29,6 +29,8 @@ Tips for making the most out of the WordPress editor.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [Creating A Public/Private Multi-Monorepo For PHP Projects](https://www.smashingmagazine.com/2021/08/public-private-multi-monorepo-php-projects/)
+
 😸 [Four Useful VSCode Extensions For Web Developers](https://www.smashingmagazine.com/2021/08/useful-vscode-extensions-web-developers/)
 
 😸 [Spinning Up Multiple WordPress Sites Locally With DevKinsta](https://www.smashingmagazine.com/2021/06/multiple-wordpress-sites-locally-devkinsta/)
@@ -84,6 +86,8 @@ It concerns a wide array of topics, including web design and performance, coding
 ## LogRocket blog
 
 Articles on PHP-based software architecture.
+
+🚀 [Authorization through access control in GraphQL](https://blog.logrocket.com/authorization-access-control-graphql/)
 
 🚀 [Including both PHP 7.1 and 8.0 code in the same plugin … or not?](https://blog.logrocket.com/including-php-7-1-and-8-0-code-same-plugin-or-not/)
 
@@ -143,6 +147,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Innovative web development trends, mostly concerning PHP and WordPress.
 
+💻 [WordPress Abstraction: Best Practices and WordPress Abstraction Plugins](https://kinsta.com/blog/abstract-wordpress-plugin/)
+
 💻 [Monorepo vs Multi-Repo: Pros and Cons of Code Repository Strategies](https://kinsta.com/blog/monorepo-vs-multi-repo/)
 
 ---
@@ -150,6 +156,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 ## StepZen blog
 
 Anything related to GraphQL.
+
+⼻ [Hacking GraphiQL to Invoke it From the Outside](https://stepzen.com/blog/hacking-graphiql-to-evoke-from-outside)
 
 ⼻ [Manipulating Data in GraphQL with Dynamic Variables](https://stepzen.com/blog/manipulating-data-graphql-part1)
 
