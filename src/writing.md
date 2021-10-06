@@ -171,7 +171,7 @@ Anything related to GraphQL.
 
 ⼻ [Unconventional Ways of Using GraphQL](https://stepzen.com/blog/unconvential-ways-to-use-graphql)
 
-⼻ [Unconventional Ways of Using GraphQL](https://stepzen.com/blog/creating-graphql-for-existing-apps)
+⼻ [Tips for Creating a GraphQL Schema for an Existing Application](https://stepzen.com/blog/creating-graphql-for-existing-apps)
 
 ⼻ [Exploring Promising New Feature Proposals for the GraphQL Spec](https://stepzen.com/blog/new-graphql-feature-proposals)
 
