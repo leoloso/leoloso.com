@@ -149,6 +149,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Innovative web development trends, mostly concerning PHP and WordPress.
 
+💻 [The Ultimate Guide for Transpiling PHP Code](https://kinsta.com/blog/transpiling-php/)
+
 💻 [WordPress Abstraction: Best Practices and WordPress Abstraction Plugins](https://kinsta.com/blog/abstract-wordpress-plugin/)
 
 💻 [Monorepo vs Multi-Repo: Pros and Cons of Code Repository Strategies](https://kinsta.com/blog/monorepo-vs-multi-repo/)
