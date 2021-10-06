@@ -87,8 +87,6 @@ It concerns a wide array of topics, including web design and performance, coding
 
 Articles on PHP-based software architecture.
 
-🚀 [Authorization through access control in GraphQL](https://blog.logrocket.com/authorization-access-control-graphql/)
-
 🚀 [Including both PHP 7.1 and 8.0 code in the same plugin … or not?](https://blog.logrocket.com/including-php-7-1-and-8-0-code-same-plugin-or-not/)
 
 🚀 [Building extensible PHP apps with Symfony DI](https://blog.logrocket.com/building-extensible-php-apps-with-symfony-di/)
@@ -114,6 +112,10 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 ---
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
+
+🚀 [Swapping GraphQL servers with the least effort](https://blog.logrocket.com/swapping-graphql-servers-with-least-effort/)
+
+🚀 [Authorization through access control in GraphQL](https://blog.logrocket.com/authorization-access-control-graphql/)
 
 🚀 [Designing a URL-based query syntax for GraphQL](https://blog.logrocket.com/designing-url-based-query-syntax-graphql/)
 
@@ -156,6 +158,10 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 ## StepZen blog
 
 Anything related to GraphQL.
+
+⼻ [Categorizing GraphQL Directives into Schema or Query Type](https://stepzen.com/blog/categorize-graphql-directives)
+
+⼻ [Bridging GraphQL Queries Between Relay and non-Relay Schemas](https://stepzen.com/blog/bridging-graphql-queries-relay-nonrelay-schemas)
 
 ⼻ [Hacking GraphiQL to Invoke it From the Outside](https://stepzen.com/blog/hacking-graphiql-to-evoke-from-outside)
 
