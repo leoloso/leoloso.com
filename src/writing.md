@@ -113,6 +113,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
 
+🚀 [What we can learn from GraphQLConf 2021](https://blog.logrocket.com/graphqlconf-2021-round-up/)
+
 🚀 [Field arguments vs directives in GraphQL](https://blog.logrocket.com/field-arguments-vs-directives-graphql/)
 
 🚀 [Swapping GraphQL servers with the least effort](https://blog.logrocket.com/swapping-graphql-servers-with-least-effort/)
