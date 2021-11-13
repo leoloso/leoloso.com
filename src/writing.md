@@ -29,6 +29,8 @@ Tips for making the most out of the WordPress editor.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [Automatically Transforming And Optimizing Images And Videos On Your WordPress Website](https://www.smashingmagazine.com/2021/11/transforming-optimizing-images-videos-wordpress-website/)
+
 😸 [Creating A Public/Private Multi-Monorepo For PHP Projects](https://www.smashingmagazine.com/2021/08/public-private-multi-monorepo-php-projects/)
 
 😸 [Four Useful VSCode Extensions For Web Developers](https://www.smashingmagazine.com/2021/08/useful-vscode-extensions-web-developers/)
