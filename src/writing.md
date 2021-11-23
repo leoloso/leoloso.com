@@ -167,6 +167,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 
 Anything related to GraphQL.
 
+⼻ [Modeling User-Defined Settings in the GraphQL Schema](https://stepzen.com/blog/modeling-user-defined-settings-in-graphql-schema)
+
 ⼻ [Categorizing GraphQL Directives into Schema or Query Type](https://stepzen.com/blog/categorize-graphql-directives)
 
 ⼻ [Bridging GraphQL Queries Between Relay and non-Relay Schemas](https://stepzen.com/blog/bridging-graphql-queries-relay-nonrelay-schemas)
