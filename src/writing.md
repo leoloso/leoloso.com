@@ -115,6 +115,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
 
+🚀 [What’s new in the latest GraphQL spec](https://blog.logrocket.com/whats-new-latest-graphql-spec/)
+
 🚀 [When to use multiple endpoints in GraphQL](https://blog.logrocket.com/use-multiple-endpoints-graphql/)
 
 🚀 [What we can learn from GraphQLConf 2021](https://blog.logrocket.com/graphqlconf-2021-round-up/)
@@ -168,6 +170,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 ## StepZen blog
 
 Anything related to GraphQL.
+
+⼻ [Caching the GraphQL Introspection Query in a CDN](https://stepzen.com/blog/caching-graphql-introspection-query-in-cdn)
 
 ⼻ [Modeling User-Defined Settings in the GraphQL Schema](https://stepzen.com/blog/modeling-user-defined-settings-in-graphql-schema)
 
