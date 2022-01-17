@@ -89,6 +89,8 @@ It concerns a wide array of topics, including web design and performance, coding
 
 Articles on PHP-based software architecture.
 
+🚀 [Phabel vs. Rector: Which is better for transpiling PHP code?](https://blog.logrocket.com/phabel-vs-rector-better-transpiling-php-code/)
+
 🚀 [Including both PHP 7.1 and 8.0 code in the same plugin … or not?](https://blog.logrocket.com/including-php-7-1-and-8-0-code-same-plugin-or-not/)
 
 🚀 [Building extensible PHP apps with Symfony DI](https://blog.logrocket.com/building-extensible-php-apps-with-symfony-di/)
@@ -114,6 +116,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 ---
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
+
+🚀 [Fetching dynamically structured data in a CMS with GraphQL](https://blog.logrocket.com/fetching-dynamically-structured-data-cms-graphql/)
 
 🚀 [What’s new in the latest GraphQL spec](https://blog.logrocket.com/whats-new-latest-graphql-spec/)
 
@@ -170,6 +174,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 ## StepZen blog
 
 Anything related to GraphQL.
+
+⼻ [Tiny Decisions to Make When Designing a GraphQL API](https://stepzen.com/blog/tiny-decisions-when-designing-a-graphql-api)
 
 ⼻ [Caching the GraphQL Introspection Query in a CDN](https://stepzen.com/blog/caching-graphql-introspection-query-in-cdn)
 
