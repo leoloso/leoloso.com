@@ -175,6 +175,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 
 Anything related to GraphQL.
 
+⼻ [Coming Soon To GraphQL: The oneof Input Object](https://stepzen.com/blog/coming-soon-to-graphql-the-oneof-input-object)
+
 ⼻ [How to Check if a Value is Empty in GraphQL](https://stepzen.com/blog/how-to-check-if-value-is-empty)
 
 ⼻ [Tiny Decisions to Make When Designing a GraphQL API](https://stepzen.com/blog/tiny-decisions-when-designing-a-graphql-api)
