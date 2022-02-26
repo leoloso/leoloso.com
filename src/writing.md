@@ -29,6 +29,10 @@ Tips for making the most out of the WordPress editor.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [Using The WordPress Editor And CPTs To Configure Plugins](https://www.smashingmagazine.com/2022/02/wordpress-editor-cpts-configure-plugins/)
+
+😸 [Implications Of WordPress Joining The Block Protocol](https://www.smashingmagazine.com/2022/02/implications-wordpress-joining-block-protocol/)
+
 😸 [Automatically Transforming And Optimizing Images And Videos On Your WordPress Website](https://www.smashingmagazine.com/2021/11/transforming-optimizing-images-videos-wordpress-website/)
 
 😸 [Creating A Public/Private Multi-Monorepo For PHP Projects](https://www.smashingmagazine.com/2021/08/public-private-multi-monorepo-php-projects/)
