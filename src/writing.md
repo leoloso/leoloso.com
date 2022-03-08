@@ -179,6 +179,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 
 Anything related to GraphQL.
 
+⼻ [GraphQL: How to Alias a Nested Field as a Parent Field](https://stepzen.com/blog/alias-nested-field-as-parent-field)
+
 ⼻ [Coming Soon To GraphQL: The oneof Input Object](https://stepzen.com/blog/coming-soon-to-graphql-the-oneof-input-object)
 
 ⼻ [How to Check if a Value is Empty in GraphQL](https://stepzen.com/blog/how-to-check-if-value-is-empty)
