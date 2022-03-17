@@ -21,6 +21,11 @@
       "external": false
     },
     {
+      "text": "🎙 Podcasts",
+      "url": "/podcasts",
+      "external": false
+    },
+    {
       "text": "💼 Work",
       "url": "/work",
       "external": false
@@ -34,11 +39,6 @@
       "text": "📰 RSS",
       "url": "/feed.xml",
       "external": false
-    },
-    {
-      "text": "❤️ Sponsor",
-      "url": "https://github.com/sponsors/leoloso/",
-      "external": true
     }
   ]
 }
