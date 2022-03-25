@@ -6,7 +6,7 @@
   "authorEmail": "leo@getpop.org",
   "authorHandle": "@losoviz",
   "authorName": "Leonardo Losoviz",
-  "enableThirdPartyComments": true,
+  "enableThirdPartyComments": false,
   "maxPostsPerPage": 10,
   "paymentPointer": "",
   "faviconPath": "/assets/favicon.png",
