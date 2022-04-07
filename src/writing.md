@@ -121,6 +121,8 @@ Articles on implementing functionalities on Gutenberg (the WordPress editor).
 
 Series of articles on conceptualizing, designing and implementing a GraphQL server.
 
+🚀 [Exploring the future potential of generic GraphQL error codes](https://blog.logrocket.com/exploring-future-potential-generic-graphql-error-codes/)
+
 🚀 [Fetching dynamically structured data in a CMS with GraphQL](https://blog.logrocket.com/fetching-dynamically-structured-data-cms-graphql/)
 
 🚀 [What’s new in the latest GraphQL spec](https://blog.logrocket.com/whats-new-latest-graphql-spec/)
