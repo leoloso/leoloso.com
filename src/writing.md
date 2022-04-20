@@ -181,6 +181,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 
 Anything related to GraphQL.
 
+⼻ [What I Learned from Reading the GraphQL Spec - Part 1](https://stepzen.com/blog/learned-from-reading-graphql-spec)
+
 ⼻ [GraphQL: On Directives Transforming the Behavior of Directives](https://stepzen.com/blog/graphql-directives-transforming-behavior-of-directives)
 
 ⼻ [GraphQL: How to Alias a Nested Field as a Parent Field](https://stepzen.com/blog/alias-nested-field-as-parent-field)
