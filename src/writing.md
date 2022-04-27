@@ -181,6 +181,8 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 
 Anything related to GraphQL.
 
+⼻ [GraphQL: Mapping Error Messages to Generic Error Codes](https://stepzen.com/blog/graphql-mapping-error-messages-to-generic-codes)
+
 ⼻ [What I Learned from Reading the GraphQL Spec - Part 1](https://stepzen.com/blog/learned-from-reading-graphql-spec)
 
 ⼻ [GraphQL: On Directives Transforming the Behavior of Directives](https://stepzen.com/blog/graphql-directives-transforming-behavior-of-directives)
