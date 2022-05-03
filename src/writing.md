@@ -3,7 +3,7 @@ title: ✒️ Writing
 layout: 'layouts/page.njk'
 ---
 
-I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), the [Kinsta blog](https://kinsta.com/blog/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
+I regularly contribute articles to several magazines, including [CSS-Tricks](https://css-tricks.com/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), [MasterWP](https://masterwp.com/author/leonardo-losoviz/), the [Kinsta blog](https://kinsta.com/blog/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
 
 To date, these are my articles:
 
@@ -162,6 +162,14 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 🚀 [Simplifying the GraphQL data model](https://blog.logrocket.com/simplifying-the-graphql-data-model/)
 
 🚀 [Designing a GraphQL server for optimal performance](https://blog.logrocket.com/designing-graphql-server-optimal-performance/)
+
+---
+
+## MasterWP
+
+Opinion pieces on anything concerning WordPress.
+
+👨🏻‍🏫 [Costs Of WordPress Joining The Block Protocol](https://masterwp.com/costs-of-wordpress-joining-the-block-protocol/)
 
 ---
 
