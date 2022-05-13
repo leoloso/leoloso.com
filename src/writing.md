@@ -169,6 +169,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Opinion pieces on anything concerning WordPress.
 
+👨🏻‍🏫 [Would WordPress be better off by Joining the Block Protocol?](https://masterwp.com/would-wordpress-be-better-off-by-joining-the-block-protocol/)
+
 👨🏻‍🏫 [Costs Of WordPress Joining The Block Protocol](https://masterwp.com/costs-of-wordpress-joining-the-block-protocol/)
 
 ---
