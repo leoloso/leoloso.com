@@ -8,14 +8,12 @@ I love attending conferences and local meetups, not only as an attendee but, eve
 If you happen to be a conference organizer, [let's work together](mailto:leo@getpop.org)!
 
 ![That's me speaking @ JSConf Asia 2019](/assets/leo-jsconfasia.jpg "That's me speaking @ JSConf Asia 2019 (image by JSConf organizers)")
-<!--
-## Upcoming engagements
 
-**“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
-
------
--->
 ## Previous engagements
+
+**Will WordPress be Better with the Block Protocol?** @ [WordSesh 2022](https://wordsesh.com/#schedule) (Online)
+
+<iframe src="https://slides.com/leoloso/will-wordpress-be-better-off-by-adopting-the-block-protocol/embed" width="576" height="420" title="Will WordPress be better off by adopting the Block Protocol?" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Intro to the GraphQL API for WordPress** @ [WordPress London Meetup](https://www.meetup.com/London-WordPress/events/273609351/), [CMS Philly](https://cmsphilly.org/talks/introduction-graphql-api-wordpress) (Online conference)
 
@@ -23,27 +21,27 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 (Presentation in Youtube video above starts at 25:37)
 
-<iframe src="//slides.com/leoloso/graphql-api-for-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/leoloso/graphql-api-for-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Introduction to “PoP API”, a new GraphQL server in PHP** @ [Nomad JS](https://nomadjs.com/live/kSk2ymG1OgnfnDchrCuVp/Introduction-to-the--schemaless--GraphQL/) (Online webinar)
 
-<iframe src="//slides.com/leoloso/graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/leoloso/graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **“Create Once, Publish Everywhere” with WordPress** @ [WordCamp Singapore 2019](https://2019.singapore.wordcamp.org/sessions/#wcorg-session-1070), [WordCamp Kuala Lumpur 2019](https://2019.kualalumpur.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/), [WordCamp Taipei 2019](https://2019.taipei.wordcamp.org/session/create-once-publish-everywhere-with-wordpress/)
 
 <iframe width="966" height="543" src="https://www.youtube.com/embed/fK8NcwA6SGs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe src="//slides.com/leoloso/cope-with-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/leoloso/cope-with-wp/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Introduction to the Component-based API** @ [JSConf Asia 2019](https://2019.jsconf.asia/#program)
 
 <iframe width="949" height="534" src="https://www.youtube.com/embed/9pT-q0SSYow" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe src="//slides.com/leoloso/component-based-api/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/leoloso/component-based-api/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Implications of Thinking in Blocks instead of Blobs** @ [WordPress Singapore Meetup June 2019](https://www.meetup.com/WordPress-Singapore/events/261817674/)
 
-<iframe src="//slides.com/leoloso/blocks-not-blobs/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/leoloso/blocks-not-blobs/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **The Building Blocks of Progressive Web Apps** @ [WordPress Buenos Aires Meetup June 2017](https://www.meetup.com/wordpress-buenosaires/events/240551237/) & [WordCamp Berlin 2017](https://2017.berlin.wordcamp.org/session/barcamp/)
 
