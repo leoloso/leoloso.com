@@ -169,6 +169,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Opinion pieces on anything concerning WordPress.
 
+👨🏻‍🏫 [Some great stuff I’ve learnt from WordSesh 2022](https://masterwp.com/some-great-stuff-ive-learnt-from-wordsesh-2022/)
+
 👨🏻‍🏫 [Would WordPress be better off by Joining the Block Protocol?](https://masterwp.com/would-wordpress-be-better-off-by-joining-the-block-protocol/)
 
 👨🏻‍🏫 [Costs Of WordPress Joining The Block Protocol](https://masterwp.com/costs-of-wordpress-joining-the-block-protocol/)
