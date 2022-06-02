@@ -93,6 +93,8 @@ It concerns a wide array of topics, including web design and performance, coding
 
 Articles on PHP-based software architecture.
 
+🚀 [What you need to know about the Block Protocol](https://blog.logrocket.com/what-you-need-to-know-block-protocol/)
+
 🚀 [Phabel vs. Rector: Which is better for transpiling PHP code?](https://blog.logrocket.com/phabel-vs-rector-better-transpiling-php-code/)
 
 🚀 [Including both PHP 7.1 and 8.0 code in the same plugin … or not?](https://blog.logrocket.com/including-php-7-1-and-8-0-code-same-plugin-or-not/)
