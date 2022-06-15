@@ -29,6 +29,8 @@ Tips for making the most out of the WordPress editor.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [Adding Search To Your Site In 15 Minutes](https://www.smashingmagazine.com/2022/06/adding-search-website-sitesearch360/)
+
 😸 [Using The WordPress Editor And CPTs To Configure Plugins](https://www.smashingmagazine.com/2022/02/wordpress-editor-cpts-configure-plugins/)
 
 😸 [Implications Of WordPress Joining The Block Protocol](https://www.smashingmagazine.com/2022/02/implications-wordpress-joining-block-protocol/)
