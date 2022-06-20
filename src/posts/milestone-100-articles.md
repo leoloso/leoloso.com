@@ -16,6 +16,22 @@ With the publication last week of article [Adding Search To Your Site In 15 Minu
 
 Since [my first article](https://www.smashingmagazine.com/2017/10/service-worker-single-page-application-wordpress-sites/) was published on October 2017, it took a bit less than 5 years to reach this milestone, at an average of 1.8 articles per month, or one article published every 17 days.
 
-Here are some lessons I learnt during my journey.
+Here are some lessons I learnt during my journey, which I hope can be useful to fellow writers and writers-to-be.
 
-Can make an income from writing?
+- Can I make an income just from writing?
+
+- Do I find it difficult to write?
+
+No, as long as you know what you want to write about! Coming up with the idea is oftentimes the biggest hurdle to write.
+
+In my case, for LogRocket I wrote 30 articles on GraphQL alone, which is possible because etc
+
+The issue is that, what you write about, must be worth reading. In other words, your idea truly needs to come for you, which means it must concern some topic that 
+
+Justin Tadlock etc
+
+I also recently started for MasterWP a series "..." etc
+
+- Do I accept assignments to write about anything and everything?
+
+No. Absolutely not. I keep being contacted etc
