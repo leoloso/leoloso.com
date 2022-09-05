@@ -187,6 +187,8 @@ Opinion pieces on anything concerning WordPress.
 
 Innovative web development trends, mostly concerning PHP and WordPress.
 
+💻 [10 PHP Testing Tools for WordPress Plugins](https://kinsta.com/blog/php-testing-tools/)
+
 💻 [The Ultimate Guide for Transpiling PHP Code](https://kinsta.com/blog/transpiling-php/)
 
 💻 [WordPress Abstraction: Best Practices and WordPress Abstraction Plugins](https://kinsta.com/blog/abstract-wordpress-plugin/)
@@ -198,6 +200,10 @@ Innovative web development trends, mostly concerning PHP and WordPress.
 ## StepZen blog
 
 Anything related to GraphQL.
+
+⼻ [How is GraphQL Different from Programming Languages? Part 2](https://stepzen.com/blog/how-graphql-different-from-programming-languages-part2)
+
+⼻ [How is GraphQL Different from Programming Languages? Part 1](https://stepzen.com/blog/how-graphql-different-from-programming-languages)
 
 ⼻ [Should GraphQL allow Recursive Fragments?](https://stepzen.com/blog/should-graphql-allow-recursive-fragments)
 
