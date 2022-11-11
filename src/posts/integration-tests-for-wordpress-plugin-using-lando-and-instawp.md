@@ -16,7 +16,9 @@ I am using [InstaWP](https://instawp.com/), a newish sandboxing service that all
 
 Preparing a new InstaWP instance in my case takes around 3 minutes (since my plugin weighs 8.4 mb, and its downloading and installation takes a bit of time), and only then I can start executing the integration tests. Hence, while InstaWP is ideal for collaborating with team members on the repo, I wouldn't want to wait this time while developing the plugin on my laptop computer.
 
-During development, instead, I execute the integration tests against a local webserver provided via [Lando](https://github.com/lando/lando/), a Docker-based local tool to create projects on any language and technology. I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have ready the same development environment.
+During development, instead, I execute the integration tests against a local webserver provided via [Lando](https://github.com/lando/lando/), a Docker-based local tool to create projects on any language and technology, with pre-defined recipes for easily launching several of the most common stacks, including WordPress. Building a Lando server will take over 5 minutes but, once created, I can start the same instance again in just a few seconds. I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have ready the same development environment.
+
+In addition
 
 
  Sandbox in less than a second
