@@ -49,9 +49,13 @@ Putting it all together, I run my integration tests in three different combinati
 
 Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
 
-In this blog post I'll explain how I've achieved this for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), and share a few tips that have helped me.
+In this blog post I'll explain how I've accomplished this for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), and share a few tips that I discovered along the way.
 
-> **Heads up!** I am less than 2 weeks away from releasing version `0.9` of the GraphQL API plugin (after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀). If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
+> Watch out: **Shameful self-promotion ahead!**
+>
+> I am less than 2 weeks away from releasing version `0.9` of the GraphQL API plugin (after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀).
+>
+> If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
 ## 1st: Running Integration Tests on the PHP source code (on my development computer)
 
