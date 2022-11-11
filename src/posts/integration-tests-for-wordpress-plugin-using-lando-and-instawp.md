@@ -43,9 +43,9 @@ And in my plugin's case, there are a few additional differences:
 
 Putting it all together, I run my integration tests in three different combinations:
 
-1. On the PHP source code while developing the plugin, using Lando and PHP 8.1
-2. On the generated .zip plugin once I think the new feature is ready, using Lando and PHP 7.1
-3. On the generated .zip plugin before merging the PR in GitHub Actions, using InstaWP and a matrix of PHP/WP configurations
+1. While developing the plugin: Using the source code, against a local webserver provided by Lando which runs PHP 8.1
+2. Once I think the newly-developed code is ready: Using the generated .zip plugin, against a different local webserver provided by Lando which runs PHP 7.1
+3. Before merging the PR in GitHub Actions: Using the generated .zip plugin, against several InstaWP instances, each of them with a different configuration of PHP+WP
 
 Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
 
