@@ -126,7 +126,7 @@ The integration tests are placed under an `Integration` folder, so to run my int
 vendor/bin/phpunit --filter=Integration
 ```
 
-Guzzle also supports logging the user in and keeping the state throughout the tests. I can then assert that the response is different for users with the "admin" or "contributor" roles. This is accomplished by using a "cookie jar", and sending a first HTTP request to log the user in, before executing the tests ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/webserver-requests/tests/AbstractWebserverRequestTestCase.php#L39)):
+Guzzle supports logging the user in and keeping the state throughout the tests. I can then assert that the response is different for users with the `admin` or `contributor` roles. This is accomplished by using a "cookie jar", and sending a first HTTP request to log the user in, before executing the tests ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/webserver-requests/tests/AbstractWebserverRequestTestCase.php#L39)):
 
 ```php
 class WithUserLoggedInTest extends TestCase
@@ -177,7 +177,7 @@ class WithUserLoggedInTest extends TestCase
 }
 ```
 
-Please notice how the webserver domain `"graphql-api.lndo.site"` is not hardcoded, but is instead retrieved via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). These env vars are defined in file `phpunit.xml.dist` with the config for the Lando development webserver ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
+Please notice that the webserver domain `"graphql-api.lndo.site"` is not hardcoded, but is instead retrieved via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). These env vars are defined in file `phpunit.xml.dist` with the config for the Lando development webserver ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -199,7 +199,7 @@ $ INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz \
   vendor/bin/phpunit --filter=Integration
 ```
 
-This stack works quite well for me because my plugin is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
+This stack satisfies my requirements because, as my plugin provides a GraphQL server, interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
 
 For instance, I send a GraphQL query to the single endpoint:
 
@@ -234,7 +234,9 @@ These are some of the use cases I'm currently testing (there are a few others):
 - Executing the query via `GET` or `POST` ([example test](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/PassQueryViaURLParamQueryExecutionFixtureWebserverRequestTest.php))
 - Passing URL parameters to persisted queries ([example test](https://github.com/leoloso/PoP/blob/master/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/PersistedQueryFixtureWebserverRequestTest.php))
 
-I don't expect this stack to be always suitable. For instance, to assert that the response is appropriate after the user clicks on a link or submits a form, then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/)). As alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
+This stack is not suitable for everything that can be tested. For instance, my plugin displays a module's documentation in a modal window in the wp-admin, but I'm not testing that this modal window is indeed opened after the user clicks on the corresponding link.
+
+If I ever decided to test this or other similar concerns, then I'd consider introducing [CodeCeption](https://codeception.com/), which is better for executing and evaluating user interactions ([this guide on testing WooCommerce](https://deliciousbrains.com/automated-testing-woocommerce/) provides some good examples), and I'd also check out if [Pest](https://pestphp.com/) offers advantages over PHPUnit (as suggested in [this article on WordPress integration tests with Pest](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
 ### WP-CLI and the WordPress export tool
 
