@@ -60,6 +60,11 @@ tags:
 	If it did so, my plugin works well. Otherwise, I need to worry about some problem.
 	That's why Guzzle is a good tool for my use case. If I had a different use case, such as testing user interactions, I'd need a different tool (such as Codeception (https://codeception.com/))
 
+  Another useful one is using PestPHP (check out this [great guide by Denis Žoljom](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)):
+    
+
+  As an alternative, can also use [CodeCeption](https://codeception.com/) (the folks at [Delicious Brains wrote some great guides about it](https://deliciousbrains.com/automated-api-testing-codeception-wordpress/))
+
 	Guzzle also allows me to log-in to the WP site, so I can execute tests logged-in as the "admin" or "writer" and test that the Access Control works well
 		The key is to use a cookie bag, so that after logging in the first request, all cookies are kept, and when the second request is sent the server has the user authenticated.
 		Link to code
