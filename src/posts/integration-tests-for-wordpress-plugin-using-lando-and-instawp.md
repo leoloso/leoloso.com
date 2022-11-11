@@ -108,28 +108,10 @@ Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular
 1. Execute a PHPUnit test, that uses Guzzle to send an HTTP request to the Lando webserver
 2. Have the PHPUnit test analyze if the response is the expected one
 
-This works for my plugin because it is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
+The integration tests are placed under an `Integration` folder, so to run my integration tests I just execute:
 
-For instance, I send a GraphQL query to the single endpoint:
-
-```graphql
-{
-  post(by: {id: 1}) {
-    title
-  }
-}
-```
-
-And then I assert that the response matches the expectation:
-
-```json
-{
-  "data": {
-    "post": {
-      "title": "Hello world!"
-    }
-  }
-}
+```bash
+vendor/bin/phpunit --filter=Integration
 ```
 
 Guzzle also supports logging the user in and keeping the state throughout the tests. I can then assert that the response is different for users with the "admin" or "contributor" roles. This is accomplished by using a "cookie jar", and sending a first HTTP request to log the user in, before executing the tests ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/webserver-requests/tests/AbstractWebserverRequestTestCase.php#L39)):
@@ -182,13 +164,31 @@ class WithUserLoggedInTest extends TestCase
 }
 ```
 
-I've placed all integration tests under a `Integration` folder, so to run my integration tests I just execute:
+This stack works well in my case because my plugin is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
 
-```bash
-vendor/bin/phpunit --filter=Integration
+For instance, I send a GraphQL query to the single endpoint:
+
+```graphql
+{
+  post(by: {id: 1}) {
+    title
+  }
+}
 ```
 
-This stack works well to test the main use cases for my plugin:
+And then I assert that the response matches the expectation:
+
+```json
+{
+  "data": {
+    "post": {
+      "title": "Hello world!"
+    }
+  }
+}
+```
+
+These are some of the use cases I'm currently testing (there are a few others):
 
 - A request/response cycle for an API ([example test](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/AdminClientQueryExecutionFixtureWebserverRequestTest.php), executing [this GraphQL query](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-admin-client/introspection-query.gql) and matching it against [this response](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-admin-client/introspection-query.json))
 - Enabling/Disabling the single endpoint or custom endpoint ([example test](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/DisabledEndpointWebserverRequestTest.php))
