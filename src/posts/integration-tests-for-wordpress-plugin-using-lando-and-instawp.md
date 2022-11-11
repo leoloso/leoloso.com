@@ -51,7 +51,7 @@ Importantly, **all 3 combinations must receive the same inputs, and produce the 
 
 In this blog post I'll explain how I've accomplished this for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), and share a few tips that I discovered along the way.
 
-> Watch out: **Shameful self-promotion ahead!**
+> Watch out: **Shameless self-promotion ahead!**
 >
 > I am less than 2 weeks away from releasing version `0.9` of the GraphQL API plugin (after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀).
 >
