@@ -57,7 +57,9 @@ This is the stack I'm using:
 - [WP-CLI](https://wp-cli.org/)
 - The WordPress export tool
 
-I'll explain why and how I'm using each of these, and point to the appropriate files on my repo.
+I'll explain why and how I'm using these, and point to the appropriate files on my repo.
+
+### Lando
 
 The Lando websever is hosted under [`webservers/graphql-api-for-wp`](https://github.com/leoloso/PoP/tree/master/webservers/graphql-api-for-wp), and it has [this configuration](https://github.com/leoloso/PoP/blob/master/webservers/graphql-api-for-wp/.lando.yml):
 
@@ -99,7 +101,44 @@ The noteworthy elements here are the following:
 
 The last item is a deal breaker for me, because [the plugin's code is distributed into a multitude of independent packages](https://graphql-api.com/blog/why-to-support-cms-agnosticism-the-graphql-api-split-to-around-90-packages/), which are managed via Composer. When running `composer install` to install the plugin, all these packages would be normally copied under the `vendor/` folder, breaking the connection between source code and code deployed to the webserver. Thanks to volume overrides, Lando will read the source files instead. (I used other webservers, including [Local](https://getflywheel.com/design-and-wordpress-resources/toolbox/local-by-flywheel/) and [wp-env](https://www.npmjs.com/package/@wordpress/env), and I believe none of them offers this feature.)
 
+### Guzzle and PHPUnit
 
+Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular library for executing unit tests. I use these 2 libraries to execute my integration tests, like this:
+
+1. Execute a PHPUnit test, that uses Guzzle to send an HTTP request to the Lando webserver
+2. Have the PHPUnit test analyze if the response is the expected one
+
+This works for my plugin because it is a GraphQL server, so that interacting with the webserver via HTTP requests can demonstrate if the plugin works as expected.
+
+For instance, I send a GraphQL query to the single endpoint:
+
+```graphql
+{
+  post(by: {id: 1}) {
+    title
+  }
+}
+```
+
+And then I assert that the response matches its expectation:
+
+```json
+{
+  "data": {
+    "post": {
+      "title": "Hello world!"
+    }
+  }
+}
+```
+
+This works well in my case, since I'm testing a request/response cycle for an API. But for other use cases, this stack will not be the most suitable. For instance, if we need to test the results of users interacting with our website (such as clicking on buttons or links), then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/). And as an alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/).
+
+
+
+Guzzle also allows me to log-in to the WP site, so I can execute tests logged-in as the "admin" or "writer" and test that the Access Control works well
+The key is to use a cookie bag, so that after logging in the first request, all cookies are kept, and when the second request is sent the server has the user authenticated.
+Link to code
 
 
       Talk about `composer reset-db` and others
@@ -156,14 +195,7 @@ And I can still use Guzzle, to retrieve the response headers
 If it did so, my plugin works well. Otherwise, I need to worry about some problem.
 That's why Guzzle is a good tool for my use case. If I had a different use case, such as testing user interactions, I'd need a different tool (such as Codeception (https://codeception.com/))
 
-Another useful one is using PestPHP (check out this [great guide by Denis Žoljom](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)):
 
-
-As an alternative, can also use [CodeCeption](https://codeception.com/) (the folks at [Delicious Brains wrote some great guides about it](https://deliciousbrains.com/automated-api-testing-codeception-wordpress/))
-
-Guzzle also allows me to log-in to the WP site, so I can execute tests logged-in as the "admin" or "writer" and test that the Access Control works well
-The key is to use a cookie bag, so that after logging in the first request, all cookies are kept, and when the second request is sent the server has the user authenticated.
-Link to code
 
 
 
