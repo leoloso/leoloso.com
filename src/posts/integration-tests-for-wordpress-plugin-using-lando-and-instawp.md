@@ -127,19 +127,20 @@ class WithUserLoggedInTest extends TestCase
 
   protected static function setUpWebserverRequestTests(): void
   {
-    $this->cookieJar = CookieJar::fromArray([], 'graphql-api.lndo.site');
+    $webserverDomain = getenv('INTEGRATION_TESTS_WEBSERVER_DOMAIN');
+    $this->cookieJar = CookieJar::fromArray([], $webserverDomain);
     $this->client = new Client(['cookies' => true]);
     
     // Log the user into WordPress, and store the cookies under `$this->cookieJar`
     $response = $this->client->request(
       'POST',
-      'https://graphql-api.lndo.site/wp-login.php',
+      'https://' . $webserverDomain . '/wp-login.php',
       [
         'cookies' => $this->cookieJar,
         // Pass the user credentials
         'form_params' => [
-          'log' => 'admin',
-          'pwd' => 'password',
+          'log' => getenv('INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_USERNAME'),
+          'pwd' => getenv('INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_PASSWORD'),
         ],
       ]
     );
@@ -162,6 +163,23 @@ class WithUserLoggedInTest extends TestCase
 
   // ...
 }
+```
+
+Please notice how I do not hardcode the webserver domain `"graphql-api.lndo.site"`, but instead retrieve it via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). This env var is defined in file `phpunit.xml.dist` ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit>
+  <php>
+    <env name="INTEGRATION_TESTS_WEBSERVER_DOMAIN" value="graphql-api.lndo.site"/>
+  </php>
+</phpunit>
+```
+
+But now, I can execute the integration tests against a different webserver, just by passing the new domain via the environment variable. For instance, once I have the InstaWP instance URL, I can execute the integration tests by doing:
+
+```bash
+INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz vendor/bin/phpunit --filter=Integration
 ```
 
 This stack works well in my case because my plugin is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
