@@ -244,6 +244,10 @@ If I ever decided to test this or other similar concerns, then I'd consider intr
 
 Pre-creating mock data using WXR export files
 
+Needed because I need to test: { posts { id } } and the 3 results must always be the same, so I need to strictly control the DB. Nothing less or more than what I need.
+
+So to normalize this behavior and data I use wp-cli, of course.
+
   
   Creating seed data in Lando for the webserver testing
     And/or using wp-cli?
