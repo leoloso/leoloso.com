@@ -132,7 +132,13 @@ And then I assert that the response matches its expectation:
 }
 ```
 
-This works well in my case, since I'm testing a request/response cycle for an API. But for other use cases, this stack will not be the most suitable. For instance, if we need to test the results of users interacting with our website (such as clicking on buttons or links), then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/). And as an alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/).
+I've placed all integration tests under a `Integration` folder, so to run my integration tests I just execute:
+
+```bash
+vendor/bin/phpunit --filter=Integration
+```
+
+This works well in my case, which involves testing a request/response cycle for an API. But for other use cases, this stack will not be the most suitable. For instance, if we need to test the results of users interacting with our website (such as clicking on buttons or links), then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/). And as an alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/).
 
 
 
