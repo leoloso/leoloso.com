@@ -45,10 +45,61 @@ In this blog post I'll explain how I've achieved this for my WordPress plugin, t
 
 > **Heads up!** I am less than 2 weeks away from releasing version `0.9` of the GraphQL API plugin (after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀). If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
+## 1. Running Integration Tests on the PHP source code (on my development computer) on PHP 8.1
 
-## 1. Running Integration Tests on the PHP source code (on my development computer)
+This is the stack I'm using:
+
+- Lando
+- [XDebug](https://xdebug.org/)
+- Monorepo
+- [Guzzle](https://github.com/guzzle/guzzle)
+- [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
+- [Composer](https://getcomposer.org/)
+- [WP-CLI](https://wp-cli.org/)
+- The WordPress export tool
+
+I'll explain why and how I'm using each of these, and point to the appropriate files on my repo.
+
+The Lando websever is hosted under [`webservers/graphql-api-for-wp`](https://github.com/leoloso/PoP/tree/master/webservers/graphql-api-for-wp), and it has [this configuration](https://github.com/leoloso/PoP/blob/master/webservers/graphql-api-for-wp/.lando.yml):
+
+```yaml
+name: graphql-api
+recipe: wordpress
+config:
+  webroot: wordpress
+  php: '8.1'
+  config:
+    php: ../shared/config/php.ini
+  xdebug: true
+services:
+  appserver:
+    overrides:
+      environment:
+        XDEBUG_MODE: ''
+      volumes:
+        - >-
+          ../../layers/GraphQLAPIForWP/phpunit-plugins/graphql-api-for-wp-testing:/app/wordpress/wp-content/plugins/graphql-api-testing
+        - >-
+          ../../layers/GraphQLAPIForWP/plugins/extension-demo:/app/wordpress/wp-content/plugins/graphql-api-extension-demo
+        - >-
+          ../../layers/GraphQLAPIForWP/plugins/graphql-api-for-wp:/app/wordpress/wp-content/plugins/graphql-api
+        - >-
+          ../../layers/API/packages/api-clients:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-clients
+env_file:
+  - defaults.env
+  - defaults.local.env
+```
+
+The noteworthy elements here are the following:
+
+- The common PHP configuration across all Lando webservers, under `shared/config/php.ini`, is defined once and referenced by all of them
+- XDebug is enabled, but inactive by default; it is executed only when passing environment variable `XDEBUG_TRIGGER=1` (eg: executing bash `$ XDEBUG_TRIGGER=1 vendor/bin/phpunit` )
+- The plugin code is mapped to its source code via `services > appserver > overrides > volumes`, so that modifying the code has the change reflected immediately in the webserver.
+- Two files define environment variables, but while `defaults.env` is commited to the repo, `defaults.local.env` is `.gitignore`d, so the latter contains my personal access tokens.
 
 
+      Talk about `composer reset-db` and others
+      Also `composer integration-test`
 
 ## 2. Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
 
