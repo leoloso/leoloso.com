@@ -165,7 +165,7 @@ class WithUserLoggedInTest extends TestCase
 }
 ```
 
-Please notice how I do not hardcode the webserver domain `"graphql-api.lndo.site"`, but instead retrieve it via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). Thess env vars are defined in file `phpunit.xml.dist` with the config for my Lando development webserver ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
+Please notice how the webserver domain `"graphql-api.lndo.site"` is not hardcoded, but is instead retrieved via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). These env vars are defined in file `phpunit.xml.dist` with the config for the Lando development webserver ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -178,7 +178,7 @@ Please notice how I do not hardcode the webserver domain `"graphql-api.lndo.site
 </phpunit>
 ```
 
-But now, I can execute the integration tests against a different webserver very easily, and without the need to modify any config file. For instance, once I have the InstaWP instance URL and admin credentials, I can execute the integration tests by doing:
+But now, I can also execute the integration tests against any of the other webservers very easily, and without having to modify any config file. For instance, once I have the InstaWP instance URL and admin credentials, I can execute the integration tests by doing:
 
 ```bash
 $ INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz \
