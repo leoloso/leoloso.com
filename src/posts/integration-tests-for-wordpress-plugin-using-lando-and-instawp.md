@@ -57,7 +57,7 @@ This is the stack I'm using:
 - [WP-CLI](https://wp-cli.org/)
 - The WordPress export tool
 
-I'll explain why and how I'm using these, and point to the appropriate files on my repo.
+I'll explain why and how I'm using these, and point to the appropriate source files on the repo.
 
 ### Lando
 
@@ -95,9 +95,9 @@ The noteworthy elements here are the following:
 
 - The local webserver will be available under `https://graphql-api.lndo.site`
 - The common PHP configuration across all Lando webservers, under `shared/config/php.ini`, is defined once and referenced by all of them
-- XDebug is enabled, but inactive by default; it is executed only when passing environment variable `XDEBUG_TRIGGER=1` (eg: executing bash `$ XDEBUG_TRIGGER=1 vendor/bin/phpunit` )
+- XDebug is enabled, but inactive by default; it is executed only when passing environment variable `XDEBUG_TRIGGER=1` (eg: executing command `XDEBUG_TRIGGER=1 vendor/bin/phpunit` )
 - Two files define environment variables, but while `defaults.env` is commited to the repo, `defaults.local.env` is `.gitignore`d, so the latter contains my personal access tokens.
-- The plugin code is mapped to its source code via `services > appserver > overrides > volumes`, so that modifying the code has the change reflected immediately in the webserver.
+- The plugin code is mapped to its source code via `services > appserver > overrides > volumes`, so that changes to the source files are reflected immediately in the application in the webserver.
 
 The last item is a deal breaker for me, because [the plugin's code is distributed into a multitude of independent packages](https://graphql-api.com/blog/why-to-support-cms-agnosticism-the-graphql-api-split-to-around-90-packages/), which are managed via Composer. When running `composer install` to install the plugin, all these packages would be normally copied under the `vendor/` folder, breaking the connection between source code and code deployed to the webserver. Thanks to volume overrides, Lando will read the source files instead. (I used other webservers, including [Local](https://getflywheel.com/design-and-wordpress-resources/toolbox/local-by-flywheel/) and [wp-env](https://www.npmjs.com/package/@wordpress/env), and I believe none of them offers this feature.)
 
@@ -108,7 +108,7 @@ Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular
 1. Execute a PHPUnit test, that uses Guzzle to send an HTTP request to the Lando webserver
 2. Have the PHPUnit test analyze if the response is the expected one
 
-This works for my plugin because it is a GraphQL server, so that interacting with the webserver via HTTP requests can demonstrate if the plugin works as expected.
+This works for my plugin because it is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
 
 For instance, I send a GraphQL query to the single endpoint:
 
@@ -120,7 +120,7 @@ For instance, I send a GraphQL query to the single endpoint:
 }
 ```
 
-And then I assert that the response matches its expectation:
+And then I assert that the response matches the expectation:
 
 ```json
 {
@@ -137,48 +137,48 @@ Guzzle also supports logging the user in and keeping the state throughout the te
 ```php
 class WithUserLoggedInTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
-    {
-        parent::setUpBeforeClass();
-        static::setUpWebserverRequestTests();
+  public static function setUpBeforeClass(): void
+  {
+    parent::setUpBeforeClass();
+    static::setUpWebserverRequestTests();
+  }
+
+  protected static function setUpWebserverRequestTests(): void
+  {
+    $this->cookieJar = CookieJar::fromArray([], 'graphql-api.lndo.site');
+    $this->client = new Client(['cookies' => true]);
+    
+    // Log the user into WordPress, and store the cookies under `$this->cookieJar`
+    $response = $this->client->request(
+      'POST',
+      'https://graphql-api.lndo.site/wp-login.php',
+      [
+        'cookies' => $this->cookieJar,
+        // Pass the user credentials
+        'form_params' => [
+          'log' => 'admin',
+          'pwd' => 'password',
+        ],
+      ]
+    );
+
+    // Make sure the user was authenticated
+    if (!static::validateUserAuthenticationSuccess()) {
+      throw new RuntimeException('Authentication of the admin user did not succeed');
     }
+  }
 
-    protected static function setUpWebserverRequestTests(): void
-    {
-        $this->cookieJar = CookieJar::fromArray([], 'graphql-api.lndo.site');
-        $this->client = new Client(['cookies' => true]);
-        
-        // Log the user into WordPress, and store the cookies under `$this->cookieJar`
-        $response = $this->client->request(
-            'POST',
-            'https://graphql-api.lndo.site/wp-login.php',
-            [
-                'cookies' => $this->cookieJar,
-                // Pass the user credentials
-                'form_params' => [
-                    'log' => 'admin',
-                    'pwd' => 'password',
-                ],
-            ]
-        );
-
-        // Make sure the user was authenticated
-        if (!static::validateUserAuthenticationSuccess()) {
-            throw new RuntimeException('Authentication of the admin user did not succeed');
-        }
+  protected static function validateUserAuthenticationSuccess(): bool
+  {
+    foreach ($this->cookieJar->getIterator() as $cookie) {
+      if (str_starts_with($cookie->getName(), 'wordpress_logged_in_')) {
+        return true;
+      }
     }
+    return false;
+  }
 
-    protected static function validateUserAuthenticationSuccess(): bool
-    {
-        foreach ($this->cookieJar->getIterator() as $cookie) {
-            if (str_starts_with($cookie->getName(), 'wordpress_logged_in_')) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // ...
+  // ...
 }
 ```
 
