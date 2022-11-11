@@ -12,26 +12,34 @@ tags:
   - testing
 ---
 
-I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin. InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance, and we can use templates to have the WordPress site pre-loaded with data, and with a specific configuration of PHP and WordPress. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other Continuous Integration tool) before merging a Pull Request.
+I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin.
 
-Preparing a new InstaWP instance in my case takes around 3 minutes (since my plugin weighs 8.4 mb, and its downloading and installation takes a bit of time), and only then I can start executing the integration tests. Hence, while InstaWP is ideal for collaborating with team members on the repo, I wouldn't want to wait this time while developing the plugin on my laptop computer.
+InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance, and we can use templates to have the WordPress site pre-loaded with data, and with a specific configuration of PHP and WordPress. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other Continuous Integration tool) before merging a Pull Request.
 
-During development, instead, I execute the integration tests against a local webserver provided via [Lando](https://github.com/lando/lando/), a Docker-based local tool to create projects on any language and technology, with pre-defined recipes for easily launching several of the most common stacks, including WordPress. Building a Lando server will take over 5 minutes but, once created, I can start the same instance again in just a few seconds. I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have ready the same development environment.
+Preparing a new InstaWP instance with my plugin installed and activated takes around 3 minutes (since my plugin weighs 8.4 mb, and its downloading and installation slows down the process), and only then I can start executing the integration tests.
 
-There are 2 different things to integration test:
+Hence, while InstaWP is ideal to collaborate on the repo, as to make sure that a team member's code works as expected, I wouldn't want to wait this time while I'm just working on my own.
+
+For this reason, I also execute the integration tests against a local webserver provided via [Lando](https://github.com/lando/lando/), a Docker-based local tool to create projects using any language and technology, with pre-defined recipes for easily launching several of the most common stacks (including WordPress).
+Building a Lando server with my plugin's requirements will take over 5 minutes but, once created, I can start the same instance again in just a few seconds.
+
+I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have the same development environment ready.
+
+There are 2 different things that I need to test:
 
 - The plugin's source code
 - The generated WordPress .zip file
 
 This is because the code in these 2 sets is different:
 
-- Files not needed for production are removed from the .zip plugin, such as the JS source code for the editor blocks (shipping their `build` folder is already enough)
-- Composer dependencies are compiled for PROD, so we must make sure no code under `tests` is being referenced.
+- Files not needed for production are removed from the .zip plugin, such as the JS source code for the WP editor blocks (shipping their `build` folder is already enough)
+- Composer dependencies must be installed and shipped within the .zip plugin.
+- These dependencies are those for PROD only, so we must make sure no code under `tests` is being referenced.
 
 And in my plugin's case, there are a few additional differences:
 
 - The source code is coded using PHP 8.1
-- The .zip file is generated as a GitHub Actions artifact and, in the process, the source code is [transpiled to PHP 7.1](https://graphql-api.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/) and [scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)
+- The .zip file is generated as a GitHub Actions artifact and, in the process, the source code is [transpiled down to PHP 7.1](https://graphql-api.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/) and [scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)
 
 Putting it all together, I run my integration tests in three different combinations:
 
@@ -45,7 +53,7 @@ In this blog post I'll explain how I've achieved this for my WordPress plugin, t
 
 > **Heads up!** I am less than 2 weeks away from releasing version `0.9` of the GraphQL API plugin (after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀). If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
-## 1. Running Integration Tests on the PHP source code (on my development computer) on PHP 8.1
+## 1st: Running Integration Tests on the PHP source code (on my development computer)
 
 This is the stack I'm using:
 
@@ -53,9 +61,9 @@ This is the stack I'm using:
 - [XDebug](https://xdebug.org/)
 - [Guzzle](https://github.com/guzzle/guzzle)
 - [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
-- [Composer](https://getcomposer.org/)
 - [WP-CLI](https://wp-cli.org/)
 - The WordPress export tool
+- [Composer](https://getcomposer.org/)
 
 I'll explain why and how I'm using these, and point to the appropriate source files on the repo.
 
@@ -224,20 +232,20 @@ These are some of the use cases I'm currently testing (there are a few others):
 
 I don't expect this stack to be always suitable. For instance, to assert that the response is appropriate after the user clicks on a link or submits a form, then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/)). As alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
+### WP-CLI and the WordPress export tool
+
+...
+
 ### Composer
 
 Talk about `composer reset-db` and others
 Also `composer integration-test`
 
-### WP-CLI and the WordPress export tool
+## 2nd: Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
 
 ...
 
-## 2. Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
-
-
-
-## 3. Using InstaWP and GitHub Actions to run Integration Tests on the generated .zip WP plugin (before merging the PR)
+## 3rd: Using InstaWP and GitHub Actions to run Integration Tests on the generated .zip WP plugin (before merging the PR)
 
 
 ## Wrapping up
