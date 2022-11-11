@@ -12,38 +12,38 @@ tags:
   - testing
 ---
 
-I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin for WordPress. InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance, and we can use templates to have the WordPress site pre-loaded with data, and with a specific configuration of PHP and WordPress. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other Continuous Integration tool) before merging a Pull Request.
+I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin. InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance, and we can use templates to have the WordPress site pre-loaded with data, and with a specific configuration of PHP and WordPress. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other Continuous Integration tool) before merging a Pull Request.
 
 Preparing a new InstaWP instance in my case takes around 3 minutes (since my plugin weighs 8.4 mb, and its downloading and installation takes a bit of time), and only then I can start executing the integration tests. Hence, while InstaWP is ideal for collaborating with team members on the repo, I wouldn't want to wait this time while developing the plugin on my laptop computer.
 
 During development, instead, I execute the integration tests against a local webserver provided via [Lando](https://github.com/lando/lando/), a Docker-based local tool to create projects on any language and technology, with pre-defined recipes for easily launching several of the most common stacks, including WordPress. Building a Lando server will take over 5 minutes but, once created, I can start the same instance again in just a few seconds. I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have ready the same development environment.
 
-In addition, there are 2 different things to integration test:
+There are 2 different things to integration test:
 
 - The plugin's source code
 - The generated WordPress .zip file
 
 This is because the code in these 2 sets is different:
 
-- Files not needed for production are removed from the .zip plugin, such as the source code for the editor blocks (shipping their `build` folder is already enough)
+- Files not needed for production are removed from the .zip plugin, such as the JS source code for the editor blocks (shipping their `build` folder is already enough)
 - Composer dependencies are compiled for PROD, so we must make sure no code under `tests` is being referenced.
 
-And in my plugin's case, there are several additional differences:
+And in my plugin's case, there are a few additional differences:
 
 - The source code is coded using PHP 8.1
 - The .zip file is generated as a GitHub Actions artifact and, in the process, the source code is [transpiled to PHP 7.1](https://graphql-api.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/) and [scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)
 
 Putting it all together, I run my integration tests in three different combinations:
 
-1. On the PHP source code while developing the plugin, using Lando
-2. On the generated .zip plugin while developing the plugin, using Lando (this is kind of optional)
-3. On the generated .zip plugin before merging the PR in GitHub Actions, using InstaWP
+1. On the PHP source code while developing the plugin, using Lando and PHP 8.1
+2. On the generated .zip plugin once I think the new feature is ready, using Lando and PHP 7.1
+3. On the generated .zip plugin before merging the PR in GitHub Actions, using InstaWP and a matrix of PHP/WP configurations
 
-Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs!**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
+Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
 
-In this blog post I'll explain how I've achieved this for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), and many tips I've stumbled upon along the way.
+In this blog post I'll explain how I've achieved this for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), and share a few tips that have helped me.
 
-> **Heads up!** I am barely days away from releasing version `0.9` of the plugin (after _16 months of work_, involving _over 1000 PRs_ and _14700 commits_ 🙀). If you'd like to be notified of the new release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
+> **Heads up!** I am less than 2 weeks away from releasing version `0.9` of the GraphQL API plugin (after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀). If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
 
 ## 1. Running Integration Tests on the PHP source code (on my development computer)
