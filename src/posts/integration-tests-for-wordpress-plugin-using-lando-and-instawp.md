@@ -187,7 +187,7 @@ $ INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz \
   vendor/bin/phpunit --filter=Integration
 ```
 
-This stack works well in my case because my plugin is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
+This stack works quite well for me because my plugin is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
 
 For instance, I send a GraphQL query to the single endpoint:
 
