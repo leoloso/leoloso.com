@@ -12,7 +12,7 @@ tags:
   - testing
 ---
 
-I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin for WordPress. InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance. It provides a brilliant way to test against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other CI tool).
+I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin for WordPress. InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions or any other Continuous Integration tool.
 
 
 
