@@ -138,7 +138,15 @@ I've placed all integration tests under a `Integration` folder, so to run my int
 vendor/bin/phpunit --filter=Integration
 ```
 
-This works well in my case, which involves testing a request/response cycle for an API. But for other use cases, this stack will not be the most suitable. For instance, if we need to test the results of users interacting with our website (such as clicking on buttons or links), then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/). And as an alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/).
+This stack works well to test the main use cases for my plugin:
+
+- A request/response cycle for an API
+- Enabling/Disabling a 3rd-party plugin or extension via the WP REST API, and then re-analyzing the response from the API
+- Enabling/Disabling a client (such as the GraphiQL client), and checking if its URL returns a 200 or 404 status code.
+- Logging different users in, with different roles, and checking how the response is affected by the appropriate access control permissions
+- Accessing persisted queries and checking the `Cache-Control` headers
+
+For other use cases, this stack will not be the most suitable. For instance, to check that the response is appropriate after the user clicks on a link or submits a form, then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/)). As alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
 
 
