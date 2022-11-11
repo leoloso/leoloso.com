@@ -199,14 +199,16 @@ These are some of the use cases I'm currently testing (there are a few others):
 - Executing the query via `GET` or `POST` ([example test](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/PassQueryViaURLParamQueryExecutionFixtureWebserverRequestTest.php))
 - Passing URL parameters to persisted queries ([example test](https://github.com/leoloso/PoP/blob/master/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/PersistedQueryFixtureWebserverRequestTest.php))
 
-For other use cases, this stack will not be the most suitable. For instance, to check that the response is appropriate after the user clicks on a link or submits a form, then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/)). As alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
+I don't expect this stack to be always suitable. For instance, to assert that the response is appropriate after the user clicks on a link or submits a form, then [CodeCeption](https://codeception.com/) is a better option (as explained [in this guide](https://deliciousbrains.com/automated-testing-woocommerce/)). As alternative to PHPUnit, we can also use [Pest](https://pestphp.com/) (here is [a guide on using Pest with WordPress](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
+### Composer
 
+Talk about `composer reset-db` and others
+Also `composer integration-test`
 
+### WP-CLI and the WordPress export tool
 
-
-      Talk about `composer reset-db` and others
-      Also `composer integration-test`
+...
 
 ## 2. Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
 
