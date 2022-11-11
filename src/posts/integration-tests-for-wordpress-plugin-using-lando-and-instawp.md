@@ -132,6 +132,56 @@ And then I assert that the response matches its expectation:
 }
 ```
 
+Guzzle also supports logging the user in and keeping the state throughout the tests. I can then assert that the response is different for users with the "admin" or "contributor" roles. This is accomplished by using a "cookie jar", and sending a first HTTP request to log the user in, before executing the tests ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/webserver-requests/tests/AbstractWebserverRequestTestCase.php#L39)):
+
+```php
+class WithUserLoggedInTest extends TestCase
+{
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+        static::setUpWebserverRequestTests();
+    }
+
+    protected static function setUpWebserverRequestTests(): void
+    {
+        $this->cookieJar = CookieJar::fromArray([], 'graphql-api.lndo.site');
+        $this->client = new Client(['cookies' => true]);
+        
+        // Log the user into WordPress, and store the cookies under `$this->cookieJar`
+        $response = $this->client->request(
+            'POST',
+            'https://graphql-api.lndo.site/wp-login.php',
+            [
+                'cookies' => $this->cookieJar,
+                // Pass the user credentials
+                'form_params' => [
+                    'log' => 'admin',
+                    'pwd' => 'password',
+                ],
+            ]
+        );
+
+        // Make sure the user was authenticated
+        if (!static::validateUserAuthenticationSuccess()) {
+            throw new RuntimeException('Authentication of the admin user did not succeed');
+        }
+    }
+
+    protected static function validateUserAuthenticationSuccess(): bool
+    {
+        foreach ($this->cookieJar->getIterator() as $cookie) {
+            if (str_starts_with($cookie->getName(), 'wordpress_logged_in_')) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // ...
+}
+```
+
 I've placed all integration tests under a `Integration` folder, so to run my integration tests I just execute:
 
 ```bash
@@ -153,9 +203,6 @@ For other use cases, this stack will not be the most suitable. For instance, to 
 
 
 
-Guzzle also allows me to log-in to the WP site, so I can execute tests logged-in as the "admin" or "writer" and test that the Access Control works well
-The key is to use a cookie bag, so that after logging in the first request, all cookies are kept, and when the second request is sent the server has the user authenticated.
-Link to code
 
 
       Talk about `composer reset-db` and others
