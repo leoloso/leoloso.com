@@ -103,7 +103,7 @@ services:
           ../../layers/API/packages/api-endpoints:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints
 ```
 
-The noteworthy elements here are the following:
+The noteworthy elements here are:
 
 - The local webserver will be available under `https://graphql-api.lndo.site`
 - The common PHP configuration across all Lando webservers, under `shared/config/php.ini`, is defined once and referenced by all of them
