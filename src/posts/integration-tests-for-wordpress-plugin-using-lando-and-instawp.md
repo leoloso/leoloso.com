@@ -165,21 +165,26 @@ class WithUserLoggedInTest extends TestCase
 }
 ```
 
-Please notice how I do not hardcode the webserver domain `"graphql-api.lndo.site"`, but instead retrieve it via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). This env var is defined in file `phpunit.xml.dist` ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
+Please notice how I do not hardcode the webserver domain `"graphql-api.lndo.site"`, but instead retrieve it via the environment variable `INTEGRATION_TESTS_WEBSERVER_DOMAIN` (and same for the username and password). Thess env vars are defined in file `phpunit.xml.dist` with the config for my Lando development webserver ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/phpunit.xml.dist)):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit>
   <php>
     <env name="INTEGRATION_TESTS_WEBSERVER_DOMAIN" value="graphql-api.lndo.site"/>
+    <env name="INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_USERNAME" value="admin"/>
+    <env name="INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_PASSWORD" value="admin"/>
   </php>
 </phpunit>
 ```
 
-But now, I can execute the integration tests against a different webserver, just by passing the new domain via the environment variable. For instance, once I have the InstaWP instance URL, I can execute the integration tests by doing:
+But now, I can execute the integration tests against a different webserver very easily, and without the need to modify any config file. For instance, once I have the InstaWP instance URL and admin credentials, I can execute the integration tests by doing:
 
 ```bash
-INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz vendor/bin/phpunit --filter=Integration
+$ INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz \
+  INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_USERNAME=adminPorulito \
+  INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_PASSWORD=fP816b42dVohEWYe \
+  vendor/bin/phpunit --filter=Integration
 ```
 
 This stack works well in my case because my plugin is a GraphQL server, so that interacting with the webserver via HTTP requests can already demonstrate if the plugin works as expected.
