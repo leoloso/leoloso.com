@@ -142,7 +142,7 @@ This stack works well to test the main use cases for my plugin:
 
 - A request/response cycle for an API
 - Enabling/Disabling a 3rd-party plugin or extension via the WP REST API, and then re-analyzing the response from the API
-- Enabling/Disabling a client (such as the GraphiQL client), and checking if its URL returns a 200 or 404 status code.
+- Enabling/Disabling a client (such as the GraphiQL client) and checking if it returns a 200 or 404 status code
 - Logging different users in, with different roles, and checking how the response is affected by the appropriate access control permissions
 - Accessing persisted queries and checking the `Cache-Control` headers
 
