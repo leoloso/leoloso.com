@@ -240,6 +240,55 @@ If I ever decided to test this or other similar concerns, then I'd consider intr
 
 ### WP-CLI and the WordPress export tool
 
+Using WP-CLI is pretty much mandatory, as it provides several desired objectives:
+
+- The automation of seeding data into the WordPress site
+- Using a fixed set of data, always the same one for all environments
+
+I am testing that the execution of a GraphQL query matches some expected response, and this response will depend directly on the data stored in the WordPress site. For instance, when I execute [this query](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-enable-disable-modules/graphqlapi_graphqlapi/schema-posts.gql):
+
+```graphql
+{
+  posts(pagination: { limit: 3 }) {
+    id
+    title
+  }
+}
+```
+
+The response from the API, whether executed against any of the local Lando webservers or the InstaWP instance, [must be](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-enable-disable-modules/graphqlapi_graphqlapi/schema-posts:enabled.json):
+
+```json
+{
+    "data": {
+        "posts": [
+            {
+                "id": 1,
+                "title": "Hello world!"
+            },
+            {
+                "id": 28,
+                "title": "HTTP caching improves performance"
+            },
+            {
+                "id": 25,
+                "title": "Public or Private API mode, for extra security"
+            }
+        ]
+    }
+}
+```
+
+To manage this dataset, I am using the WordPress export tool to generate file [`graphql-api-data.xml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/assets/graphql-api-data.xml) containing the minimal set of data that I want to test. This is very practical as I can then use the WordPress editor to create the data (which for my plugin mainly comes from a handful of CPTs), and the resulting WXR data file will be commited to the repo.
+
+Then I use WP-CLI to import it into the Lando webserver ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/import-data.sh)):
+
+```bash
+wp import /app/assets/graphql-api-data.xml --authors=create --path=/app/wordpress
+```
+
+This is po
+
 ...
 
 Pre-creating mock data using WXR export files
