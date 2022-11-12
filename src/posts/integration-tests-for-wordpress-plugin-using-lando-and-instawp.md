@@ -188,12 +188,12 @@ Please notice that the webserver domain `"graphql-api.lndo.site"` is not hardcod
 </phpunit>
 ```
 
-But now, I can also execute the integration tests against any of the other webservers very easily, and without having to modify any config file. For instance, once I have the InstaWP instance URL and admin credentials, I can execute the integration tests by doing:
+But now, I can also execute the integration tests against any of the other webservers without having to modify any config file. To switch to InstaWP, I can execute the integration tests by doing:
 
 ```bash
-$ INTEGRATION_TESTS_WEBSERVER_DOMAIN=bobo-green-star.instawp.xyz \
-  INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_USERNAME=adminPorulito \
-  INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_PASSWORD=fP816b42dVohEWYe \
+$ INTEGRATION_TESTS_WEBSERVER_DOMAIN=${INSTAWP_INSTANCE_URL} \
+  INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_USERNAME=${INSTAWP_ADMIN_USERNAME} \
+  INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_PASSWORD=${INSTAWP_ADMIN_PASSWORD} \
   vendor/bin/phpunit --filter=Integration
 ```
 
