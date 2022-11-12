@@ -380,6 +380,8 @@ The stack is the same as before, but replacing Lando with InstaWP, and with thes
 - [GitHub Actions](https://github.com/features/actions)
 - [nightly.link](https://nightly.link/)
 
+### WP-CLI and InstaWP
+
 Concerning the seeding of data into the WordPress site, InstaWP offers access to SSH, and consequently to WP-CLI, only [at the Pro tier](https://instawp.com/pricing/). As I'm still on the free tier, I'm currently editing my InstaWP templates (which are snapshots of WP sites containing all data and server configuration) manually:
 
 - Using the WordPress import tool to seed the data from `graphql-api-data.xml`
@@ -388,12 +390,14 @@ Concerning the seeding of data into the WordPress site, InstaWP offers access to
 
 This is not ideal, as it limits my ability to automate the whole process. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not so painful. (I plan to upgrade to a paid plan, but I still don't know if I need all the power from the Pro tier, which is more expensive than the Personal tier.)
 
+### GitHub Actions
+
 The WordPress .zip plugin is generated as an artifact by GitHub Actions when opening a PR, via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml).
 
 Once this workflow is completed, workflow [`integration_tests.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/integration_tests.yml) is triggered, and will perform these actions:
 
 - Obtain the URLs of the generated artifacts (for `graphql-api.zip` and `graphql-api-testing.zip`)
-- Generate a URL to access the artifacts via nightly.link
+- Generate a URL to access the artifacts via nightly.link (explained in next section)
 - Launch a matrix of GitHub Action runners
 - Each runner will launch an InstaWP instance, spinning it from a pre-defined template that uses some specific combination WP and PHP
 - Install the generated artifacts in the WordPress site (via param `ARTIFACT_URL`)
@@ -493,7 +497,13 @@ jobs:
           INSTAWP_ACTION: destroy-site
 ```
 
-[GitHub Actions only accepts authorized requests to download artifacts](https://github.com/actions/upload-artifact/issues/51) (even when the artifact is public), so the InstaWP service would need to be logged-in to GitHub to retrieve the artifact. To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
+### nightly.link
+
+[GitHub Actions only accepts authorized requests to download artifacts](https://github.com/actions/upload-artifact/issues/51) (even when the artifact is public), so the InstaWP service would need to be logged-in to GitHub to retrieve the artifact.
+
+To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
+
+
 
 More ideas:
   Matrix with different configs of php/wp, but then can't use free account
