@@ -129,7 +129,7 @@ Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular
 
 ![PHPUnit + Guzzle Architecture](/images/resources/integration-test-architecture.png)
 
-In addition, the PHPUnit test can invoke WP REST API endpoints on the webserver (once again, via Guzzle) before and after running the tests, as to change some configuration on the plugin, or enable or disable some module, and assert that those modifications work as expected.
+In addition, the PHPUnit test can invoke WP REST API endpoints on the webserver (once again, via Guzzle) before and after running the tests, as to change some configuration on the plugin (such as with [this endpoint](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-plugins/graphql-api-for-wp-testing/src/RESTAPI/Controllers/ModuleSettingsAdminRESTController.php)), or enable or disable some module, and assert that those modifications work as expected.
 
 ![PHPUnit + Guzzle + WP REST API Architecture](/images/resources/integration-test-architecture-with-rest.png)
 
@@ -380,7 +380,7 @@ Using a monorepo is extremely useful to host the code because I'm actually build
 - `graphql-api.zip`
 - `graphql-api-testing.zip`
 
-In the previous section I explained that I test the plugin before and after applying some configuration, with the configuration being updated by invoking some dedicated WP REST API endpoint (such as [this one](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-plugins/graphql-api-for-wp-testing/src/RESTAPI/Controllers/ModuleSettingsAdminRESTController.php)).
+In the previous section I explained that I test the plugin before and after applying some configuration, with the configuration being updated by invoking some dedicated WP REST API endpoint.
 
 This REST API endpoint is needed only while testing the plugin, and I certainly don't want to ship it for production, as it could create security hazards. So this code won't be present in `graphql-api.zip`.
 
