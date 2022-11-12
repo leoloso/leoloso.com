@@ -285,9 +285,9 @@ Then I use WP-CLI to import this file into the Lando webserver ([source code](ht
 wp import /app/assets/graphql-api-data.xml --authors=create --path=/app/wordpress
 ```
 
-To trigger the execution of this command, I could have Lando execute it automatically (under `services > appserver > run` in the Lando configuration file), but I prefer to satisfy it instead as a Composer script, stored in [`composer.json`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/composer.json#L50-L57). This has the advantage that I can then invoke the script will, and that it acts as documentation of all scripts I can execute.
+To trigger the execution of this command, I could have Lando execute it automatically (under `services > appserver > run` in the Lando configuration file), but I prefer to satisfy it instead as a Composer script, stored in [`composer.json`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/composer.json#L50-L57). This has the advantage that I can then invoke the script at will, and that it acts as documentation of all scripts I can execute.
 
-For instance, script `"build-server"` builds the Lando webserver, and then invokes script `"install-site"` (which executes script [`setup.sh`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/setup.sh) with the above WP-CLI command and several other things):
+For instance, script `"build-server"` builds the Lando webserver, and then invokes script `"install-site"` which executes script [`setup.sh`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/setup.sh) with the above WP-CLI command and several other things:
 
 ```json
 {
@@ -303,7 +303,7 @@ For instance, script `"build-server"` builds the Lando webserver, and then invok
 }
 ```
 
-Now, if I run the integration test and cancel it before it is completed, it may alter the database in a way that breaks the upcoming test runs (for instance, executing the mutation `updatePost` needs to be reverted immediately after). As the local Lando webserver is a single instance, I need to regenerate the data to the original state. I could rebuild the webserver, but that takes a bit of time. Instead, I can simply reset the database via the `"reset-db"` script, and have it call `"install-site"` to re-install the WordPress site:
+If I run the integration test and cancel it before it is completed, it may alter the database in a way that breaks the upcoming test runs (for instance, executing the mutation `updatePost` needs to be reverted immediately after). When this happens, since the local Lando webserver is a permanent single instance (as opposed to InstaWP, which is created and destroyed per test run), I need to regenerate the data into the original state. I could rebuild the webserver, but that takes a bit of time. Instead, I can simply reset the database via the `"reset-db"` script, and have it call `"install-site"` to re-install the WordPress site:
 
 ```json
 {
@@ -316,7 +316,7 @@ Now, if I run the integration test and cancel it before it is completed, it may 
 }
 ```
 
-Finally, with Composer I can simplify executing the integration tests, just by running ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L555)):
+Finally, I can avoid figuring out each time how to execute the integration tests by creating a dedicated script `integration-test` in Composer ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L555)), and then just run it as:
 
 ```bash
 composer integration-test
