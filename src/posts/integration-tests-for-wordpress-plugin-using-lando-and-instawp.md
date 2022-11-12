@@ -25,6 +25,18 @@ Building a Lando server with my plugin's requirements will take over 5 minutes b
 
 I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have the same development environment ready.
 
+In this blog post I'll explain how I am running integration tests for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), using a testsuite and project configuration that works against both Lando (during local development) and InstaWP (before merging the PR), without customizing the tests for each environment.
+
+## But before we start...
+
+I am just days away from releasing version `0.9` of the GraphQL API plugin, after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀.
+
+If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) <= no spam, only announcements.)
+
+Ok, let's start now.
+
+## What must be tested
+
 There are 2 different things that I need to test:
 
 - The plugin's source code
@@ -48,10 +60,6 @@ Putting it all together, I run my integration tests in three different combinati
 3. Before merging the PR in GitHub Actions: Using the generated .zip plugin, against several InstaWP instances, each of them with a different configuration of PHP+WP
 
 Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
-
-In this blog post I'll explain how I've accomplished this for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), and share a few tips that I discovered along the way.
-
-(As a side note: I am just days away from releasing version `0.9` of the GraphQL API plugin, after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀. If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) <= no spam, only announcements.)
 
 ## 1st: Running Integration Tests on the PHP source code (on my development computer)
 
@@ -503,10 +511,10 @@ jobs:
 
 To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
 
-## That's all, folks!
+## That's all, folks
 
 I have a suite of integration tests that I can execute locally, thanks to Lando, and on GitHub Actions, thanks to InstaWP, and they provide my project with this badge of honor:
 
-
+![Integration tests passing](/images/integration-tests-passing.png)
 
 Are you integration testing your WordPress plugin? Are you doing something similar to all this? Or otherwise, how do you do it? Let me know in the comments!
