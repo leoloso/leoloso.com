@@ -17,7 +17,7 @@ I am using a couple of really great tools to execute integration tests for my Wo
 - [Lando](https://github.com/lando/lando/): a Docker-based local tool to create development environments using any language and technology
 - [InstaWP](https://instawp.com/): a sandboxing service that allows to spin a WordPress site on-demand
 
-In this blog post I'll share my strategy to leverage these tools, using a testsuite and project configuration that works against Lando (during local development) and InstaWP (before merging the PR) without customizing the tests for each environment.
+In this blog post I'll share how I'm leveraging these tools, as to have the same testsuite and project configuration work against both of them (Lando during local development, InstaWP before merging the PR) without customizing the tests for each environment.
 
 ## Why InstaWP and Lando
 
