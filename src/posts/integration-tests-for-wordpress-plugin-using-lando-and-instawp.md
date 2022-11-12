@@ -380,6 +380,14 @@ The stack is the same as before, but replacing Lando with InstaWP, and with thes
 - [GitHub Actions](https://github.com/features/actions)
 - [nightly.link](https://nightly.link/)
 
+Concerning the seeding of data into the WordPress site, InstaWP offers access to SSH, and consequently to WP-CLI, only [at the Pro tier](https://instawp.com/pricing/). As I'm still on the free tier, I'm currently editing my InstaWP templates (which are snapshots of WP sites containing all data and server configuration) manually:
+
+- Using the WordPress import tool to seed the data from `graphql-api-data.xml`
+- Updating the permalinks in the wp-admin
+- Adding needed consts to `wp-config.php` using the Code editor
+
+This is not ideal, as it limits my ability to automate the whole process. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not so painful. (I plan to upgrade to a paid plan, but I still don't know if I need all the power from the Pro tier, which is more expensive than the Personal tier.)
+
 The WordPress .zip plugin is generated as an artifact by GitHub Actions when opening a PR, via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml).
 
 Once this workflow is completed, workflow [`integration_tests.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/integration_tests.yml) is triggered, and will perform these actions:
