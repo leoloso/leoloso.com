@@ -324,11 +324,6 @@ Finally, with Composer I can simplify executing the integration tests, just by r
 composer integration-test
 ```
 
-### Composer
-
-Talk about `composer reset-db` and others
-Also `composer integration-test`
-
 ## 2nd: Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
 
 ...
