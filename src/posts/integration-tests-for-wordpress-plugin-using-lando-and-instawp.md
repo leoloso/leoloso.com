@@ -69,7 +69,7 @@ I'll explain why and how I'm using these, and point to the appropriate source fi
 
 ### Lando
 
-The Lando websever is hosted under [`webservers/graphql-api-for-wp`](https://github.com/leoloso/PoP/tree/master/webservers/graphql-api-for-wp), and it has [this configuration](https://github.com/leoloso/PoP/blob/master/webservers/graphql-api-for-wp/.lando.yml):
+The Lando websever is hosted under [`webservers/graphql-api-for-wp`](https://github.com/leoloso/PoP/blob/master/webservers/graphql-api-for-wp), and it has [this configuration](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/.lando.yml):
 
 ```yaml
 name: graphql-api
@@ -324,35 +324,35 @@ composer integration-test
 
 ## 2nd: Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
 
-The Lando websever is hosted under [`webservers/graphql-api-for-wp`](https://github.com/leoloso/PoP/tree/master/webservers/graphql-api-for-wp), and it has [this configuration](https://github.com/leoloso/PoP/blob/master/webservers/graphql-api-for-wp/.lando.yml):
+The Lando websever to run integration tests using the actual WordPress plugin is hosted under [`webservers/graphql-api-for-wp-for-prod`](https://github.com/leoloso/PoP/tree/master/webservers/graphql-api-for-wp-for-prod), and [its configuration](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp-for-prod/.lando.yml) is way simpler than the previous one:
 
 ```yaml
-name: graphql-api
+name: graphql-api-for-prod
 recipe: wordpress
 config:
   webroot: wordpress
-  php: '8.1'
-  config:
-    php: ../shared/config/php.ini
-  xdebug: true
+  php: '7.1'
+  ssl: true
 env_file:
-  - defaults.env
   - defaults.local.env
-services:
-  appserver:
-    overrides:
-      environment:
-        XDEBUG_MODE: ''
-      volumes:
-        - >-
-          ../../layers/GraphQLAPIForWP/plugins/graphql-api-for-wp:/app/wordpress/wp-content/plugins/graphql-api
-        - >-
-          ../../layers/API/packages/api-clients:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-clients
-        - >-
-          ../../layers/API/packages/api-endpoints-for-wp:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints-for-wp
-        - >-
-          ../../layers/API/packages/api-endpoints:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints
 ```
+
+In this case, the domain is `graphql-api-for-prod.lndo.site phpunit` and the PHP version is 7.1, and there's no need to enable XDebug or provide a mapping to the source code, because the objective is to actually test the code in the generated .zip plugins.
+
+To run the integration tests against this webserver, I must only provide the new domain via an env var:
+
+```bash
+$ INTEGRATION_TESTS_WEBSERVER_DOMAIN=graphql-api-for-prod.lndo.site \
+  vendor/bin/phpunit --filter='Integration'
+```
+
+And I have a Composer script too ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L560)):
+
+```bash
+composer prod-integration-test
+```
+
+The stack is the same as before, 
 
 ...
 
