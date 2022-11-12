@@ -339,9 +339,7 @@ env_file:
 
 In this case, the domain is `graphql-api-for-prod.lndo.site phpunit` and the PHP version is 7.1, and there's no need to enable XDebug or provide a mapping to the source code, because the objective is to actually test the code in the generated .zip plugins.
 
-To install the plugin, I wait for it to be built by GitHub Actions via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml), download their artifacts, and install them on the site.
-
-(I also have a more automated way, but I can tell you about it only in a few months 😉)
+To install the plugin, I open a PR in GitHub and wait for it to build the artifact, download it and install it on the site. (I also have a more automated way, but only in a few months I can tell you about it 😉)
 
 To run the integration tests against this webserver, I must only provide the new domain via an env var:
 
@@ -382,9 +380,110 @@ The stack is the same as before, but replacing Lando with InstaWP, and with thes
 - [GitHub Actions](https://github.com/features/actions)
 - [nightly.link](https://nightly.link/)
 
+The WordPress .zip plugin is generated as an artifact by GitHub Actions when opening a PR, via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml).
 
+Once this workflow is completed, workflow [`integration_tests.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/integration_tests.yml) is triggered, and will perform these actions:
 
+- Obtain the URLs of the generated artifacts (for `graphql-api.zip` and `graphql-api-testing.zip`)
+- Generate a URL to access the artifacts via nightly.link
+- Launch a matrix of GitHub Action runners
+- Each runner will launch an InstaWP instance, spinning it from a pre-defined template that uses some specific combination WP and PHP
+- Install the generated artifacts in the WordPress site (via param `ARTIFACT_URL`)
+- Wait a bit of time, to make sure the instance is ready (I'm currently guessing how much time to wait)
+- Execute the integration tests
+- Destroy the InstaWP instance
 
+This is the (shortened) workflow:
+
+```yaml
+name: Integration tests
+on:
+  workflow_run:
+    workflows: [Generate plugins]
+    types:
+      - completed
+
+jobs:
+  provide_data:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Retrieve the GitHub Action artifact URLs to install in InstaWP
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Retrieve artifact URLs from GitHub workflow
+        uses: actions/github-script@v6
+        id: artifact-url
+        with:
+          script: |
+            const allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.payload.workflow_run.id,
+            });
+            // Use Nightly Link as it allows InstaWP to access the artifacts, i.e. without having to be logged-in to GitHub
+            // @see https://nightly.link
+            // Allow installing additional plugins, set via the monorepo configuration
+            const artifactURLs = allArtifacts.data.artifacts.map((artifact) => {
+              return artifact.url.replace('https://api.github.com/repos', 'https://nightly.link') + '.zip'
+            }).concat(${{ steps.input_data.outputs.additional_integration_test_plugins }});
+            return artifactURLs.join(',');
+          result-encoding: string
+
+      - id: output_data
+        run: |
+          echo "instawp_config_entries=$(vendor/bin/monorepo-builder instawp-config-entries-json --config=config/monorepo-builder/instawp-config-entries-json.php)" >> $GITHUB_OUTPUT
+
+    outputs:
+      artifact_url: ${{ steps.artifact-url.outputs.result }}
+      instawp_config_entries: ${{ steps.output_data.outputs.instawp_config_entries }}
+
+  process:
+    name: Launch InstaWP site from template "${{ matrix.instaWPConfig.templateSlug }}" and execute integration tests against it
+    needs: provide_data
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        instaWPConfig: ${{ fromJson(needs.provide_data.outputs.instawp_config_entries) }}
+    steps:
+      - name: Create InstaWP instance
+        uses: instawp/wordpress-testing-automation@main
+        id: create-instawp
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
+          INSTAWP_TEMPLATE_SLUG: ${{ matrix.instaWPConfig.templateSlug }}
+          REPO_ID: ${{ matrix.instaWPConfig.repoID }}
+          INSTAWP_ACTION: create-site-template
+          ARTIFACT_URL: ${{ needs.provide_data.outputs.artifact_url }}
+
+      - name: Extract InstaWP domain
+        id: extract-instawp-domain        
+        run: |
+          instawp_domain="$(echo "${{ steps.create-instawp.outputs.instawp_url }}" | sed -e s#https://##)"
+          echo "instawp-domain=$(echo $instawp_domain)" >> $GITHUB_OUTPUT
+
+      - name: Sleep a bit to make sure InstaWP is ready
+        run: sleep 120s
+        shell: bash
+
+      - name: Run tests
+        run: |
+          INTEGRATION_TESTS_WEBSERVER_DOMAIN=${{ steps.extract-instawp-domain.outputs.instawp-domain }} \
+          INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_USERNAME=${{ steps.create-instawp.outputs.iwp_wp_username }} \
+          INTEGRATION_TESTS_AUTHENTICATED_ADMIN_USER_PASSWORD=${{ steps.create-instawp.outputs.iwp_wp_password }} \
+          vendor/bin/phpunit --filter=Integration
+
+      - name: Destroy InstaWP instance
+        uses: instawp/wordpress-testing-automation@main
+        id: destroy-instawp
+        if: ${{ always() }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
+          INSTAWP_TEMPLATE_SLUG: ${{ matrix.instaWPConfig.templateSlug }}
+          REPO_ID: ${{ matrix.instaWPConfig.repoID }}
+          INSTAWP_ACTION: destroy-site
+```
 
 More ideas:
   Matrix with different configs of php/wp, but then can't use free account
