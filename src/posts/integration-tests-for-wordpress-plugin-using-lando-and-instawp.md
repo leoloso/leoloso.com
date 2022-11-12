@@ -377,17 +377,13 @@ The code for these 2 plugins could be managed via 2 different repos, but that wo
 
 ## 3rd: Using InstaWP and GitHub Actions to run Integration Tests on the generated .zip WP plugin (before merging the PR)
 
-...
+The stack is the same as before, but replacing Lando with InstaWP, and with these additions:
+
+- [GitHub Actions](https://github.com/features/actions)
+- [nightly.link](https://nightly.link/)
 
 
-Stack:
-  PHPUnit
-  Guzzle
-  Monorepo
-    graphql-api-testing plugin
-  GitHub Actions
-  Nightly.link
-  InstaWP
+
 
 
 More ideas:
