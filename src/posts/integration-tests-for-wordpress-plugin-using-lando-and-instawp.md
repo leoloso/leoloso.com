@@ -503,8 +503,10 @@ jobs:
 
 To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
 
+## That's all, folks!
+
+I have a suite of integration tests that I can execute locally, thanks to Lando, and on GitHub Actions, thanks to InstaWP, and they provide my project with this badge of honor:
 
 
-## Wrapping up
 
-...
+Are you integration testing your WordPress plugin? Are you doing something similar to all this? Or otherwise, how do you do it? Let me know in the comments!
