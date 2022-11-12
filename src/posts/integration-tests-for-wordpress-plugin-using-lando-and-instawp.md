@@ -71,7 +71,7 @@ This is the stack I'm using:
 - [XDebug](https://xdebug.org/)
 - [Guzzle](https://github.com/guzzle/guzzle)
 - [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
-- WP REST API
+- [WP REST API](https://developer.wordpress.org/rest-api/)
 - [WP-CLI](https://wp-cli.org/)
 - The WordPress export tool
 - [Composer](https://getcomposer.org/)
