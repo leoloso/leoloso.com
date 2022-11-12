@@ -12,7 +12,14 @@ tags:
   - testing
 ---
 
-I am using [InstaWP](https://instawp.com/), a newish sandboxing service that allows to spin a WordPress site on-demand, to execute integration tests for my plugin.
+I am using a couple of really great tools to execute integration tests for my WordPress plugin:
+
+- [Lando](https://github.com/lando/lando/): a Docker-based local tool to create projects using any language and technology
+- [InstaWP](https://instawp.com/): a sandboxing service that allows to spin a WordPress site on-demand
+
+In this blog post I'll share my strategy to leverage these tools, using a testsuite and project configuration that works against Lando (during local development) and InstaWP (before merging the PR) without customizing the tests for each environment.
+
+## Why Lando and InstaWP
 
 InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance, and we can use templates to have the WordPress site pre-loaded with data, and with a specific configuration of PHP and WordPress. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other Continuous Integration tool) before merging a Pull Request.
 
@@ -20,14 +27,13 @@ Preparing a new InstaWP instance with my plugin installed and activated takes ar
 
 Hence, while InstaWP is ideal to collaborate on the repo, as to make sure that a team member's code works as expected, I wouldn't want to wait this time while I'm just working on my own.
 
-For this reason, I also execute the integration tests against a local webserver provided via [Lando](https://github.com/lando/lando/), a Docker-based local tool to create projects using any language and technology, with pre-defined recipes for easily launching several of the most common stacks (including WordPress).
-Building a Lando server with my plugin's requirements will take over 5 minutes but, once created, I can start the same instance again in just a few seconds.
+For this reason, I also execute the integration tests against a local webserver provided via Lando. Building a Lando server with my plugin's requirements will take over 5 minutes but, once created, I can start the same instance again in just a few seconds.
 
 I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have the same development environment ready.
 
-In this blog post I'll explain how I am running integration tests for my WordPress plugin, the [GraphQL API for WordPress](https://graphql-api.com), using a testsuite and project configuration that works against both Lando (during local development) and InstaWP (before merging the PR), without customizing the tests for each environment.
+## The code being tested
 
-## But before we start...
+My WordPress plugin is the [GraphQL API for WordPress](https://graphql-api.com)
 
 I am just days away from releasing version `0.9` of the GraphQL API plugin, after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀.
 
