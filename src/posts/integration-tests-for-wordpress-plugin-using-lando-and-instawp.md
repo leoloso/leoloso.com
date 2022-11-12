@@ -318,25 +318,11 @@ Now, if I run the integration test and cancel it before it is completed, it may 
 }
 ```
 
-...
+Finally, with Composer I can simplify executing the integration tests, just by running ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L555)):
 
-Pre-creating mock data using WXR export files
-
-Needed because I need to test: { posts { id } } and the 3 results must always be the same, so I need to strictly control the DB. Nothing less or more than what I need.
-
-So to normalize this behavior and data I use wp-cli, of course.
-
-  
-  Creating seed data in Lando for the webserver testing
-    And/or using wp-cli?
-      https://developer.wordpress.org/cli/commands/import/
-      Importing pre-created WXR file with `wp import`
-
-    # First remove the first "Hello world!" post (and "Sample Page" and "Privacy Policy" pages), to avoid duplication (it's in the dataset)
-    wp post delete $(wp post list --post_type='post,page' --format=ids --path=/app/wordpress) --force --path=/app/wordpress
-    For if we need predefined creation date
-    Same for users:
-      wp user create editor editor@test.com --role=editor --user_pass=11111111 --first_name=Editor --last_name=Smith --user_registered="1982-06-29-17-48-26" --path=/app/wordpress
+```bash
+composer integration-test
+```
 
 ### Composer
 
