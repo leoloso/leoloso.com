@@ -253,7 +253,7 @@ Using WP-CLI is pretty much mandatory, as it provides several desired objectives
 - The automation of seeding data into the WordPress site
 - Using a fixed set of data, always the same one for all environments
 
-I am testing that the execution of a GraphQL query matches some expected response, and this response will depend directly on the data stored in the WordPress site. For instance, when I execute [this query](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-enable-disable-modules/graphqlapi_graphqlapi/schema-posts.gql):
+I am testing that the execution of a GraphQL query matches some expected response, and this response will depend directly on the data stored in the WordPress site. For instance, when I execute this query ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-enable-disable-modules/graphqlapi_graphqlapi/schema-posts.gql)):
 
 ```graphql
 {
@@ -264,7 +264,7 @@ I am testing that the execution of a GraphQL query matches some expected respons
 }
 ```
 
-The response from the API, whether executed against any of the local Lando webservers or the InstaWP instance, [must be](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-enable-disable-modules/graphqlapi_graphqlapi/schema-posts:enabled.json):
+The response from the API, whether executed against any of the local Lando webservers or the InstaWP instance, must be ([source file](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-enable-disable-modules/graphqlapi_graphqlapi/schema-posts:enabled.json)):
 
 ```json
 {
