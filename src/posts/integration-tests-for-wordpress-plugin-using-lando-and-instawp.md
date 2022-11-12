@@ -238,7 +238,7 @@ This stack is not suitable for everything that can be tested. For instance, my p
 
 If I ever decided to test this or other similar concerns, then I'd consider introducing [CodeCeption](https://codeception.com/), which is better for executing and evaluating user interactions ([this guide on testing WooCommerce](https://deliciousbrains.com/automated-testing-woocommerce/) provides some good examples), and I'd also check out if [Pest](https://pestphp.com/) offers advantages over PHPUnit (as suggested in [this article on WordPress integration tests with Pest](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
-### WP-CLI and the WordPress export tool
+### WP-CLI, the WordPress export tool and Composer
 
 Using WP-CLI is pretty much mandatory, as it provides several desired objectives:
 
@@ -279,15 +279,42 @@ The response from the API, whether executed against any of the local Lando webse
 }
 ```
 
-To manage this dataset, I am using the WordPress export tool to generate file [`graphql-api-data.xml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/assets/graphql-api-data.xml) containing the minimal set of data that I want to test. This is very practical as I can then use the WordPress editor to create the data (which for my plugin mainly comes from a handful of CPTs), and the resulting WXR data file will be commited to the repo.
+To manage this dataset and update it concerning new requirements, I am using the WordPress export tool to generate the file [`graphql-api-data.xml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/assets/graphql-api-data.xml), which contains the set of data that I want to test. This method is very practical as it allows me to use the WordPress editor to create the data (which for my plugin mainly comes from a handful of CPTs), and the resulting WXR data file will be commited to the repo.
 
-Then I use WP-CLI to import it into the Lando webserver ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/import-data.sh)):
+Then I use WP-CLI to import this file into the Lando webserver ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/import-data.sh)):
 
 ```bash
 wp import /app/assets/graphql-api-data.xml --authors=create --path=/app/wordpress
 ```
 
-This is po
+To trigger the execution of this command, I could have Lando execute it automatically (under `services > appserver > run` in the Lando configuration file), but I prefer to satisfy it instead as a Composer script, stored in [`composer.json`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/composer.json#L50-L57). This has the advantage that I can then invoke the script will, and that it acts as documentation of all scripts I can execute.
+
+For instance, script `"build-server"` builds the Lando webserver, and then invokes script `"install-site"` (which executes script [`setup.sh`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/setup.sh) with the above WP-CLI command and several other things):
+
+```json
+{
+  "scripts": {
+    "build-server": [
+      "lando init --source remote --remote-url https://wordpress.org/latest.tar.gz --recipe wordpress --webroot wordpress --name graphql-api-for-prod",
+      "lando start",
+      "@install-site"
+    ],
+    "install-site": "lando composer install-site-within-container",
+    "install-site-within-container": "/bin/sh /app/setup/setup.sh"
+  }
+}
+```
+
+```json
+{
+  "scripts": {
+    "reset-db": [
+      "lando wp db reset --yes --path=wordpress",
+      "@install-site"
+    ]
+  }
+}
+```
 
 ...
 
