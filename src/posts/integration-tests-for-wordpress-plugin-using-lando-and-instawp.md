@@ -268,22 +268,22 @@ The response from the API, whether executed against any of the local Lando webse
 
 ```json
 {
-    "data": {
-        "posts": [
-            {
-                "id": 1,
-                "title": "Hello world!"
-            },
-            {
-                "id": 28,
-                "title": "HTTP caching improves performance"
-            },
-            {
-                "id": 25,
-                "title": "Public or Private API mode, for extra security"
-            }
-        ]
-    }
+  "data": {
+    "posts": [
+      {
+        "id": 1,
+        "title": "Hello world!"
+      },
+      {
+        "id": 28,
+        "title": "HTTP caching improves performance"
+      },
+      {
+        "id": 25,
+        "title": "Public or Private API mode, for extra security"
+      }
+    ]
+  }
 }
 ```
 
