@@ -485,6 +485,8 @@ jobs:
           INSTAWP_ACTION: destroy-site
 ```
 
+[GitHub Actions only accepts authorized requests to download artifacts](https://github.com/actions/upload-artifact/issues/51) (even when the artifact is public), so the InstaWP service would need to be logged-in to GitHub to retrieve the artifact. To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
+
 More ideas:
   Matrix with different configs of php/wp, but then can't use free account
   Each template receives version of php/wp at the beginning, so gotta recreate the process to populate them all
