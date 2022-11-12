@@ -108,6 +108,8 @@ services:
           ../../layers/API/packages/api-endpoints-for-wp:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints-for-wp
         - >-
           ../../layers/API/packages/api-endpoints:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints
+        # Many more mapping entries...
+        # ...
 ```
 
 The noteworthy elements here are:
