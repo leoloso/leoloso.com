@@ -339,6 +339,8 @@ env_file:
 
 In this case, the domain is `graphql-api-for-prod.lndo.site phpunit` and the PHP version is 7.1, and there's no need to enable XDebug or provide a mapping to the source code, because the objective is to actually test the code in the generated .zip plugins.
 
+To install the plugin, I wait for it to be built by GitHub Actions via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml), download their artifacts, and install them on the site.
+
 To run the integration tests against this webserver, I must only provide the new domain via an env var:
 
 ```bash
@@ -352,7 +354,26 @@ And I have a Composer script too ([source code](https://github.com/leoloso/PoP/b
 composer prod-integration-test
 ```
 
-The stack is the same as before, 
+The stack is the same one as before, but with one noteworthy addition:
+
+- Monorepo
+
+(To be clear, the monorepo is also used in the previous situation, but its raison d'être becomes more apparent in this case.)
+
+I also [use a monorepo to host the source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/docs/why-monorepo.md). This is because I'm actually building not 1 by 2 plugins (as can be seen in [a GitHub Actions run](https://github.com/leoloso/PoP/actions/runs/3443530652)):
+
+- `graphql-api.zip`
+- `graphql-api-testing.zip`
+
+In the previous section I explained that I test the plugin before and after applying some configuration, and the configuration is updated by invoking some dedicated WP REST API endpoint (such as [this one](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-plugins/graphql-api-for-wp-testing/src/RESTAPI/Controllers/ModuleSettingsAdminRESTController.php)).
+
+This REST API endpoint is needed only while testing the plugin, and I certainly don't want to ship it for production, as it could create security hazards. So this code won't be present in `graphql-api.zip`. That's why I create a second plugin `graphql-api-testing.zip`, containing all the utilities needed to test the plugin.
+
+I could have the source code for these 2 plugins in 2 different repos, but that would be nightmarish, as their code is to tightly coupled. The monorepo makes it a breeze to have all needed code in a single yet, yet be able to deploy independent plugins or packages.
+
+When I'm testing the source co
+
+
 
 ...
 
