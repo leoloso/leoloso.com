@@ -305,6 +305,8 @@ For instance, script `"build-server"` builds the Lando webserver, and then invok
 }
 ```
 
+Now, if I run the integration test and cancel it before it is completed, it may alter the database in a way that breaks the upcoming test runs (for instance, executing the mutation `updatePost` needs to be reverted immediately after). As the local Lando webserver is a single instance, I need to regenerate the data to the original state. I could rebuild the webserver, but that takes a bit of time. Instead, I can simply reset the database via the `"reset-db"` script, and have it call `"install-site"` to re-install the WordPress site:
+
 ```json
 {
   "scripts": {
