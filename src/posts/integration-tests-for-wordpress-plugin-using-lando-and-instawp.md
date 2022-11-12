@@ -341,6 +341,8 @@ In this case, the domain is `graphql-api-for-prod.lndo.site phpunit` and the PHP
 
 To install the plugin, I wait for it to be built by GitHub Actions via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml), download their artifacts, and install them on the site.
 
+(I also have a more automated way, but I can tell you about it only in a few months 😉)
+
 To run the integration tests against this webserver, I must only provide the new domain via an env var:
 
 ```bash
@@ -348,7 +350,7 @@ $ INTEGRATION_TESTS_WEBSERVER_DOMAIN=graphql-api-for-prod.lndo.site \
   vendor/bin/phpunit --filter='Integration'
 ```
 
-And I have a Composer script too ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L560)):
+Or execute it via a Composer script ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L560)):
 
 ```bash
 composer prod-integration-test
@@ -360,38 +362,18 @@ The stack is the same one as before, but with one noteworthy addition:
 
 (To be clear, the monorepo is also used in the previous situation, but its raison d'être becomes more apparent in this case.)
 
-I also [use a monorepo to host the source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/docs/why-monorepo.md). This is because I'm actually building not 1 by 2 plugins (as can be seen in [a GitHub Actions run](https://github.com/leoloso/PoP/actions/runs/3443530652)):
+Using a monorepo is extremely useful to host the code because I'm actually building not 1 but 2 plugins (as can be seen in [a GitHub Actions run](https://github.com/leoloso/PoP/actions/runs/3443530652)):
 
 - `graphql-api.zip`
 - `graphql-api-testing.zip`
 
-In the previous section I explained that I test the plugin before and after applying some configuration, and the configuration is updated by invoking some dedicated WP REST API endpoint (such as [this one](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-plugins/graphql-api-for-wp-testing/src/RESTAPI/Controllers/ModuleSettingsAdminRESTController.php)).
+In the previous section I explained that I test the plugin before and after applying some configuration, with the configuration being updated by invoking some dedicated WP REST API endpoint (such as [this one](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/layers/GraphQLAPIForWP/phpunit-plugins/graphql-api-for-wp-testing/src/RESTAPI/Controllers/ModuleSettingsAdminRESTController.php)).
 
-This REST API endpoint is needed only while testing the plugin, and I certainly don't want to ship it for production, as it could create security hazards. So this code won't be present in `graphql-api.zip`. That's why I create a second plugin `graphql-api-testing.zip`, containing all the utilities needed to test the plugin.
+This REST API endpoint is needed only while testing the plugin, and I certainly don't want to ship it for production, as it could create security hazards. So this code won't be present in `graphql-api.zip`.
 
-I could have the source code for these 2 plugins in 2 different repos, but that would be nightmarish, as their code is to tightly coupled. The monorepo makes it a breeze to have all needed code in a single yet, yet be able to deploy independent plugins or packages.
+That's why I also create a second plugin `graphql-api-testing.zip`, containing all the utilities needed to test the plugin (including the WP REST API endpoints and other helpers), which is installed in the local Lando webserver, and also in the InstaWP instance.
 
-When I'm testing the source co
-
-
-
-...
-
-
-Stack:
-  same as before, plus...
-  Monorepo
-    graphql-api-testing plugin
-    at this stage, because Testing code can still be part of the source code, but I don't want it on the final graphql-api.zip plugin!!!!
-  Talk:
-    `composer integration-test-prod`
-  From here, think of another blog post, about using:
-    "GraphQL API PRO to download GitHub artifacts"
-
-
-      Talk about creating another plugin to keep testing apart: "graphql-api-testing"
-  Talk about setting-up the REST API in the testing plugin
-    ModulesAdminRESTController
+The code for these 2 plugins could be managed via 2 different repos, but that would be nightmarish, as their code is so tightly coupled. The monorepo makes it a breeze to manage all code in a single place yet be able to chunk it into independent plugins or packages for production.
 
 ## 3rd: Using InstaWP and GitHub Actions to run Integration Tests on the generated .zip WP plugin (before merging the PR)
 
