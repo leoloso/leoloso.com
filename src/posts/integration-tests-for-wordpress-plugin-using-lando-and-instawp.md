@@ -398,7 +398,9 @@ Concerning the seeding of data into the WordPress site, InstaWP offers access to
 - Updating the permalinks in the wp-admin
 - Adding needed consts to `wp-config.php` using the Code editor
 
-This is not ideal, as it limits my ability to automate the whole process. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not so painful. (I plan to upgrade to a paid plan, but I still don't know if I need all the power from the Pro tier, which is more expensive than the Personal tier.)
+This is not ideal, as it limits my ability to automate the whole process. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not so painful.
+
+(InstaWP is great, and I plan to upgrade to one of the paid plans. But I am unsure if I need all the power from the Pro tier; otherwise, the cheaper Personal tier may be more justifiable for my current needs.)
 
 ### GitHub Actions
 
