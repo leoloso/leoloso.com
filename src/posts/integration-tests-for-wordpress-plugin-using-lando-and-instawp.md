@@ -19,7 +19,7 @@ I am using a couple of really great tools to execute integration tests for my Wo
 
 In this blog post I'll share my strategy to leverage these tools, using a testsuite and project configuration that works against Lando (during local development) and InstaWP (before merging the PR) without customizing the tests for each environment.
 
-## Why Lando and InstaWP
+## Why InstaWP and Lando
 
 InstaWP offers an API to programmatically launch the new site, install the required plugins, and then destroy the instance, and we can use templates to have the WordPress site pre-loaded with data, and with a specific configuration of PHP and WordPress. It allows us to test our themes and plugins against **an actual WordPress site**, to be conveniently invoked from GitHub Actions (or any other Continuous Integration tool) before merging a Pull Request.
 
@@ -33,13 +33,9 @@ I particularly like Lando because I can commit my plugin's required configuratio
 
 ## The code being tested
 
-My WordPress plugin is the [GraphQL API for WordPress](https://graphql-api.com)
+My WordPress plugin is the [GraphQL API for WordPress](https://graphql-api.com), and it is open source: [`leoloso/PoP`](https://github.com/leoloso/PoP).
 
-I am just days away from releasing version `0.9` of the GraphQL API plugin, after _16 months of work_, and over _1000 PRs_ from _14700 commits_ 🙀.
-
-If you'd like to be notified of the upcoming release, please [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) <= no spam, only announcements.)
-
-Ok, let's start now.
+As a side note: The latest release of the plugin is version `0.8.1`, however I am just days away (🤞) from releasing version `0.9`, after _16 months of work_ on over _1000 PRs_ from _14700 commits_ 🙀. If you'd like to be notified of this upcoming release, be welcome to [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
 ## What must be tested
 
