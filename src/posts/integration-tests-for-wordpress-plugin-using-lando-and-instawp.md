@@ -356,9 +356,9 @@ composer prod-integration-test
 
 The stack is the same one as before, but with one noteworthy addition:
 
-- Monorepo
+- Monorepo (via the [Monorepo Builder](https://github.com/symplify/monorepo-builder))
 
-(To be clear, the monorepo is also used in the previous situation, but its raison d'être becomes more apparent in this case.)
+(To be clear, the monorepo is also used in the previous situation, but its use becomes more justified in this case.)
 
 Using a monorepo is extremely useful to host the code because I'm actually building not 1 but 2 plugins (as can be seen in [a GitHub Actions run](https://github.com/leoloso/PoP/actions/runs/3443530652)):
 
@@ -504,51 +504,6 @@ jobs:
 To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
 
 
-
-More ideas:
-  Matrix with different configs of php/wp, but then can't use free account
-  Each template receives version of php/wp at the beginning, so gotta recreate the process to populate them all
-  It's easier paying and then having access to WP-CLI, but I don't
-  So I have a .xml to import data, and I gotta manually edit some files, like wp-config, and that's it
-
-Activate plugins WITHOUT the paid plan!
-Create hack around Post Deployment?
-  Have all the plugins already active in the DB from the template! hohoho
-
-Import `graphql-api-data.xml` data into the InstaWP template
-First delete all posts and pages!
-Also import PRO `graphql-api-pro-data.xml` data!
-Check "Hello world!", alright?
-
-Create workflow to execute integration tests
-  Steps:
-    - Find out artifacts URLs:
-      Use:
-        https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#using-data-from-the-triggering-workflow
-      Replace "api.github.com" with "nightly.link"
-      `matchingArtifact.url`
-        https://docs.github.com/en/rest/actions/artifacts
-      `listWorkflowRunArtifacts` in:
-        https://octokit.github.io/rest.js/v18
-    - Create InstaWP instance
-      Inject the artifact URLs
-    - Set InstaWP URL in environment
-      Must inject this value:
-        <env name="INTEGRATION_TESTS_WEBSERVER_DOMAIN" value="graphql-api.lndo.site"/>
-      How!?
-        INTEGRATION_TESTS_WEBSERVER_DOMAIN=... vendor/bin/phpunit --filter=Integration/
-        phpunit.dist.xml doesn't override it!
-    - Kill InstaWP instance
-Links:
-  https://nightly.link/
-    https://github.com/actions/upload-artifact/issues/27
-    https://github.com/actions/upload-artifact/issues/51
-  https://github.com/actions/upload-artifact/issues/50#issuecomment-702470267
-  https://stackoverflow.com/questions/60355925/share-artifacts-between-workflows-github-actions
-  https://docs.github.com/en/rest/actions/artifacts#download-an-artifact
-  https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#sharing-data-between-workflow-runs
-  https://github.com/actions/upload-artifact/issues/50
-  https://stackoverflow.com/questions/60789862/url-of-the-last-artifact-of-a-github-action-build
 
 ## Wrapping up
 
