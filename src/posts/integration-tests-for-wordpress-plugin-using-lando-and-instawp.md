@@ -116,6 +116,8 @@ Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular
 1. Execute a PHPUnit test, that uses Guzzle to send an HTTP request to the Lando webserver
 2. Have the PHPUnit test analyze if the response is the expected one
 
+![Architecture](/images/resources/integration-test-architecture.png)
+
 The integration tests are placed under an `Integration` folder, so to run my integration tests I just execute:
 
 ```bash
@@ -321,6 +323,36 @@ composer integration-test
 ```
 
 ## 2nd: Using Lando to run Integration Tests on the generated .zip WP plugin (on my development computer)
+
+The Lando websever is hosted under [`webservers/graphql-api-for-wp`](https://github.com/leoloso/PoP/tree/master/webservers/graphql-api-for-wp), and it has [this configuration](https://github.com/leoloso/PoP/blob/master/webservers/graphql-api-for-wp/.lando.yml):
+
+```yaml
+name: graphql-api
+recipe: wordpress
+config:
+  webroot: wordpress
+  php: '8.1'
+  config:
+    php: ../shared/config/php.ini
+  xdebug: true
+env_file:
+  - defaults.env
+  - defaults.local.env
+services:
+  appserver:
+    overrides:
+      environment:
+        XDEBUG_MODE: ''
+      volumes:
+        - >-
+          ../../layers/GraphQLAPIForWP/plugins/graphql-api-for-wp:/app/wordpress/wp-content/plugins/graphql-api
+        - >-
+          ../../layers/API/packages/api-clients:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-clients
+        - >-
+          ../../layers/API/packages/api-endpoints-for-wp:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints-for-wp
+        - >-
+          ../../layers/API/packages/api-endpoints:/app/wordpress/wp-content/plugins/graphql-api/vendor/pop-api/api-endpoints
+```
 
 ...
 
