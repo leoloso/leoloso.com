@@ -71,6 +71,7 @@ This is the stack I'm using:
 - [XDebug](https://xdebug.org/)
 - [Guzzle](https://github.com/guzzle/guzzle)
 - [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
+- WP REST API
 - [WP-CLI](https://wp-cli.org/)
 - The WordPress export tool
 - [Composer](https://getcomposer.org/)
@@ -119,7 +120,7 @@ The noteworthy elements here are:
 
 The last item is a deal breaker for me, because [the plugin's code is distributed into a multitude of independent packages](https://graphql-api.com/blog/why-to-support-cms-agnosticism-the-graphql-api-split-to-around-90-packages/), which are managed via Composer. When running `composer install` to install the plugin, all these packages would be normally copied under the `vendor/` folder, breaking the connection between source code and code deployed to the webserver. Thanks to volume overrides, Lando will read the source files instead. (I used other webservers, including [Local](https://getflywheel.com/design-and-wordpress-resources/toolbox/local-by-flywheel/) and [wp-env](https://www.npmjs.com/package/@wordpress/env), and I believe none of them offers this feature.)
 
-### Guzzle and PHPUnit
+### Guzzle, PHPUnit and WP REST API
 
 Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular library for executing unit tests. I use these 2 libraries to execute my integration tests, like this:
 
@@ -127,6 +128,8 @@ Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular
 2. Have the PHPUnit test analyze if the response is the expected one
 
 ![Architecture](/images/resources/integration-test-architecture.png)
+
+In addition, the PHPUnit test can invoke WP REST API endpoints on the webserver (once again, via Guzzle) before and after running the tests, as to change some configuration on the plugin, or enable or disable some module, and assert that those modifications work as expected.
 
 The integration tests are placed under an `Integration` folder, so to run my integration tests I just execute:
 
@@ -517,7 +520,7 @@ To avoid that, downloading the artifacts is routed through nightly.link, a servi
 
 ## That's all, folks
 
-I have a suite of integration tests that I can execute locally, thanks to Lando, and on GitHub Actions, thanks to InstaWP, and they provide my project with this badge of honor:
+I have a suite of integration tests that I can execute locally during development thanks to Lando, and before merging the PR on GitHub thanks to InstaWP. My project is now a recipient of this badge of honor:
 
 ![Integration tests passing](/images/integration-tests-passing.png)
 
