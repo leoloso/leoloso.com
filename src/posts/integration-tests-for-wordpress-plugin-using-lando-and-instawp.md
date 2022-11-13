@@ -522,13 +522,15 @@ jobs:
 
 ### nightly.link
 
-[GitHub Actions only accepts authorized requests to download artifacts](https://github.com/actions/upload-artifact/issues/51) (even when the artifact is public), so the InstaWP service would need to be logged-in to GitHub to retrieve the artifact.
+[GitHub Actions only accepts authorized requests to download artifacts](https://github.com/actions/upload-artifact/issues/51) (even when the artifact is public), so the InstaWP service would need to be logged-in to GitHub to retrieve the artifacts passed under `ARTIFACT_URL`.
 
-To avoid that, downloading the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
+To avoid that, access to the artifacts is routed through nightly.link, a service that represents you as an authenticated user to grant access to the artifact, and the actual visitor does not need to be logged-in to GitHub anymore.
 
 ## That's all, folks
 
-TL;DR from this blog post: I have a suite of integration tests that I can execute locally during development thanks to Lando, and before merging the PR on GitHub thanks to InstaWP, testing both the source code and the generated WordPress plugin, and I have shared how I did it. My repo is now the proud recipient of this badge of honor:
+TL;DR from this blog post: I have a suite of integration tests that I can execute locally during development thanks to Lando, and before merging the PR on GitHub thanks to InstaWP, testing both the source code and the generated WordPress plugin, and I have shared how I did it.
+
+I'm actually quite proud of being able to show this badge of honor in my repo:
 
 ![Integration tests passing](/images/integration-tests-passing.png)
 
@@ -538,8 +540,8 @@ This blog post went into quite a bit of detail, but there's still plenty of othe
 - Enabling the `graphql-api-testing.zip` plugin only when the website is for development
 - Using configuration files instead of hardcoding data for GitHub Actions (all of those `vendor/bin/monorepo-builder` calls in my workflows)
 - How the WP REST API endpoints modifying the plugin configuration work
-- Why the response to test is provided via `.json` files (so the whole response must match), instead of through the PHPUnit `.php` file (which would allow me to test just a certain condition, such as the key `data.errors` appearing or not)
+- Why the response to test is provided via `.json` files (so the whole response must match), instead of through the PHPUnit `.php` files (which would allow me to test just a certain condition, such as the key `data.errors` appearing or not)
 
-If anyone is interested in any of this, ping me on any channel (Post Status Slack, WordPress Core Slack), and I can provide some more info.
+If anyone is interested in any of this, ping me on any channel (Post Status Slack, WordPress Core Slack), and I can provide some more info. (In any case, all the code is in the repo, so feel free to explore it and ask me if you don’t understand some part of the code.)
 
-Also, what about unit tests? Yes, I am also running unit tests for my plugin, but this topic demands another article all by itself. Are you interested? Let me know, and I may write a blog post about it.
+Also, what about unit tests? Yes, I am also running unit tests for my plugin, but this topic demands another article all by itself. Is this something of your interest? Let me know, and I may write a blog post about it.
