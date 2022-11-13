@@ -9,6 +9,7 @@ tags:
   - plugin
   - development
   - testing
+templateEngineOverride: md
 ---
 
 I am using a couple of really great tools to execute integration tests for my WordPress plugin:
