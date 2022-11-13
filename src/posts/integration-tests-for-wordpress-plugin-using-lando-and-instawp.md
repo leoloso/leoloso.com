@@ -63,6 +63,8 @@ Putting it all together, I run my integration tests in three different combinati
 
 Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
 
+In truth, I could skip the first step, as the generated plugin is all that really matters. However the first step allows me to find the bugs immediately, while developing the code. By the time I reach steps 2 and 3, I have a high confidence that all code will work (that's why I don't need to enable XDebug for them, as I'll explain later on).
+
 ## 1st: Running Integration Tests on the PHP source code (on my development computer)
 
 This is the stack I'm using:
@@ -524,8 +526,18 @@ To avoid that, downloading the artifacts is routed through nightly.link, a servi
 
 ## That's all, folks
 
-I have a suite of integration tests that I can execute locally during development thanks to Lando, and before merging the PR on GitHub thanks to InstaWP. My project is now a recipient of this badge of honor:
+TL;DR from this blog post: I have a suite of integration tests that I can execute locally during development thanks to Lando, and before merging the PR on GitHub thanks to InstaWP, testing both the source code and the generated WordPress plugin, and I have shared how I did it. My repo is now the proud recipient of this badge of honor:
 
 ![Integration tests passing](/images/integration-tests-passing.png)
 
-Are you integration testing your WordPress plugin? Are you doing something similar to all this? Or otherwise, how do you do it? Let me know in the comments!
+This blog post went into quite a bit of detail, but there's still plenty of other stuff going on, including:
+
+- Setting custom headers on the response to validate some property (eg: the endpoint accessed by the GraphiQL client)
+- Enabling the `graphql-api-testing.zip` plugin only when the website is for development
+- Using configuration files instead of hardcoding data for GitHub Actions (all of those `vendor/bin/monorepo-builder` calls in my workflows)
+- How the WP REST API endpoints modifying the plugin configuration work
+- Why the response to test is provided via `.json` files (so the whole response must match), instead of through the PHPUnit `.php` file (which would allow me to test just a certain condition, such as the key `data.errors` appearing or not)
+
+If anyone is interested in any of this, ping me on any channel (Post Status Slack, WordPress Core Slack), and I can provide some more info.
+
+Also, what about unit tests? Yes, I am also running unit tests for my plugin, but this topic demands another article all by itself. Are you interested? Let me know, and I may write a blog post about it.
