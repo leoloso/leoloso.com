@@ -423,6 +423,7 @@ Once this workflow is completed, workflow [`integration_tests.yml`](https://gith
 - Each runner will launch an InstaWP instance, spinning it from a pre-defined template that uses some specific combination WP and PHP
 - Install the generated artifacts in the WordPress site (via param `ARTIFACT_URL`)
 - Wait a bit of time, to make sure the instance is ready (I'm currently guessing how much time to wait)
+- Retrieve the site URL and admin credentials from the Lando instance, and set them as environment variables
 - Execute the integration tests
 - Destroy the InstaWP instance
 
