@@ -130,11 +130,11 @@ Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular
 1. Execute a PHPUnit test, that uses Guzzle to send an HTTP request to the Lando webserver
 2. Have the PHPUnit test analyze if the response is the expected one
 
-![PHPUnit + Guzzle Architecture](/images/resources/integration-test-architecture.png)
+![PHPUnit + Guzzle Architecture](/images/resources/integration-test-architecture.png "PHPUnit + Guzzle Architecture")
 
 In addition, the PHPUnit test can invoke WP REST API endpoints on the webserver (once again, via Guzzle) before and after running the tests, as to change some configuration on the plugin, or enable or disable some module, and assert that those modifications work as expected.
 
-![PHPUnit + Guzzle + WP REST API Architecture](/images/resources/integration-test-architecture-with-rest.png)
+![PHPUnit + Guzzle + WP REST API Architecture](/images/resources/integration-test-architecture-with-rest.png "PHPUnit + Guzzle + WP REST API Architecture")
 
 The integration tests are placed under an `Integration` folder, so to run my integration tests I just execute:
 
@@ -531,7 +531,7 @@ TL;DR from this blog post: I have a suite of integration tests that I can execut
 
 I'm actually quite proud of being able to show this badge of honor in my repo:
 
-![Integration tests passing](/images/integration-tests-passing.png)
+![Integration tests passing](/images/integration-tests-passing.png "Integration tests passing")
 
 This blog post went into quite a bit of detail, but there's still plenty of other stuff going on, including:
 
