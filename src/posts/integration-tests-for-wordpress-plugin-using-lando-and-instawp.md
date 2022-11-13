@@ -75,7 +75,7 @@ This is the stack I'm using:
 - [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
 - [WP REST API](https://developer.wordpress.org/rest-api/)
 - [WP-CLI](https://wp-cli.org/)
-- The WordPress export tool
+- The WordPress import & export tool
 - [Composer](https://getcomposer.org/)
 
 I'll explain why and how I'm using these, and point to the appropriate source files on the repo.
@@ -255,7 +255,7 @@ This stack is not suitable for everything that can be tested. For instance, my p
 
 If I ever decided to test this or other similar concerns, then I'd consider introducing [CodeCeption](https://codeception.com/), which is better for executing and evaluating user interactions ([this guide on testing WooCommerce](https://deliciousbrains.com/automated-testing-woocommerce/) provides some good examples), and I'd also check out if [Pest](https://pestphp.com/) offers advantages over PHPUnit (as suggested in [this article on WordPress integration tests with Pest](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
-### WP-CLI, the WordPress export tool and Composer
+### WP-CLI, the WordPress import & export tool and Composer
 
 Using WP-CLI is pretty much mandatory, as it provides several desired objectives:
 
