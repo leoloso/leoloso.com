@@ -367,7 +367,7 @@ $ INTEGRATION_TESTS_WEBSERVER_DOMAIN=graphql-api-for-prod.lndo.site \
   vendor/bin/phpunit --filter='Integration'
 ```
 
-Or execute it via a Composer script ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L560)):
+To make it convenient, I also have a Composer script ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/composer.json#L560)):
 
 ```bash
 composer prod-integration-test
@@ -379,12 +379,12 @@ The stack is the same one as before, but with one noteworthy addition:
 
 (To be clear, the monorepo is also used in the previous situation, but its use becomes more justified in this case.)
 
-Using a monorepo is extremely useful to host the code because I'm actually building not 1 but 2 plugins (as can be seen in [a GitHub Actions run](https://github.com/leoloso/PoP/actions/runs/3443530652)):
+Using a monorepo is extremely useful to host the code because I'm actually building not 1 but 2 plugins (as can be seen in [a GitHub Actions run](https://github.com/leoloso/PoP/actions/runs/3451135622)):
 
 - `graphql-api.zip`
 - `graphql-api-testing.zip`
 
-In the previous section I explained that I test the plugin before and after applying some configuration, with the configuration being updated by invoking some dedicated WP REST API endpoint.
+In the previous section I explained that I test the plugin for different configurations of its modules, with a new configuration being applied by invoking some dedicated WP REST API endpoint.
 
 This REST API endpoint is needed only while testing the plugin, and I certainly don't want to ship it for production, as it could create security hazards. So this code won't be present in `graphql-api.zip`.
 
@@ -401,20 +401,20 @@ The stack is the same as before, but replacing Lando with InstaWP, and with thes
 
 ### WP-CLI and InstaWP
 
-Concerning the seeding of data into the WordPress site, InstaWP offers access to SSH, and consequently to WP-CLI, only [at the Pro tier](https://instawp.com/pricing/). As I'm still on the free tier, I'm currently editing my InstaWP templates (which are snapshots of WP sites containing all data and server configuration) manually:
+Concerning the seeding of data into the WordPress site, InstaWP offers access to SSH, and consequently to WP-CLI, only [at the Pro tier](https://instawp.com/pricing/). As I'm still on the free tier, I don’t have access to WP-CPI, and so I'm editing my InstaWP templates (which are snapshots of WP sites containing all data and server configuration) manually:
 
 - Using the WordPress import tool to seed the data from `graphql-api-data.xml`
 - Updating the permalinks in the wp-admin
 - Adding needed consts to `wp-config.php` using the Code editor
-- Modifying the registration date of my users manually, directly in the database (😱)
+- Updating the registration date of the users (needed for my tests) directly in the database (😱)
 
 This is not ideal, as it limits my ability to automate the whole process, and it breaks my requirement that the same configuration files must be used to set-up both the Lando and InstaWP environments. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not soooooo painful, and I still use the configuration files in guiding me on what changes must be applied manually, so they are still valuable.
 
-(I do plan to upgrade to one of InstaWP’s paid plans. But other than having access to WP-CLI, I am unsure if I need all the features from the Pro tier, and so the cheaper Personal tier may be more justifiable for my needs.)
+(I do plan to upgrade to one of InstaWP’s paid plans. But other than having access to WP-CLI, I am unsure if I need all the features from the Pro tier, and so the cheaper Personal tier may be more justifiable for my needs. I still need to find out.)
 
 ### GitHub Actions
 
-The WordPress .zip plugin is generated as an artifact by GitHub Actions when opening a PR, via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml).
+The WordPress .zip plugin is generated as an artifact by GitHub Actions when opening a PR, via workflow [`generate_plugins.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/generate_plugins.yml). (I described how this workflow works in [😎 Using GitHub actions to release a WordPress plugin](https://leoloso.com/posts/github-action-to-release-wp-plugin/).)
 
 Once this workflow is completed, workflow [`integration_tests.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/integration_tests.yml) is triggered, and will perform these actions:
 
