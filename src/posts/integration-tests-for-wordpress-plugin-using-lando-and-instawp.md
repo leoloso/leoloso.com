@@ -29,13 +29,13 @@ Hence, while InstaWP is ideal to collaborate on the repo, as to make sure that a
 
 For this reason, I also execute the integration tests against a local webserver provided via Lando. Building a Lando server with my plugin's requirements will take over 5 minutes but, once created, I can start the same instance again in just a few seconds.
 
-I particularly like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have the same development environment ready.
+I quite like Lando because I can commit my plugin's required configuration in the repo (defined via a `yaml` file), so anyone can clone the repo, execute a command, and have the same development environment ready.
 
 ## The plugin being tested
 
 My WordPress plugin is the [GraphQL API for WordPress](https://graphql-api.com), and it is open source: [`leoloso/PoP`](https://github.com/leoloso/PoP).
 
-As a side note: The latest release of the plugin is version `0.8.1`, however I am just days away (🤞) from releasing version `0.9`, after _16 months of work_ on over _1000 PRs_ from _14700 commits_ 🙀. If you'd like to be notified of this upcoming release, be welcome to [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
+As a side note: I am just days away (🤞) from releasing the new version `0.9`, after _16 months of work_ on over _1000 PRs_ from _14700 commits_ 🙀. If you'd like to know more about this upcoming release and be notified when it's finally out, be welcome to [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
 ## What must be tested
 
@@ -53,15 +53,15 @@ This is because the code in these 2 sets is different:
 And in my plugin's case, there are a few additional differences:
 
 - The source code is coded using PHP 8.1
-- The .zip file is generated as a GitHub Actions artifact and, in the process, the source code is [transpiled down to PHP 7.1](https://graphql-api.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/) and [scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)
+- The code in the .zip file is [transpiled down to PHP 7.1](https://graphql-api.com/blog/the-plugin-is-now-transpiled-from-php-80-to-71/) and [scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)
 
 Putting it all together, I run my integration tests in three different combinations:
 
 1. While developing the plugin: Using the source code, against a local webserver provided by Lando which runs PHP 8.1
-2. Once I think the newly-developed code is ready: Using the generated .zip plugin, against a different local webserver provided by Lando which runs PHP 7.1
+2. Once I think the newly-developed code is ready: Using the generated .zip plugin (by GitHub Actions), against a different local webserver provided by Lando which runs PHP 7.1
 3. Before merging the PR in GitHub Actions: Using the generated .zip plugin, against several InstaWP instances, each of them with a different configuration of PHP+WP
 
-Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must (as much as possible) use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
+Importantly, **all 3 combinations must receive the same inputs, and produce the same outputs**, and must use the same configuration files to prepare their environments. A single test suite must work everywhere, without customizations or hacks.
 
 In truth, I could skip the first step, as the generated plugin is all that really matters. However the first step allows me to find the bugs immediately, while developing the code. By the time I reach steps 2 and 3, I have a high confidence that all code will work (that's why I don't need to enable XDebug for them, as I'll explain later on).
 
@@ -406,10 +406,11 @@ Concerning the seeding of data into the WordPress site, InstaWP offers access to
 - Using the WordPress import tool to seed the data from `graphql-api-data.xml`
 - Updating the permalinks in the wp-admin
 - Adding needed consts to `wp-config.php` using the Code editor
+- Modifying the registration date of my users manually, directly in the database (😱)
 
-This is not ideal, as it limits my ability to automate the whole process. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not so painful.
+This is not ideal, as it limits my ability to automate the whole process, and it breaks my requirement that the same configuration files must be used to set-up both the Lando and InstaWP environments. However I only have a handful of templates, so that creating them manually just once, and then updating them only every now and then, is not soooooo painful, and I still use the configuration files in guiding me on what changes must be applied manually, so they are still valuable.
 
-(InstaWP is great, and I plan to upgrade to one of the paid plans. But I am unsure if I need all the power from the Pro tier; otherwise, the cheaper Personal tier may be more justifiable for my current needs.)
+(I do plan to upgrade to one of InstaWP’s paid plans. But other than having access to WP-CLI, I am unsure if I need all the features from the Pro tier, and so the cheaper Personal tier may be more justifiable for my needs.)
 
 ### GitHub Actions
 
