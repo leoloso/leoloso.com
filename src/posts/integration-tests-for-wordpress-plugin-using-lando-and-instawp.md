@@ -119,7 +119,7 @@ The noteworthy elements here are:
 - The local webserver will be available under `https://graphql-api.lndo.site`
 - The common PHP configuration across all Lando webservers, under `shared/config/php.ini`, is defined once and referenced by all of them
 - XDebug is enabled, but inactive by default; it is executed only when passing environment variable `XDEBUG_TRIGGER=1` (eg: executing command `XDEBUG_TRIGGER=1 vendor/bin/phpunit` )
-- Two files define environment variables, but while `defaults.env` is commited to the repo, `defaults.local.env` is `.gitignore`d, so the latter contains my personal access tokens.
+- Two files define environment variables, but while `defaults.env` is committed to the repo, `defaults.local.env` is `.gitignore`d, so the latter contains my personal access tokens.
 - The plugin code is mapped to its source code via `services > appserver > overrides > volumes`, so that changes to the source files are reflected immediately in the application in the webserver.
 
 The last item is a deal breaker for me, because [the plugin's code is distributed into a multitude of independent packages](https://graphql-api.com/blog/why-to-support-cms-agnosticism-the-graphql-api-split-to-around-90-packages/), which are managed via Composer. When running `composer install` to install the plugin, all these packages would be normally copied under the `vendor/` folder, breaking the connection between source code and code deployed to the webserver. Thanks to volume overrides, Lando will read the source files instead. (I used other tools, including [Local](https://getflywheel.com/design-and-wordpress-resources/toolbox/local-by-flywheel/), [DevKinsta](https://kinsta.com/devkinsta/) and [wp-env](https://www.npmjs.com/package/@wordpress/env), and none of them would allow me to map the Composer packages.)
@@ -240,7 +240,7 @@ And then I assert that the response matches the expectation:
 }
 ```
 
-These are some of the use cases I'm currently testing (there are a few others):
+These are some of the use cases I'm currently testing:
 
 - A request/response cycle for an API ([example test](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/AdminClientQueryExecutionFixtureWebserverRequestTest.php), executing [this GraphQL query](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-admin-client/introspection-query.gql) and matching it against [this response](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/fixture-admin-client/introspection-query.json))
 - Enabling/Disabling the single endpoint or custom endpoint ([example test](https://github.com/leoloso/PoP/blob/a7c7f6df67084e2c1cc9bf60bafdc4eaed1bcd7c/layers/GraphQLAPIForWP/phpunit-packages/graphql-api-for-wp/tests/Integration/DisabledEndpointWebserverRequestTest.php))
@@ -253,11 +253,11 @@ These are some of the use cases I'm currently testing (there are a few others):
 
 This stack is not suitable for everything that can be tested. For instance, my plugin displays a module's documentation in a modal window in the wp-admin, but I'm not testing that this modal window is indeed opened after the user clicks on the corresponding link.
 
-If I ever decided to test this or other similar concerns, then I'd consider introducing [CodeCeption](https://codeception.com/), which is better for executing and evaluating user interactions ([this guide on testing WooCommerce](https://deliciousbrains.com/automated-testing-woocommerce/) provides some good examples), and I'd also check out if [Pest](https://pestphp.com/) offers advantages over PHPUnit (as suggested in [this article on WordPress integration tests with Pest](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
+If I ever decided to test this (or other similar concerns), then I'd consider introducing [CodeCeption](https://codeception.com/), which is better for executing and evaluating user interactions ([this guide on testing WooCommerce](https://deliciousbrains.com/automated-testing-woocommerce/) provides some good examples), and I'd also check out if [Pest](https://pestphp.com/) offers advantages over PHPUnit (as suggested in [WordPress integration tests with Pest](https://madebydenis.com/wordpress-integration-tests-with-pest-php/)).
 
 ### WP-CLI, the WordPress import & export tool and Composer
 
-Using WP-CLI is pretty much mandatory, as it provides several desired objectives:
+Using WP-CLI is pretty much mandatory, as it satisfies several desired objectives, including:
 
 - The automation of seeding data into the WordPress site
 - Using a fixed set of data, always the same one for all environments
@@ -296,7 +296,7 @@ The response from the API, whether executed against any of the local Lando webse
 }
 ```
 
-To manage this dataset and update it concerning new requirements, I am using the WordPress export tool to generate the file [`graphql-api-data.xml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/assets/graphql-api-data.xml), which contains the set of data that I want to test. This method is very practical as it allows me to use the WordPress editor to create the data (which for my plugin mainly comes from a handful of CPTs), and the resulting WXR data file will be commited to the repo.
+To manage this dataset and update it concerning new requirements, I am using the WordPress export tool to generate the file [`graphql-api-data.xml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/assets/graphql-api-data.xml), which contains the set of data that I want to test. This method is very practical as it allows me to use the WordPress editor to create the data (which for my plugin mainly comes from a handful of CPTs), and the resulting WXR data file will be committed to the repo.
 
 Then I use WP-CLI to import this file into the Lando webserver ([source code](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/webservers/graphql-api-for-wp/setup/import-data.sh)):
 
@@ -356,7 +356,7 @@ env_file:
   - defaults.local.env
 ```
 
-In this case, the domain is `graphql-api-for-prod.lndo.site phpunit` and the PHP version is 7.1, and there's no need to enable XDebug or provide a mapping to the source code, because the objective is to actually test the code in the generated .zip plugins.
+In this case, the domain is `graphql-api-for-prod.lndo.site` and the PHP version is 7.1, and there's no need to provide a mapping to the source code (because the objective is to actually test the code in the generated .zip plugin) or enable XDebug (as any debugging that is needed would already happen on step 1).
 
 To install the plugin, I open a PR in GitHub and wait for it to build the artifact, download it and install it on the site. (I also have a more automated way, but only in a few months I can tell you about it 😉)
 
