@@ -418,17 +418,17 @@ The WordPress .zip plugin is generated as an artifact by GitHub Actions when ope
 
 Once this workflow is completed, workflow [`integration_tests.yml`](https://github.com/leoloso/PoP/blob/083133316dda047bbca58bbfacf766e8c030b522/.github/workflows/integration_tests.yml) is triggered, and will perform these actions:
 
-- Obtain the URLs of the generated artifacts (for `graphql-api.zip` and `graphql-api-testing.zip`)
+- Obtain the URLs of the generated artifacts (for `graphql-api.zip` and `graphql-api-testing.zip`) from GitHub Actions
 - Generate a URL to access the artifacts via nightly.link (explained in next section)
 - Launch a matrix of GitHub Action runners
-- Each runner will launch an InstaWP instance, spinning it from a pre-defined template that uses some specific combination WP and PHP
+- [On each runner] Launch an InstaWP instance, spinning it from a pre-defined template that uses some combination of WP and PHP
 - Install the generated artifacts in the WordPress site (via param `ARTIFACT_URL`)
 - Wait a bit of time, to make sure the instance is ready (I'm currently guessing how much time to wait)
 - Retrieve the site URL and admin credentials from the Lando instance, and set them as environment variables
 - Execute the integration tests
 - Destroy the InstaWP instance
 
-This is the (shortened) workflow:
+This is the (slightly shortened) workflow:
 
 ```yaml
 name: Integration tests
