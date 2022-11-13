@@ -34,7 +34,7 @@ I quite like Lando because I can commit my plugin's required configuration in th
 
 My WordPress plugin is the [GraphQL API for WordPress](https://graphql-api.com), and it is open source: [`leoloso/PoP`](https://github.com/leoloso/PoP).
 
-As a side note: I am just days away (🤞) from releasing the new version `0.9`, after _16 months of work_ on over _1000 PRs_ from _14700 commits_ 🙀. If you'd like to know more about this upcoming release and be notified when it's finally out, be welcome to [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
+_As a side note:_ I am just days away (🤞) from releasing the new version `0.9`, after _16 months of work_ on over _1000 PRs_ from _14700 commits_ 🙀. If you'd like to know more about this upcoming release and be notified when it's finally out, be welcome to [watch the project in GitHub](https://github.com/leoloso/PoP) or [subscribe to the newsletter](https://graphql-api.com/newsletter/) (no spam, only announcements).
 
 ## What must be tested
 
