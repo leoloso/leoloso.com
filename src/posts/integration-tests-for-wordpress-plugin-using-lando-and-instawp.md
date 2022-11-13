@@ -122,9 +122,9 @@ The noteworthy elements here are:
 - Two files define environment variables, but while `defaults.env` is commited to the repo, `defaults.local.env` is `.gitignore`d, so the latter contains my personal access tokens.
 - The plugin code is mapped to its source code via `services > appserver > overrides > volumes`, so that changes to the source files are reflected immediately in the application in the webserver.
 
-The last item is a deal breaker for me, because [the plugin's code is distributed into a multitude of independent packages](https://graphql-api.com/blog/why-to-support-cms-agnosticism-the-graphql-api-split-to-around-90-packages/), which are managed via Composer. When running `composer install` to install the plugin, all these packages would be normally copied under the `vendor/` folder, breaking the connection between source code and code deployed to the webserver. Thanks to volume overrides, Lando will read the source files instead. (I used other webservers, including [Local](https://getflywheel.com/design-and-wordpress-resources/toolbox/local-by-flywheel/) and [wp-env](https://www.npmjs.com/package/@wordpress/env), and I believe none of them offers this feature.)
+The last item is a deal breaker for me, because [the plugin's code is distributed into a multitude of independent packages](https://graphql-api.com/blog/why-to-support-cms-agnosticism-the-graphql-api-split-to-around-90-packages/), which are managed via Composer. When running `composer install` to install the plugin, all these packages would be normally copied under the `vendor/` folder, breaking the connection between source code and code deployed to the webserver. Thanks to volume overrides, Lando will read the source files instead. (I used other tools, including [Local](https://getflywheel.com/design-and-wordpress-resources/toolbox/local-by-flywheel/), [DevKinsta](https://kinsta.com/devkinsta/) and [wp-env](https://www.npmjs.com/package/@wordpress/env), and none of them would allow me to map the Composer packages.)
 
-### Guzzle, PHPUnit and WP REST API
+### Guzzle, PHPUnit and the WP REST API
 
 Guzzle is a PHP library for executing HTTP requests. PHPUnit is the most popular library for executing unit tests. I use these 2 libraries to execute my integration tests, like this:
 
