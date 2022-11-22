@@ -173,6 +173,8 @@ Series of articles on conceptualizing, designing and implementing a GraphQL serv
 
 Opinion pieces on anything concerning WordPress.
 
+👨🏻‍🏫 [🏃🏻How I run Integration Tests for my WP plugin using Lando and InstaWP](https://masterwp.com/integration-tests-wp-plugin-lando-instawp/)
+
 👨🏻‍🏫 [Some great stuff I’ve learnt from WordCamp Europe 2022](https://masterwp.com/some-great-stuff-ive-learnt-from-wordcamp-europe-2022/)
 
 👨🏻‍🏫 [Some great stuff I’ve learnt from WordSesh 2022](https://masterwp.com/some-great-stuff-ive-learnt-from-wordsesh-2022/)
