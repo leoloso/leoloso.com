@@ -11,7 +11,7 @@ const EXCLUDED_URLS = [
   'https://unpkg.com/netlify-cms@^2.9.3/dist/netlify-cms.js',
   'https://newapi.getpop.org/api/graphql/',
   'https://nextapi.getpop.org',
-  'https://stats.leoloso.com',
+  'https://leoloso.com/masked-source',
   '/contact',
   '/thank-you'
 ];
