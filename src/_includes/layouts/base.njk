@@ -30,9 +30,8 @@
     }
   </script>
   <!--script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script-->
-  <!--script async defer data-domain="{{ site.url | replace('https://','') | replace('http://','') }}" src="https://plausible.io/js/plausible.js"></script-->
-  {% if site.analyticsURL %}
-    <script async defer data-domain="{{ site.url | replace('https://','') | replace('http://','') }}" src="{{ site.analyticsURL }}"></script>
+  {% if site.analyticsScriptURL %}
+    <script defer data-domain="{{ site.url | replace('https://','') | replace('http://','') }}" data-api="{{ site.analyticsAPIURL }}" src="{{ site.analyticsScriptURL }}"></script>
   {% endif %}
 </body>
 </html>

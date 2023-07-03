@@ -10,6 +10,7 @@
   "maxPostsPerPage": 10,
   "paymentPointer": "",
   "faviconPath": "/assets/favicon.png",
-  "analyticsURL": "https://stats.leoloso.com/js/plausible.js",
+  "analyticsScriptURL": "https://leoloso.com/masked-source/js/script.js",
+  "analyticsAPIURL": "https://leoloso.com/masked-source/api/event",
   "commentsSiteCode": "oDanDNwR7A"
 }
