@@ -11,7 +11,7 @@ tags:
 templateEngineOverride: md
 ---
 
-The [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) plugin ([launched last week](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/)) has plenty of PHP dependencies, managed through Composer. These dependencies, which are located under `vendor/`, are not stored in the GitHub repo, because they do not belong there.
+The [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql) plugin ([launched last week](https://leoloso.com/posts/introducing-the-graphql-api-for-wordpress/)) has plenty of PHP dependencies, managed through Composer. These dependencies, which are located under `vendor/`, are not stored in the GitHub repo, because they do not belong there.
 
 However, these dependencies must be inside the .zip file when installing the plugin in the WordPress site. Then, when and how do we add them into the release?
 

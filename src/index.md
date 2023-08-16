@@ -8,7 +8,7 @@ socialImage: ''
 ---
 Howdy! My name is **Leonardo Losoviz**, I am the creator and maintainer of:
 
-👉 [GraphQL API for WordPress](https://graphql-api.com): a GraphQL server for WordPress<br/>
+👉 [Gato GraphQL](https://graphql-api.com): a GraphQL server for WordPress<br/>
 👉 [GraphQL by PoP](https://graphql-by-pop.com/): a CMS-agnostic GraphQL server in PHP<br/>
 👉 [PoP](https://github.com/leoloso/PoP): an architecture of server-side components in PHP
 

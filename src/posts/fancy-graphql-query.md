@@ -44,7 +44,7 @@ I am working to get the funding to implement them, through my recently launched 
 
 <figure><a href="/images/sponsorable-features.png" target="_blank"><img src="/images/sponsorable-features.png" alt="Features looking for sponsors" loading="lazy" width="3200" height="1806"></a><figcaption>Features looking for sponsors</figcaption></figure>
 
-Once implemented, the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) may perfectly be the most forward-looking GraphQL in the market 🙀.
+Once implemented, the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql) may perfectly be the most forward-looking GraphQL in the market 🙀.
 
 What do you think? Is it worth sponsoring this project? Want to [become a sponsor](https://github.com/sponsors/leoloso/)?
 

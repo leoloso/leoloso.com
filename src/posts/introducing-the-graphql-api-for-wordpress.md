@@ -13,7 +13,7 @@ tags:
 
 **Update 23/01:** The GraphQL API for WordPress has its own site now: [graphql-api.com](https://graphql-api.com).
 
-Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
+Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
 
 ![Interactive Schema screen in GraphQL API for WordPress](/images/interactive-schema.png "Interactive Schema screen in GraphQL API for WordPres. <a href='/images/interactive-schema.png' target='_blank'>Open in new tab</a>")
 
@@ -285,7 +285,7 @@ In theory yes, but since I've just launched the plugin, you'd better test if for
 
 **Update 04/02:** the plugin [is now scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issue below does not apply anymore 🥳
 
-~~In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/issues/246).~~ 
+~~In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/issues/246).~~ 
 
 ~~Hence, test the plugin in your development environment first, and with all other plugins also activated. If you run into any trouble, please [create an issue](https://github.com/leoloso/PoP/issues/new).~~
 

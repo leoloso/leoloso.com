@@ -10,7 +10,7 @@ tags:
   - plugin
 ---
 
-When announcing the launch of my brand-new [GraphQL API plugin for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp) [on Reddit](https://www.reddit.com/r/graphql/comments/hvucw2/i_finally_released_my_graphql_api_for_wordpress/), I got this question:
+When announcing the launch of my brand-new [GraphQL API plugin for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql) [on Reddit](https://www.reddit.com/r/graphql/comments/hvucw2/i_finally_released_my_graphql_api_for_wordpress/), I got this question:
 
 > Why build your own when one already , and is developed by a gatsby dev?
 

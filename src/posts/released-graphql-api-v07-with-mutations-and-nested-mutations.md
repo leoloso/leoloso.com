@@ -59,7 +59,7 @@ In this first release, the plugin ships with the following mutations:
 
 Nested mutations is the ability to perform mutations on a type other than the root type in GraphQL.
 
-They have been [requested for the GraphQL spec](https://github.com/graphql/graphql-spec/issues/252) but not yet approved (and may never will), hence GraphQL API adds support for them as an opt-in feature, via the [Nested Mutations](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/nested-mutations.md) module.
+They have been [requested for the GraphQL spec](https://github.com/graphql/graphql-spec/issues/252) but not yet approved (and may never will), hence GraphQL API adds support for them as an opt-in feature, via the [Nested Mutations](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/modules/nested-mutations.md) module.
 
 Then, the plugin supports the 2 behaviors:
 
@@ -96,7 +96,7 @@ You may have a GraphQL API that is used by your own application, and is also pub
 
 Good news: you can.
 
-I've added a "Mutation Scheme" section in the Schema Configuration, which is used to customize the schema for [Custom Endpoints](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/custom-endpoints.md) and [Persisted Queries](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/persisted-queries.md):
+I've added a "Mutation Scheme" section in the Schema Configuration, which is used to customize the schema for [Custom Endpoints](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/modules/custom-endpoints.md) and [Persisted Queries](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/modules/persisted-queries.md):
 
 ![Mutation scheme in the Schema configuration](/images/schema-configuration-mutation-scheme.jpg)
 
@@ -128,7 +128,7 @@ Check-out the following 3 schemas:
 
 ---
 
-Check out the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), and download it from [here](https://github.com/leoloso/PoP/releases/latest/download/graphql-api.zip).
+Check out the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), and download it from [here](https://github.com/leoloso/PoP/releases/latest/download/graphql-api.zip).
 
 Now it's time to start preparing for v0.8! 
 
