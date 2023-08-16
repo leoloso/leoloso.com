@@ -22,4 +22,4 @@ This is a mighty new version, with [several new features and improvements](https
 
 👉🏽 Read the descriptions in detail [in the release notes](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/release-notes/0.6.md).
 
-👉🏽 Install the plugin in your site: download [graphql-api.zip](https://github.com/leoloso/PoPhttps://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/releases/latest/download/graphql-api.zip), and in the wp-admin go to `Plugins` => `Add New` => `Upload Plugin` [to install it](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql#upload).
+👉🏽 Install the plugin in your site: download [gatographql.zip](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/releases/latest/download/gatographql.zip), and in the wp-admin go to `Plugins` => `Add New` => `Upload Plugin` [to install it](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql#upload).

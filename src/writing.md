@@ -9,7 +9,7 @@ To date, these are my articles:
 
 ## CSS-Tricks
 
-Explaining how the `leoloso/PoP` GitHub repo was setup:
+Explaining how the `GatoGraphQL/GatoGraphQL` GitHub repo was setup:
 
 🎩 [From a Single Repo, to Multi-Repos, to Monorepo, to Multi-Monorepo](https://css-tricks.com/from-a-single-repo-to-multi-repos-to-monorepo-to-multi-monorepo/)
 

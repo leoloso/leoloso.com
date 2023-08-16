@@ -17,7 +17,7 @@ However, these dependencies must be inside the .zip file when installing the plu
 
 The answer is to create a [GitHub action](https://github.com/features/actions) which, upon tagging the code, will automatically create the .zip file and upload it as a release asset.
 
-The end result looks like this: In addition to the `Source code (zip)` (which does not contain the PHP dependencies), the release assets contain a `graphql-api.zip` file, which does have the PHP dependencies, and is the actual plugin to install in the WordPress site:
+The end result looks like this: In addition to the `Source code (zip)` (which does not contain the PHP dependencies), the release assets contain a `gatographql.zip` file, which does have the PHP dependencies, and is the actual plugin to install in the WordPress site:
 
 ![Release assets after tagging code](/images/release-assets.png "Release assets after tagging code")
 
@@ -59,16 +59,16 @@ jobs:
       - name: Create artifact
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r build/graphql-api.zip . -x *.git* node_modules/\* .* "*/\.*" CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md PULL_REQUEST_TEMPLATE.md *.dist composer.* dev-helpers** build**
+          args: zip -X -r build/gatographql.zip . -x *.git* node_modules/\* .* "*/\.*" CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md PULL_REQUEST_TEMPLATE.md *.dist composer.* dev-helpers** build**
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
             name: graphql-api
-            path: build/graphql-api.zip
+            path: build/gatographql.zip
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: build/graphql-api.zip application/zip
+          args: build/gatographql.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -117,7 +117,7 @@ Next, we will create the .zip file, stored under a `build/` folder. We first cre
           mkdir build
 ```
 
-And then make use of [`montudor/action-zip`](https://github.com/montudor/action-zip) to zip the files into `build/graphql-api.zip`.
+And then make use of [`montudor/action-zip`](https://github.com/montudor/action-zip) to zip the files into `build/gatographql.zip`.
 
 In this step, I also exclude those files and folder which are needed when coding the plugin, but are not needed in the actual final plugin:
 
@@ -133,17 +133,17 @@ In this step, I also exclude those files and folder which are needed when coding
       - name: Create artifact
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r build/graphql-api.zip . -x *.git* node_modules/\* .* "*/\.*" CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md PULL_REQUEST_TEMPLATE.md *.dist composer.* dev-helpers** build**
+          args: zip -X -r build/gatographql.zip . -x *.git* node_modules/\* .* "*/\.*" CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md PULL_REQUEST_TEMPLATE.md *.dist composer.* dev-helpers** build**
 ```
 
-After this step, the release will have been created as `build/graphql-api.zip`. Next, as an optional step, we upload it as an artifact to the action:
+After this step, the release will have been created as `build/gatographql.zip`. Next, as an optional step, we upload it as an artifact to the action:
 
 ```yaml
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
             name: graphql-api
-            path: build/graphql-api.zip
+            path: build/gatographql.zip
 ```
 
 And finally, we make use of [`JasonEtco/upload-to-release`](https://github.com/JasonEtco/upload-to-release) upload the .zip file as a release asset, under the release package which triggered the GitHub action. The secret `secrets.GITHUB_TOKEN` is implicit, GitHub already sets it up for us:
@@ -152,7 +152,7 @@ And finally, we make use of [`JasonEtco/upload-to-release`](https://github.com/J
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: build/graphql-api.zip application/zip
+          args: build/gatographql.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```

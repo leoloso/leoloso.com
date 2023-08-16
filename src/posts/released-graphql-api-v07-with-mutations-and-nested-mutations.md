@@ -128,7 +128,7 @@ Check-out the following 3 schemas:
 
 ---
 
-Check out the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), and download it from [here](https://github.com/GatoGraphQL/GatoGraphQL/releases/latest/download/graphql-api.zip).
+Check out the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), and download it from [here](https://github.com/GatoGraphQL/GatoGraphQL/releases/latest/download/gatographql.zip).
 
 Now it's time to start preparing for v0.8! 
 
