@@ -34,7 +34,7 @@ Around then I learnt about GraphQL, and how it returns exactly the queried data.
 
 So then, I had no alternative towards myself than to go ahead, and implement the GraphQL server. It took around 1 year to do. But in the process, I built it to be super super powerful, as I've been trying to show in my series of articles for LogRocket, and sharing in this channel [/r/graphql in Reddit].
 
-And concerning the component-based architecture, when did I start working on it? Its repo, [https://github.com/leoloso/PoP](https://github.com/leoloso/PoP), was actually published in September 2016!
+And concerning the component-based architecture, when did I start working on it? Its repo, [https://github.com/GatoGraphQL/GatoGraphQL](https://github.com/GatoGraphQL/GatoGraphQL), was actually published in September 2016!
 
 So I was working on my GraphQL server way back before I even knew about the existence of GraphQL.
 

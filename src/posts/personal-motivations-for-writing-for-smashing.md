@@ -12,7 +12,7 @@ I will describe why I have written the articles that I have written for [Smashin
 
 The topics for my articles, and the reasons why I wanted to publish them, can broadly be split into the following categories:
 
-**1. Implementations of certain unique functionalities for my project "PoP"**, with two objectives: To share the train of thought that went into the design process and the decisions I took for the implementation, as a communication from developer to developer; and to promote [PoP](https://github.com/leoloso/PoP) along the way.
+**1. Implementations of certain unique functionalities for my project "PoP"**, with two objectives: To share the train of thought that went into the design process and the decisions I took for the implementation, as a communication from developer to developer; and to promote [PoP](https://github.com/GatoGraphQL/GatoGraphQL) along the way.
 
 **2. Description of the concept on which PoP is based: building a website using components in the backend.** My objective is threefold: To describe this concept and all my knowledge about it with anyone who had never come across it; to promote PoP and, incidentally, get contributors to the project; and to associate my name with the concept, so that if it takes off, my personal working possibilities will be enhanced too.
 

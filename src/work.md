@@ -25,9 +25,9 @@ My open source work is concentrated on the following GitHub accounts:
 
 ## Frameworks
 
-[PoP](https://github.com/leoloso/PoP) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application, and it implements it in PHP.
+[PoP](https://github.com/GatoGraphQL/GatoGraphQL) describes an architecture based on a server-side component model, which provides a mechanism to build, configure and even deploy the application, and it implements it in PHP.
 
-<a href="https://github.com/leoloso/PoP" title="PoP logo"><img src="/images/pop-logo-horizontal-whitebg.png"></a>
+<a href="https://github.com/GatoGraphQL/GatoGraphQL" title="PoP logo"><img src="/images/pop-logo-horizontal-whitebg.png"></a>
 
 ## Libraries
 
@@ -45,7 +45,7 @@ My open source work is concentrated on the following GitHub accounts:
 
 ## Websites
 
-I have created the following websites for different NGOs. All of them are social networks, enabling users to upload their own content, and leveraging the capabilities from [PoP](https://github.com/leoloso/PoP).
+I have created the following websites for different NGOs. All of them are social networks, enabling users to upload their own content, and leveraging the capabilities from [PoP](https://github.com/GatoGraphQL/GatoGraphQL).
 
 [MESYM](https://www.mesym.com) - An environmental social network based in Malaysia.
 

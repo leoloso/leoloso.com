@@ -17,7 +17,7 @@ tags:
 
 Following the example set by Caleb Porzio (who's making [more than u$d 100k/y doing open source](https://calebporzio.com/i-just-hit-dollar-100000yr-on-github-sponsors-heres-how-i-did-it)), I have decided to use the [sponsorware model](https://calebporzio.com/sponsorware) to fund my project. It works like this:
 
-- Whenever I get 10 new sponsors (at u$d 14/m), I start developing the most up-voted feature from a special ["Sponsorware" list](https://github.com/leoloso/PoP/projects/1) (which I'm completing as I'm writing this milestone)
+- Whenever I get 10 new sponsors (at u$d 14/m), I start developing the most up-voted feature from a special ["Sponsorware" list](https://github.com/GatoGraphQL/GatoGraphQL/projects/1) (which I'm completing as I'm writing this milestone)
 - Once implemented, the new feature becomes available to all the sponsors, via a private GitHub repo
 - As soon as I get 50 new sponsors, the new feature becomes open source, accessible to everyone via the public GitHub repo, and is integrated into the plugin
 
@@ -35,6 +35,6 @@ I hope the sponsorware model works, and I can make a living while working on ope
 
 ## Update 15/09: The list of sponsorable features is ready
 
-I have now [listed down all the features](https://github.com/leoloso/PoP/projects/1) I plan to implement if I can get the funding. Right now, there are 23 of them (some of them are low-effort, so they can be bundled together):
+I have now [listed down all the features](https://github.com/GatoGraphQL/GatoGraphQL/projects/1) I plan to implement if I can get the funding. Right now, there are 23 of them (some of them are low-effort, so they can be bundled together):
 
 <figure><a href="/images/sponsorable-features.png" target="_blank"><img src="/images/sponsorable-features.png" alt="Features looking for sponsors" loading="lazy" width="3200" height="1806"></a><figcaption>Features looking for sponsors</figcaption></figure>

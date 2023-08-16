@@ -32,7 +32,7 @@ mutation {
 }
 ```
 
-This query demonstrates how [sending notifications](https://github.com/leoloso/PoP/issues/215) via Symfony Notifier will be accomplished (for email, Slack and SMS). It makes use of a few pioneering features, still being considered (to more or less extent) for the [GraphQL spec](https://spec.graphql.org/draft/):
+This query demonstrates how [sending notifications](https://github.com/GatoGraphQL/GatoGraphQL/issues/215) via Symfony Notifier will be accomplished (for email, Slack and SMS). It makes use of a few pioneering features, still being considered (to more or less extent) for the [GraphQL spec](https://spec.graphql.org/draft/):
 
 🔥 [Nested mutations](https://github.com/graphql/graphql-spec/issues/252)<br/>
 🔥 [Embeddable fields](https://graphql-by-pop.com/docs/operational/embeddable-fields.html) (based on [composable fields](https://github.com/graphql/graphql-spec/issues/682))<br/>
@@ -40,7 +40,7 @@ This query demonstrates how [sending notifications](https://github.com/leoloso/P
 
 ---
 
-I am working to get the funding to implement them, through my recently launched [GitHub sponsors](https://github.com/sponsors/leoloso/). In total, currently there are [23 features looking for sponsorship](https://github.com/leoloso/PoP/projects/1):
+I am working to get the funding to implement them, through my recently launched [GitHub sponsors](https://github.com/sponsors/leoloso/). In total, currently there are [23 features looking for sponsorship](https://github.com/GatoGraphQL/GatoGraphQL/projects/1):
 
 <figure><a href="/images/sponsorable-features.png" target="_blank"><img src="/images/sponsorable-features.png" alt="Features looking for sponsors" loading="lazy" width="3200" height="1806"></a><figcaption>Features looking for sponsors</figcaption></figure>
 

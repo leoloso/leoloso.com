@@ -24,7 +24,7 @@ Here is a tour showing the new additions.
 
 [GraphQL mutations](https://graphql.org/learn/queries/#mutations) enable to modify data (i.e. perform side-effect) through the query.
 
-Mutations was the big item still missing from the GraphQL API. Now that it's been added, I can claim that this GraphQL server is pretty much feature-complete (only subscriptions are missing, and I'm already [thinking on how to add them](https://github.com/leoloso/PoP/issues/194)).
+Mutations was the big item still missing from the GraphQL API. Now that it's been added, I can claim that this GraphQL server is pretty much feature-complete (only subscriptions are missing, and I'm already [thinking on how to add them](https://github.com/GatoGraphQL/GatoGraphQL/issues/194)).
 
 ![Mutation root in the interactive schema](/images/graphql-schema-mutation-root.jpg "Mutation root in the interactive schema")
 
@@ -128,7 +128,7 @@ Check-out the following 3 schemas:
 
 ---
 
-Check out the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), and download it from [here](https://github.com/leoloso/PoP/releases/latest/download/graphql-api.zip).
+Check out the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), and download it from [here](https://github.com/GatoGraphQL/GatoGraphQL/releases/latest/download/graphql-api.zip).
 
 Now it's time to start preparing for v0.8! 
 
