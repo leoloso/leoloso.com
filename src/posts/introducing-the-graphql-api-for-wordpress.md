@@ -9,9 +9,9 @@ tags:
   - api
 ---
 
-**Update 04/02:** The plugin [is now scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So it is fully ready for production, and will be soon uploaded to [wp.org](https://wordpress.org/plugins/) 🥳
+**Update 04/02:** The plugin [is now scoped](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So it is fully ready for production, and will be soon uploaded to [wp.org](https://wordpress.org/plugins/) 🥳
 
-**Update 23/01:** The GraphQL API for WordPress has its own site now: [graphql-api.com](https://graphql-api.com).
+**Update 23/01:** The GraphQL API for WordPress has its own site now: [gatographql.com](https://gatographql.com).
 
 Yesterday I launched the project I've put all my efforts into: the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), a plugin which enables to retrieve data from a WordPress site using the increasingly popular [GraphQL](https://graphql.org) API.
 
@@ -283,7 +283,7 @@ Here a response to some questions I've received:
 
 In theory yes, but since I've just launched the plugin, you'd better test if for some time to make sure there are no issues.
 
-**Update 04/02:** the plugin [is now scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issue below does not apply anymore 🥳
+**Update 04/02:** the plugin [is now scoped](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issue below does not apply anymore 🥳
 
 ~~In addition, please be aware that the GraphQL API has a dependency on a few 3rd-party PHP packages, which must be scoped to avoid potential problems with a different version of the same package being used by another plugin in the site, but the scoping [must yet be done](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/issues/246).~~ 
 
@@ -322,7 +322,7 @@ For instance, some differences are:
 
 ### What's the status of the plugin?
 
-**Update 04/02:** the plugin [has guides on how to use it](https://graphql-api.com/guides/), and [has been scoped](https://graphql-api.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issues below do not apply anymore 🥳
+**Update 04/02:** the plugin [has guides on how to use it](https://gatographql.com/guides/), and [has been scoped](https://gatographql.com/blog/graphql-api-for-wp-is-now-scoped-thanks-to-php-scoper/)! So the issues below do not apply anymore 🥳
 
 GraphQL API is stable and, I'd dare say, ready for production (that is, after playing with it in development). ~~But some things are not complete yet:~~
 

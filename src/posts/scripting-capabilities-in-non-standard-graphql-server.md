@@ -51,7 +51,7 @@ So, how could this situation be improved for GraphQL?
 
 If GraphQL had capabilities to compose or manipulate fields, then a few elements could already satisfy all possible combinations.
 
-[GraphQL by PoP](https://graphql-by-pop.com) (the engine powering the recently launched [GraphQL API for WordPress](https://graphql-api.com)) is a GraphQL server because it respects the [GraphQL spec](https://spec.graphql.org/), but is also a non-standard API server that provides other capabilities, including [composable fields](https://github.com/graphql/graphql-spec/issues/682) and [composable directives](https://github.com/graphql/graphql-spec/issues/683).
+[GraphQL by PoP](https://graphql-by-pop.com) (the engine powering the recently launched [GraphQL API for WordPress](https://gatographql.com)) is a GraphQL server because it respects the [GraphQL spec](https://spec.graphql.org/), but is also a non-standard API server that provides other capabilities, including [composable fields](https://github.com/graphql/graphql-spec/issues/682) and [composable directives](https://github.com/graphql/graphql-spec/issues/683).
 
 Let's see how this server can satisfy all combinations described above, with just a few elements:
 

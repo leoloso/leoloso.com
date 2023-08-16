@@ -3,7 +3,7 @@ title: 🎉 Released GraphQL API v0.7, with support for mutations, and nested mu
 metaDesc: A new standard feature, and a novel one
 socialImage: /images/mutant-ninja-turtles.jpg
 date: '2021-01-22'
-canonicalUrl: https://graphql-api.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/
+canonicalUrl: https://gatographql.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/
 tags:
   - graphql
   - api
@@ -12,9 +12,9 @@ tags:
   - release
 ---
 
-**Note:** This blog post [has been crossposted](https://graphql-api.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/) from [graphql-api.com](https://graphql-api.com) (the GraphQL API for WordPress plugin's new site).
+**Note:** This blog post [has been crossposted](https://gatographql.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/) from [gatographql.com](https://gatographql.com) (the GraphQL API for WordPress plugin's new site).
 
-I released version 0.7 of the [GraphQL API for WordPress](https://graphql-api.com), supporting mutations, and nested mutations! 🎉
+I released version 0.7 of the [GraphQL API for WordPress](https://gatographql.com), supporting mutations, and nested mutations! 🎉
 
 ![Mutations are awesome!](/images/finally-got-mutations.jpg)
 

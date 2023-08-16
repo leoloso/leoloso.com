@@ -11,7 +11,7 @@ tags:
   - sponsorship
 ---
 
-2 days ago I subscribed to GitHub sponsors to fund my work on the [GraphQL API for WordPress](https://graphql-api.com), and I already got [my first sponsor](https://github.com/sponsors/leoloso/)!
+2 days ago I subscribed to GitHub sponsors to fund my work on the [GraphQL API for WordPress](https://gatographql.com), and I already got [my first sponsor](https://github.com/sponsors/leoloso/)!
 
 ![GitHub sponsors](/images/leoloso-github-sponsors.png "GitHub sponsors")
 
