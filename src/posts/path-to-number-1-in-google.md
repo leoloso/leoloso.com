@@ -9,13 +9,13 @@ tags:
   - google
 ---
 
-This weekend I had a very nice surprise: My [latest blog post on graphql-api.com](https://graphql-api.com/blog/why-wordpress-should-have-a-graphql-api-in-core/) made it to the top of Google's search results, when searching for "wordpress core graphql":
+This weekend I had a very nice surprise: My [latest blog post on gatographql.com](https://gatographql.com/blog/why-wordpress-should-have-a-graphql-api-in-core/) made it to the top of Google's search results, when searching for "wordpress core graphql":
 
 ![1st position in Google!](/images/blog-post-first-in-google.png "1st position in Google!")
 
 I noticed because, as I woke up on Sunday morning and I checked my traffic, I saw a wonderful spike:
 
-![Traffic from graphql-api.com on Feb 28th](/images/traffic-graphql-api-on-sunday-28-feb.png "Traffic from graphql-api.com on Feb 28th")
+![Traffic from gatographql.com on Feb 28th](/images/traffic-graphql-api-on-sunday-28-feb.png "Traffic from gatographql.com on Feb 28th")
 
 By the end of the day, that blog post had brought in near 800 visitors (and they kept arriving the following day):
 
@@ -31,7 +31,7 @@ I must admit, making it to the top of Google feels good!
 
 Ok, so this is how it happened.
 
-On Saturday, I wrote the blog post [🛠 Should WordPress have a GraphQL API in core?](https://graphql-api.com/blog/why-wordpress-should-have-a-graphql-api-in-core/) for my plugin's blog.
+On Saturday, I wrote the blog post [🛠 Should WordPress have a GraphQL API in core?](https://gatographql.com/blog/why-wordpress-should-have-a-graphql-api-in-core/) for my plugin's blog.
 
 I had the blog post's URL, `why-wordpress-should-have-a-graphql-api-in-core`, contains those keywords I wanted the post to be associated with:
 
@@ -61,7 +61,7 @@ Google (I believe) picked it up from there, and the traffic then went through th
 
 ## Search is a battle
 
-I was lucky this time, because people upvoting my article is out of my control. However, this is part of a long-term strategy, to have my plugin the [GraphQL API for WordPress](https://graphql-api.com) feature higher on Google.
+I was lucky this time, because people upvoting my article is out of my control. However, this is part of a long-term strategy, to have my plugin the [GraphQL API for WordPress](https://gatographql.com) feature higher on Google.
 
 That search result is actually a bit esoteric: "wordpress core graphql". Who adds the word "core"?
 

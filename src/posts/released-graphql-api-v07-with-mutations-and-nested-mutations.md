@@ -3,7 +3,7 @@ title: 🎉 Released GraphQL API v0.7, with support for mutations, and nested mu
 metaDesc: A new standard feature, and a novel one
 socialImage: /images/mutant-ninja-turtles.jpg
 date: '2021-01-22'
-canonicalUrl: https://graphql-api.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/
+canonicalUrl: https://gatographql.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/
 tags:
   - graphql
   - api
@@ -12,9 +12,9 @@ tags:
   - release
 ---
 
-**Note:** This blog post [has been crossposted](https://graphql-api.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/) from [graphql-api.com](https://graphql-api.com) (the GraphQL API for WordPress plugin's new site).
+**Note:** This blog post [has been crossposted](https://gatographql.com/blog/released-graphql-api-v07-with-mutations-and-nested-mutations/) from [gatographql.com](https://gatographql.com) (the GraphQL API for WordPress plugin's new site).
 
-I released version 0.7 of the [GraphQL API for WordPress](https://graphql-api.com), supporting mutations, and nested mutations! 🎉
+I released version 0.7 of the [GraphQL API for WordPress](https://gatographql.com), supporting mutations, and nested mutations! 🎉
 
 ![Mutations are awesome!](/images/finally-got-mutations.jpg)
 
@@ -24,7 +24,7 @@ Here is a tour showing the new additions.
 
 [GraphQL mutations](https://graphql.org/learn/queries/#mutations) enable to modify data (i.e. perform side-effect) through the query.
 
-Mutations was the big item still missing from the GraphQL API. Now that it's been added, I can claim that this GraphQL server is pretty much feature-complete (only subscriptions are missing, and I'm already [thinking on how to add them](https://github.com/leoloso/PoP/issues/194)).
+Mutations was the big item still missing from the GraphQL API. Now that it's been added, I can claim that this GraphQL server is pretty much feature-complete (only subscriptions are missing, and I'm already [thinking on how to add them](https://github.com/GatoGraphQL/GatoGraphQL/issues/194)).
 
 ![Mutation root in the interactive schema](/images/graphql-schema-mutation-root.jpg "Mutation root in the interactive schema")
 
@@ -59,7 +59,7 @@ In this first release, the plugin ships with the following mutations:
 
 Nested mutations is the ability to perform mutations on a type other than the root type in GraphQL.
 
-They have been [requested for the GraphQL spec](https://github.com/graphql/graphql-spec/issues/252) but not yet approved (and may never will), hence GraphQL API adds support for them as an opt-in feature, via the [Nested Mutations](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/nested-mutations.md) module.
+They have been [requested for the GraphQL spec](https://github.com/graphql/graphql-spec/issues/252) but not yet approved (and may never will), hence GraphQL API adds support for them as an opt-in feature, via the [Nested Mutations](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/modules/nested-mutations.md) module.
 
 Then, the plugin supports the 2 behaviors:
 
@@ -96,7 +96,7 @@ You may have a GraphQL API that is used by your own application, and is also pub
 
 Good news: you can.
 
-I've added a "Mutation Scheme" section in the Schema Configuration, which is used to customize the schema for [Custom Endpoints](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/custom-endpoints.md) and [Persisted Queries](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp/docs/en/modules/persisted-queries.md):
+I've added a "Mutation Scheme" section in the Schema Configuration, which is used to customize the schema for [Custom Endpoints](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/modules/custom-endpoints.md) and [Persisted Queries](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql/docs/en/modules/persisted-queries.md):
 
 ![Mutation scheme in the Schema configuration](/images/schema-configuration-mutation-scheme.jpg)
 
@@ -128,7 +128,7 @@ Check-out the following 3 schemas:
 
 ---
 
-Check out the [GraphQL API for WordPress](https://github.com/leoloso/PoP/tree/master/layers/GraphQLAPIForWP/plugins/graphql-api-for-wp), and download it from [here](https://github.com/leoloso/PoP/releases/latest/download/graphql-api.zip).
+Check out the [GraphQL API for WordPress](https://github.com/GatoGraphQL/GatoGraphQL/tree/master/layers/GatoGraphQLForWP/plugins/gatographql), and download it from [here](https://github.com/GatoGraphQL/GatoGraphQL/releases/latest/download/gatographql.zip).
 
 Now it's time to start preparing for v0.8! 
 

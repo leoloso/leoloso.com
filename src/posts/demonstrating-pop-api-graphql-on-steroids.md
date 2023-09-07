@@ -983,7 +983,7 @@ Me neither. So I will continue in another blog post to describe how this API eit
 - User permissions, Public/Private API
 - Mutations
 
-I hope you have enjoyed this. If so, please check out [PoP](https://github.com/leoloso/PoP) (where it explains how the component model works), and the myriad of repos implementing the logic:
+I hope you have enjoyed this. If so, please check out [PoP](https://github.com/GatoGraphQL/GatoGraphQL) (where it explains how the component model works), and the myriad of repos implementing the logic:
 
 - [GraphQL API](https://github.com/getpop/api-graphql)
 - [API](https://github.com/getpop/api)
@@ -1020,6 +1020,6 @@ The version for WordPress is ready to install. Simply add the following packages
 }
 ```
 
-More detailed instructions for installation can be found in [this GitHub repo](https://github.com/leoloso/PoP-API-WP). 
+More detailed instructions for installation can be found in [this GitHub repo](https://github.com/GatoGraphQL/GatoGraphQL-API-WP). 
 
 Adopters and contributors are welcome... Thanks for reading! 😀

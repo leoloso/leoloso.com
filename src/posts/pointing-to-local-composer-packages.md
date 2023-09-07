@@ -7,9 +7,9 @@ tags:
   - composer
 ---
 
-I love [Composer](https://getcomposer.org). This incredible tool has greatly simplified the dependency management of my project [PoP](https://github.com/leoloso/PoP), making it feasible to split the tens of thousands of lines of code into autonomous packages that depend on each other. Indeed, for several years PoP was not easy to install, and only insiders knew what could break and how to fix it (sadly, I was the only insider! That's why there is still only 1 contributor on the project to date). Thanks to Composer, that is not the case anymore, and a simple bash command line can install the whole project automatically. Such a lifesaver! 
+I love [Composer](https://getcomposer.org). This incredible tool has greatly simplified the dependency management of my project [PoP](https://github.com/GatoGraphQL/GatoGraphQL), making it feasible to split the tens of thousands of lines of code into autonomous packages that depend on each other. Indeed, for several years PoP was not easy to install, and only insiders knew what could break and how to fix it (sadly, I was the only insider! That's why there is still only 1 contributor on the project to date). Thanks to Composer, that is not the case anymore, and a simple bash command line can install the whole project automatically. Such a lifesaver! 
 
-(Btw, [PoP's migration to Composer](https://github.com/leoloso/PoP#codebase-migration) is still ongoing. If you are willing to become involved, it will be greatly appreciated 😀❤️.)
+(Btw, [PoP's migration to Composer](https://github.com/GatoGraphQL/GatoGraphQL#codebase-migration) is still ongoing. If you are willing to become involved, it will be greatly appreciated 😀❤️.)
 
 However, not everything in Composer shines. In particular, because Composer updates its package directory every 10 minutes or so, it can take a while to be able to update our projects using the latest version of our code (even if it is already available on the Git repo). In particular, when we are developing a functionality and we want to have another package use it, to test it, then waiting these 10 minutes can be very annoying. Too bad!
 

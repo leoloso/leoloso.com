@@ -22,7 +22,7 @@ Well, not anymore! Somebody is doing something to remediate this situation 😬.
 
 ## PoP makes justice to back-end components
 
-[PoP](https://github.com/leoloso/PoP) is my own project, on which I've been working on for several years now. At its current stage, I call it an "API + component model + framework for building sites" (as it codebase is transformed and matures, its range of possibilites is widened, and so its description keeps changing).
+[PoP](https://github.com/GatoGraphQL/GatoGraphQL) is my own project, on which I've been working on for several years now. At its current stage, I call it an "API + component model + framework for building sites" (as it codebase is transformed and matures, its range of possibilites is widened, and so its description keeps changing).
 
 PoP implements components! The way it has been designed, each component is implemented spanning both back-end and front-end, depending on the actual responsibility:
 
@@ -57,4 +57,4 @@ This splitting of responsibilities conveys a progressive/resilient nature to the
 
 From my own experience, splitting a component into different parts, each of them tackling a different responsibility, is extremely clean, making it a breeze to produce performing code that is easy to maintain. After coding this way, I find it very difficult to use frameworks that require to code the webpage from scratch each time, or where the whole and the parts are intertwined and not properly decoupled (as when using partials accessing variables defined in some other piece of code, somewhere else in the project). 
 
-If the approach I've just illustrated looks appealing to you, check out [PoP](https://github.com/leoloso/PoP), play with it, and let me know how it goes!
+If the approach I've just illustrated looks appealing to you, check out [PoP](https://github.com/GatoGraphQL/GatoGraphQL), play with it, and let me know how it goes!

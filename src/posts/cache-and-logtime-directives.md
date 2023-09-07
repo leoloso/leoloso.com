@@ -75,7 +75,7 @@ That is 80 times faster! How cool is that!? 👏👏👏
 
 ### So, can I install GraphQL by PoP? How?
 
-Yes, you can install it following [these instructions](https://github.com/leoloso/PoP-API-WP#install), but the documentation right now is all over the place and not easy to follow (there is a bit in this blog, some bits in [this GitHub repo](https://github.com/getpop/graphql#install) and a few others, some other stuff in a few Smashing Magazine and LogRocket blog articles). It's certainly not ideal.
+Yes, you can install it following [these instructions](https://github.com/GatoGraphQL/GatoGraphQL-API-WP#install), but the documentation right now is all over the place and not easy to follow (there is a bit in this blog, some bits in [this GitHub repo](https://github.com/getpop/graphql#install) and a few others, some other stuff in a few Smashing Magazine and LogRocket blog articles). It's certainly not ideal.
 
 But don't despair! I'm working on a new documentation site, and then it will be perfect! It should be ready in a few weeks time... I will post updates in this blog and on [my Twitter account](https://twitter.com/losoviz).
 

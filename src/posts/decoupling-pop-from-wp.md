@@ -12,7 +12,7 @@ tags:
   - smashing
 ---
 
-When some time ago I started modernizing [PoP](https://github.com/leoloso/PoP)'s codebase to using [Composer](https://getcomposer.org) as its foundational framework for package management, I decided to also decouple PoP's codebase from [WordPress](https://wordpress.org), making it CMS-agnostic. 
+When some time ago I started modernizing [PoP](https://github.com/GatoGraphQL/GatoGraphQL)'s codebase to using [Composer](https://getcomposer.org) as its foundational framework for package management, I decided to also decouple PoP's codebase from [WordPress](https://wordpress.org), making it CMS-agnostic. 
 
 Oh boy, that was a lot of work, but sure it was all worth it: PoP can now run pretty much with any PHP-based framework, including [Symfony](https://symfony.com) and [Laravel](https://laravel.com/)! 
 
