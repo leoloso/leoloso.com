@@ -3,13 +3,17 @@ title: 🎤 Speaking
 layout: 'layouts/page.njk'
 ---
 
-I love attending conferences and local meetups, not only as an attendee but, even more, as a speaker! If I have experience on some topic, and it is of interest to the community, I will try my best to be accepted to a relevant conference and share my knowledge. 
+I love attending conferences and local meetups, not only as an attendee but, even more, as a speaker! If I have experience on some topic, and it is of interest to the community, I will try my best to be accepted to a relevant conference and share my knowledge.
 
 If you happen to be a conference organizer, [let's work together](mailto:leo@getpop.org)!
 
 ![That's me speaking @ JSConf Asia 2019](/assets/leo-jsconfasia.jpg "That's me speaking @ JSConf Asia 2019 (image by JSConf organizers)")
 
 ## Previous engagements
+
+**15 things (you didn't know) you can do with GraphQL in WordPress** @ [WordCamp Malaysia 2023](https://malaysia.wordcamp.org/2023/session/what-you-dont-yet-know-about-using-graphql-in-wordpress/)
+
+<iframe src="https://slides.com/leoloso/graphql-in-wordpress/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **Will WordPress be Better with the Block Protocol?** @ [WordSesh 2022](https://wordsesh.com/#schedule) (Online)
 
