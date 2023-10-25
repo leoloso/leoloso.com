@@ -13,8 +13,7 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 **15 things (you didn't know) you can do with GraphQL in WordPress** @ [WordCamp Malaysia 2023](https://malaysia.wordcamp.org/2023/session/what-you-dont-yet-know-about-using-graphql-in-wordpress/)
 
-<iframe width="560" height="315" src="https://videopress.com/embed/Ns5cuwgL" frameborder="0" allowfullscreen allow="clipboard-write" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<script src="https://videopress.com/videopress-iframe.js"></script>
+<iframe width="1206" height="678" src="https://www.youtube.com/embed/4gDkunLl-rQ" title="15 things (you didn’t know) you can do with GraphQL in WordPress" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <iframe src="https://slides.com/leoloso/graphql-in-wordpress/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
