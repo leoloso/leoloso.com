@@ -5,6 +5,10 @@ layout: 'layouts/page.njk'
 
 Every now and then I get invited by podcasts to talk about my work and articles. To date, I've participated in these:
 
+## WPBuilds
+
+- [348 – How the Gato GraphQL plugin can accelerate your WordPress development](https://wpbuilds.com/2023/11/02/348-how-the-gato-graphql-plugin-can-accelerate-your-wordpress-development/)
+
 ## WPTavern
 
 - [#18 – Leonardo Losoviz on the Block Protocol’s Efforts To Make Blocks Work Universally](https://wptavern.com/podcast/18-leonardo-losoviz-on-the-block-protocols-efforts-to-make-blocks-work-universally)
