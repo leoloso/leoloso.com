@@ -1,4 +1,5 @@
 ---
+excludeFromSitemap: true
 title: 'Thank you'
 layout: 'layouts/page.njk'
 permalink: '/thank-you/index.html'
