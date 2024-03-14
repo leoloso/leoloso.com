@@ -189,6 +189,10 @@ Opinion pieces on anything concerning WordPress.
 
 Innovative web development trends, mostly concerning PHP and WordPress.
 
+💻 [Installing setup data for a WordPress plugin](https://kinsta.com/blog/wordpress-plugin-setup-data/)
+
+💻 [Architecting a WordPress plugin to support extensions](https://kinsta.com/blog/pro-free-versions-wordpress-plugin/)
+
 💻 [10 PHP Testing Tools for WordPress Plugins](https://kinsta.com/blog/php-testing-tools/)
 
 💻 [The Ultimate Guide for Transpiling PHP Code](https://kinsta.com/blog/transpiling-php/)
