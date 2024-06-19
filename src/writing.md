@@ -29,6 +29,10 @@ Tips for making the most out of the WordPress editor.
 
 It concerns a wide array of topics, including web design and performance, coding in WordPress, designing architectures and implementing them in PHP, and others.
 
+😸 [How To Work With GraphQL In WordPress In 2024](https://www.smashingmagazine.com/2024/04/how-work-graphql-wordpress-2024/)
+
+😸 [How To Host A WordPress Site On Amazon Lightsail](https://www.smashingmagazine.com/2023/02/host-wordpress-site-amazon-lightsail/)
+
 😸 [Adding Search To Your Site In 15 Minutes](https://www.smashingmagazine.com/2022/06/adding-search-website-sitesearch360/)
 
 😸 [Using The WordPress Editor And CPTs To Configure Plugins](https://www.smashingmagazine.com/2022/02/wordpress-editor-cpts-configure-plugins/)
@@ -188,6 +192,8 @@ Opinion pieces on anything concerning WordPress.
 ## Kinsta blog
 
 Innovative web development trends, mostly concerning PHP and WordPress.
+
+💻 [How to make a WordPress plugin extensible with PHP classes](https://kinsta.com/blog/wordpress-plugin-extensible/)
 
 💻 [Installing setup data for a WordPress plugin](https://kinsta.com/blog/wordpress-plugin-setup-data/)
 
