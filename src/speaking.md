@@ -13,6 +13,9 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 **Managing Multiple WordPress Plugins In A Single Repo** @ [WordCamp Malaysia 2024](https://malaysia.wordcamp.org/2024/session/managing-multiple-wordpress-plugins-in-a-single-repo/)
 
+<iframe width="560" height="315" src="https://videopress.com/embed/mqCra6S4" frameborder="0" allowfullscreen allow="clipboard-write"></iframe>
+<script src="https://videopress.com/videopress-iframe.js"></script>
+
 <iframe src="https://slides.com/leoloso/single-repo/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 **15 things (you didn't know) you can do with GraphQL in WordPress** @ [WordCamp Malaysia 2023](https://malaysia.wordcamp.org/2023/session/what-you-dont-yet-know-about-using-graphql-in-wordpress/)
