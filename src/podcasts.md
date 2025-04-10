@@ -7,6 +7,7 @@ Every now and then I get invited by podcasts to talk about my work and articles.
 
 ## WPBuilds
 
+- [414 – Revolutionising WordPress translations: Leo Losoviz talks Gato AI Translations for Polylang](https://wpbuilds.com/2025/03/20/414-revolutionising-wordpress-translations-leo-losoviz-talks-gato-ai-translations-for-polylang/)
 - [348 – How the Gato GraphQL plugin can accelerate your WordPress development](https://wpbuilds.com/2023/11/02/348-how-the-gato-graphql-plugin-can-accelerate-your-wordpress-development/)
 
 ## WPTavern
