@@ -11,6 +11,12 @@ If you happen to be a conference organizer, [let's work together](mailto:leo@get
 
 ## Previous engagements
 
+**Interacting with LLMs via GraphQL** @ [apidays Singapore 2025](https://www.apidays.global/singapore)
+
+<iframe width="1206" height="678" src="https://www.youtube.com/embed/sziYcxonFK4" title="Interacting with LLMs via GraphQL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe src="https://slides.com/leoloso/ai-graphql/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 **Managing Multiple WordPress Plugins In A Single Repo** @ [WordCamp Malaysia 2024](https://malaysia.wordcamp.org/2024/session/managing-multiple-wordpress-plugins-in-a-single-repo/)
 
 <iframe width="560" height="315" src="https://videopress.com/embed/mqCra6S4" frameborder="0" allowfullscreen allow="clipboard-write"></iframe>
