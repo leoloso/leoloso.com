@@ -5,7 +5,7 @@ layout: 'layouts/page.njk'
 
 I love attending conferences and local meetups, not only as an attendee but, even more, as a speaker! If I have experience on some topic, and it is of interest to the community, I will try my best to be accepted to a relevant conference and share my knowledge.
 
-If you happen to be a conference organizer, [let's work together](mailto:leo@getpop.org)!
+If you happen to be a conference organizer, [let's work together](/contact/)!
 
 ![That's me speaking @ JSConf Asia 2019](/assets/leo-jsconfasia.jpg "That's me speaking @ JSConf Asia 2019 (image by JSConf organizers)")
 
