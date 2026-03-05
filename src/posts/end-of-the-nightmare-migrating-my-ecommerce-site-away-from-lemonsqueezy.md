@@ -11,17 +11,11 @@ tags:
 
 For the last years I’ve been using LemonSqueezy as my ecommerce provider to sell my plugins, [Gato AI Translations for Polylang](https://gatoplugins.com/plugins/ai-translations-for-polylang) and [Gato GraphQL](https://gatographql.com/).
 
-For a long time I was genuinely happy with it. The product hit most of the boxes I cared about:
+For a long time I was genuinely happy with it. The product hit most of the boxes I cared about: selling digital products, newsletter, and affiliates.
 
-- Selling digital products
-- Newsletter
-- Affiliates
+(There were annoyances here and there. One in particular was especially painful: since assets are not shared across variants, every release cost me ~1 hour of drag-and-drop uploads, with some 20 products × 8 variants.)
 
-There were annoyances here and there. One in particular was especially painful: **assets are not shared across variants**.
-
-I have around 20 products with 8 variants each (1 domain, 3 domains, 10 domains, 30 domains, and LTD for each of those). Every time I shipped a new plugin version, I had to spend up to an hour manually drag-and-dropping the ZIP file into every single variant. For every single product. That was… fun.
-
-But overall, the service was solid enough that I could live with the rough edges.
+Overall, the service was solid enough that I could live with the rough edges.
 
 ### Stripe acquires LemonSqueezy… and everything freezes
 
