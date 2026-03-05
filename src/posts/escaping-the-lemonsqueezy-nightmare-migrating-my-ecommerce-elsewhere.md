@@ -1,7 +1,7 @@
 ---
 title: "🍋 Escaping the LemonSqueezy nightmare: migrating my ecommerce elsewhere"
 metaDesc: "How Stripe's acqui-kill of LemonSqueezy forced me to migrate my ecommerce and lose sales along the way."
-socialImage: /images/lemonsqueezy/lemonsqueezy-error.webp
+socialImage: /images/lemonsqueezy/lemonsqueezy-error.png
 date: '2026-03-05'
 tags:
   - ecommerce
