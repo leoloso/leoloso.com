@@ -39,7 +39,7 @@ And if there’s no active dev team, there’s also nobody fixing bugs.
 
 I’ve reported many bugs over many months. None of them were fixed. Not a single one.
 
-The pattern was always the same. I’d open a ticket, and they’d send something along the lines of:
+The pattern was always the same. I’d send an email to their support team, and they’d send something along the lines of:
 
 > I would like to inform you that I have escalated your concern to our dedicated team. One of our team member will contact you once we have an update to share. Kindly keep an eye on your email. 
 
@@ -47,7 +47,7 @@ The pattern was always the same. I’d open a ticket, and they’d send somethin
 
 And then… nothing. No follow-up, no workaround, no acknowledgement that the bug still exists and is hurting people’s businesses.
 
-Here are some of the things I tried to get them to fix, together with my ever-growing level of desperation at the end of each interaction.
+Here are some of the things I tried to get them to fix. Notice my ever-growing level of desperation by the end of each interaction.
 
 #### LemonSqueezy invalidating *all* new Gmail newsletter subscribers
 
@@ -57,7 +57,7 @@ LemonSqueezy started invalidating every new Gmail address subscribing to my news
 
 #### Double opt‑in emails not being sent
 
-In many cases, users simply would not receive the “double opt‑in” confirmation email when subscribing to the newsletter.
+Users would not receive the “double opt‑in” confirmation email when subscribing to the newsletter.
 
 ![LemonSqueezy double opt‑in emails not arriving](/images/lemonsqueezy/lemonsqueezy-email-support-double-optin.webp)
 
