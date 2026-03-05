@@ -43,7 +43,7 @@ The pattern was always the same. I’d send an email to their support team, and 
 
 > I would like to inform you that I have escalated your concern to our dedicated team. One of our team member will contact you once we have an update to share. Kindly keep an eye on your email. 
 
-![LemonSqueezy's copy-paste support answer](/images/lemonsqueezy/lemonsqueezy-email-support-example.webp)
+![LemonSqueezy's copy-paste support answer](/images/lemonsqueezy/lemonsqueezy-email-support-example.webp "LemonSqueezy's copy-paste support answer")
 
 And then… nothing. No follow-up, no workaround, no acknowledgement that the bug still exists and is hurting people’s businesses.
 
@@ -53,29 +53,29 @@ Here are some of the things I tried to get them to fix. Notice my ever-growing l
 
 The affiliate tracking script simply refused to work on `gatographql.com`. One affiliate actually stopped running a campaign for my plugin because their clicks weren’t being tracked at all.
 
-![Affiliate tracking not working](/images/lemonsqueezy/lemonsqueezy-email-support-affiliate.webp)
+![Affiliate tracking not working](/images/lemonsqueezy/lemonsqueezy-email-support-affiliate.webp "Affiliate tracking not working")
 
 #### LemonSqueezy invalidating *all* new Gmail newsletter subscribers
 
 LemonSqueezy started invalidating every new Gmail address subscribing to my newsletter.
 
-![LemonSqueezy invalidating Gmail subscribers](/images/lemonsqueezy/lemonsqueezy-email-support-subscribers-problem.webp)
+![LemonSqueezy invalidating Gmail subscribers](/images/lemonsqueezy/lemonsqueezy-email-support-subscribers-problem.webp "LemonSqueezy invalidating Gmail subscribers")
 
 #### Double opt‑in emails not being sent
 
 Users would not receive the “double opt‑in” confirmation email when subscribing to the newsletter.
 
-![LemonSqueezy double opt‑in emails not arriving](/images/lemonsqueezy/lemonsqueezy-email-support-double-optin.webp)
+![LemonSqueezy double opt‑in emails not arriving](/images/lemonsqueezy/lemonsqueezy-email-support-double-optin.webp "LemonSqueezy double opt‑in emails not arriving")
 
 Because this bug was never fixed, I had to disable double opt‑in entirely. The result: I’ve been flooded with spam signups ever since. Every day I have to check whether there are new spam subscribers and manually archive them.
 
-![Spam notifications after disabling double opt‑in](/images/lemonsqueezy/lemonsqueezy-notifications-spam-emails.webp)
+![Spam notifications after disabling double opt‑in](/images/lemonsqueezy/lemonsqueezy-notifications-spam-emails.webp "Spam notifications after disabling double opt‑in")
 
 #### Zero help when I had trouble registering a Stripe account
 
 When I had trouble registering a new Stripe account, LemonSqueezy support was… not helpful.
 
-![LemonSqueezy support not helping with Stripe account issues](/images/lemonsqueezy/lemonsqueezy-email-support-stripe-account.webp)
+![LemonSqueezy support not helping with Stripe account issues](/images/lemonsqueezy/lemonsqueezy-email-support-stripe-account.webp "LemonSqueezy support not helping with Stripe account issues")
 
 #### A second shop that never worked
 
@@ -83,7 +83,7 @@ I wanted to create a second shop for Gato Plugins, separate from Gato GraphQL.
 
 That never worked. Their onboarding kept throwing an exception during identity verification, so I was forced to run a single “Gato” shop for both Gato Plugins and Gato GraphQL.
 
-![LemonSqueezy second store creation failing](/images/lemonsqueezy/lemonsqueezy-email-support-2ndstore.webp)
+![LemonSqueezy second store creation failing](/images/lemonsqueezy/lemonsqueezy-email-support-2ndstore.webp "LemonSqueezy second store creation failing")
 
 #### Prices mysteriously reverting to an old version
 
@@ -103,7 +103,7 @@ Despite all of this, I stayed, because I still needed to sell my products and I 
 
 About a month ago, their servers started throwing “Internal Server Error” more and more often. It got progressively worse until at times **one out of three interactions** with the platform resulted in an error.
 
-![Frequent internal server errors on LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-error.webp)
+![Frequent internal server errors on LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-error.webp "Frequent internal server errors on LemonSqueezy")
 
 This wasn’t just in the dashboard. It also happened when customers tried to purchase my plugins.
 
@@ -113,7 +113,7 @@ And I have no idea how many others simply tried, failed, and silently left the s
 
 At that point I sent them a last email with the subject **“Moving away from LS”**:
 
-![My final email to LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-final-email.webp)
+![My final email to LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-final-email.webp "My final email to LemonSqueezy")
 
 (The blog post I mention in that email is [this one](https://gatoplugins.com/blog/having-trouble-purchasing-the-plugin).)
 
@@ -121,7 +121,7 @@ Did I really think they’d react? Of course not. I was being naive.
 
 They wasted my time one last time:
 
-![LemonSqueezy's non-response to my final email](/images/lemonsqueezy/lemonsqueezy-final-email-final.webp)
+![LemonSqueezy's non-response to my final email](/images/lemonsqueezy/lemonsqueezy-final-email-final.webp "LemonSqueezy's non-response to my final email")
 
 ### A product that actively makes me lose money
 
@@ -168,7 +168,7 @@ But it’s now done. 🙏
 
 On the last plugin update that was still hosted on LemonSqueezy (the new version points to the new platform), some users complained that they couldn’t update the plugin at all.
 
-![Plugin update failing while still on LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-update-failed.webp)
+![Plugin update failing while still on LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-update-failed.webp "Plugin update failing while still on LemonSqueezy")
 
 Fitting, in a way. LemonSqueezy kept throwing errors right until the very end.
 
