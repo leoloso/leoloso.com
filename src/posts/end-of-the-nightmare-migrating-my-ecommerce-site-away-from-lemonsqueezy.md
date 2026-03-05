@@ -1,5 +1,5 @@
 ---
-title: "🍋 End of the nightmare: Migrating my ecommerce site away from LemonSqueezy"
+title: "🍋 Escaping the LemonSqueezy nightmare: migrating my ecommerce elsewhere"
 metaDesc: "How Stripe's acqui-kill of LemonSqueezy forced me to migrate my ecommerce and lose sales along the way."
 socialImage: /images/lemonsqueezy/lemonsqueezy-error.webp
 date: '2026-03-05'
