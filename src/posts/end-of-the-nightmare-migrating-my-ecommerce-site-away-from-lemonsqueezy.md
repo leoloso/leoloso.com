@@ -49,6 +49,12 @@ And then… nothing. No follow-up, no workaround, no acknowledgement that the bu
 
 Here are some of the things I tried to get them to fix. Notice my ever-growing level of desperation by the end of each interaction.
 
+#### Broken affiliate tracking on gatographql.com
+
+The affiliate tracking script simply refused to work on `gatographql.com`. One affiliate actually stopped running a campaign for my plugin because their clicks weren’t being tracked at all.
+
+![Affiliate tracking not working](/images/lemonsqueezy/lemonsqueezy-email-support-affiliate.webp)
+
 #### LemonSqueezy invalidating *all* new Gmail newsletter subscribers
 
 LemonSqueezy started invalidating every new Gmail address subscribing to my newsletter.
@@ -78,12 +84,6 @@ I wanted to create a second shop for Gato Plugins, separate from Gato GraphQL.
 That never worked. Their onboarding kept throwing an exception during identity verification, so I was forced to run a single “Gato” shop for both Gato Plugins and Gato GraphQL.
 
 ![LemonSqueezy second store creation failing](/images/lemonsqueezy/lemonsqueezy-email-support-2ndstore.webp)
-
-#### Broken affiliate tracking on gatographql.com
-
-The affiliate tracking script simply refused to work on `gatographql.com`. One affiliate actually stopped running a campaign for my plugin because their clicks weren’t being tracked at all.
-
-![Affiliate tracking not working](/images/lemonsqueezy/lemonsqueezy-email-support-affiliate.webp)
 
 #### Prices mysteriously reverting to an old version
 
