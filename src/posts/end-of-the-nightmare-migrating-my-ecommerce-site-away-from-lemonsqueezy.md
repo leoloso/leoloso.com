@@ -150,11 +150,7 @@ There’s no other way to explain their behavior: Stripe acquired LemonSqueezy i
 
 At that point, switching to a new platform was no longer something I “should probably do at some point”. It became an imperative.
 
-I had to:
-
-- Find a new ecommerce provider
-- Integrate it into `gatoplugins.com` and `gatographql.com`
-- Update the plugins so that license validation hits the new provider’s API instead of LemonSqueezy
+I had to find a new ecommerce provider, integrate it into [gatoplugins.com](https://gatoplugins.com) and [gatographql.com](https://gatographql.com), and update the plugins so that license validation hits the new provider’s API instead of LemonSqueezy.
 
 Doing all of this took me around two weeks.
 
