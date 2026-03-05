@@ -27,7 +27,7 @@ Since then, product development has effectively stopped. According to [this comm
 >
 > Once the updates in Stripe are completed, all LS users will be migrated to Stripe. LS will be discontinued.
 
-The roadmap page was silently removed, and the “Roadmap” link in the footer (`https://www.lemonsqueezy.com/roadmap`) now just redirects to their blog. (They haven’t even bothered to remove the link from the footer. I honestly don’t know if they even realized it’s still there.)
+The roadmap page was silently removed, and the “Roadmap” link in the footer (`www.lemonsqueezy.com/roadmap`) now just redirects to their blog. (They haven’t even bothered to remove the link from the footer. I honestly don’t know if they even realized it’s still there.)
 
 No roadmap and no new features already sucks. But it’s worse than that.
 
