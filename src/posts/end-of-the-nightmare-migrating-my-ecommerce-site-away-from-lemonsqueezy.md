@@ -43,7 +43,7 @@ The pattern was always the same. I’d send an email to their support team, and 
 
 > I would like to inform you that I have escalated your concern to our dedicated team. One of our team member will contact you once we have an update to share. Kindly keep an eye on your email. 
 
-![Support email: LemonSqueezy's copy-paste support answer](/images/lemonsqueezy/lemonsqueezy-email-support-example.webp "Support email: LemonSqueezy's copy-paste support answer")
+![LemonSqueezy's copy-paste support answer](/images/lemonsqueezy/lemonsqueezy-email-support-example.webp "LemonSqueezy's copy-paste support answer")
 
 And then… nothing. No follow-up, no workaround, no acknowledgement that the bug still exists and is hurting people’s businesses.
 
