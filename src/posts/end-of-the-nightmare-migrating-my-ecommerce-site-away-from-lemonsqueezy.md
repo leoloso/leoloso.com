@@ -91,7 +91,7 @@ At one point, LemonSqueezy reverted my product prices back to a previous version
 
 I only noticed because a sale came in with a lower-than-expected amount. That’s money simply gone.
 
-After I complained publicly on Twitter, Nathalie from support reached out and said they’d investigate ASAP.
+After I complained publicly on Twitter, someone from their support reached out and said they’d investigate ASAP.
 
 They never came back.
 
