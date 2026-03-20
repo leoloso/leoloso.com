@@ -9,11 +9,9 @@ tags:
   - wordpress
 ---
 
-For the last years I’ve been using LemonSqueezy as my ecommerce provider to sell my plugins, [Gato AI Translations for Polylang](https://gatoplugins.com/plugins/ai-translations-for-polylang) and [Gato GraphQL](https://gatographql.com/).
+For the last years I’ve been using LemonSqueezy as my ecommerce provider to sell my plugins.
 
 For a long time I was genuinely happy with it. The product hit most of the boxes I cared about: selling digital products, newsletter, and affiliates.
-
-(There were annoyances here and there. One in particular was especially painful: since assets are not shared across variants, every release cost me ~1 hour of drag-and-drop uploads, with some 20 products × 8 variants.)
 
 Overall, the service was solid enough that I could live with the rough edges.
 
