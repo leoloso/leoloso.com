@@ -115,8 +115,6 @@ At that point I sent them a last email with the subject **“Moving away from LS
 
 ![My final email to LemonSqueezy](/images/lemonsqueezy/lemonsqueezy-final-email.webp "My final email to LemonSqueezy")
 
-(The blog post I mention in that email is [this one](https://gatoplugins.com/blog/having-trouble-purchasing-the-plugin).)
-
 Did I really think they’d react? Of course not. I was being naive.
 
 They wasted my time one last time:
