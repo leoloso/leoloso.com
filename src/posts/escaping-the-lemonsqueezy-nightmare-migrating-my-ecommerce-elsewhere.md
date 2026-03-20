@@ -49,7 +49,7 @@ Here are some of the things I tried to get them to fix. Notice my ever-growing l
 
 #### Broken affiliate tracking on gatographql.com
 
-The affiliate tracking script simply refused to work on `gatographql.com`. One affiliate actually stopped running a campaign for my plugin because their clicks weren’t being tracked at all.
+The affiliate tracking script simply refused to work on the [Gato GraphQL](https://gatographql.com/) website. One affiliate actually stopped running a campaign for my plugin because their clicks weren’t being tracked at all.
 
 ![Support email: Affiliate tracking not working](/images/lemonsqueezy/lemonsqueezy-email-support-affiliate.webp "Support email: Affiliate tracking not working")
 
@@ -77,7 +77,7 @@ When I had trouble registering a new Stripe account, LemonSqueezy support was…
 
 #### A second shop that never worked
 
-I wanted to create a second shop for Gato Plugins, separate from Gato GraphQL.
+When I launched my second venture, [Gato Plugins](https://gatoplugins.com), I wanted it to have its own shop, separate from the one for Gato GraphQL.
 
 That never worked. Their onboarding kept throwing an exception during identity verification, so I was forced to run a single “Gato” shop for both Gato Plugins and Gato GraphQL.
 
