@@ -11,6 +11,14 @@ If you happen to be a conference organizer, [let's work together](/contact/)!
 
 ## Previous engagements
 
+**The Invisible Gotchas of WP Translation** @ [WordCamp Asia 2026](https://asia.wordcamp.org/2026/session/the-invisible-gotchas-of-wp-translation/)
+
+<iframe width="1606" height="903" src="https://www.youtube.com/embed/ij7rRolIDiU" title="WordCamp Asia 2026: Leonardo Losoviz &quot;The Invisible Gotchas of WP&quot; Translation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe src="https://gamma.app/embed/qda4y1zcfaq8r7z" width="576" height="450" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen title="The Invisible Gotchas of WP Translation"></iframe>
+
+<a href="https://gamma.app/docs/The-Invisible-Gotchas-of-WP-Translation-qda4y1zcfaq8r7z" target="_blank">Open slides in new tab</a>
+
 **Interacting with LLMs via GraphQL** @ [apidays Singapore 2025](https://www.apidays.global/singapore)
 
 <iframe width="1206" height="678" src="https://www.youtube.com/embed/sziYcxonFK4" title="Interacting with LLMs via GraphQL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
