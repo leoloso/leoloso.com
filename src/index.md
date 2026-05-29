@@ -6,7 +6,9 @@ archiveButtonText: See all posts
 metaDesc: Welcome to Leo's blog! Writings on things that I encounter every day, from attending events, working on random projects, reading books, or anything noteworthy
 socialImage: ''
 ---
-Howdy! My name is **Leonardo Losoviz**, I am the creator of [Gato GraphQL](https://gatographql.com), a tool to interact with all your data in WordPress via GraphQL, and [Gato Plugins](https://gatoplugins.com), my own venture offering super useful plugins for WordPress.
+Howdy! My name is **Leonardo Losoviz**, I am the founder of [Gato Plugins](https://gatoplugins.com), my own venture offering several useful plugins for WordPress.
+
+I am also the creator of several plugins, including [Gato GraphQL](https://gatographql.com), a tool to interact with all your data in WordPress via GraphQL; and [Gato AI Translations for Polylang](https://gatoaitranslations.com), to automatically translate all WordPress content using AI.
 
 I am also a writer, contributing regularly to several online magazines, including [CSS-Tricks](https://css-tricks.com/author/leonardolosoviz/), [Smashing Magazine](https://www.smashingmagazine.com/author/leonardolosoviz/), the [LogRocket blog](https://blog.logrocket.com/author/leonardolosoviz/), [MasterWP](https://masterwp.com/author/leonardo-losoviz/), the [Kinsta blog](https://kinsta.com/blog/author/leonardolosoviz/), the [StepZen blog](https://stepzen.com/blog/), [Design Bombs](https://www.designbombs.com/author/leo/) and [WPKube](https://www.wpkube.com/author/leo/).
 
