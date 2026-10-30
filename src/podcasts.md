@@ -5,6 +5,10 @@ layout: 'layouts/page.njk'
 
 Every now and then I get invited by podcasts to talk about my work and articles. To date, I've participated in these:
 
+## Slator
+
+- [#297 – AI Translation for WordPress with Gato Plugins Founder Leonardo Losoviz](https://slator.com/wordpress-ai-translation-with-gato-plugins/) · [YouTube](https://www.youtube.com/watch?v=s1d_MGfcubg)
+
 ## WPTavern
 
 - [#217 – Leonardo Losovic on Affordable and Accurate WordPress Translations Using AI](https://wptavern.com/podcast/217-leonardo-losovic-on-affordable-and-accurate-wordpress-translations-using-ai)
